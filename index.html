@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWLA — Laboratorio de IA Creativa</title>
+<meta name="description" content="AWLA entrena criterio visual con IA. Cursos, consultoría y producción para creadores y equipos en Latinoamérica.">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* paper world */
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+
+  /* terminal world */
+  --term:     #1c1c1a;
+  --term2:    #242420;
+  --screen:   #e4e0d6;
+  --screen2:  #c8c4ba;
+
+  /* accents */
+  --moss:     #3d5c3e;   /* verde musgo */
+  --slate:    #3a4a6b;   /* azul pizarra */
+  --teal:     #2a7a7a;   /* teal apagado */
+  --rust:     #8a4a2a;   /* para variedad */
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  background: var(--term);
+  overflow: hidden;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── GRAIN ── */
+/* paper grain — warmer, visible */
+.grain-paper::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 50;
+  mix-blend-mode: multiply;
+}
+
+/* terminal grain — subtle */
+.grain-term::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 50;
+  mix-blend-mode: overlay;
+}
+
+/* ── SCROLL ── */
+#sc {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+#sc::-webkit-scrollbar { width: 0; }
+#sc { scrollbar-width: none; }
+
+/* ── CARD ── */
+.card {
+  height: 100vh; width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.card-paper  { background: var(--paper); color: var(--ink); }
+.card-paper2 { background: var(--paper2); color: var(--ink); }
+.card-term   { background: var(--term); color: var(--screen); }
+.card-term2  { background: var(--term2); color: var(--screen); }
+
+/* ── VIDEO BG ── */
+.vbg { position: absolute; inset: 0; z-index: 0; }
+.vbg video { width: 100%; height: 100%; object-fit: cover; }
+.vbg-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(28,28,26,0.25) 0%,
+    rgba(28,28,26,0.1) 35%,
+    rgba(28,28,26,0.7) 75%,
+    rgba(28,28,26,0.97) 100%);
+}
+
+/* ── P5 BG ── */
+.p5b { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.p5b canvas { position: absolute !important; top:0 !important; left:0 !important; width:100% !important; height:100% !important; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 6vw;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+nav > * { pointer-events: all; }
+nav.nav-off { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 24px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+nav.light .nav-logo img { filter: brightness(0); }
+.nav-logo-fb {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--screen);
+  transition: color 0.3s;
+}
+
+.nav-r { display: flex; align-items: center; gap: 28px; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: 2px;
+  color: rgba(228,224,214,0.4); text-decoration: none;
+  text-transform: uppercase; transition: color 0.2s; cursor: pointer;
+}
+.nav-links a:hover { color: var(--screen); }
+.nav-cta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--moss); text-decoration: none;
+  border: 1px solid rgba(61,92,62,0.5); padding: 7px 16px;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: rgba(61,92,62,0.12); border-color: var(--moss); }
+
+nav.light .nav-logo-fb { color: var(--ink); }
+nav.light .nav-logo-fb { color: var(--ink); }
+nav.light .nav-links a { color: rgba(26,26,24,0.35); }
+nav.light .nav-links a:hover { color: var(--ink); }
+nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
+
+/* ── DOTS ── */
+.dots {
+  position: fixed; right: 2.2vw; top: 50%;
+  transform: translateY(-50%); z-index: 800;
+  display: flex; flex-direction: column; gap: 6px;
+  pointer-events: none;
+  padding: 8px 4px;
+  background: rgba(28,28,26,0.35);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+.dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(228,224,214,0.3);
+  transition: all 0.3s; cursor: pointer; pointer-events: all;
+}
+.dot.on { background: var(--moss); transform: scale(1.6); }
+
+/* ── SCROLL HINT ── */
+.shint {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 800; display: flex; flex-direction: column; align-items: center; gap: 5px;
+  opacity: 1; transition: opacity 0.4s; pointer-events: none;
+}
+.shint.off { opacity: 0; }
+.shint span { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 3px; color: rgba(228,224,214,0.25); text-transform: uppercase; }
+.shint-line { width: 1px; height: 28px; background: linear-gradient(to bottom, rgba(61,92,62,0.6), transparent); animation: sp 1.8s ease-in-out infinite; }
+@keyframes sp { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+/* ── COOKIE ── */
+#ck {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(26,26,24,0.97); border-top: 1px solid rgba(61,92,62,0.2);
+  padding: 16px 6vw; display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+  transform: translateY(100%); transition: transform 0.4s ease;
+}
+#ck.on { transform: translateY(0); }
+#ck p { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 300; color: rgba(228,224,214,0.45); letter-spacing: 0.5px; line-height: 1.7; max-width: 560px; }
+#ck p a { color: var(--moss); text-decoration: none; }
+.ck-btn { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; background: var(--moss); color: #fff; border: none; padding: 9px 20px; cursor: pointer; transition: opacity 0.2s; }
+.ck-btn:hover { opacity: 0.8; }
+
+/* ── CONTENT ── */
+.cc { position: relative; z-index: 10; padding: 0 6vw; }
+.cc-mid { position: relative; z-index: 10; padding: 0 6vw; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+/* reveal */
+.cc, .cc-mid { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+.card.pre-enter .cc, .card.pre-enter .cc-mid { opacity: 0; transform: translateY(12px); }
+.card.in .cc, .card.in .cc-mid { opacity: 1; transform: translateY(0); }
+
+/* ── MICROGRAPHIC TYPE SYSTEM ── */
+
+/* LABEL — tiny mono uppercase, tracking wide */
+.lbl {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: 4px;
+  text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.lbl-paper { color: var(--ink-mid); }
+.lbl-paper::before { content: '—'; font-size: 10px; opacity: 0.5; }
+.lbl-term  { color: rgba(61,92,62,0.95); }
+.lbl-term::before  { content: '›'; font-size: 11px; opacity: 0.9; }
+
+/* ID/METADATA line — tabular mono */
+.meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: 2.5px;
+  text-transform: uppercase; line-height: 1.9;
+}
+.meta-paper { color: var(--ink-mid); }
+.meta-term  { color: rgba(228,224,214,0.5); }
+
+/* CONDENSED HEAVY — big impact label */
+.cond-xl {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(60px, 10vw, 130px);
+  font-weight: 600; line-height: 0.9;
+  letter-spacing: 0px; text-transform: uppercase;
+}
+.cond-xl-paper { color: var(--ink); }
+.cond-xl-term  { color: var(--screen); }
+
+.cond-lg {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 600; line-height: 0.95;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+.cond-md {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(22px, 3.5vw, 44px);
+  font-weight: 600; line-height: 1.0;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* SERIF — editorial body */
+.serif-lg {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 1.05; letter-spacing: -0.5px;
+}
+.serif-lg em { font-style: italic; }
+
+/* BODY COPY */
+.body {
+  font-family: 'Barlow', sans-serif; font-weight: 300;
+  font-size: clamp(13px, 1.2vw, 15px); line-height: 1.8;
+}
+.body-paper { color: var(--ink-mid); }
+.body-term  { color: rgba(228,224,214,0.6); }
+
+/* accent colors on type */
+.moss  { color: var(--moss); }
+.slate { color: var(--slate); }
+.teal  { color: var(--teal); }
+
+
+/* slide 3 serif word glitch */
+.c3g { display:inline; transition:none; }
+
+/* ── MIXED TITLE — condensed + serif italic tension ── */
+.mix-title {
+  line-height: 0.92;
+  letter-spacing: -0.5px;
+}
+.mix-title .c {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 0.5px;
+}
+.mix-title .s {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.5px;
+}
+.mix-title .m {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 300;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
+.rule { width: 100%; height: 1px; }
+.rule-paper { background: rgba(26,26,24,0.12); }
+.rule-term  { background: rgba(228,224,214,0.08); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block; font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 500; letter-spacing: 3px;
+  text-decoration: none; padding: 12px 26px;
+  text-transform: uppercase; transition: all 0.2s; cursor: pointer; border: none;
+}
+.btn-moss { background: var(--moss); color: #f2efe8; }
+.btn-moss:hover { background: #4a6e4b; }
+.btn-outline-paper { border: 1px solid rgba(26,26,24,0.2); color: var(--ink); background: transparent; }
+.btn-outline-paper:hover { border-color: rgba(26,26,24,0.5); }
+.btn-outline-term { border: 1px solid rgba(228,224,214,0.18); color: var(--screen); background: transparent; }
+.btn-outline-term:hover { border-color: rgba(228,224,214,0.45); }
+
+/* ── CARD 1: HERO ── */
+#c1 .cc { padding-bottom: 10vh; justify-content: flex-end; height: 100%; display: flex; flex-direction: column; }
+#c1 .meta-block {
+  display: flex; gap: 4vw; align-items: flex-end; margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+#c1 .meta-block .col { display: flex; flex-direction: column; gap: 3px; }
+
+/* ── CARDS: QUÉ ES ── */
+.split-50 { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 68vh; }
+.split-l { display: flex; flex-direction: column; justify-content: center; padding-right: 5vw; }
+.split-r { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.split-l.pad-l { padding-left: 5vw; padding-right: 0; }
+
+/* ── MICROGRAPHIC LAYOUT helpers ── */
+.field-row {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 0 16px; padding: 12px 0;
+  border-bottom: 1px solid rgba(26,26,24,0.08);
+  align-items: start;
+}
+.field-row.term { border-bottom-color: rgba(228,224,214,0.07); }
+.field-key {
+  font-family: 'IBM Plex Mono', monospace; font-size: 8px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase; padding-top: 2px;
+}
+.field-key-paper { color: var(--ink-faint); }
+.field-key-term  { color: rgba(61,92,62,0.7); }
+.field-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(14px, 1.8vw, 20px); font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.field-val-paper { color: var(--ink); }
+.field-val-term  { color: var(--screen); }
+
+/* ── SERVICIOS ── */
+.serv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 32px; }
+
+.serv-cell {
+  padding: 36px 32px; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: background 0.25s;
+}
+.serv-cell-paper { background: rgba(26,26,24,0.02); border: 1px solid rgba(26,26,24,0.08); }
+.serv-cell-term  { background: rgba(228,224,214,0.02); border: 1px solid rgba(228,224,214,0.06); }
+.serv-cell-paper:hover { background: rgba(26,26,24,0.04); }
+.serv-cell-term:hover  { background: rgba(228,224,214,0.04); }
+
+.serv-cell::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 0; height: 2px; background: var(--moss);
+  transition: width 0.3s ease;
+}
+.serv-cell:hover::before { width: 100%; }
+
+.serv-num { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 3px; color: var(--moss); text-transform: uppercase; }
+.serv-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(20px, 2.2vw, 28px); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; line-height: 1.0; }
+.serv-title-paper { color: var(--ink); }
+.serv-title-term  { color: var(--screen); }
+.serv-desc { font-family: 'Barlow', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.7; }
+.serv-desc-paper { color: var(--ink-mid); }
+.serv-desc-term  { color: rgba(228,224,214,0.55); }
+.serv-cta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 400;
+  letter-spacing: 2px; color: var(--moss); text-decoration: none;
+  text-transform: uppercase; display: inline-flex; align-items: center;
+  gap: 6px; transition: gap 0.2s; margin-top: auto;
+}
+.serv-cta:hover { gap: 12px; }
+.serv-cta::after { content: '→'; }
+
+/* ── IMAGEN PLACEHOLDER ── */
+.img-ph {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px;
+}
+.img-ph-paper { border: 1px dashed rgba(26,26,24,0.1); background: rgba(26,26,24,0.02); }
+.img-ph-term  { border: 1px dashed rgba(228,224,214,0.08); background: rgba(228,224,214,0.01); }
+.img-ph span { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 3px; text-transform: uppercase; }
+.img-ph-paper span { color: rgba(26,26,24,0.2); }
+.img-ph-term  span { color: rgba(228,224,214,0.15); }
+
+/* ── VIDEOS ── */
+.vid-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.vid-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 2vw; }
+.vid-wrap { position: relative; overflow: hidden; cursor:pointer; }
+.vid-wrap::before { content:''; display:block; padding-top:56.25%; }
+.vid-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; pointer-events:none; }
+.vid-wrap .play-btn {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  z-index:5; opacity:0.45; transition:opacity 0.25s, background 0.25s;
+  background:linear-gradient(to top, rgba(28,28,26,0.6) 0%, rgba(28,28,26,0.0) 40%);
+}
+.vid-wrap:hover .play-btn { opacity:1; background:rgba(28,28,26,0.4); }
+.vid-wrap .play-btn span {
+  font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:3px;
+  color:var(--screen); text-transform:uppercase; border:1px solid rgba(228,224,214,0.35);
+  padding:10px 20px; background:rgba(28,28,26,0.75); transition:all 0.2s;
+  display:flex; align-items:center; gap:8px;
+}
+.vid-wrap:hover .play-btn span {
+  border-color:var(--moss); background:rgba(61,92,62,0.35);
+}
+.vid-wrap.playing iframe { pointer-events:all; }
+.vid-wrap.playing .play-btn { display:none; }
+.vid-cap { padding: 10px 0 16px; display: flex; justify-content: space-between; align-items: flex-start; }
+.vid-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--screen); }
+.vid-tools { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 1.5px; color: rgba(61,92,62,0.8); text-transform: uppercase; text-align: right; line-height: 1.6; }
+
+/* ── GALLERY ── */
+.gal-cell {
+  position: relative; overflow: hidden; cursor: pointer;
+  background: rgba(228,224,214,0.03);
+}
+.gal-cell img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.3s;
+  display: block;
+}
+.gal-cell:hover img { transform: scale(1.04); opacity: 0.85; }
+.gal-cell.gal-ph {
+  border: 1px dashed rgba(228,224,214,0.08);
+}
+.gal-cell.gal-ph::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(28,28,26,0.6);
+  pointer-events: none;
+}
+.gal-cell::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(61,92,62,0); transition: background 0.3s;
+  pointer-events: none;
+}
+.gal-cell:hover::after { background: rgba(61,92,62,0.08); }
+
+@media (max-width: 768px) {
+  #gal-grid { grid-template-columns: repeat(3,1fr) !important; height: 60vh !important; }
+}
+
+/* ── CONTACTO EMAIL ── */
+.cta-email {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  font-size: clamp(24px, 3.5vw, 48px); letter-spacing: 2px;
+  text-transform: uppercase; color: var(--moss); text-decoration: none;
+  display: block; margin: 16px 0 36px; transition: opacity 0.2s;
+}
+.cta-email:hover { opacity: 0.75; }
+
+/* ── FOOTER ── */
+#footer {
+  background: var(--term); padding: 0 6vw 32px;
+  position: relative; overflow: hidden;
+  scroll-snap-align: start;
+}
+.footer-inner {
+  border-top: 1px solid rgba(228,224,214,0.07);
+  padding-top: 24px; display: flex;
+  justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px; position: relative; z-index: 10;
+}
+.footer-logo img { height: 18px; opacity: 0.3; }
+.footer-links { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(228,224,214,0.2); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--moss); }
+.footer-copy { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(228,224,214,0.12); letter-spacing: 2px; text-transform: uppercase; }
+
+/* ── TESTIMONIALS ── */
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 40px; }
+.testi-cell {
+  padding: 32px 28px; border: 1px solid rgba(26,26,24,0.08);
+  background: rgba(26,26,24,0.02); display: flex; flex-direction: column; gap: 16px;
+}
+.testi-quote {
+  font-family: 'DM Serif Display', serif; font-style: italic;
+  font-size: clamp(14px, 1.4vw, 17px); line-height: 1.6;
+  color: var(--ink); flex: 1;
+}
+.testi-author { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--moss); text-transform: uppercase; }
+
+/* ── SERVICIOS WITH IMAGE ── */
+.serv-img-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  margin-top: 36px;
+}
+.serv-img-cell {
+  display: flex; flex-direction: column;
+  background: rgba(228,224,214,0.02);
+  border: 1px solid rgba(228,224,214,0.07);
+  transition: background 0.25s;
+  position: relative; overflow: hidden;
+}
+.serv-img-cell:hover { background: rgba(228,224,214,0.04); }
+.serv-img-cell::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 0; height: 2px; background: var(--moss);
+  transition: width 0.3s ease; z-index: 3;
+}
+.serv-img-cell:hover::before { width: 100%; }
+
+.serv-img-media {
+  position: relative; width: 100%;
+  aspect-ratio: 16/7;
+  background: rgba(228,224,214,0.03);
+  overflow: hidden;
+}
+.serv-img-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.serv-img-cell:hover .serv-img-media img { transform: scale(1.03); }
+.serv-img-media .img-ph-term {
+  position: absolute; inset: 0;
+  border: 1px dashed rgba(228,224,214,0.1);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(228,224,214,0.02); gap: 4px;
+}
+
+.serv-img-body {
+  padding: 18px 24px; flex: 1;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.serv-img-num {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--moss); text-transform: uppercase;
+}
+.serv-img-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: clamp(22px, 2.4vw, 32px);
+  letter-spacing: 1px; text-transform: uppercase;
+  line-height: 1.0; color: var(--screen);
+}
+.serv-img-cell.paper .serv-img-title { color: var(--ink); }
+.serv-img-desc {
+  font-family: 'Barlow', sans-serif; font-weight: 300;
+  font-size: 13px; line-height: 1.7;
+  color: rgba(228,224,214,0.6);
+}
+.serv-img-cell.paper .serv-img-desc { color: rgba(26,26,24,0.65); }
+.serv-img-sub {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  letter-spacing: 1.5px; color: rgba(228,224,214,0.35);
+  text-transform: uppercase; line-height: 1.8;
+}
+.serv-img-cell.paper .serv-img-sub { color: rgba(26,26,24,0.45); }
+.serv-img-link {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; color: var(--moss); text-decoration: none;
+  text-transform: uppercase; display: inline-flex; align-items: center;
+  gap: 6px; transition: gap 0.2s; margin-top: auto;
+}
+.serv-img-link:hover { gap: 12px; }
+.serv-img-link::after { content: '→'; }
+
+@media (max-width: 768px) {
+  .serv-img-grid { grid-template-columns: 1fr; }
+  .serv-img-media { aspect-ratio: 16/10; }
+  .serv-img-body { padding: 22px 24px; }
+}
+/* ── METODOLOGÍA CARDS ── */
+.met-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+  width: 100%;
+  height: 78vh;
+  margin-top: 16px;
+}
+.met-cell {
+  position: relative;
+  overflow: hidden;
+}
+.met-cell img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(0.4);
+}
+.met-cell:hover img { transform: scale(1.04); filter: brightness(0.55); }
+.met-cell-ph {
+  position: absolute; inset: 0;
+  background: rgba(28,28,26,0.92);
+  border: 1px dashed rgba(228,224,214,0.07);
+}
+.met-cell-body {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px 20px;
+  background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.0) 55%);
+  z-index: 2;
+}
+.met-cell-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--moss); text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.met-cell-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: clamp(15px, 1.5vw, 21px);
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--screen); line-height: 1.1;
+  margin-bottom: 5px;
+}
+.met-cell-desc {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300; font-size: clamp(10px, 0.8vw, 12px);
+  line-height: 1.6; color: rgba(228,224,214,0.6);
+  max-width: 260px;
+}
+@media (max-width: 768px) {
+  .met-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3,1fr); height: auto; }
+  .met-cell { min-height: 150px; }
+  .met-cell-desc { display: none; }
+}
+
+/* ── COMPACT SERVICES ── */
+.serv-compact-cell {
+  padding: 28px 24px; border: 1px solid rgba(228,224,214,0.07);
+  background: rgba(228,224,214,0.02); position: relative;
+  transition: background 0.2s;
+}
+.serv-compact-cell:hover { background: rgba(228,224,214,0.04); }
+.serv-compact-cell::before {
+  content:''; position:absolute; top:0; left:0;
+  width:0; height:2px; background:var(--moss); transition:width 0.3s;
+}
+.serv-compact-cell:hover::before { width:100%; }
+.serv-compact-num { font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:3px; color:var(--moss); margin-bottom:8px; }
+.serv-compact-title { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(16px,2vw,22px); letter-spacing:1px; text-transform:uppercase; color:var(--screen); margin-bottom:6px; }
+.serv-compact-sub { font-family:'IBM Plex Mono',monospace; font-size:8px; letter-spacing:1px; color:rgba(228,224,214,0.35); line-height:1.7; }
+.serv-compact-link { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--moss); text-decoration:none; text-transform:uppercase; display:inline-flex; align-items:center; gap:5px; margin-top:14px; transition:gap 0.2s; }
+.serv-compact-link:hover { gap:10px; }
+.serv-compact-link::after { content:'→'; }
+
+.partners-row { display: flex; gap: 3vw; flex-wrap: wrap; align-items: center; margin-top: 28px; }
+.partner-tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px;
+  color: rgba(26,26,24,0.4); text-transform: uppercase; padding: 6px 12px;
+  border: 1px solid rgba(26,26,24,0.1);
+}
+
+@media (max-width: 768px) {
+  .testi-grid { grid-template-columns: 1fr; }
+  .serv-compact { grid-template-columns: 1fr; }
+  .partners-row { gap: 8px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .split-50 { grid-template-columns: 1fr; height: auto; }
+  .split-r { height: 35vh; }
+  .split-l { padding-right: 0; padding-bottom: 24px; }
+  .split-l.pad-l { padding-left: 0; }
+  .serv-grid { grid-template-columns: 1fr; }
+  .vid-grid { grid-template-columns: 1fr 1fr; }
+  .vid-grid-2 { grid-template-columns: 1fr; gap: 24px; }
+  .gal-grid { grid-template-columns: repeat(2,1fr); }
+  .dots { display: none; }
+  .field-row { grid-template-columns: 90px 1fr; }
+  
+  /* Hero metadata mobile cleanup */
+  #c1 [style*="top:88px"] { top: 20px !important; font-size: 8px !important; letter-spacing: 1px !important; }
+  #c1 [style*="top:88px"] span { font-size: 8px !important; }
+  #c1 [style*="left:6vw"] { left: 12px !important; right: auto !important; }
+  #c1 [style*="right:6vw"] { right: 12px !important; left: auto !important; }
+  
+  /* Hero title mobile */
+  #hero-title { max-width: 90vw !important; }
+  #c1 > div[style*="bottom:8vh"] { padding: 0 12px; left: 0 !important; right: 0 !important; bottom: 20px !important; max-width: none !important; }
+  
+  /* Slide 2 metadata mobile */
+  #c2 [style*="top:88px"] { top: 20px !important; font-size: 8px !important; letter-spacing: 1px !important; }
+  #c2 [style*="left:6vw"] { left: 12px !important; }
+  #c2 [style*="right:6vw"] { right: 12px !important; }
+  #c2-title { max-width: 90vw !important; }
+  
+  /* Slide 3 metadata mobile */
+  #c3 [style*="top:88px"] { top: 20px !important; font-size: 8px !important; letter-spacing: 1px !important; }
+  #c3 [style*="left:6vw"] { left: 12px !important; }
+  #c3 [style*="right:6vw"] { right: 12px !important; }
+
+  /* About slide c4 — stack on mobile */
+  #c4 > .cc > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Slide 3 portrait video — stack on mobile */
+  #c3-split { grid-template-columns: 1fr !important; min-height: auto !important; }
+  #c3-split .split-l { padding-right: 0; padding-bottom: 24px; }
+  #c3-split > div:last-child { padding: 0; }
+  #c3-split > div:last-child > div { max-width: 280px !important; margin: 0 auto; }
+
+  /* Servicios — stack on mobile, image smaller */
+  .serv-img-grid { grid-template-columns: 1fr !important; }
+  .serv-img-media { aspect-ratio: 16/9; }
+  #c12, #c13 { height: auto !important; min-height: 100vh; }
+  #c12 .serv-img-body, #c13 .serv-img-body { padding: 20px; }
+
+  /* Slides 8+ metadata mobile */
+  #c8 [style*="top:88px"], #c9 [style*="top:88px"],
+  #c10 [style*="top:88px"], #c11 [style*="top:88px"], #c12 [style*="top:88px"] {
+    top: 20px !important; font-size: 8px !important; letter-spacing: 1px !important;
+  }
+  #c8 [style*="left:6vw"], #c9 [style*="left:6vw"],
+  #c10 [style*="left:6vw"], #c11 [style*="left:6vw"], #c12 [style*="left:6vw"] { left: 12px !important; }
+  #c8 [style*="right:6vw"], #c9 [style*="right:6vw"],
+  #c10 [style*="right:6vw"], #c11 [style*="right:6vw"], #c12 [style*="right:6vw"] { right: 12px !important; }
+}
+@media (max-width: 480px) {
+  .vid-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE FIXES — comprehensive pass
+   Target: iPhone-size screens (~390px wide)
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── NAV ── */
+  #nav { padding: 0 12px; }
+  #nav .nav-logo { font-size: 18px; letter-spacing: 4px; }
+  #nav .btn { font-size: 9px; padding: 6px 10px; letter-spacing: 1.5px; }
+
+  /* ── METADATA TOP-LEFT/RIGHT — global ── */
+  /* Hide all top-88px metadata blocks on mobile to prevent overlap */
+  .card > div[style*="top:88px"] {
+    top: 16px !important;
+    font-size: 8px !important;
+    letter-spacing: 1px !important;
+    line-height: 1.6 !important;
+  }
+  .card > div[style*="left:6vw"] { left: 10px !important; }
+  .card > div[style*="right:6vw"] { right: 10px !important; }
+
+  /* ── HERO (c1) ── */
+  #c1 > div[style*="top:88px"] { display: none !important; }
+  #c1 > div[style*="bottom:8vh"] {
+    left: 12px !important; right: 12px !important;
+    bottom: 14px !important;
+  }
+  #hero-title { font-size: clamp(32px, 11vw, 52px) !important; }
+  #c1 .btn { font-size: 9px !important; padding: 8px 12px !important; }
+  #c1 > div[style*="bottom:8vh"] > div[style*="margin-top:16px"] {
+    flex-direction: column !important; gap: 8px !important;
+    align-items: flex-start !important;
+  }
+
+  /* ── SLIDE 2 — FRASE ANCLA ── */
+  #c2-title { font-size: clamp(28px, 9vw, 44px) !important; }
+  #c2 .cc-mid { padding: 0 16px; }
+
+  /* ── SLIDE 4 TRABAJO label overlap ── */
+  #c7 .cc, #c8 .cc, #c9 .cc {
+    padding-top: 10vh !important;
+  }
+  /* Hide FLUJO on mobile to reduce clutter */
+  #c7 > div[style*="top:88px"] > div > span:nth-child(3),
+  #c8 > div[style*="top:88px"] > div > span:nth-child(3),
+  #c9 > div[style*="top:88px"] > div > span:nth-child(3),
+  #c7 > div[style*="top:88px"] > div > span:nth-child(4),
+  #c8 > div[style*="top:88px"] > div > span:nth-child(4),
+  #c9 > div[style*="top:88px"] > div > span:nth-child(4) { display: none !important; }
+
+  /* ── TRABAJO titles ── */
+  .cond-lg { font-size: clamp(28px, 9vw, 44px) !important; }
+
+  /* ── LOOP (c6) ── */
+  #lh { font-size: clamp(36px, 12vw, 60px) !important; }
+  #llines { margin-bottom: 20px !important; }
+  #li { padding: 0 6% !important; }
+
+  /* ── METODOLOGÍA ── */
+  #cmet-title { font-size: clamp(26px, 8vw, 40px) !important; }
+  .met-grid { grid-template-columns: 1fr 1fr !important; height: auto !important; min-height: 0 !important; }
+  .met-cell { min-height: 140px !important; }
+  .met-cell-title { font-size: 12px !important; }
+  .met-cell-desc { display: none !important; }
+
+  /* ── GALERÍA — fix broken onerror placeholders ── */
+  .gal-cell { position: relative; overflow: hidden; }
+  .gal-cell.gal-ph::after {
+    content: attr(data-name);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(28,28,26,0.9);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px; letter-spacing: 1px;
+    color: rgba(228,224,214,0.25); text-transform: uppercase;
+  }
+
+  /* ── CURSO (c8) ── */
+  #c8 .cc { padding-top: 10vh !important; }
+  #c8 .split-50 { grid-template-columns: 1fr !important; height: auto !important; }
+  #c8 .split-r { height: 40vw !important; min-height: 180px; }
+
+  /* ── ABOUT (c9) ── */
+  #c9 .cc > div { grid-template-columns: 1fr !important; gap: 24px !important; }
+  #c9 .lbl { display: none !important; } /* hide "sobre awla" — title says it all */
+
+  /* ── TESTIMONIOS (c10) ── */
+  .testi-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .testi-cell { padding: 18px !important; }
+  .testi-quote { font-size: 13px !important; line-height: 1.6 !important; }
+  #c10 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
+
+  /* ── FILOSOFÍA (c11) ── */
+  #c11 .cc > div { grid-template-columns: 1fr !important; gap: 20px !important; }
+  #c11 .rule { display: none !important; }
+  .field-row { gap: 12px !important; }
+  .field-val-term { font-size: 12px !important; }
+
+  /* ── SERVICIOS ── */
+  #c12 .mix-title, #c13 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
+  /* Hide "para equipos y marcas" that overlaps title */
+  #c12 > .cc > div > p[style*="opacity:0.5"],
+  #c13 > .cc > div > p[style*="opacity:0.5"] { display: none !important; }
+  .serv-img-title { font-size: 16px !important; }
+  .serv-img-desc { font-size: 12px !important; }
+
+  /* ── CONTACTO (c14) ── */
+  #c14 .cc-mid { padding: 0 16px; }
+  #c14-title { font-size: clamp(38px, 12vw, 60px) !important; }
+  #c14 .body { font-size: 13px !important; }
+  #c14 .cta-email { font-size: clamp(16px, 5.5vw, 26px) !important; }
+  #c14 > div[style*="bottom:32px"] { display: none !important; }
+
+  /* ── GENERAL spacing ── */
+  .cc { padding-left: 16px !important; padding-right: 16px !important; }
+  .cc-mid { padding-left: 16px !important; padding-right: 16px !important; }
+  .lbl { font-size: 8px !important; letter-spacing: 2px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- COOKIE -->
+<div id="ck">
+  <p>Este sitio usa cookies. Al continuar aceptas su uso. <a href="/privacidad">Privacidad</a> · <a href="/cookies">Cookies</a>.</p>
+  <button class="ck-btn" onclick="acceptCK()">Aceptar</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" onclick="gC(0);return false;">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla.png" alt="AWLA" style="height:28px;width:auto;filter:invert(0);">
+    <span class="nav-logo-fb" style="display:none">AWLA</span>
+  </a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a onclick="gC(2)">El curso</a></li>
+      <li><a onclick="gC(4)">Trabajo</a></li>
+      <li><a onclick="gC(12)">Servicios</a></li>
+    </ul>
+    <a href="https://www.awla.live/curso" class="nav-cta">Ver curso</a>
+  </div>
+</nav>
+
+<!-- DOTS -->
+<div class="dots" id="dots"></div>
+
+<!-- SCROLL HINT -->
+<div class="shint" id="shint">
+  <div class="shint-line"></div>
+  <span>scroll</span>
+</div>
+
+<!-- MAIN -->
+<div id="sc">
+
+<!-- ─── 1 · HERO ─────────────────────────────── -->
+<div class="card card-term grain-term" id="c1" data-i="0">
+  <div class="vbg">
+    <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.6;">
+      <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg.mp4" type="video/mp4">
+    </video>
+    <!-- graduated overlay: light top-left, darker bottom -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(28,28,26,0.08) 0%, rgba(28,28,26,0.0) 40%, rgba(28,28,26,0.55) 75%, rgba(28,28,26,0.92) 100%);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(28,28,26,0.32) 0%, rgba(28,28,26,0.0) 55%);"></div>
+  </div>
+
+  <!-- TOP LEFT — archive metadata simplified -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.85)">
+      <span style="color:rgba(134,172,135,0.9)">ID</span><span>AWLA 2026</span>
+      <span style="color:rgba(134,172,135,0.9)">REF</span><span>IA Creativa</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — simple marker -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    01 / 15
+  </div>
+
+  <!-- CENTER LEFT — main title -->
+  <div style="position:absolute;top:50%;left:6vw;transform:translateY(-50%);z-index:10;max-width:52vw">
+    <h1 id="hero-title" style="font-family:'Barlow Condensed',sans-serif;line-height:0.9;margin-bottom:0">
+      <span style="display:block;font-weight:300;font-size:clamp(32px,5.5vw,68px);color:rgba(228,224,214,0.75);text-transform:none;letter-spacing:1px">No describes</span>
+      <span style="display:block;font-weight:600;font-size:clamp(52px,9vw,116px);color:#e4e0d6;text-transform:uppercase;letter-spacing:-1px;line-height:0.88">IMÁGENES.</span>
+      <span style="display:block;font-weight:600;font-size:clamp(52px,9vw,116px);color:#e4e0d6;text-transform:uppercase;letter-spacing:-1px;line-height:0.88">DIRIGES </span><span style="font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(46px,8vw,104px);color:var(--moss);letter-spacing:-1px">escenas.</span>
+    </h1>
+  </div>
+
+  <!-- BOTTOM LEFT — description + CTA -->
+  <div style="position:absolute;bottom:8vh;left:6vw;z-index:10;max-width:480px">
+    <div style="width:32px;height:1px;background:var(--moss);margin-bottom:14px;opacity:0.7"></div>
+    <p class="meta" style="color:rgba(228,224,214,0.5);letter-spacing:2px;line-height:1.9;margin-bottom:24px">
+      Aprende a dirigir con IA.<br>
+      Criterio visual · Prompting con intención<br>
+      Un lenguaje propio.
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://www.awla.live/curso" class="btn btn-moss">Ver el curso</a>
+      <a onclick="gC(4)" class="btn btn-outline-term" style="cursor:pointer">Ver trabajo</a>
+    </div>
+  </div>
+
+  <!-- BOTTOM RIGHT — index -->
+  <div style="position:absolute;bottom:8vh;right:6vw;z-index:10;text-align:right">
+    <p class="meta" style="color:rgba(228,224,214,0.2);letter-spacing:3px">01 / 15</p>
+  </div>
+</div>
+
+<!-- ─── 2 · FRASE ANCLA ──────────────────────── -->
+<div class="card card-term grain-term" id="c2" data-i="1">
+  <div class="p5b" id="p5code"></div>
+
+  <!-- TOP LEFT — ficha simplified -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.85)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>02 / Filosofía</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — simple marker -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    02 / 15
+  </div>
+
+  <div class="cc-mid">
+    <p class="lbl lbl-term" style="justify-content:center">Laboratorio de IA Creativa</p>
+    <h2 class="mix-title" id="c2-title" style="max-width:860px;text-align:center;font-size:clamp(38px,6.5vw,86px)">
+      <span class="c" style="color:rgba(228,224,214,0.55);font-weight:300;text-transform:none">en AWLA </span><span class="c" style="color:var(--screen);font-weight:600;text-transform:uppercase;letter-spacing:1px">NO</span><span class="c" style="color:rgba(228,224,214,0.55);font-weight:300;text-transform:none"> aprendes </span><span class="c" style="color:var(--screen);font-weight:600;text-transform:uppercase;letter-spacing:1px">SOLO herramientas.<br></span><span class="c" style="color:rgba(228,224,214,0.55);font-weight:300;text-transform:none">Aprendes a </span><span class="s" style="color:var(--moss);font-size:0.88em">dirigirlas.</span>
+    </h2>
+  </div>
+</div>
+
+<!-- ─── 6 · GALERÍA ───────────────────────────── -->
+<div class="card card-term grain-term" id="c5" data-i="4">
+
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>03 / Imagen</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    03 / 15
+  </div>
+
+  <div style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:0">
+    <!-- Gallery grid — fills card bottom -->
+    <div id="gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px;width:100%;height:80vh;margin-top:auto">
+      <!-- 9 cells -->
+      <div class="gal-cell" onclick="openLightbox(0)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-01.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(1)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-02.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(2)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-03.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(3)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-04.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(4)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-05.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(5)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-06.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(6)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-07.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(7)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-08.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+      <div class="gal-cell" onclick="openLightbox(8)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-09.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(10,10,10,0.95);z-index:9000;align-items:center;justify-content:center;cursor:pointer" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;display:block">
+  <div style="position:absolute;top:24px;right:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;color:rgba(228,224,214,0.5);text-transform:uppercase">ESC / click para cerrar</div>
+</div>
+<!-- ─── 6 · TRABAJO A ─────────────────────────── -->
+<div class="card card-term grain-term" id="c7" data-i="6" style="justify-content:flex-start;padding-top:10vh">
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>04 / Trabajo</span>
+      <span style="color:rgba(134,172,135,0.9)">FLUJO</span><span>Dirección + IA</span>
+    </div>
+  </div>
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">04 / 15</div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+      <div>
+        <p class="lbl lbl-term">Trabajo</p>
+        <h2 class="cond-lg mix-title" id="c7-title">
+          <span class="c" style="color:var(--screen)">IA dirigida.</span><br><span class="s" style="color:var(--moss);font-size:1em">No generada.</span>
+        </h2>
+      </div>
+      <p class="meta meta-term" style="opacity:0.5">Click para reproducir con sonido</p>
+    </div>
+    <div class="vid-grid vid-grid-2">
+      <div>
+        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1177858852?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-cap"><span class="vid-title">CINCH</span><span class="vid-tools">Midjourney · Runway · Veo · Suno</span></div>
+      </div>
+      <div>
+        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1178044394?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-cap"><span class="vid-title">The Mind Behind AI</span><span class="vid-tools">Midjourney · Luma · Veo · Suno</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 7 · TRABAJO B ─────────────────────────── -->
+<div class="card card-term2 grain-term" id="c8" data-i="7" style="justify-content:flex-start;padding-top:10vh">
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>04 / Trabajo</span>
+      <span style="color:rgba(134,172,135,0.9)">FLUJO</span><span>Dirección + IA</span>
+    </div>
+  </div>
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">05 / 15</div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+      <div>
+        <p class="lbl lbl-term">Trabajo</p>
+        <h2 class="cond-lg mix-title" id="c8-title">
+          <span class="c" style="color:var(--screen)">Criterio</span><br><span class="s" style="color:var(--moss);font-size:1em">y selección.</span>
+        </h2>
+      </div>
+      <p class="meta meta-term" style="opacity:0.5">Click para reproducir con sonido</p>
+    </div>
+    <div class="vid-grid vid-grid-2">
+      <div>
+        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1183595375?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-cap"><span class="vid-title">Scroll</span><span class="vid-tools">Midjourney · Runway · Kling · Suno</span></div>
+      </div>
+      <div>
+        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1179419590?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-cap"><span class="vid-title">Form</span><span class="vid-tools">Midjourney · Runway · Kling · Suno</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 8 · TRABAJO C ─────────────────────────── -->
+<div class="card card-term grain-term" id="c9" data-i="8" style="justify-content:flex-start;padding-top:10vh">
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>04 / Trabajo</span>
+      <span style="color:rgba(134,172,135,0.9)">FLUJO</span><span>Dirección + IA</span>
+    </div>
+  </div>
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">06 / 15</div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+      <div>
+        <p class="lbl lbl-term">Trabajo</p>
+        <h2 class="cond-lg mix-title" id="c9-title">
+          <span class="c" style="color:var(--screen)">Animación</span><br><span class="s" style="color:var(--moss);font-size:1em">desde la palabra.</span>
+        </h2>
+      </div>
+      <p class="meta meta-term" style="opacity:0.5">Click para reproducir con sonido</p>
+    </div>
+    <div class="vid-grid vid-grid-2">
+      <div>
+        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1154526156?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-cap"><span class="vid-title">Robo-Tito</span><span class="vid-tools">Midjourney · Runway · Veo · Suno</span></div>
+      </div>
+      <div>
+        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1139882830?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-cap"><span class="vid-title">Cleo & Tata</span><span class="vid-tools">Midjourney · Runway · Veo · Suno</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card card-term grain-term" id="c6" data-i="5" style="position:relative">
+  <!-- TOP RIGHT — slide counter -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    07 / 15
+  </div>
+  
+  <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+    <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/loop-bg.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:rgba(10,10,10,0.52);z-index:1;"></div>
+  <div id="lc" style="position:absolute;inset:0;z-index:2;"></div>
+</div>
+
+<!-- ─── 5 · METODOLOGÍA ────────────────────────── -->
+<div class="card card-term grain-term" id="c5met" data-i="4">
+
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>03 / Método</span>
+    </div>
+  </div>
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    08 / 15
+  </div>
+
+  <div style="width:100%;height:100%;display:flex;flex-direction:column;padding:0 6vw;padding-top:10vh">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px">
+      <div>
+        <p class="lbl lbl-term">Metodología</p>
+        <h2 class="mix-title" id="cmet-title" style="font-size:clamp(28px,4vw,54px)">
+          <span class="c" style="color:var(--screen)">Cómo trabaja<br></span><span class="s" style="color:var(--moss);font-size:1em">AWLA.</span>
+        </h2>
+      </div>
+    </div>
+    <div class="met-grid">
+
+      <div class="met-cell">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-01.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="met-cell-ph" style="display:none"></div>
+        <div class="met-cell-body">
+          <p class="met-cell-num">01</p>
+          <p class="met-cell-title">Intención + criterio</p>
+          <p class="met-cell-desc">La IA propone. Tú decides qué sirve y qué no.</p>
+        </div>
+      </div>
+
+      <div class="met-cell">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-02.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="met-cell-ph" style="display:none"></div>
+        <div class="met-cell-body">
+          <p class="met-cell-num">02</p>
+          <p class="met-cell-title">Escena + narrativa</p>
+          <p class="met-cell-desc">Pensar en imágenes antes de escribir un solo prompt.</p>
+        </div>
+      </div>
+
+      <div class="met-cell">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-03.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="met-cell-ph" style="display:none"></div>
+        <div class="met-cell-body">
+          <p class="met-cell-num">03</p>
+          <p class="met-cell-title">La palabra como herramienta</p>
+          <p class="met-cell-desc">El prompt no es un comando. Es dirección de arte en texto.</p>
+        </div>
+      </div>
+
+      <div class="met-cell">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-04.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="met-cell-ph" style="display:none"></div>
+        <div class="met-cell-body">
+          <p class="met-cell-num">04</p>
+          <p class="met-cell-title">Mirada + lenguaje visual</p>
+          <p class="met-cell-desc">Composición, luz, atmósfera — el ojo dirige la máquina.</p>
+        </div>
+      </div>
+
+      <div class="met-cell">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-05.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="met-cell-ph" style="display:none"></div>
+        <div class="met-cell-body">
+          <p class="met-cell-num">05</p>
+          <p class="met-cell-title">Estilo + dirección visual</p>
+          <p class="met-cell-desc">Construir un lenguaje propio que sea reconocible.</p>
+        </div>
+      </div>
+
+      <div class="met-cell">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-06.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="met-cell-ph" style="display:none"></div>
+        <div class="met-cell-body">
+          <p class="met-cell-num">06</p>
+          <p class="met-cell-title">Pipeline audiovisual</p>
+          <p class="met-cell-desc">Imagen → video → sonido → edición. Un flujo, una pieza.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── 3 · QUÉ ES + SOCIAL PROOF (papel) ────── -->
+<div class="card card-paper grain-paper" id="c3" data-i="2">
+  <div class="p5b" id="p5nodes"></div>
+
+  <!-- TOP LEFT — ficha simplified -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(26,26,24,0.8)">
+      <span style="color:var(--moss)">CAP</span><span>03 / Curso</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — simple marker -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:var(--moss)">
+    09 / 15
+  </div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <div id="c3-split" style="display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:72vh">
+      <div class="split-l">
+        <p class="lbl lbl-paper">El curso</p>
+        <h2 class="serif-lg" id="c3-serif" style="color:var(--ink);margin-bottom:20px">Una escuela de <em class="glitch-target">criterio visual</em> que usa la IA como medio, no como fin.</h2>
+        <p class="body body-paper" style="max-width:440px;margin-bottom:24px">Aprende a pensar visualmente, dirigir con palabras y construir un lenguaje propio con IA. Para fotógrafos, cineastas, diseñadores y creadores visuales.</p>
+        <div class="partners-row">
+          <span class="partner-tag">Creative Partner · Runway</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;padding:0 2vw;">
+        <div style="position:relative;width:100%;max-width:420px;aspect-ratio:3/4;overflow:hidden;">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/about-image.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 4 · ABOUT (papel) ─────────────────────── -->
+<div class="card card-paper grain-paper" id="c4" data-i="3">
+  <div class="p5b" id="p5about"></div>
+
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(26,26,24,0.8)">
+      <span style="color:var(--moss)">CAP</span><span>02 / AWLA</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:var(--moss)">
+    10 / 15
+  </div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:8vw;align-items:start">
+
+      <!-- LEFT — ficha institucional -->
+      <div>
+        <p class="lbl lbl-paper">Sobre AWLA</p>
+        <h2 class="mix-title" id="c4-title" style="font-size:clamp(32px,4.5vw,58px);margin-bottom:28px">
+          <span class="c" style="color:var(--ink)">Laboratorio de<br></span><span class="s" style="color:var(--moss);font-size:0.95em">IA creativa.</span>
+        </h2>
+        <div style="margin-top:8px">
+          <div class="field-row paper" style="padding:10px 0">
+            <span class="field-key" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--moss);text-transform:uppercase;min-width:110px">FUNDADA</span>
+            <span class="field-val" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(26,26,24,0.75);text-transform:uppercase">2022</span>
+          </div>
+          <div class="field-row paper" style="padding:10px 0">
+            <span class="field-key" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--moss);text-transform:uppercase;min-width:110px">DISCIPLINAS</span>
+            <span class="field-val" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(26,26,24,0.75);text-transform:uppercase">Dirección creativa · IA<br>Cine · Educación</span>
+          </div>
+          <div class="field-row paper" style="padding:10px 0">
+            <span class="field-key" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--moss);text-transform:uppercase;min-width:110px">PARTNER</span>
+            <span class="field-val" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(26,26,24,0.75);text-transform:uppercase">Creative Partner · Runway</span>
+          </div>
+          <div class="field-row paper" style="padding:10px 0">
+            <span class="field-key" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--moss);text-transform:uppercase;min-width:110px">CLIENTES</span>
+            <span class="field-val" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(26,26,24,0.75);text-transform:uppercase">Agencias · Marcas<br>Cineastas · Equipos creativos</span>
+          </div>
+          <div class="field-row paper" style="padding:10px 0;border:none">
+            <span class="field-key" style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--moss);text-transform:uppercase;min-width:110px">SEDE</span>
+            <span class="field-val" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(26,26,24,0.75);text-transform:uppercase">Online · Presencial<br>MX y Global</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — texto narrativo -->
+      <div style="display:flex;flex-direction:column;gap:20px;padding-top:8px">
+        <div style="width:32px;height:1px;background:var(--moss);opacity:0.5"></div>
+        <p class="body body-paper" style="font-size:clamp(14px,1.2vw,17px);line-height:1.8;color:rgba(26,26,24,0.85)">AWLA nació de una pregunta simple: ¿qué pasa cuando un director creativo con criterio toma el control de las herramientas de IA generativa?</p>
+        <p class="body body-paper" style="font-size:clamp(14px,1.2vw,17px);line-height:1.8;color:rgba(26,26,24,0.7)">No somos una agencia. No somos una escuela de software. Somos un laboratorio donde la intención y el criterio son el método.</p>
+        <p class="body body-paper" style="font-size:clamp(14px,1.2vw,17px);line-height:1.8;color:rgba(26,26,24,0.7)">Trabajamos con marcas, equipos creativos y cineastas que quieren usar la IA sin perder su voz. Desde la dirección creativa hasta la pieza final.</p>
+        <div style="margin-top:8px">
+          <a href="mailto:hola@awla.live" class="serv-img-link" style="color:var(--moss)">Escribir a AWLA</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── 9 · TESTIMONIOS (papel) ──────────────── -->
+<div class="card card-paper grain-paper" id="c10" data-i="9">
+  <div class="p5b" id="p5nodes2"></div>
+
+  <!-- TOP LEFT — ficha simplified -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(26,26,24,0.8)">
+      <span style="color:var(--moss)">CAP</span><span>05 / Voces</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — counter -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:var(--moss)">
+    11 / 15
+  </div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <p class="lbl lbl-paper">Opiniones sobre AWLA</p>
+    <h2 class="mix-title" id="c10-title" style="font-size:clamp(30px,4.5vw,58px)">
+      <span class="c" style="color:var(--ink)">Lo que dicen<br></span><span class="s" style="color:var(--moss);font-size:1em">los estudiantes.</span>
+    </h2>
+    <div class="testi-grid" id="testi-grid">
+      <!-- Loaded dynamically from GitHub JSON -->
+    </div>
+  </div>
+</div>
+
+<!-- ─── 10 · FILOSOFÍA (terminal) ─────────────── -->
+<div class="card card-term2 grain-term" id="c11" data-i="10">
+  <div class="p5b" id="p5sym1"></div>
+
+  <!-- TOP LEFT — ficha simplified -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>06 / Postura</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — counter -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    12 / 15
+  </div>
+
+  <div class="cc" style="width:100%;padding-top:6vh">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:6vw;align-items:start">
+      <div>
+        <p class="lbl lbl-term">Postura</p>
+        <h2 class="cond-lg mix-title" id="c11-title" style="color:var(--screen);text-transform:uppercase;margin-bottom:0">
+          <span class="c" style="color:var(--screen)">Lo que<br></span><span class="s" style="color:var(--moss);font-size:1em">creemos.</span>
+        </h2>
+        <div class="rule rule-term" style="margin-top:20px;margin-bottom:20px"></div>
+        <p class="meta meta-term" style="line-height:2">AWLA · 2026</p>
+      </div>
+      <div>
+        <div class="field-row term">
+          <span class="field-key field-key-term">01</span>
+          <span class="field-val field-val-term">La IA propone. Tú decides.</span>
+        </div>
+        <div class="field-row term">
+          <span class="field-key field-key-term">02</span>
+          <span class="field-val field-val-term">La IA no imagina. Recombina.</span>
+        </div>
+        <div class="field-row term">
+          <span class="field-key field-key-term">03</span>
+          <span class="field-val field-val-term">Si no decides tú el sentido, lo decide el promedio.</span>
+        </div>
+        <div class="field-row term">
+          <span class="field-key field-key-term">04</span>
+          <span class="field-val field-val-term">La IA amplifica lo que ya hay. Trae criterio.</span>
+        </div>
+        <div class="field-row term">
+          <span class="field-key field-key-term">05</span>
+          <span class="field-val field-val-term">Dirigir no es generar.</span>
+        </div>
+        <div class="field-row term" style="border:none">
+          <span class="field-key field-key-term">06</span>
+          <span class="field-val field-val-term">Usar IA con consciencia. No negarla, sí cuidarla.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 11 · SERVICIOS A (terminal) — Workshops + Consultoría ── -->
+<div class="card card-term grain-term" id="c12" data-i="11" style="justify-content:flex-start;padding-top:5vh;">
+  <div class="p5b" id="p5grid1"></div>
+
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>07 / Servicios</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — counter -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    13 / 15
+  </div>
+
+  <div class="cc" style="width:100%;padding-top:4vh;padding-bottom:2vh">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:0">
+      <div>
+        <p class="lbl lbl-term">Más allá del curso</p>
+        <h2 class="mix-title" id="c12-title" style="font-size:clamp(26px,3.8vw,50px)">
+          <span class="c" style="color:var(--screen)">AWLA también<br></span><span class="s" style="color:var(--moss);font-size:1em">trabaja contigo.</span>
+        </h2>
+      </div>
+      <p class="meta meta-term" style="opacity:0.5">Para equipos y marcas</p>
+    </div>
+
+    <div class="serv-img-grid">
+      <div class="serv-img-cell">
+        <div class="serv-img-media">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-01-workshops.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-ph-term" style="display:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-01-workshops.jpg</span>
+          </div>
+        </div>
+        <div class="serv-img-body">
+          <p class="serv-img-num">01 / 04</p>
+          <h3 class="serv-img-title">Workshops para equipos</h3>
+          <p class="serv-img-desc">Sesiones prácticas de dirección creativa con IA para equipos de producción, diseño o comunicación.</p>
+          <p class="serv-img-sub">1 a 1 · Presencial · Online</p>
+          <a href="mailto:hola@awla.live?subject=Workshop" class="serv-img-link">Consultar</a>
+        </div>
+      </div>
+
+      <div class="serv-img-cell">
+        <div class="serv-img-media">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-02-consultoria.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-ph-term" style="display:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-02-consultoria.jpg</span>
+          </div>
+        </div>
+        <div class="serv-img-body">
+          <p class="serv-img-num">02 / 04</p>
+          <h3 class="serv-img-title">Consultoría de integración</h3>
+          <p class="serv-img-desc">Identificamos dónde la IA puede entrar en tu flujo sin romper la voz de la marca ni el proceso creativo.</p>
+          <p class="serv-img-sub">Flujos de trabajo · Workflow · Prompts de marca</p>
+          <a href="mailto:hola@awla.live?subject=Consultoría" class="serv-img-link">Consultar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 12 · SERVICIOS B (terminal) — Dirección + Producción ── -->
+<div class="card card-term2 grain-term" id="c13" data-i="12" style="justify-content:flex-start;padding-top:7vh;">
+  <div class="p5b" id="p5grid2"></div>
+
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>07 / Servicios</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — counter -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    14 / 15
+  </div>
+
+  <div class="cc" style="width:100%;padding-top:6vh;padding-bottom:6vh">
+    <div class="serv-img-grid">
+      <div class="serv-img-cell">
+        <div class="serv-img-media">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-03-direccion.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-ph-term" style="display:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-03-direccion.jpg</span>
+          </div>
+        </div>
+        <div class="serv-img-body">
+          <p class="serv-img-num">03 / 04</p>
+          <h3 class="serv-img-title">Dirección creativa</h3>
+          <p class="serv-img-desc">Participamos como dirección creativa en proyectos que usan IA generativa. Desde la intención hasta la entrega.</p>
+          <p class="serv-img-sub">Agencias · Productoras · Marcas</p>
+          <a href="mailto:hola@awla.live?subject=Dirección creativa" class="serv-img-link">Consultar</a>
+        </div>
+      </div>
+
+      <div class="serv-img-cell">
+        <div class="serv-img-media">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-04-produccion.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-ph-term" style="display:none">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-04-produccion.jpg</span>
+          </div>
+        </div>
+        <div class="serv-img-body">
+          <p class="serv-img-num">04 / 04</p>
+          <h3 class="serv-img-title">Producción visual con IA</h3>
+          <p class="serv-img-desc">Generación y dirección de imagen y video con IA para campañas, contenido de marca o proyectos editoriales.</p>
+          <p class="serv-img-sub">De la idea a la pieza final · Imagen · Video</p>
+          <a href="mailto:hola@awla.live?subject=Producción" class="serv-img-link">Consultar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 13 · CONTACTO (terminal) ─────────────── -->
+<div class="card card-term grain-term" id="c14" data-i="13">
+  <div class="p5b" id="p5contact"></div>
+
+  <!-- TOP LEFT — simplified -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>08 / Contacto</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT — counter -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    15 / 15
+  </div>
+
+  <div class="cc-mid">
+    <p class="lbl lbl-term" style="justify-content:center">Contacto</p>
+    <h2 class="mix-title" id="c14-title" style="max-width:700px;font-size:clamp(48px,7vw,96px);margin-bottom:24px">
+      <span class="s" style="color:var(--screen);font-style:italic">Hablemos.</span>
+    </h2>
+    <p class="body body-term" style="max-width:540px;margin:0 auto 8px;line-height:1.7">¿Buscas consultoría o un workshop? ¿O prefieres dejar la dirección y producción en nuestras manos?</p>
+    <p class="body body-term" style="max-width:540px;margin:0 auto 8px;line-height:1.7;color:rgba(228,224,214,0.75)">Si hay una idea clara, hay algo que hacer. Cuéntanos qué estás construyendo.</p>
+    <p class="body body-term" style="max-width:540px;margin:0 auto 32px;line-height:1.7;color:var(--moss);font-style:italic;font-family:'DM Serif Display',serif;font-size:clamp(14px,1.3vw,17px)">Respondemos personalmente. Sin automatizaciones.</p>
+
+    <a href="mailto:hola@awla.live" class="cta-email" style="font-family:'DM Serif Display',serif;font-weight:400;font-style:italic;text-transform:none;letter-spacing:-0.5px;font-size:clamp(20px,3vw,40px);margin-top:0;margin-bottom:28px">hola@awla.live</a>
+
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:hola@awla.live" class="btn btn-moss">Escribir</a>
+      <a href="https://wa.me/5214421234567?text=Hola%20AWLA%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s" target="_blank" class="btn btn-outline-term" style="display:inline-flex;align-items:center;gap:8px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.7">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+      <a href="https://instagram.com/awla.live" target="_blank" class="btn btn-outline-term">@awla.live</a>
+    </div>
+
+    <div style="position:absolute;bottom:32px;left:6vw;right:6vw;display:flex;justify-content:center">
+      <p class="meta meta-term">AWLA · LABORATORIO DE IA CREATIVA</p>
+    </div>
+  </div>
+</div>
+<!-- FOOTER STRIP -->
+<div id="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:5px;color:rgba(228,224,214,0.25);text-transform:uppercase">AWLA</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacidad">Aviso de Privacidad</a></li>
+      <li><a href="/terminos">Términos y Condiciones</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies">Política de Cookies</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 AWLA · awla.live</span>
+  </div>
+</div>
+
+</div><!-- /sc -->
+
+<script>
+// ── COOKIES ──────────────────────────────────────
+function acceptCK() {
+  localStorage.setItem('awla_ck','1');
+  document.getElementById('ck').classList.remove('on');
+}
+// Always show on load if not accepted — also re-show if cleared
+window.addEventListener('load',()=>{
+  const ck = document.getElementById('ck');
+  if(!localStorage.getItem('awla_ck')) {
+    setTimeout(()=>ck.classList.add('on'),800);
+  }
+});
+// Expose for debugging / reset
+window.resetCookies = () => {
+  localStorage.removeItem('awla_ck');
+  document.getElementById('ck').classList.add('on');
+};
+
+// ── SCROLL + NAV ─────────────────────────────────
+const sc = document.getElementById('sc');
+const nav = document.getElementById('nav');
+const cards = document.querySelectorAll('.card');
+let lastY = 0, navOn = true;
+
+sc.addEventListener('scroll',()=>{
+  const y = sc.scrollTop, d = y - lastY;
+  if(y < 80) { if(!navOn){nav.classList.remove('nav-off');navOn=true;} }
+  else if(d > 8 && navOn)  { nav.classList.add('nav-off');navOn=false; }
+  else if(d < -8 && !navOn){ nav.classList.remove('nav-off');navOn=true; }
+  lastY = y;
+});
+
+// ── DOTS ─────────────────────────────────────────
+const dotsEl = document.getElementById('dots');
+cards.forEach((_,i)=>{
+  const d = document.createElement('div');
+  d.className='dot'+(i===0?' on':'');
+  d.onclick=()=>gC(i);
+  dotsEl.appendChild(d);
+});
+
+function gC(i){ cards[i].scrollIntoView({behavior:'smooth'}); }
+
+function uiUpdate(i){
+  document.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+  document.getElementById('shint').classList.toggle('off',i>0);
+  const light = cards[i].classList.contains('card-paper')||cards[i].classList.contains('card-paper2');
+  nav.className = (navOn?'':'nav-off ') + (light?'light':'');
+}
+
+// ── VIDEO PLAY ON CLICK ────────────────────────
+function playVid(wrap) {
+  const iframe = wrap.querySelector('iframe');
+  const src = iframe.src;
+  // Switch from background=1 to normal player (controls + autoplay + sound)
+  iframe.src = src
+    .replace('background=1', 'background=0')
+    + (src.includes('autoplay=1') ? '' : '&autoplay=1');
+  wrap.classList.add('playing');
+}
+
+const io = new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting && x.intersectionRatio>0.5){
+      const i=parseInt(x.target.dataset.i);
+      if(!isNaN(i)) uiUpdate(i);
+      x.target.classList.remove('pre-enter');
+      x.target.classList.add('in');
+    }
+  });
+},{threshold:0.5});
+cards.forEach((c,i)=>{ if(i>0) c.classList.add('pre-enter'); });
+cards.forEach(c=>io.observe(c));
+
+// ── P5 SKETCHES ───────────────────────────────────
+
+// 1. código cayendo — sin eco
+new p5(p=>{
+  const fr=["def awla():","    pass","class IA:","    self.human = True",
+    "if intención == True:","    dirigir()","criterio > volumen",
+    "prompt = intención + contexto","for idea in ideas:","    awla.entrenar(idea)",
+    "def decidir(opciones):","    return mejor(opciones)","# No herramientas",
+    "output = modelo.generar(prompt)","imagen = dirigir(prompt)","criterio = humano",
+    "awla.train()","class Dirección:","    intent = True","return criterio"];
+  let s=[];
+  p.setup=()=>{
+    const el=document.getElementById('p5code');
+    p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5code');
+    p.textFont('Courier New');p.textSize(14);
+    for(let i=0;i<22;i++) s.push({t:p.random(fr),x:p.random(p.width),y:p.random(p.height),sp:p.random(0.12,0.35),a:p.random(85,145)});
+  };
+  p.draw=()=>{
+    p.background(28,28,26);
+    s.forEach(c=>{
+      p.fill(110,140,110,c.a);p.noStroke();p.text(c.t,c.x,c.y);
+      c.y+=c.sp;
+      if(c.y>p.height+18){c.y=-18;c.t=p.random(fr);c.x=p.random(p.width);c.a=p.random(80,140);}
+    });
+  };
+  p.windowResized=()=>{const el=document.getElementById('p5code');p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+},'p5code');
+
+// 2. nodos papel
+function mkNodes(id, bg, dotC, lineC) {
+  new p5(p=>{
+    let n=[];
+    p.setup=()=>{
+      const el=document.getElementById(id);
+      p.createCanvas(el.offsetWidth,el.offsetHeight).parent(id);
+      for(let i=0;i<50;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.15,0.15),vy:p.random(-0.15,0.15)});
+      p.strokeWeight(0.6);
+    };
+    p.draw=()=>{
+      p.clear(); p.background(...bg);
+      n.forEach((a,i)=>{
+        a.x+=a.vx;a.y+=a.vy;
+        if(a.x<0||a.x>p.width)a.vx*=-1;if(a.y<0||a.y>p.height)a.vy*=-1;
+        p.fill(...dotC);p.noStroke();p.ellipse(a.x,a.y,3.5);
+        for(let j=i+1;j<n.length;j++){const b=n[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<100){p.stroke(...lineC,p.map(d,0,100,lineC[3]||25,0));p.line(a.x,a.y,b.x,b.y);}}
+      });
+    };
+    p.windowResized=()=>{const el=document.getElementById(id);p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+  }, id);
+}
+mkNodes('p5nodes',  [242,239,232], [26,26,24,30], [26,26,24]);
+mkNodes('p5nodes2', [242,239,232], [26,26,24,28], [26,26,24]);
+
+// 3. grid simbólico — dark
+function mkGrid(id, bg) {
+  new p5(p=>{
+    let nd=[];
+    p.setup=()=>{
+      const el=document.getElementById(id);
+      p.createCanvas(el.offsetWidth,el.offsetHeight).parent(id);
+      const sp=90;
+      for(let x=0;x<p.width+sp;x+=sp) for(let y=0;y<p.height+sp;y+=sp)
+        nd.push({x:x+p.random(-9,9),y:y+p.random(-9,9),off:p.random(p.TWO_PI),al:p.random(8,20)});
+    };
+    p.draw=()=>{
+      p.clear();p.background(...bg);
+      nd.forEach((a,i)=>{
+        const pulse=p.sin(p.frameCount*0.007+a.off)*0.7;
+        p.fill(228,224,214,a.al);p.noStroke();p.ellipse(a.x,a.y,1.2+pulse);
+        for(let j=i+1;j<nd.length;j++){const b=nd[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<100){p.stroke(228,224,214,p.map(d,0,100,8,0));p.strokeWeight(0.12);p.line(a.x,a.y,b.x,b.y);}}
+      });
+    };
+    p.windowResized=()=>{const el=document.getElementById(id);p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+  }, id);
+}
+mkGrid('p5sym1',  [28,28,26]);
+mkGrid('p5grid1', [28,28,26]);
+mkGrid('p5grid2', [36,36,32]);
+
+// 4. nodos teal contacto — responsive count
+new p5(p=>{
+  let n=[];
+  p.setup=()=>{
+    const el=document.getElementById('p5contact');
+    p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5contact');
+    // fewer nodes overall, and scale down further on mobile
+    const isMobile = p.width < 768;
+    const count = isMobile ? 18 : 38;
+    for(let i=0;i<count;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.1,0.1),vy:p.random(-0.1,0.1)});
+    p.strokeWeight(0.3);
+  };
+  p.draw=()=>{
+    p.background(28,28,26,12);
+    n.forEach((a,i)=>{
+      a.x+=a.vx;a.y+=a.vy;
+      if(a.x<0||a.x>p.width)a.vx*=-1;if(a.y<0||a.y>p.height)a.vy*=-1;
+      p.fill(61,92,62,14);p.noStroke();p.ellipse(a.x,a.y,2);
+      for(let j=i+1;j<n.length;j++){const b=n[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<150){p.stroke(61,92,62,p.map(d,0,150,15,0));p.line(a.x,a.y,b.x,b.y);}}
+    });
+  };
+  p.windowResized=()=>{const el=document.getElementById('p5contact');p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+},'p5contact');
+
+
+// ── LIGHTBOX ─────────────────────────────────
+const galImgs = [
+  'gal-01','gal-02','gal-03',
+  'gal-04','gal-05','gal-06',
+  'gal-07','gal-08','gal-09'
+].map(n => `https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/${n}.jpg`);
+
+function openLightbox(i) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = galImgs[i];
+  lb.style.display = 'flex';
+  document.addEventListener('keydown', lbKeyHandler);
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.removeEventListener('keydown', lbKeyHandler);
+}
+function lbKeyHandler(e) { if (e.key === 'Escape') closeLightbox(); }
+
+// ── P5 ABOUT (nodos papel) ────────────────────
+mkNodes('p5about', [242,239,232], [61,92,62,18], [61,92,62,8]);
+
+// ── TESTIMONIOS LOADER ───────────────────────────
+(async function loadTestimonios() {
+  const grid = document.getElementById('testi-grid');
+  const countEl = document.getElementById('testi-count');
+  if (!grid) return;
+
+  // Fallback data embedded in case GitHub fails
+  const fallback = [
+    { quote: "El curso me pareció genial para iniciar en el mundo de la IA, es altamente recomendable. Pablo también fue un gran asesor, siempre resolviendo las dudas en todo momento.", author: "@pepzlaroid" },
+    { quote: "El curso de AWLA fue una excelente introducción al mundo de la IA. Como creativo, me dio una alternativa clave: generar imágenes mediante prompts, logrando mayor precisión al comunicar ideas.", author: "@ledicenelvega" },
+    { quote: "Me ayudó a integrar la inteligencia artificial como parte de mis herramientas creativas para llegar más lejos en el desarrollo de mis proyectos e ideas.", author: "@vlakat" }
+  ];
+
+  let data = fallback;
+  try {
+    const res = await fetch('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/testimonios.json');
+    if (res.ok) {
+      const json = await res.json();
+      if (json.testimonios && json.testimonios.length) data = json.testimonios;
+    }
+  } catch (e) {
+    // Use fallback silently
+  }
+
+  if (countEl) countEl.textContent = String(data.length).padStart(2, '0');
+
+  // Pick 3 random (or all if less than 3)
+  const shuffled = [...data].sort(() => Math.random() - 0.5);
+  const selected = shuffled.slice(0, 3);
+
+  grid.innerHTML = selected.map(t => `
+    <div class="testi-cell">
+      <p class="testi-quote">"${t.quote}"</p>
+      <p class="testi-author">${t.author}</p>
+    </div>
+  `).join('');
+})();
+
+// ── TITLE GLITCH ─────────────────────────────────
+const TGLITCH = '!<>—_/[]{}=+*?#░▒│├┤┼╬';
+
+// Collect and store all glitch-eligible spans immediately
+function initGlitchSpans(root) {
+  root.querySelectorAll('.mix-title .c, .mix-title .s, .glitch-target').forEach(s => {
+    if (s.children.length === 0 && !s.dataset.orig) {
+      s.dataset.orig = s.textContent;
+    }
+  });
+}
+initGlitchSpans(document);
+
+// Track active glitches per element to prevent race conditions
+const activeGlitches = new WeakMap();
+
+function scrambleSpan(span) {
+  const orig = span.dataset.orig || span.textContent;
+  if (!orig || orig.length < 2) return;
+  const arr = orig.split('');
+  const pos = Math.floor(Math.random() * arr.length);
+  arr[pos] = TGLITCH[Math.floor(Math.random() * TGLITCH.length)];
+  span.textContent = arr.join('');
+  // Always restore to data-orig after 80ms
+  setTimeout(() => { span.textContent = span.dataset.orig; }, 80);
+}
+
+function pickSpans(el) {
+  // If the element itself is a leaf glitch-target, use it directly
+  if (el.classList.contains('glitch-target') && el.children.length === 0) return [el];
+  return [...el.querySelectorAll('.c, .s, .glitch-target')].filter(
+    s => s.children.length === 0 && (s.dataset.orig || s.textContent).trim().length > 1
+  );
+}
+
+function glitchBurst(el) {
+  // clear any previous burst on this element
+  if (activeGlitches.has(el)) {
+    clearInterval(activeGlitches.get(el).burst);
+  }
+  const spans = pickSpans(el);
+  if (!spans.length) return;
+
+  let count = 0;
+  const total = 5 + Math.floor(Math.random() * 3);
+  const burst = setInterval(() => {
+    const pick = spans[Math.floor(Math.random() * spans.length)];
+    scrambleSpan(pick);
+    count++;
+    if (count >= total) {
+      clearInterval(burst);
+      // safety restore after burst ends
+      setTimeout(() => {
+        spans.forEach(s => { if (s.dataset.orig) s.textContent = s.dataset.orig; });
+      }, 150);
+      // schedule idle pulse
+      startIdlePulse(el);
+    }
+  }, 70);
+  activeGlitches.set(el, { burst });
+}
+
+function startIdlePulse(el) {
+  const state = activeGlitches.get(el) || {};
+  if (state.idle) clearTimeout(state.idle);
+  const schedule = () => {
+    const delay = 5000 + Math.random() * 7000;
+    state.idle = setTimeout(() => {
+      const spans = pickSpans(el);
+      if (spans.length) scrambleSpan(spans[Math.floor(Math.random() * spans.length)]);
+      schedule();
+    }, delay);
+  };
+  schedule();
+  activeGlitches.set(el, state);
+}
+
+// Global safety: every 2s check all glitch spans and restore any that drifted from data-orig
+setInterval(() => {
+  document.querySelectorAll('.mix-title .c, .mix-title .s, .glitch-target').forEach(s => {
+    if (s.children.length === 0 && s.dataset.orig && s.textContent !== s.dataset.orig) {
+      // give it a chance to complete — only restore if scrambled for more than expected
+      const now = Date.now();
+      if (!s.dataset.scrambleAt || (now - parseInt(s.dataset.scrambleAt)) > 300) {
+        s.textContent = s.dataset.orig;
+      }
+    }
+  });
+}, 2000);
+
+// Observe all mix-title cards
+const glitchTargets = new Map();
+document.querySelectorAll('.mix-title[id], .glitch-target').forEach(t => {
+  const card = t.closest('.card');
+  if (card) {
+    if (!glitchTargets.has(card.id)) glitchTargets.set(card.id, []);
+    glitchTargets.get(card.id).push(t);
+  }
+});
+
+const titleIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.intersectionRatio > 0.5) {
+      const targets = glitchTargets.get(e.target.id);
+      if (targets) targets.forEach(t => glitchBurst(t));
+    }
+  });
+}, { threshold: 0.5 });
+
+glitchTargets.forEach((_, cardId) => {
+  const card = document.getElementById(cardId);
+  if (card) titleIO.observe(card);
+});
+const GLITCH='!<>-_\\/[]{}—=+*^?#░▒▓│┤╣║╗┐└┴┬├─┼╠═╬┘┌';
+document.getElementById('lc').innerHTML=`
+<style>
+#li{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 13%;}
+#llines{margin-bottom:5vh;}
+.ll{font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,1.1vw,16px);font-weight:300;
+  color:#3a5c3a;min-height:22px;height:3.5vh;overflow:hidden;white-space:nowrap;
+  display:flex;align-items:center;gap:10px;position:relative;margin-bottom:4px;}
+.lp{color:#3d5c3e;opacity:0.6;flex-shrink:0;}
+.lgo{position:absolute;inset:0;display:flex;align-items:center;gap:10px;
+  pointer-events:none;opacity:0;color:#3d5c3e;
+  font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,1.1vw,16px);font-weight:300;}
+.lgp{flex-shrink:0;}
+.lh{font-family:'DM Serif Display',serif;font-weight:400;
+  color:#e4e0d6;line-height:1.0;font-size:clamp(52px,7vw,98px);
+  opacity:0;letter-spacing:-1px;font-style:normal;}
+.lsig{position:absolute;bottom:5%;right:6%;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;font-weight:300;letter-spacing:3px;z-index:5;
+  display:flex;align-items:center;gap:10px;text-transform:uppercase;}
+.lsig a{color:rgba(228,224,214,0.3);text-decoration:none;transition:color .2s;}
+.lsig a:hover{color:#3d5c3e;}
+.lsig-sep{color:rgba(228,224,214,0.1);}
+.lsig-tag{font-style:normal;color:rgba(228,224,214,0.18);font-family:'IBM Plex Mono',monospace;}
+</style>
+<div id="li">
+  <div id="llines">
+    <div class="ll"><span class="lp">›</span><span id="lt0"></span><div class="lgo" id="lg0"><span class="lgp">›</span><span id="lgt0"></span></div></div>
+    <div class="ll"><span class="lp">›</span><span id="lt1"></span><div class="lgo" id="lg1"><span class="lgp">›</span><span id="lgt1"></span></div></div>
+    <div class="ll"><span class="lp">›</span><span id="lt2"></span><div class="lgo" id="lg2"><span class="lgp">›</span><span id="lgt2"></span></div></div>
+  </div>
+  <div class="lh" id="lhuman">Tú decides.</div>
+</div>
+<div class="lsig">
+  <a href="https://www.awla.live" target="_blank">awla.live</a>
+  <span class="lsig-sep">|</span>
+  <span class="lsig-tag">Aprende a dirigir con IA.</span>
+</div>`;
+
+let lIds=[],lPaused=false;
+function lT(fn,ms){const id=setTimeout(fn,ms);lIds.push(id);return id;}
+function lClear(){lIds.forEach(clearTimeout);lIds=[];}
+function lGlitch(ov,src,dur){
+  const txt=src.textContent;if(!txt)return;ov.style.opacity='0';
+  const id=setInterval(()=>{
+    if(Math.random()<0.55){
+      const arr=txt.split(''),n=Math.floor(Math.random()*3)+1;
+      for(let i=0;i<n;i++){const pos=Math.floor(Math.random()*arr.length);arr[pos]=GLITCH[Math.floor(Math.random()*GLITCH.length)];}
+      const gt=ov.querySelector('span:last-child');if(gt)gt.textContent=arr.join('');
+      ov.style.transform=`translateX(${(Math.random()-.5)*3}px)`;
+      ov.style.opacity=String(.2+Math.random()*.3);
+    }else{ov.style.opacity='0';}
+  },75);
+  lIds.push(id);
+  lT(()=>{clearInterval(id);ov.style.opacity='0';ov.style.transform='translateX(0)';},dur);
+}
+function lIdle(ov,src){lT(()=>{lGlitch(ov,src,240);lIdle(ov,src);},1700+Math.random()*2400);}
+function lType(el,text,mode,done){
+  el.textContent='';let i=0;
+  const base=mode==='m'?26:52,vary=mode==='m'?5:20;
+  const ps=new Set(['.',',' ,' ']);
+  function step(){
+    el.textContent=text.slice(0,i++);
+    if(i<=text.length){let d=base+Math.random()*vary;if(mode!=='m'&&ps.has(text[i-1]))d+=Math.random()*26;lT(step,d);}
+    else if(done)done();
+  }lT(step,8);
+}
+function lFI(el,ms){el.style.transition=`opacity ${ms}ms ease`;el.style.opacity='1';}
+function lFO(el,ms,cb){el.style.transition=`opacity ${ms}ms ease`;el.style.opacity='0';if(cb)lT(cb,ms);}
+function lRst(el){el.style.transition='none';el.style.opacity='0';}
+
+function runLoop(){
+  const TX='la ia propone.';
+  const t=[0,1,2].map(i=>document.getElementById('lt'+i));
+  const g=[0,1,2].map(i=>document.getElementById('lg'+i));
+  const h=document.getElementById('lhuman');
+  if(!t[0])return;
+  t.forEach(e=>e.textContent='');g.forEach(o=>o.style.opacity='0');lRst(h);h.textContent='';
+  lType(t[0],TX,'m',()=>{
+    lGlitch(g[0],t[0],480);lIdle(g[0],t[0]);
+    lType(t[1],TX,'m',()=>{
+      lGlitch(g[1],t[1],480);lIdle(g[1],t[1]);
+      lType(t[2],TX,'m',()=>{
+        lGlitch(g[2],t[2],480);lIdle(g[2],t[2]);
+        lT(()=>{h.style.opacity='1';h.style.transition='none';lType(h,'Tú decides.','h',null);},230);
+        lT(()=>lFO(h,320,()=>{
+          t.forEach(e=>e.textContent='');g.forEach(o=>o.style.opacity='0');lRst(h);h.textContent='';
+          lT(runLoop,300);
+        }),3100);
+      });
+    });
+  });
+}
+
+// ── LOOP CARD OBSERVER ─────────────────────────
+new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){lClear();runLoop();}else lClear();});
+},{threshold:0.5}).observe(document.getElementById('c4'));
+</script>
+</body>
+</html>
