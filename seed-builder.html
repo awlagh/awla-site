@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AWLA — Seed Builder</title>
+<title>AWLA — Semilla</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --bg: #f7f6f2;
     --bg-surface: #ffffff;
@@ -22,7 +22,7 @@
     --bubble-user: #1a1916;
     --bubble-user-text: #f7f6f2;
   }
-
+ 
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #141412;
@@ -38,7 +38,7 @@
       --bubble-user-text: #1a1916;
     }
   }
-
+ 
   html, body {
     height: 100%;
     background: var(--bg);
@@ -48,7 +48,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-
+ 
   body {
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@
     min-height: 100vh;
     padding: 2rem 1rem 1rem;
   }
-
+ 
   .container {
     width: 100%;
     max-width: 580px;
@@ -64,14 +64,14 @@
     flex-direction: column;
     flex: 1;
   }
-
+ 
   .header {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 2.5rem;
   }
-
+ 
   .logo {
     font-family: 'DM Mono', monospace;
     font-size: 14px;
@@ -80,20 +80,20 @@
     color: var(--text-primary);
     text-transform: uppercase;
   }
-
+ 
   .logo-sep {
     width: 1px;
     height: 14px;
     background: var(--border-strong);
   }
-
+ 
   .logo-sub {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     color: var(--text-tertiary);
     letter-spacing: 0.1em;
   }
-
+ 
   .chat-messages {
     flex: 1;
     display: flex;
@@ -102,19 +102,19 @@
     padding-bottom: 1.5rem;
     min-height: 300px;
   }
-
+ 
   .msg {
     display: flex;
     flex-direction: column;
     gap: 5px;
     animation: fadeUp 0.25s ease;
   }
-
+ 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
+ 
   .msg-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -123,7 +123,7 @@
     color: var(--text-tertiary);
     padding: 0 4px;
   }
-
+ 
   .msg-bubble {
     padding: 13px 16px;
     border-radius: 12px;
@@ -132,14 +132,14 @@
     max-width: 86%;
     white-space: pre-wrap;
   }
-
+ 
   .msg.awla { align-items: flex-start; }
   .msg.awla .msg-bubble {
     background: var(--bubble-awla);
     color: var(--text-primary);
     border-radius: 4px 12px 12px 12px;
   }
-
+ 
   .msg.user { align-items: flex-end; }
   .msg.user .msg-label { text-align: right; }
   .msg.user .msg-bubble {
@@ -147,7 +147,7 @@
     color: var(--bubble-user-text);
     border-radius: 12px 12px 4px 12px;
   }
-
+ 
   .thinking-dots {
     display: flex;
     gap: 5px;
@@ -156,7 +156,7 @@
     border-radius: 4px 12px 12px 12px;
     width: fit-content;
   }
-
+ 
   .thinking-dots span {
     width: 6px;
     height: 6px;
@@ -164,15 +164,15 @@
     background: var(--text-tertiary);
     animation: dot 1.2s infinite;
   }
-
+ 
   .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
   .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
-
+ 
   @keyframes dot {
     0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
     40% { opacity: 1; transform: scale(1); }
   }
-
+ 
   .seed-card {
     background: var(--bg-surface);
     border: 0.5px solid var(--border-strong);
@@ -181,7 +181,7 @@
     margin-top: 4px;
     max-width: 86%;
   }
-
+ 
   .seed-card-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -190,7 +190,7 @@
     color: var(--text-tertiary);
     margin-bottom: 12px;
   }
-
+ 
   .seed-card-text {
     font-family: 'DM Mono', monospace;
     font-size: 12px;
@@ -202,7 +202,7 @@
     padding-left: 12px;
     margin-bottom: 16px;
   }
-
+ 
   .btn-copy {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
@@ -217,9 +217,9 @@
     transition: opacity 0.2s;
     letter-spacing: 0.02em;
   }
-
+ 
   .btn-copy:hover { opacity: 0.85; }
-
+ 
   .btn-restart {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -235,9 +235,9 @@
     width: 100%;
     text-align: left;
   }
-
+ 
   .btn-restart:hover { color: var(--text-secondary); }
-
+ 
   .input-area {
     border-top: 0.5px solid var(--border);
     padding-top: 1rem;
@@ -249,7 +249,7 @@
     bottom: 0;
     background: var(--bg);
   }
-
+ 
   .input-area textarea {
     flex: 1;
     font-family: 'DM Sans', sans-serif;
@@ -266,10 +266,10 @@
     outline: none;
     transition: border-color 0.2s;
   }
-
+ 
   .input-area textarea:focus { border-color: var(--text-secondary); }
   .input-area textarea::placeholder { color: var(--text-tertiary); }
-
+ 
   .send-btn {
     width: 44px;
     height: 44px;
@@ -284,10 +284,10 @@
     transition: background 0.2s;
     color: var(--text-primary);
   }
-
+ 
   .send-btn:hover { background: var(--bubble-awla); }
   .send-btn svg { width: 16px; height: 16px; stroke: currentColor; }
-
+ 
   .error-msg {
     font-size: 13px;
     color: #c0392b;
@@ -296,19 +296,28 @@
     border-radius: 8px;
     border: 0.5px solid rgba(192,57,43,0.2);
   }
+ 
+  .footer-note {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.7;
+  }
 </style>
 </head>
 <body>
 <div class="container">
-
+ 
   <div class="header">
     <span class="logo">AWLA</span>
     <div class="logo-sep"></div>
-    <span class="logo-sub">seed builder</span>
+    <span class="logo-sub">semilla</span>
   </div>
-
+ 
   <div class="chat-messages" id="chat"></div>
-
+ 
   <div class="input-area" id="input-area">
     <textarea id="user-input" placeholder="Escribe tu respuesta..." rows="1"></textarea>
     <button class="send-btn" id="send-btn">
@@ -317,17 +326,22 @@
       </svg>
     </button>
   </div>
-
+ 
+  <div class="footer-note">
+    AWLA es una herramienta que te ayuda a escribir un mejor contexto para interactuar correctamente con chats de inteligencia artificial. Te ayuda a escribir un prompt (o indicación) de acuerdo a lo que buscas y necesitas.<br><br>
+    Copia y pega tu semilla en el chat de tu preferencia. Antes de usarla, revísala — asegúrate de que refleje bien lo que quieres. A veces la IA puede cometer errores.
+  </div>
+ 
 </div>
 <script>
 let history = [];
 let seedDone = false;
-
+ 
 const chatEl = document.getElementById('chat');
 const inputEl = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 const inputArea = document.getElementById('input-area');
-
+ 
 function addMsg(role, text) {
   const div = document.createElement('div');
   div.className = `msg ${role === 'assistant' ? 'awla' : 'user'}`;
@@ -342,7 +356,7 @@ function addMsg(role, text) {
   chatEl.appendChild(div);
   bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
-
+ 
 function showThinking() {
   const div = document.createElement('div');
   div.className = 'msg awla';
@@ -358,46 +372,46 @@ function showThinking() {
   chatEl.appendChild(div);
   dots.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
-
+ 
 function removeThinking() {
   const t = document.getElementById('thinking');
   if (t) t.remove();
 }
-
+ 
 function showSeed(seedText) {
   seedDone = true;
   inputArea.style.display = 'none';
-
+ 
   const div = document.createElement('div');
   div.className = 'msg awla';
   const label = document.createElement('div');
   label.className = 'msg-label';
   label.textContent = 'awla';
-
+ 
   const card = document.createElement('div');
   card.className = 'seed-card';
-
+ 
   const cardLabel = document.createElement('div');
   cardLabel.className = 'seed-card-label';
-  cardLabel.textContent = 'tu seed — copia y pega en tu chat';
-
+  cardLabel.textContent = 'tu semilla — copia y pega en tu chat';
+ 
   const cardText = document.createElement('div');
   cardText.className = 'seed-card-text';
   cardText.textContent = seedText;
-
+ 
   const copyBtn = document.createElement('button');
   copyBtn.className = 'btn-copy';
-  copyBtn.textContent = 'Copiar seed';
+  copyBtn.textContent = 'Copiar semilla';
   copyBtn.onclick = () => {
     navigator.clipboard.writeText(seedText).then(() => {
-      copyBtn.textContent = 'Copiado ✓';
-      setTimeout(() => { copyBtn.textContent = 'Copiar seed'; }, 2500);
+      copyBtn.textContent = 'Copiada ✓';
+      setTimeout(() => { copyBtn.textContent = 'Copiar semilla'; }, 2500);
     });
   };
-
+ 
   const restartBtn = document.createElement('button');
   restartBtn.className = 'btn-restart';
-  restartBtn.textContent = '→ crear otro seed';
+  restartBtn.textContent = '→ crear otra semilla';
   restartBtn.onclick = () => {
     history = [];
     seedDone = false;
@@ -405,7 +419,7 @@ function showSeed(seedText) {
     inputArea.style.display = 'flex';
     init();
   };
-
+ 
   card.appendChild(cardLabel);
   card.appendChild(cardText);
   card.appendChild(copyBtn);
@@ -415,19 +429,19 @@ function showSeed(seedText) {
   chatEl.appendChild(div);
   card.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
-
+ 
 async function callAPI(messages) {
   const res = await fetch('/api', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ messages })
   });
-
+ 
   const data = await res.json();
   if (!res.ok) throw new Error(data.error || 'Error del servidor');
   return data.reply;
 }
-
+ 
 async function sendMessage(userText) {
   if (!userText.trim() || seedDone) return;
   addMsg('user', userText);
@@ -435,12 +449,12 @@ async function sendMessage(userText) {
   inputEl.value = '';
   inputEl.style.height = 'auto';
   showThinking();
-
+ 
   try {
     const reply = await callAPI(history);
     removeThinking();
     history.push({ role: 'assistant', content: reply });
-
+ 
     const seedMatch = reply.match(/\[SEED_START\]([\s\S]*?)\[SEED_END\]/);
     if (seedMatch) {
       const before = reply.split('[SEED_START]')[0].trim();
@@ -457,41 +471,42 @@ async function sendMessage(userText) {
     chatEl.appendChild(errDiv);
   }
 }
-
+ 
 async function init() {
   showThinking();
   try {
-    const firstMsg = [{ role: 'user', content: 'Hola, quiero crear mi seed.' }];
+    const firstMsg = [{ role: 'user', content: 'Hola' }];
     const reply = await callAPI(firstMsg);
     removeThinking();
     history = [...firstMsg, { role: 'assistant', content: reply }];
     addMsg('assistant', reply);
   } catch(e) {
     removeThinking();
-    const fallback = '¿Para qué quieres usar tu chat de IA?';
+    const fallback = 'Hola, soy AWLA. Me dedico a enseñarle a las computadoras a entenderte mejor.\n\nA veces es difícil explicarle a un chat todo lo que tienes en mente — yo te ayudo a crear ese contexto o prompt para que tu chat sepa exactamente quién eres y cómo ayudarte.\n\n¿Sobre qué quieres entrenar a tu chat?';
     history = [
-      { role: 'user', content: 'Hola, quiero crear mi seed.' },
+      { role: 'user', content: 'Hola' },
       { role: 'assistant', content: fallback }
     ];
     addMsg('assistant', fallback);
   }
 }
-
+ 
 sendBtn.onclick = () => sendMessage(inputEl.value);
-
+ 
 inputEl.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();
     sendMessage(inputEl.value);
   }
 });
-
+ 
 inputEl.addEventListener('input', () => {
   inputEl.style.height = 'auto';
   inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
 });
-
+ 
 init();
 </script>
 </body>
 </html>
+ 
