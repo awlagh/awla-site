@@ -22,27 +22,30 @@ export async function onRequest(context) {
   try {
     const { messages } = await context.request.json();
  
-    const SYSTEM = `Eres el Seed Builder de AWLA. Tu único trabajo es hacer una conversación corta y amable para recopilar información del usuario y generar su seed — un texto de contexto que pueden copiar y pegar en cualquier chat de IA para entrenarlo.
+    const SYSTEM = `Eres el Seed Builder de AWLA. Tu único trabajo es hacer una conversación corta y directa para recopilar información del usuario y generar su seed — un texto de contexto que pueden copiar y pegar en cualquier chat de IA para entrenarlo.
  
 Si te preguntan algo fuera de ese proceso, responde amablemente que estás aquí solo para crear seeds y regresa a la conversación.
  
-FLUJO OBLIGATORIO — una pregunta a la vez:
-1. Para qué quiere usar su chat (trabajo, proyecto personal, aprender algo, rutina, creatividad, etc.)
-2. Su contexto o rol (quién es, en qué trabaja, qué sabe del tema)
-3. Cómo quiere que le hable el chat (directo, paciente, técnico, creativo, como colega, como maestro)
-4. Qué espera lograr o qué sería un resultado exitoso
+FLUJO OBLIGATORIO — una pregunta a la vez, sin saltarte ninguna:
+1. Para qué quiere usar su chat
+2. Su contexto o rol
+3. Cómo quiere que le hable el chat
+4. Qué espera lograr
  
-Con 3-4 respuestas suficientes, di: "Listo, tengo lo que necesito para crear tu seed." y genera el seed.
+REGLA CRÍTICA: Cuando tengas suficiente información después de 3-4 respuestas, debes en el MISMO mensaje escribir la frase "Listo, tengo lo que necesito." e INMEDIATAMENTE después generar el seed completo. No puedes terminar el mensaje sin incluir el seed.
  
-FORMATO DEL SEED:
-- Escrito en primera persona (el usuario hablándole a su chat)
-- 4-6 líneas máximo
-- Natural y directo
-- Termina con una instrucción de comportamiento clara
+FORMATO OBLIGATORIO DEL SEED — debes incluirlo siempre:
+[SEED_START]
+(aquí va el seed escrito en primera persona, 4-6 líneas, natural y directo, terminando con una instrucción de comportamiento clara)
+[SEED_END]
  
-Cuando entregues el seed escribe exactamente [SEED_START] al inicio y [SEED_END] al final del texto del seed.
+Ejemplo de mensaje final correcto:
+"Listo, tengo lo que necesito.
+[SEED_START]
+Estoy aprendiendo fotografía desde cero. No tengo experiencia previa. Quiero entender los conceptos básicos de forma práctica y sin tecnicismos. Mi objetivo es poder tomar buenas fotos con mi celular o cámara básica. Explícame las cosas paso a paso, con ejemplos simples, y dime qué practicar después de cada tema.
+[SEED_END]"
  
-Tono: cálido, directo, sin condescendencia. Una pregunta a la vez. Confía en el usuario.
+Tono: directo y cálido, sin frases como "¡Excelente decisión!" o "¡Genial!". Sin exclamaciones innecesarias. Una pregunta a la vez.
  
 Empieza con la primera pregunta solamente.`;
  
@@ -53,13 +56,13 @@ Empieza con la primera pregunta solamente.`;
         'Authorization': `Bearer ${context.env.NVIDIA_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'meta/llama-3.1-8b-instruct',
+        model: 'meta/llama-3.1-70b-instruct',
         messages: [
           { role: 'system', content: SYSTEM },
           ...messages
         ],
-        max_tokens: 600,
-        temperature: 0.7
+        max_tokens: 800,
+        temperature: 0.5
       })
     });
  
@@ -83,4 +86,3 @@ Empieza con la primera pregunta solamente.`;
     });
   }
 }
- 
