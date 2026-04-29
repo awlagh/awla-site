@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Política de Cookies de AWLA. Uso de cookies y tecnologías de seguimiento conforme a la LFPDPPP.">
+<meta name="robots" content="index, follow">
+<title>Política de Cookies · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Política de Cookies · AWLA">
+<meta property="og:description" content="Uso de cookies y tecnologías de seguimiento en AWLA.">
+<meta property="og:url" content="https://www.awla.live/cookies.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(242,239,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--moss); text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+main {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* TOC */
+.toc {
+  margin-bottom: 56px;
+  padding: 28px 32px;
+  background: rgba(26,26,24,0.025);
+  border-left: 2px solid rgba(26,26,24,0.15);
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: section;
+}
+.toc li {
+  counter-increment: section;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.toc li::before {
+  content: counter(section, upper-roman) ". ";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--moss);
+  font-size: 11px;
+  margin-right: 6px;
+}
+.toc a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--moss); }
+
+/* CONTENT */
+.content section {
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.content h2 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--moss);
+  letter-spacing: 2px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  text-align: center;
+}
+footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 17px; flex-direction: column; gap: 4px; }
+  .content p, .content li { font-size: 15px; }
+  .toc { padding: 22px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <p class="doc-meta">Documento legal · 02</p>
+  <h1 class="doc-title">Política de <em>Cookies.</em></h1>
+  <p class="doc-updated">Última actualización · 13 abril 2026</p>
+
+  <div class="toc">
+    <p class="toc-title">Contenido</p>
+    <ol>
+      <li><a href="#s1">Introducción</a></li>
+      <li><a href="#s2">Identidad del responsable del sitio web</a></li>
+      <li><a href="#s3">¿Qué son las cookies?</a></li>
+      <li><a href="#s4">Tecnologías de rastreo utilizadas en el sitio</a></li>
+      <li><a href="#s5">Tipos de cookies que pueden utilizarse</a></li>
+      <li><a href="#s6">Información que pueden recopilar las cookies</a></li>
+      <li><a href="#s7">Finalidades del uso de cookies</a></li>
+      <li><a href="#s8">Cookies de terceros</a></li>
+      <li><a href="#s9">Control y configuración de cookies</a></li>
+      <li><a href="#s10">Relación con el Aviso de Privacidad</a></li>
+      <li><a href="#s11">Cambios a la Política de Cookies</a></li>
+      <li><a href="#s12">Medios de contacto</a></li>
+    </ol>
+  </div>
+
+  <div class="content">
+
+    <section id="s1">
+      <h2><span class="num">I</span><span>Introducción</span></h2>
+      <p>La presente Política de Cookies tiene como objetivo informar a las personas usuarias de la plataforma educativa digital <strong>AWLA®</strong> sobre el uso de cookies y otras tecnologías de seguimiento dentro del sitio web <a href="https://www.awla.live">https://www.awla.live</a> (en adelante, el "Sitio"). Este documento explica de manera clara y proporcional qué son las cookies, qué tipos de cookies pueden utilizarse, qué información pueden recabar, con qué finalidad se emplean y cómo puede usted gestionarlas.</p>
+      <p>Su contenido complementa el Aviso de Privacidad Integral de AWLA® y cumple con las obligaciones previstas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, su Reglamento y los Lineamientos del Aviso de Privacidad, que exigen al responsable informar sobre las tecnologías automáticas de seguimiento, su finalidad y la forma de deshabilitarlas. Cuando las cookies impliquen tratamiento de datos personales, dicho tratamiento se regirá por el Aviso de Privacidad Integral.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">II</span><span>Identidad del responsable del sitio web</span></h2>
+      <p>El responsable del tratamiento de datos personales y del uso de cookies en el Sitio es Pablo Ortiz Gómez, persona física con actividad empresarial, titular de la marca AWLA®, con domicilio en Santiago de Querétaro, Querétaro, México. Para cualquier cuestión relacionada con esta política o con la protección de sus datos personales puede contactar al responsable en el correo electrónico <a href="mailto:hola@awla.live">hola@awla.live</a> o en el teléfono 55 3717 5870.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">III</span><span>¿Qué son las cookies?</span></h2>
+      <p>Las cookies son archivos de texto de pequeño tamaño que un sitio web guarda en su dispositivo al navegar por él. Estos archivos permiten que el Sitio reconozca su dispositivo en visitas posteriores, recuerde ciertas preferencias y facilite funcionalidades como el inicio de sesión o la persistencia de la sesión. Las cookies no contienen programas maliciosos ni permiten acceder a información almacenada en su dispositivo sin su consentimiento. Sin embargo, algunas cookies, particularmente las que permiten identificar o perfilar a una persona usuaria, pueden constituir datos personales conforme a la legislación mexicana.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">IV</span><span>Tecnologías de rastreo utilizadas en el sitio</span></h2>
+      <p>Además de cookies, el Sitio puede emplear otras tecnologías de seguimiento, tales como web beacons, etiquetas de píxel, almacenamiento local u otras tecnologías similares. Estas herramientas se utilizan para fines técnicos y estadísticos, como medir la audiencia, recordar preferencias o asegurar el funcionamiento adecuado de la plataforma.</p>
+      <p>AWLA® utiliza principalmente cookies técnicas y de medición para garantizar el funcionamiento de los servicios y mejorar la experiencia del usuario. En caso de que se implementen cookies con finalidades analíticas, de personalización o mercadotécnicas, se solicitará el consentimiento de la persona usuaria a través de avisos o configuraciones específicas.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">V</span><span>Tipos de cookies que pueden utilizarse</span></h2>
+      <p>Las cookies se clasifican de diversas maneras según su funcionalidad y su origen. El Sitio puede utilizar, de manera enunciativa mas no limitativa, las siguientes categorías:</p>
+      <ul>
+        <li><strong>Cookies técnicas o necesarias:</strong> son indispensables para el correcto funcionamiento del Sitio y para permitir al usuario navegar, acceder a áreas seguras, mantener la sesión activa y realizar procesos de compra o inscripción. Sin estas cookies, algunos servicios no podrían prestarse.</li>
+        <li><strong>Cookies de funcionalidad:</strong> permiten recordar las preferencias del usuario, como el idioma, las configuraciones de visualización o el tipo de dispositivo, con el fin de mejorar su experiencia de navegación.</li>
+        <li><strong>Cookies de análisis o medición:</strong> recogen información sobre la forma en que las personas usuarias interactúan con el Sitio, las páginas que visitan, el tiempo de permanencia o los mensajes de error, con el propósito de evaluar y mejorar el rendimiento de la plataforma. Si se utilizan cookies analíticas que no son estrictamente necesarias, AWLA® solicitará previamente su consentimiento.</li>
+        <li><strong>Cookies de terceros:</strong> son enviadas a su dispositivo desde un dominio o equipo gestionado por un tercero distinto de AWLA®. Estos terceros pueden ser proveedores de servicios integrados en la plataforma, como herramientas de analítica web, plataformas de videoconferencia, reproductores de video, infraestructura tecnológica o plataformas educativas externas. Dichos proveedores pueden instalar cookies para registrar información sobre el uso de sus servicios o para cumplir con requisitos de seguridad. AWLA® no controla el funcionamiento de esas cookies, pero procura que las integraciones respeten las obligaciones legales aplicables.</li>
+      </ul>
+      <p>En cuanto a su duración, existen <strong>cookies de sesión</strong> y <strong>cookies persistentes</strong>. Las cookies de sesión se utilizan únicamente durante la navegación; se almacenan temporalmente en la memoria del navegador y se eliminan al cerrarlo. Las cookies persistentes se conservan en su dispositivo durante un período determinado o hasta que usted las elimine; suelen incluir una fecha de caducidad y pueden emplearse para recordar autenticaciones o recopilar datos de uso.</p>
+      <p>No todas estas categorías se utilizan simultáneamente. AWLA® procura limitarse a cookies técnicas y de medición. Cualquier incorporación de cookies de análisis, personalización o publicidad requerirá su consentimiento previo.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">VI</span><span>Información que pueden recopilar las cookies</span></h2>
+      <p>Las cookies y tecnologías de seguimiento utilizadas en el Sitio pueden recoger información como:</p>
+      <ul>
+        <li>Dirección IP y ubicación aproximada (país o ciudad).</li>
+        <li>Tipo de navegador y sistema operativo utilizados.</li>
+        <li>Fecha y hora de acceso al Sitio.</li>
+        <li>Páginas visitadas y enlaces seleccionados dentro del Sitio.</li>
+        <li>Preferencias de idioma o configuraciones similares.</li>
+        <li>Tiempo de interacción y patrones de uso.</li>
+      </ul>
+      <p>Esta información se utiliza con fines estadísticos, para mejorar la funcionalidad y para recordar sus preferencias. En algunos casos, cuando la información permite identificar directa o indirectamente a la persona usuaria, será considerada dato personal y se tratará conforme al Aviso de Privacidad Integral.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">VII</span><span>Finalidades del uso de cookies</span></h2>
+      <p>AWLA® utiliza cookies y tecnologías de rastreo para las siguientes finalidades:</p>
+      <ul>
+        <li>Garantizar el correcto funcionamiento del Sitio, permitiendo operaciones como el registro, el inicio de sesión, la gestión de cursos y la navegación entre secciones.</li>
+        <li>Recordar la configuración y preferencias de las personas usuarias, para ofrecer una experiencia personalizada y coherente.</li>
+        <li>Generar estadísticas anónimas sobre el rendimiento del Sitio, el número de visitantes y los patrones de uso, con el propósito de identificar áreas de mejora y optimizar los servicios.</li>
+        <li>Facilitar la interacción con contenidos externos, como reproductores de video o bibliotecas de terceros, cuando sea necesario para impartir las sesiones en vivo u ofrecer materiales formativos. El uso de estas cookies puede requerir su consentimiento dependiendo de la naturaleza del proveedor.</li>
+      </ul>
+      <p>AWLA® no utiliza cookies para obtener datos sensibles, ni para identificar usuarios con fines de perfilado comercial sin su consentimiento. En caso de que, en el futuro, se requiera implementar cookies para fines analíticos, de personalización o mercadotécnicos, se informará oportunamente y se habilitarán mecanismos de aceptación voluntaria.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">VIII</span><span>Cookies de terceros</span></h2>
+      <p>El Sitio puede integrar contenidos o servicios proporcionados por terceros. Estos proveedores, como plataformas de videoconferencia, servicios de análisis de tráfico, reproductores de video, pasarelas de pago, infraestructura tecnológica o plataformas educativas externas, pueden instalar sus propias cookies en su dispositivo para registrar información sobre el uso de sus servicios o para cumplir con requisitos de seguridad. AWLA® procura que dichos proveedores cumplan con las obligaciones legales en materia de protección de datos; no obstante, al interactuar con ellos usted queda sujeto a sus respectivas políticas de privacidad y cookies. Le recomendamos revisar las políticas de los terceros correspondientes si desea conocer sus prácticas en detalle.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">IX</span><span>Control y configuración de cookies</span></h2>
+      <p>Al ingresar por primera vez al Sitio se puede mostrar un aviso o banner de cookies que informa sobre el uso de estas tecnologías. En dicho aviso usted puede aceptar todas las cookies, configurar la instalación de cookies no necesarias o rechazar ciertas categorías. La continuación de la navegación después de haber sido informado puede interpretarse como consentimiento cuando la legislación aplicable así lo permita. AWLA® procurará siempre que el consentimiento sea claro, informado y revocable.</p>
+      <p>Usted puede además administrar el uso de cookies directamente en su navegador web. La mayoría de los navegadores permiten:</p>
+      <ul>
+        <li>Aceptar o rechazar todas las cookies.</li>
+        <li>Revisar cuáles cookies están almacenadas y eliminarlas individualmente.</li>
+        <li>Configurar excepciones para ciertos sitios web.</li>
+      </ul>
+      <p>Los procedimientos para administrar cookies varían según el navegador. Normalmente se encuentran en las secciones de «Privacidad» o «Seguridad» del menú de configuración. A continuación, se describen pasos genéricos:</p>
+      <ul>
+        <li>Abra el menú de configuración de su navegador.</li>
+        <li>Busque las opciones de privacidad o cookies.</li>
+        <li>Seleccione la opción para bloquear cookies, permitirlas o gestionar su almacenamiento.</li>
+        <li>Guarde los cambios y reinicie el navegador si es necesario.</li>
+      </ul>
+      <p>Al deshabilitar o eliminar cookies técnicas, ciertas funcionalidades esenciales del Sitio pueden verse afectadas (por ejemplo, el inicio de sesión, la inscripción a cursos o la reproducción de contenidos). AWLA® no se responsabiliza por el funcionamiento limitado que resulte de la desactivación voluntaria de cookies necesarias.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">X</span><span>Relación con el Aviso de Privacidad</span></h2>
+      <p>Cuando las cookies y otras tecnologías de seguimiento recolecten datos que puedan identificarle, dichos datos se tratarán conforme a las finalidades, mecanismos y derechos previstos en el <a href="/privacidad-integral.html">Aviso de Privacidad Integral</a> de AWLA®. Este aviso detalla los datos que se recaban, la base legal para su tratamiento, los derechos de acceso, rectificación, cancelación y oposición (ARCO) y los procedimientos para ejercerlos. Usted puede consultar el Aviso de Privacidad Integral en la misma plataforma o solicitándolo al correo <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">XI</span><span>Cambios a la Política de Cookies</span></h2>
+      <p>AWLA® puede modificar o actualizar esta Política de Cookies en cualquier momento para reflejar cambios en las funcionalidades del Sitio, en las tecnologías utilizadas o en las obligaciones legales aplicables. Cuando se realicen modificaciones sustanciales se publicará la versión actualizada en el Sitio y, si corresponde, se notificará a las personas usuarias mediante avisos visibles o a través del correo electrónico registrado. La fecha de última actualización aparecerá al inicio de la política.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">XII</span><span>Medios de contacto</span></h2>
+      <p>Si tiene dudas, comentarios o desea ejercer sus derechos en relación con el uso de cookies, puede ponerse en contacto con AWLA® a través de los siguientes medios:</p>
+      <ul>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:hola@awla.live">hola@awla.live</a></li>
+        <li><strong>Teléfono:</strong> 55 3717 5870</li>
+      </ul>
+      <p>AWLA® atenderá las solicitudes relacionadas con esta política en los plazos establecidos por la legislación mexicana y proporcionará la información necesaria de forma clara y gratuita.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+</body>
+</html>

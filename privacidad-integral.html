@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Aviso de Privacidad Integral de AWLA. Tratamiento de datos personales conforme a la LFPDPPP, derechos ARCO, transferencias y medidas de seguridad.">
+<meta name="robots" content="index, follow">
+<title>Aviso de Privacidad Integral · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Aviso de Privacidad Integral · AWLA">
+<meta property="og:description" content="Documento maestro sobre tratamiento de datos personales en AWLA.">
+<meta property="og:url" content="https://www.awla.live/privacidad-integral.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(242,239,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--moss); text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+main {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* TOC */
+.toc {
+  margin-bottom: 56px;
+  padding: 28px 32px;
+  background: rgba(26,26,24,0.025);
+  border-left: 2px solid rgba(26,26,24,0.15);
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: section;
+}
+.toc li {
+  counter-increment: section;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.toc li::before {
+  content: counter(section, upper-roman) ". ";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--moss);
+  font-size: 11px;
+  margin-right: 6px;
+}
+.toc a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--moss); }
+
+/* CONTENT */
+.content section {
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.content h2 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--moss);
+  letter-spacing: 2px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  text-align: center;
+}
+footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 17px; flex-direction: column; gap: 4px; }
+  .content p, .content li { font-size: 15px; }
+  .toc { padding: 22px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <p class="doc-meta">Documento legal · 01.b</p>
+  <h1 class="doc-title">Aviso de Privacidad <em>Integral.</em></h1>
+  <p class="doc-updated">Última actualización · 13 abril 2026</p>
+
+  <div class="toc">
+    <p class="toc-title">Contenido</p>
+    <ol>
+      <li><a href="#s1">Identidad y domicilio del responsable</a></li>
+      <li><a href="#s2">Datos personales que se recaban</a></li>
+      <li><a href="#s3">Finalidades primarias del tratamiento</a></li>
+      <li><a href="#s4">Finalidades secundarias del tratamiento</a></li>
+      <li><a href="#s5">Negativa para finalidades secundarias</a></li>
+      <li><a href="#s6">Transferencias y remisiones de datos</a></li>
+      <li><a href="#s7">Datos derivados de sesiones, imagen y voz</a></li>
+      <li><a href="#s8">Comunidad digital y visibilidad de datos</a></li>
+      <li><a href="#s9">Medios para ejercer derechos ARCO</a></li>
+      <li><a href="#s10">Revocación del consentimiento</a></li>
+      <li><a href="#s11">Limitación del uso o divulgación</a></li>
+      <li><a href="#s12">Uso de cookies y tecnologías de rastreo</a></li>
+      <li><a href="#s13">Medidas de seguridad</a></li>
+      <li><a href="#s14">Notificación de vulneraciones de seguridad</a></li>
+      <li><a href="#s15">Cambios al Aviso de Privacidad</a></li>
+      <li><a href="#s16">Medios de contacto</a></li>
+    </ol>
+  </div>
+
+  <div class="content">
+
+    <section id="s1">
+      <h2><span class="num">I</span><span>Identidad y domicilio del responsable</span></h2>
+      <p>Pablo Ortiz Gómez, en su carácter de persona física con actividad empresarial y titular de la marca <strong>AWLA®</strong>, con domicilio en Santiago de Querétaro, Querétaro, México, es responsable del tratamiento de los datos personales que recopile dentro del ecosistema digital de AWLA®. Para todos los efectos relacionados con la protección de datos personales, puede contactarse al correo <a href="mailto:hola@awla.live">hola@awla.live</a> o al teléfono 55 3717 5870.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">II</span><span>Datos personales que se recaban</span></h2>
+      <p>AWLA® obtiene únicamente los datos personales que resultan pertinentes, proporcionales y necesarios para las actividades que presta:</p>
+      <ul>
+        <li><strong>Datos de identificación:</strong> nombre completo.</li>
+        <li><strong>Datos de contacto:</strong> dirección de correo electrónico y número telefónico.</li>
+        <li><strong>Datos fiscales:</strong> Registro Federal de Contribuyentes (RFC) y domicilio fiscal, sólo cuando el titular solicite factura o resulte indispensable para cumplir obligaciones fiscales.</li>
+        <li><strong>Datos derivados de la prestación del servicio:</strong> imagen y voz del titular que intervienen en clases, masterclasses, sesiones en vivo, consultorías o reuniones virtuales. Estos datos se recogen por la participación del titular y pueden almacenarse en grabaciones para permitir la prestación del servicio y seguimiento académico. No se utilizan como identificadores biométricos.</li>
+        <li><strong>Datos relacionados con pagos:</strong> información de identificación del pago y confirmaciones de transacción que la plataforma de pago externa comparta con AWLA®. El tratamiento de datos financieros completo se realiza directamente por los procesadores de pago, según sus propios avisos de privacidad; AWLA® no almacena números de tarjetas ni contraseñas.</li>
+        <li><strong>Datos técnicos y de navegación:</strong> dirección IP, tipo de navegador, sistema operativo, fecha y hora de acceso, interacción con el sitio y datos derivados del uso de cookies u otras tecnologías de rastreo.</li>
+      </ul>
+      <p>AWLA® <strong>no</strong> solicita ni trata datos personales sensibles, como información de salud, ideología, afiliación política o sindical, orientación sexual, origen étnico, datos biométricos para identificación ni localización geográfica precisa. En caso de que el titular voluntariamente proporcione información sensible que no sea necesaria para la prestación del servicio, dicha información será inmediatamente suprimida.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">III</span><span>Finalidades primarias del tratamiento</span></h2>
+      <p>Los datos personales serán tratados para cumplir con finalidades que dan origen y resultan indispensables para la relación jurídica entre el titular y AWLA®. De conformidad con los lineamientos aplicables, las finalidades primarias incluyen:</p>
+      <ul>
+        <li><strong>Registro y administración de usuarios:</strong> gestionar el alta de cuentas, acceso a plataformas educativas, formularios de registro y creación de perfiles de usuario.</li>
+        <li><strong>Prestación de servicios educativos y consultoría:</strong> permitir la inscripción, impartición y acceso a cursos pregrabados, clases en tiempo real, masterclasses, sesiones de preguntas y respuestas, consultorías personalizadas, acompañamiento o acceso a materiales digitales.</li>
+        <li><strong>Identificación dentro del ecosistema:</strong> verificar la identidad de los usuarios y reconocer su participación en sesiones y actividades de AWLA®.</li>
+        <li><strong>Gestión académica y operativa:</strong> administrar horarios, asistencia, participación en clases, evaluaciones, seguimiento académico y control de calidad.</li>
+        <li><strong>Comunicación relacionada con el servicio contratado:</strong> enviar accesos, enlaces, contraseñas, recordatorios, materiales, actualizaciones y notificaciones operativas vinculadas con el servicio solicitado.</li>
+        <li><strong>Gestión de pagos y facturación:</strong> validar transacciones, verificar el pago de cursos o consultorías, emitir facturas a quienes lo soliciten y cumplir obligaciones fiscales.</li>
+        <li><strong>Grabación de sesiones:</strong> registrar clases, sesiones en vivo o consultorías para permitir el acceso posterior a los inscritos, soporte académico y revisión interna de calidad. La imagen y la voz captadas serán utilizadas exclusivamente para estas finalidades y no para fines promocionales, salvo autorización específica.</li>
+        <li><strong>Atención a dudas y soporte:</strong> responder consultas, aclaraciones, reclamaciones o solicitudes de servicios, así como proveer asistencia técnica o administrativa.</li>
+        <li><strong>Cumplimiento de obligaciones legales y contractuales:</strong> cumplir con la normativa aplicable en materia de protección de datos personales, comercio electrónico, servicios digitales y demás leyes y regulaciones mexicanas.</li>
+        <li><strong>Seguridad y prevención de fraudes:</strong> salvaguardar la seguridad de la plataforma, detectar y prevenir prácticas ilícitas o uso indebido de los servicios.</li>
+      </ul>
+      <p>El tratamiento de los datos para estas finalidades <strong>no requiere consentimiento adicional</strong> del titular, dado que son necesarias para llevar a cabo y mantener la relación jurídica.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">IV</span><span>Finalidades secundarias del tratamiento</span></h2>
+      <p>Además de las finalidades primarias, AWLA® podrá tratar los datos personales para finalidades que <strong>no son indispensables</strong> para la prestación del servicio, pero que apoyan el crecimiento del proyecto o una mejor experiencia del usuario. Estas finalidades secundarias son:</p>
+      <ul>
+        <li><strong>Enviar información sobre nuevos cursos, programas o eventos</strong> relacionados con inteligencia artificial creativa, prompts cinematográficos, imagen, fotografía y formación creativa digital.</li>
+        <li><strong>Realizar campañas promocionales y mercadotecnia</strong> sobre productos o servicios de AWLA®, incluyendo ofertas, descuentos, lanzamientos o paquetes especiales.</li>
+        <li><strong>Incluir al titular en boletines informativos o mailing lists</strong> para compartir noticias, artículos o novedades sobre AWLA®.</li>
+        <li><strong>Invitar a eventos o lanzamientos</strong> organizados por AWLA® o sus aliados.</li>
+        <li><strong>Aplicar encuestas de satisfacción y estudios internos</strong> para mejorar contenidos, metodologías y experiencia del usuario.</li>
+        <li><strong>Desarrollar actividades de prospección comercial</strong> respecto de servicios complementarios que puedan ser de interés.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">V</span><span>Negativa para finalidades secundarias</span></h2>
+      <p>El titular tiene derecho a <strong>oponerse</strong> al tratamiento de sus datos personales para las finalidades secundarias descritas en el apartado anterior. Si no desea que sus datos se utilicen para tales fines, puede enviar en cualquier momento un correo electrónico a <a href="mailto:hola@awla.live">hola@awla.live</a> manifestando su negativa, sin que ello afecte la provisión de los servicios contratados. AWLA® implementará mecanismos razonables para atender la solicitud y registrará su exclusión en las bases de datos correspondientes. La negativa no será motivo para negar el acceso a los servicios solicitados.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">VI</span><span>Transferencias y remisiones de datos personales</span></h2>
+      <p>AWLA® no vende ni comercializa los datos personales de sus usuarios. Sin embargo, para cumplir con las finalidades primarias antes señaladas, <strong>podrá remitir o, en su caso, transferir</strong> datos personales a terceros en las siguientes hipótesis, que no requieren consentimiento en términos del artículo 37 de la Ley Federal de Protección de Datos Personales, o bien, por ser una remisión:</p>
+      <ul>
+        <li><strong>Proveedores de servicios educativos y tecnológicos:</strong> plataformas de videoconferencia, subplataformas educativas, servicios de alojamiento web, herramientas de gestión de contenidos, sistemas de mailing o plataformas de mensajería, que apoyan la operación de los cursos y actividades. Estos terceros actuarán como encargados, únicamente tratarán los datos conforme a las instrucciones de AWLA® y no podrán utilizarlos para fines distintos.</li>
+        <li><strong>Procesadores y pasarelas de pago:</strong> entidades que procesan los pagos de cursos, consultorías o membresías. La información financiera completa se trata directamente por estos proveedores bajo sus propios avisos de privacidad; AWLA® sólo recibe datos de verificación de transacciones y confirmaciones de pago.</li>
+        <li><strong>Servicios de facturación y contabilidad:</strong> terceros que apoyan la emisión de comprobantes fiscales y el cumplimiento de obligaciones tributarias, cuando el titular solicite factura.</li>
+        <li><strong>Asesores legales o contables y autoridades competentes:</strong> cuando sea necesario para la defensa de derechos de AWLA®, para atender requerimientos de autoridad o para cumplir obligaciones legales.</li>
+      </ul>
+      <p>En todos los casos, AWLA® adoptará las medidas necesarias para que las personas que intervengan en cualquier fase del tratamiento mantengan la confidencialidad de los datos y se abstengan de utilizarlos para fines distintos a los autorizados.</p>
+      <p>Cualquier otra transferencia que no se encuentre contemplada en los supuestos anteriores requerirá el consentimiento expreso del titular.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">VII</span><span>Datos derivados de sesiones, imagen y voz</span></h2>
+      <p>AWLA® informa a los titulares que determinadas actividades, como clases en tiempo real, masterclasses, sesiones grupales de preguntas y respuestas o consultorías, pueden ser grabadas. La <strong>imagen y la voz</strong> de los participantes podrían ser captadas y almacenadas para:</p>
+      <ul>
+        <li>Permitir la asistencia de los inscritos que no pudieron participar en tiempo real.</li>
+        <li>Facilitar la revisión académica y la retroalimentación.</li>
+        <li>Asegurar la calidad educativa y mejorar los contenidos.</li>
+        <li>Conservar evidencias operativas y administrativas.</li>
+      </ul>
+      <p>Estas grabaciones se comparten exclusivamente con los participantes del curso o servicio correspondiente y no se utilizan con fines publicitarios o promocionales sin la autorización previa, expresa, específica y separada del titular. El titular que no desee que su imagen o voz aparezcan podrá optar por no activar su cámara o micrófono durante las sesiones o solicitar canales alternos de interacción.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">VIII</span><span>Comunidad digital y visibilidad de datos en espacios colectivos</span></h2>
+      <p>Algunas modalidades de servicio incluyen acceso a grupos o comunidades en plataformas como <strong>WhatsApp</strong> o foros privados. La participación en estos espacios implica que ciertos datos, por ejemplo, nombre, número telefónico y fotografía de perfil, pueden ser visibles para otros miembros del grupo, de acuerdo con las configuraciones de la plataforma utilizada. AWLA® promueve el respeto y la confidencialidad dentro de estas comunidades y modera los espacios conforme a buenas prácticas. No obstante, <strong>no puede controlar</strong> el uso que otros participantes puedan dar a la información visible. Al integrarse a la comunidad, el titular acepta esta dinámica. Se recomienda a los usuarios actuar con prudencia y limitar la información personal que comparten voluntariamente en dichos grupos.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">IX</span><span>Medios para ejercer derechos ARCO</span></h2>
+      <p>Conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, los titulares pueden ejercer en cualquier momento sus <strong>derechos de acceso, rectificación, cancelación y oposición (ARCO)</strong> respecto de sus datos personales. Para ejercer estos derechos, el titular o su representante legal deberá enviar una solicitud al correo <a href="mailto:hola@awla.live">hola@awla.live</a> con la siguiente información:</p>
+      <ul>
+        <li>Nombre completo del titular y correo electrónico u otro medio para comunicar la respuesta a la solicitud.</li>
+        <li>Documentos que acrediten su identidad (copia simple de identificación oficial) o, en su caso, la representación legal del titular.</li>
+        <li>Descripción clara y precisa de los datos personales respecto de los que se busca ejercer algún derecho ARCO, especificando el derecho que desea ejercer.</li>
+        <li>Cualquier otro elemento o documento que facilite la localización de los datos personales.</li>
+      </ul>
+      <p>AWLA® acusará recibo de la solicitud y dará respuesta en un plazo máximo de <strong>20 días hábiles</strong>, contado a partir de que se reciba la solicitud completa. Si la solicitud resulta procedente, se hará efectiva dentro de los quince días hábiles siguientes. Los plazos podrán ampliarse una sola vez por un periodo igual cuando existan causas que lo justifiquen. La respuesta será enviada al medio de contacto proporcionado por el titular y se conservará como evidencia del cumplimiento.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">X</span><span>Revocación del consentimiento</span></h2>
+      <p>El titular podrá revocar su consentimiento para el tratamiento de sus datos personales en cualquier momento, sin efectos retroactivos, en la medida en que no sea indispensable para el cumplimiento de obligaciones legales o contractuales. Para iniciar el procedimiento, deberá enviar una solicitud al correo <a href="mailto:hola@awla.live">hola@awla.live</a>, acreditando su identidad y describiendo la revocación deseada. AWLA® evaluará la procedencia de la solicitud y, en su caso, dejará de tratar los datos del titular para las finalidades que amparen el consentimiento revocado, en los términos permitidos por la legislación aplicable.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">XI</span><span>Limitación del uso o divulgación de los datos</span></h2>
+      <p>Además de los mecanismos de oposición y revocación, el titular podrá solicitar la <strong>limitación del uso o divulgación</strong> de sus datos personales. Esta solicitud deberá dirigirse a <a href="mailto:hola@awla.live">hola@awla.live</a>, indicando las restricciones que desea establecer. AWLA® evaluará la solicitud y, de ser procedente, adoptará las medidas tecnológicas y organizativas razonables para cumplir la petición. Los titulares también pueden inscribirse en registros de exclusión publicitarios nacionales o sectoriales, cuando existan, para limitar la recepción de publicidad.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">XII</span><span>Uso de cookies, tecnologías de rastreo o herramientas similares</span></h2>
+      <p>El sitio web de AWLA® y sus plataformas pueden utilizar <strong>cookies y tecnologías de rastreo</strong> para mejorar la experiencia de navegación, analizar el rendimiento de los contenidos y entender la interacción de los usuarios. Estas tecnologías permiten reconocer el tipo de navegador, sistema operativo, fecha y hora de la visita, páginas consultadas y enlaces seleccionados, así como reunir datos estadísticos.</p>
+      <p>AWLA® utiliza principalmente cookies técnicas y de medición para asegurar el funcionamiento y mejorar los servicios. En caso de implementar cookies para fines analíticos, de personalización o mercadotécnicos, se solicitará el consentimiento del usuario a través de avisos o configuraciones específicas, conforme a las mejores prácticas en materia de transparencia y cookies. El titular puede configurar su navegador para aceptar o rechazar cookies; sin embargo, algunas funcionalidades del sitio podrían no ejecutarse correctamente si se deshabilitan.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="num">XIII</span><span>Medidas de seguridad</span></h2>
+      <p>En términos de la legislación aplicable, AWLA® mantiene medidas <strong>administrativas, técnicas y físicas</strong> destinadas a proteger los datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado. Estas medidas incluyen políticas internas de clasificación de información, controles de acceso, cifrado y pseudonimización de datos cuando corresponda, protocolos de autenticación, respaldo seguro de la información y capacitación periódica al personal. Las medidas de seguridad guardarán relación con la naturaleza de los datos tratados y el riesgo asociado, así como con la capacidad tecnológica y organizativa de AWLA®.</p>
+      <p>No obstante, el titular debe ser consciente de que ninguna transmisión o almacenamiento de datos es infalible. AWLA® se compromete a realizar esfuerzos razonables para salvaguardar la información y actualizar sus medidas conforme al avance tecnológico y las mejores prácticas.</p>
+    </section>
+
+    <section id="s14">
+      <h2><span class="num">XIV</span><span>Notificación de vulneraciones de seguridad</span></h2>
+      <p>De conformidad con el artículo 19 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, si AWLA® detecta una <strong>vulneración de seguridad</strong> que afecte de manera significativa los derechos patrimoniales o morales de los titulares, lo comunicará oportunamente mediante correo electrónico, aviso en su sitio web o por el medio de contacto que tenga registrado, a fin de que los titulares puedan tomar las medidas pertinentes. La notificación describirá la naturaleza del incidente, los datos comprometidos y las acciones correctivas implementadas por AWLA®.</p>
+    </section>
+
+    <section id="s15">
+      <h2><span class="num">XV</span><span>Cambios al Aviso de Privacidad</span></h2>
+      <p>AWLA® se reserva el derecho de <strong>modificar o actualizar</strong> el presente Aviso de Privacidad en cualquier momento. Las modificaciones podrán obedecer a cambios en la legislación aplicable, políticas internas o requerimientos operativos. Cuando el aviso se modifique de manera sustancial, AWLA® lo informará a través del sitio web <a href="https://www.awla.live">https://www.awla.live</a>, mediante correo electrónico dirigido a los titulares o a través de cualquier otro medio de comunicación razonable. La versión vigente del aviso estará siempre disponible en la dirección electrónica indicada.</p>
+    </section>
+
+    <section id="s16">
+      <h2><span class="num">XVI</span><span>Medios de contacto</span></h2>
+      <p>Para cualquier duda sobre el contenido de este Aviso de Privacidad, para ejercer sus derechos ARCO, revocar su consentimiento, limitar el uso de su información o para cualquier otra consulta relacionada con la protección de datos personales, el titular puede comunicarse con AWLA® a través de:</p>
+      <ul>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:hola@awla.live">hola@awla.live</a></li>
+        <li><strong>Domicilio:</strong> Santiago de Querétaro, Querétaro, México (refiriendo el área de privacidad de AWLA®)</li>
+        <li><strong>Teléfono:</strong> 55 3717 5870</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+</body>
+</html>

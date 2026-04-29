@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Términos y Condiciones de Uso de la plataforma AWLA. Reglas de acceso, navegación y uso de los recursos digitales.">
+<meta name="robots" content="index, follow">
+<title>Términos de Uso · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Términos de Uso · AWLA">
+<meta property="og:description" content="Reglas de acceso y uso de la plataforma AWLA.">
+<meta property="og:url" content="https://www.awla.live/terminos.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(242,239,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--moss); text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+main {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* TOC */
+.toc {
+  margin-bottom: 56px;
+  padding: 28px 32px;
+  background: rgba(26,26,24,0.025);
+  border-left: 2px solid rgba(26,26,24,0.15);
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: section;
+}
+.toc li {
+  counter-increment: section;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.toc li::before {
+  content: counter(section, upper-roman) ". ";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--moss);
+  font-size: 11px;
+  margin-right: 6px;
+}
+.toc a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--moss); }
+
+/* CONTENT */
+.content section {
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.content h2 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--moss);
+  letter-spacing: 2px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  text-align: center;
+}
+footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 17px; flex-direction: column; gap: 4px; }
+  .content p, .content li { font-size: 15px; }
+  .toc { padding: 22px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <p class="doc-meta">Documento legal · 03</p>
+  <h1 class="doc-title">Términos de <em>Uso.</em></h1>
+  <p class="doc-updated">Última actualización · 13 abril 2026</p>
+
+  <div class="toc">
+    <p class="toc-title">Contenido</p>
+    <ol>
+      <li><a href="#s1">Introducción</a></li>
+      <li><a href="#s2">Identidad del titular del sitio</a></li>
+      <li><a href="#s3">Objeto de los términos de uso</a></li>
+      <li><a href="#s4">Definiciones básicas</a></li>
+      <li><a href="#s5">Acceso al sitio y naturaleza de la plataforma</a></li>
+      <li><a href="#s6">Requisitos para utilizar la plataforma</a></li>
+      <li><a href="#s7">Creación de cuentas de usuario</a></li>
+      <li><a href="#s8">Responsabilidad del usuario sobre su cuenta</a></li>
+      <li><a href="#s9">Suspensión o cancelación de cuentas</a></li>
+      <li><a href="#s10">Uso ético y responsable del conocimiento sobre IA</a></li>
+      <li><a href="#s11">Uso permitido de la plataforma</a></li>
+      <li><a href="#s12">Conductas prohibidas</a></li>
+      <li><a href="#s13">Propiedad intelectual del sitio y contenidos</a></li>
+      <li><a href="#s14">Limitación de responsabilidad</a></li>
+      <li><a href="#s15">Servicios y herramientas de terceros</a></li>
+      <li><a href="#s16">Uso de contenidos educativos y materiales</a></li>
+      <li><a href="#s17">Grabación de sesiones y uso educativo del material</a></li>
+      <li><a href="#s18">Uso de herramientas de terceros</a></li>
+      <li><a href="#s19">Comunidad y espacios de interacción</a></li>
+      <li><a href="#s20">Disponibilidad del sitio y funcionamiento técnico</a></li>
+      <li><a href="#s21">Enlaces a servicios o plataformas externas</a></li>
+      <li><a href="#s22">Protección de datos personales</a></li>
+      <li><a href="#s23">Uso de cookies</a></li>
+      <li><a href="#s24">Modificaciones al sitio o a los términos</a></li>
+      <li><a href="#s25">Comunicaciones oficiales</a></li>
+      <li><a href="#s26">Atención de dudas, inconformidades y controversias</a></li>
+      <li><a href="#s27">Ley aplicable y jurisdicción</a></li>
+      <li><a href="#s28">Aceptación de los términos</a></li>
+    </ol>
+  </div>
+
+  <div class="content">
+
+    <section id="s1">
+      <h2><span class="num">I</span><span>Introducción</span></h2>
+      <p>Se da la bienvenida a la plataforma oficial de <strong>AWLA®</strong>. La misión de la plataforma es facilitar la exploración creativa a través de la inteligencia artificial bajo un marco de mutuo respeto y claridad operativa. Las cláusulas expuestas a continuación regulan el acceso, navegación y aprovechamiento de los recursos digitales disponibles. El acceso, navegación o uso de la plataforma implica la aceptación de los presentes términos. AWLA® se compromete a la mejora continua, reservándose la facultad de ajustar estas condiciones para alinearse con las innovaciones tecnológicas y las exigencias legales del sector.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">II</span><span>Identidad del titular del sitio</span></h2>
+      <p>La plataforma y el sitio web AWLA® (<a href="https://www.awla.live">https://www.awla.live</a>) son titularidad de <strong>Pablo Ortiz Gómez</strong>, persona física con actividad empresarial, con domicilio en la ciudad de Santiago de Querétaro, Querétaro, México. Para cualquier duda, comentario o aclaración relacionada con el uso del sitio o de la plataforma, la persona usuaria podrá contactar a través de:</p>
+      <ul>
+        <li>Correo electrónico: <a href="mailto:hola@awla.live">hola@awla.live</a></li>
+        <li>Teléfono: +52 55 3717 5870</li>
+      </ul>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">III</span><span>Objeto de los términos de uso</span></h2>
+      <p>El sitio web tiene como finalidad presentar información sobre los programas educativos, cursos, masterclasses y demás contenidos ofrecidos por AWLA®. El acceso al sitio puede permitir la consulta de información general; sin embargo, el acceso a cursos, programas formativos, materiales o experiencias educativas requiere registro previo y, en su caso, la contratación del programa o plan correspondiente conforme a las condiciones que se indiquen en cada oferta.</p>
+      <p>AWLA® funciona como un laboratorio creativo educativo orientado a la enseñanza y exploración de inteligencia artificial generativa con enfoque cinematográfico y visual.</p>
+      <p>AWLA® se reserva el derecho de modificar, actualizar, reorganizar o suspender temporalmente el contenido del sitio web, así como la forma en que se presentan los cursos, programas o servicios, cuando ello responda a mejoras operativas, técnicas o de funcionamiento, procurando en todo momento respetar las condiciones de contratación previamente aceptadas por los usuarios.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">IV</span><span>Definiciones básicas</span></h2>
+      <p>Para efectos de este documento, los siguientes conceptos tendrán el significado que se les atribuye a continuación:</p>
+      <ul>
+        <li><strong>Plataforma:</strong> conjunto de servicios, páginas web, contenidos, herramientas interactivas y espacios de interacción social que integran AWLA®.</li>
+        <li><strong>Usuario</strong> o <strong>Persona Usuaria:</strong> cualquier persona que acceda o utilice la plataforma, con o sin registro.</li>
+        <li><strong>Cuenta:</strong> registro personal creado por el usuario para acceder a contenidos restringidos, que requiere el suministro de datos personales y la creación de credenciales de acceso.</li>
+        <li><strong>Contenido:</strong> todo material educativo, audiovisual, textual o gráfico producido, distribuido o puesto a disposición en AWLA®, incluidos cursos, talleres, tutoriales, plantillas, textos, imágenes, grabaciones y cualquier otro recurso.</li>
+        <li><strong>Servicios de terceros:</strong> aplicaciones, herramientas o plataformas externas que se integran o enlazan dentro de AWLA®, como ChatGPT, Midjourney o Runway, que son operadas por entidades ajenas a AWLA®.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">V</span><span>Acceso al sitio y naturaleza de la plataforma</span></h2>
+      <p>El acceso al sitio web permite la consulta de información general sobre AWLA®. Sin embargo, el acceso a contenidos educativos, cursos, programas formativos, sesiones en vivo, materiales o experiencias dentro de la plataforma puede requerir registro previo, inscripción o la contratación del plan correspondiente conforme a las condiciones indicadas en cada programa.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">VI</span><span>Requisitos para utilizar la plataforma</span></h2>
+      <p>Para registrarse o utilizar las funciones avanzadas de AWLA®, <strong>el usuario deberá</strong>:</p>
+      <ul>
+        <li>Tener capacidad legal para contratar conforme a la legislación mexicana aplicable. En caso de que la persona usuaria sea menor de edad, deberá contar con la autorización expresa de su padre, madre o tutor legal, quien asumirá la responsabilidad correspondiente por el uso de la plataforma.</li>
+        <li>Proporcionar información veraz, actualizada y completa al momento de crear su cuenta.</li>
+        <li>Contar con acceso a Internet y con dispositivos compatibles.</li>
+        <li>Respetar todas las leyes aplicables y no utilizar la plataforma con fines ilícitos, engañosos o fraudulentos.</li>
+      </ul>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">VII</span><span>Creación de cuentas de usuario</span></h2>
+      <p>El registro en la plataforma es indispensable ya que es necesario para acceder a ciertos contenidos de AWLA®.</p>
+      <p>Al crear una cuenta, el usuario deberá proporcionar un nombre, correo electrónico y una contraseña segura. Al registrarse, la persona usuaria acepta que su información sea tratada conforme al <a href="/privacidad-integral.html">Aviso de Privacidad</a>, que describe las finalidades del tratamiento y los mecanismos para ejercer sus derechos ARCO (Acceso, Rectificación, Cancelación y Oposición). Las cuentas son personales e intransferibles; el usuario no deberá compartir sus credenciales con terceros. AWLA® podrá, en su caso, requerir datos adicionales para fines de verificación o facturación y se reserva el derecho de rechazar solicitudes de registro que incumplan estos requisitos.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">VIII</span><span>Responsabilidad del usuario sobre su cuenta</span></h2>
+      <p>La persona usuaria es responsable de custodiar sus credenciales de acceso. Cualquier actividad realizada desde su cuenta se presume efectuada por ella, salvo prueba en contrario. En caso de pérdida, robo o uso no autorizado de la contraseña, la persona usuaria deberá notificar a AWLA® de inmediato para bloquear la cuenta y restablecer la seguridad. Compartir contraseñas o permitir a terceros el acceso a la cuenta constituye una infracción a estos términos y puede dar lugar a la suspensión o cancelación del servicio.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">IX</span><span>Suspensión o cancelación de cuentas</span></h2>
+      <p>AWLA® se reserva el derecho de suspender temporalmente o cancelar de manera definitiva el acceso de una persona usuaria a la plataforma cuando:</p>
+      <ul>
+        <li>se detecte el incumplimiento de los presentes Términos de Uso;</li>
+        <li>se utilice la plataforma para fines ilícitos, fraudulentos o contrarios a la normativa aplicable;</li>
+        <li>se vulneren derechos de propiedad intelectual de AWLA® o de terceros;</li>
+        <li>se generen riesgos para la seguridad de la plataforma, de sus usuarios o de terceros; o</li>
+        <li>se realicen conductas contrarias a las reglas de la comunidad.</li>
+      </ul>
+      <p>La suspensión o cancelación podrá realizarse sin responsabilidad para AWLA® cuando existan elementos razonables que indiquen una posible infracción a los presentes términos o a la legislación aplicable.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">X</span><span>Uso ético y responsable del conocimiento relacionado con inteligencia artificial</span></h2>
+      <p>La plataforma AWLA® tiene como finalidad la enseñanza, formación y exploración creativa de metodologías, procesos y herramientas relacionadas con la inteligencia artificial generativa y tecnologías digitales asociadas.</p>
+      <p>AWLA® no proporciona, ejecuta ni opera directamente sistemas de inteligencia artificial generativa dentro de su plataforma. Los contenidos ofrecidos tienen una finalidad exclusivamente educativa.</p>
+      <p>La persona usuaria reconoce que el uso de herramientas de inteligencia artificial externas, así como la generación de contenidos mediante dichas herramientas fuera del entorno educativo de la plataforma, es de su exclusiva responsabilidad.</p>
+      <p>En consecuencia, la persona usuaria se compromete a utilizar los conocimientos, metodologías y materiales impartidos en la plataforma de manera ética, responsable y conforme a la legislación aplicable.</p>
+      <p>En particular, queda prohibido utilizar los contenidos, metodologías o conocimientos adquiridos a través de AWLA® con el propósito de:</p>
+      <ul>
+        <li>generar contenido ilícito o fraudulento;</li>
+        <li>producir material engañoso que suplante la identidad de terceros, incluidos deepfakes;</li>
+        <li>vulnerar derechos de autor, derechos de imagen o derechos de propiedad intelectual de terceros;</li>
+        <li>participar en actividades de desinformación, manipulación digital o fraude;</li>
+        <li>crear o difundir contenido que promueva violencia, discriminación o actividades ilegales.</li>
+      </ul>
+      <p>AWLA® podrá suspender o cancelar de forma unilateral el acceso a la plataforma cuando exista incumplimiento a los presentes Términos y Condiciones de Uso o cuando se utilicen los contenidos de la plataforma para fines contrarios a la ley o a los principios establecidos en el presente documento.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">XI</span><span>Uso permitido de la plataforma</span></h2>
+      <p>El uso de AWLA® debe ser siempre lícito, respetuoso y conforme a la finalidad educativa y creativa de la plataforma. El usuario se obliga a:</p>
+      <ul>
+        <li>Utilizar los contenidos y herramientas únicamente para fines personales de aprendizaje.</li>
+        <li>Respetar los derechos de autor y de propiedad intelectual de AWLA® y de terceros.</li>
+        <li>No interferir con el funcionamiento técnico del sitio ni intentar vulnerar sistemas de seguridad.</li>
+        <li>Mantener un trato respetuoso hacia otros usuarios y hacia el equipo de AWLA®, evitando insultos, discriminación, acoso o cualquier conducta que contravenga la Ley Federal de Protección al Consumidor, la Ley Federal del Derecho de Autor u otras normas aplicables.</li>
+      </ul>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">XII</span><span>Conductas prohibidas</span></h2>
+      <p>Queda expresamente prohibido:</p>
+      <ul>
+        <li>Compartir, vender o ceder el acceso a su cuenta o a los contenidos de la plataforma.</li>
+        <li>Reproducir, distribuir, comunicar públicamente o transformar los materiales de AWLA® sin autorización escrita de su titular.</li>
+        <li>Copiar o descargar sistemáticamente los contenidos educativos con fines de compilación, redistribución o cualquier uso comercial.</li>
+        <li>Grabar o retransmitir las sesiones educativas sin consentimiento previo de AWLA®.</li>
+        <li>Utilizar la plataforma para fines ilícitos, fraudulentos, difamatorios, contrarios a la ley, derechos de terceros, seguridad de la plataforma o finalidad del servicio.</li>
+        <li>Interferir de cualquier manera en la prestación de los servicios, introducir virus o realizar acciones que puedan dañar, inutilizar o sobrecargar la infraestructura de AWLA®.</li>
+        <li>Infringir derechos de terceros, incluyendo derechos de autor, derechos de imagen o datos personales.</li>
+        <li>Enviar publicidad no solicitada (spam), promociones externas o mensajes masivos mediante los espacios comunitarios.</li>
+      </ul>
+      <p>El incumplimiento de estas prohibiciones puede dar lugar a la suspensión o cancelación inmediata de la cuenta, sin perjuicio de las responsabilidades civiles o penales aplicables.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="num">XIII</span><span>Propiedad intelectual del sitio y contenidos</span></h2>
+      <p>Todos los derechos de propiedad intelectual sobre el sitio web, la plataforma, el logotipo AWLA® y los contenidos educativos son propiedad de <strong>Pablo Ortiz Gómez</strong> o de sus licenciantes. De conformidad con la Ley Federal del Derecho de Autor, el autor tiene el derecho exclusivo de explotar sus obras o de autorizar a otros su explotación. Los usuarios reciben únicamente una licencia limitada, personal y no exclusiva para acceder a los contenidos con fines de aprendizaje. <strong>No</strong> se ceden ni transfieren derechos patrimoniales ni se otorgan licencias sobre el código fuente, diseños, marcas, videos, audio o imágenes más allá de lo necesario para el uso autorizado. Cualquier uso no autorizado puede constituir una infracción legal y dar lugar a sanciones, incluido el pago de daños y perjuicios.</p>
+    </section>
+
+    <section id="s14">
+      <h2><span class="num">XIV</span><span>Limitación de responsabilidad</span></h2>
+      <p>Los contenidos educativos, cursos, materiales y recursos proporcionados por AWLA® tienen una finalidad exclusivamente <strong>formativa y educativa</strong>.</p>
+      <p>AWLA® no garantiza resultados específicos derivados del uso de los conocimientos, herramientas o metodologías enseñadas en la plataforma, ya que dichos resultados dependen de factores individuales, técnicos, creativos y profesionales propios de cada persona usuaria.</p>
+      <p>Asimismo, AWLA® no será responsable por:</p>
+      <ul>
+        <li>decisiones creativas, profesionales o comerciales adoptadas por los usuarios a partir de los contenidos educativos;</li>
+        <li>el uso indebido de los conocimientos o herramientas presentadas en la plataforma;</li>
+        <li>fallas, interrupciones o limitaciones derivadas de servicios tecnológicos de terceros utilizados dentro de la experiencia educativa, tales como plataformas de videoconferencia, herramientas de inteligencia artificial, proveedores de infraestructura tecnológica o servicios de pago.</li>
+      </ul>
+      <p>El uso de las herramientas, contenidos y conocimientos proporcionados en AWLA® es responsabilidad exclusiva de la persona usuaria.</p>
+    </section>
+
+    <section id="s15">
+      <h2><span class="num">XV</span><span>Servicios y herramientas de terceros</span></h2>
+      <p>La plataforma AWLA® puede integrar o recomendar el uso de herramientas, aplicaciones o servicios operados por terceros, tales como plataformas de inteligencia artificial, sistemas de videoconferencia, procesadores de pago o servicios de infraestructura tecnológica.</p>
+      <p>Dichos servicios son proporcionados por entidades independientes y se rigen por sus propios términos de uso y políticas de privacidad.</p>
+      <p>AWLA® no controla el funcionamiento de dichos servicios ni asume responsabilidad por:</p>
+      <ul>
+        <li>interrupciones técnicas;</li>
+        <li>modificaciones en sus condiciones de uso;</li>
+        <li>disponibilidad o funcionamiento de dichas herramientas.</li>
+      </ul>
+    </section>
+
+    <section id="s16">
+      <h2><span class="num">XVI</span><span>Uso de contenidos educativos y materiales</span></h2>
+      <p>Los materiales y recursos ofrecidos en AWLA® están destinados exclusivamente a fines educativos y para uso personal. La persona usuaria podrá visualizar las clases, tutoriales y documentos dentro de la plataforma y, cuando se especifique, descargarlos para su estudio individual. No obstante:</p>
+      <ul>
+        <li>No está permitido reproducirlos, venderlos, alquilarlos, sublicenciarlos, compartirlos públicamente o distribuirlos en redes sociales o cualquier otro medio sin autorización previa y por escrito.</li>
+        <li>Cualquier obra o recurso generado dentro de un curso (por ejemplo, imágenes creadas mediante IA a partir de prompts) podrá ser utilizado por la persona usuaria únicamente para fines personales y dentro de los límites que otorgue la herramienta de origen; en ningún caso AWLA® cede derechos de propiedad intelectual sobre dicho contenido.</li>
+        <li>El usuario será responsable de obtener, cuando corresponda, las licencias o permisos para utilizar obras o contenidos de terceros que se generen o integren en sus proyectos.</li>
+      </ul>
+    </section>
+
+    <section id="s17">
+      <h2><span class="num">XVII</span><span>Grabación de sesiones y uso educativo del material</span></h2>
+      <p>AWLA® podrá grabar determinadas sesiones educativas, clases en vivo, talleres, webinars, consultorías o actividades similares únicamente para fines académicos, operativos, de seguimiento, control de calidad, mejora del servicio y acceso posterior de las personas autorizadas vinculadas al curso, programa, sesión o consultoría correspondiente. Dichas grabaciones podrán incluir la voz, imagen y participación de las personas usuarias. En ningún caso las grabaciones serán utilizadas con fines publicitarios, promocionales, comerciales o de difusión externa sin la autorización previa, expresa, específica y separada del titular. Las personas usuarias no podrán grabar, transmitir, reproducir o difundir las sesiones sin autorización previa y por escrito de AWLA®.</p>
+    </section>
+
+    <section id="s18">
+      <h2><span class="num">XVIII</span><span>Uso de herramientas de terceros</span></h2>
+      <p>AWLA® integra o facilita el acceso a servicios proporcionados por terceros, tales como <strong>ChatGPT</strong>, <strong>Midjourney</strong>, <strong>Runway</strong> u otros. Estas herramientas son operadas bajo sus propias políticas y términos de servicio, y AWLA® no controla ni garantiza su disponibilidad, funcionamiento, precisión o resultados. El uso de dichas herramientas puede requerir la aceptación de sus propios términos y condiciones y puede implicar la recolección de datos por dichos proveedores. AWLA® no será responsable de los daños o perjuicios que puedan derivarse del uso de herramientas de terceros; sin embargo, procuraremos seleccionar proveedores confiables y te invitamos a revisar sus políticas antes de utilizarlas.</p>
+    </section>
+
+    <section id="s19">
+      <h2><span class="num">XIX</span><span>Comunidad y espacios de interacción</span></h2>
+      <p>La plataforma puede incluir foros, chats, grupos o sesiones colectivas para el intercambio de ideas y aprendizaje colaborativo. Al participar en estos espacios te comprometes a mantener un trato cordial y respetuoso. Se prohíbe:</p>
+      <ul>
+        <li>Publicar contenidos ofensivos, discriminatorios, violentos o contrarios a las leyes y a la moral.</li>
+        <li>Hacer spam, promocionar productos o servicios ajenos a AWLA® o reclutar usuarios para fines comerciales.</li>
+        <li>Compartir enlaces que contengan virus, malware o cualquier código dañino.</li>
+      </ul>
+      <p>AWLA® se reserva el derecho de moderar, editar o eliminar cualquier contenido que considere inapropiado y de suspender o expulsar a los usuarios que infrinjan estas normas. La participación en espacios comunitarios implica la aceptación de que otros participantes puedan ver y responder sus mensajes.</p>
+    </section>
+
+    <section id="s20">
+      <h2><span class="num">XX</span><span>Disponibilidad del sitio y funcionamiento técnico</span></h2>
+      <p>AWLA® procura mantener la plataforma disponible de forma continua y con un nivel de servicio adecuado, pero no garantiza la inexistencia de interrupciones, fallos o errores técnicos. Puede haber suspensión temporal por mantenimiento, actualización o por causas ajenas (fallas de Internet o de proveedores). AWLA® no será responsable por daños directos o indirectos derivados de la falta de disponibilidad o continuidad del sitio. El usuario es responsable de contar con el equipo y las conexiones necesarias para acceder a los servicios.</p>
+    </section>
+
+    <section id="s21">
+      <h2><span class="num">XXI</span><span>Enlaces a servicios o plataformas externas</span></h2>
+      <p>Nuestro sitio puede contener enlaces a páginas o servicios de terceros. La inclusión de estos enlaces tiene por objeto facilitar el acceso a recursos o información adicional. AWLA® no es responsable de los contenidos, políticas de privacidad o condiciones de dichos sitios externos. El acceso a estas páginas estará regido por sus propios términos y condiciones y se realiza bajo la responsabilidad del usuario.</p>
+    </section>
+
+    <section id="s22">
+      <h2><span class="num">XXII</span><span>Protección de datos personales</span></h2>
+      <p>AWLA® reconoce la importancia de la privacidad y de la protección de datos personales. El tratamiento de sus datos se rige por la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</strong>, que exige que se informe al titular de la existencia y características del tratamiento mediante un aviso de privacidad. Nuestro <a href="/privacidad-integral.html">Aviso de Privacidad</a> describe con detalle la información que recabamos, las finalidades de uso, los derechos ARCO y los mecanismos para ejercerlos. Al aceptar estos términos consiente que sus datos sean tratados conforme a nuestro Aviso de Privacidad, que está disponible en <a href="https://www.awla.live">https://www.awla.live</a>. AWLA® adopta medidas técnicas, administrativas y físicas para proteger sus datos contra daños, pérdidas, acceso no autorizado o uso indebido y se compromete a notificarte en caso de incidentes de seguridad relevantes.</p>
+    </section>
+
+    <section id="s23">
+      <h2><span class="num">XXIII</span><span>Uso de cookies</span></h2>
+      <p>El sitio utiliza cookies y tecnologías similares para mejorar la experiencia de navegación, analizar el uso del sitio y personalizar el contenido. Las cookies son pequeños archivos que se almacenan en el dispositivo de la persona usuaria y que permiten recordar preferencias o reconocer su sesión. La persona usuaria podrá configurar su navegador para rechazar o eliminar cookies; sin embargo, algunas funcionalidades podrían no estar disponibles. Para más información sobre el tipo de cookies que se utilizan y las opciones de configuración, la persona usuaria podrá consultar la <a href="/cookies.html">Política de Cookies</a> disponible en el sitio web.</p>
+    </section>
+
+    <section id="s24">
+      <h2><span class="num">XXIV</span><span>Modificaciones al sitio o a los términos</span></h2>
+      <p>AWLA® puede actualizar o modificar el contenido del sitio y estos términos de uso cuando lo considere necesario para mejorar el servicio, adaptarse a cambios tecnológicos o cumplir con disposiciones legales. Cuando se realicen modificaciones significativas se publicarán en el sitio y entrarán en vigor en la fecha de su publicación. Los cambios no afectarán contratos ya celebrados antes de la modificación, salvo que <strong>la persona usuaria consienta expresamente lo contrario</strong>. Si después de publicarse las modificaciones <strong>la persona usuaria continúa utilizando la plataforma</strong>, se considerará que <strong>acepta los nuevos términos</strong>. Se recomienda revisar periódicamente esta sección.</p>
+    </section>
+
+    <section id="s25">
+      <h2><span class="num">XXV</span><span>Comunicaciones oficiales</span></h2>
+      <p>Toda comunicación oficial entre AWLA® y la persona usuaria, incluida la notificación de modificaciones o avisos administrativos, se realizará a través de la dirección de correo electrónico que la persona usuaria haya proporcionado al registrarse o mediante avisos en la plataforma. Se entenderá que las notificaciones han sido entregadas al momento de enviarlas al correo electrónico registrado o publicarlas en la plataforma. Es responsabilidad de la persona usuaria mantener sus datos de contacto actualizados y revisar regularmente los mensajes que AWLA® le envíe. Para cualquier asunto relacionado con los servicios, la persona usuaria podrá comunicarse a través del correo <a href="mailto:hola@awla.live">hola@awla.live</a> o mediante los canales indicados en la sección II. Identidad del titular del sitio.</p>
+    </section>
+
+    <section id="s26">
+      <h2><span class="num">XXVI</span><span>Atención de dudas, inconformidades y resolución de controversias</span></h2>
+      <p>En AWLA® se valora la transparencia y la satisfacción de quienes participan en la comunidad.</p>
+      <p>Si la persona usuaria tiene dudas, inconformidades o desea plantear alguna reclamación relacionada con el uso de la plataforma, podrá contactar a través del correo electrónico <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
+      <p>Para agilizar la atención, la persona usuaria deberá incluir en su mensaje:</p>
+      <ul>
+        <li>Su nombre completo</li>
+        <li>El correo electrónico asociado a su cuenta</li>
+        <li>Una descripción clara de la situación</li>
+        <li>En su caso, una solicitud concreta o propuesta de solución</li>
+      </ul>
+      <p>El equipo de AWLA® procurará atender la solicitud y emitir una respuesta dentro de un plazo razonable que, salvo causa justificada, no exceda de <strong>10 días hábiles</strong>.</p>
+      <p>La prioridad será resolver cualquier situación de buena fe mediante la comunicación directa. Cuando resulte útil, AWLA® <strong>podrá programar una llamada o videoconferencia de seguimiento</strong> para aclarar dudas y buscar una solución satisfactoria para ambas partes.</p>
+      <p>Esta sección no limita el derecho de <strong>la persona usuaria</strong> de acudir a la <strong>Procuraduría Federal del Consumidor (PROFECO)</strong> ni a la autoridad competente en caso de considerar que <strong>sus derechos como consumidor</strong> han sido vulnerados.</p>
+      <p>Asimismo, queda abierta la posibilidad de acudir a mediación o arbitraje únicamente cuando ambas partes lo acuerden expresamente y por escrito.</p>
+      <p>La participación en mecanismos alternativos de solución de controversias será voluntaria y no constituirá una renuncia a derechos irrenunciables.</p>
+    </section>
+
+    <section id="s27">
+      <h2><span class="num">XXVII</span><span>Ley aplicable y jurisdicción</span></h2>
+      <p>Estas condiciones de uso se rigen por las leyes federales de los Estados Unidos Mexicanos, en especial por la Ley Federal de Protección al Consumidor, el Código de Comercio, la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y la Ley Federal del Derecho de Autor. Para la interpretación y cumplimiento de estas condiciones, las partes se someten a los tribunales competentes de la ciudad de <strong>Santiago de Querétaro, Querétaro, México</strong>, renunciando a cualquier otro fuero que pudiera corresponderles por razón de su domicilio presente o futuro, salvo que la ley señale otro fuero irrenunciable o que el usuario, como consumidor, opte por acudir a la jurisdicción de su localidad o a PROFECO. La referencia territorial no deberá interpretarse como una renuncia a derechos irrenunciables ni una restricción a las acciones de protección al consumidor.</p>
+    </section>
+
+    <section id="s28">
+      <h2><span class="num">XXVIII</span><span>Aceptación de los términos</span></h2>
+      <p>Al acceder, navegar o utilizar la plataforma <strong>AWLA®</strong> declara haber leído, comprendido y aceptado estos Términos y Condiciones de Uso. Si la persona usuaria no está de acuerdo con alguna de las cláusulas aquí establecidas, deberá abstenerse de utilizar la plataforma. El uso continuado de la plataforma constituye tu consentimiento expreso a estas disposiciones.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+</body>
+</html>

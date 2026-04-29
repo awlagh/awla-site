@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Aviso de Privacidad de AWLA. Tratamiento de datos personales conforme a la LFPDPPP.">
+<meta name="robots" content="index, follow">
+<title>Aviso de Privacidad · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Aviso de Privacidad · AWLA">
+<meta property="og:description" content="Tratamiento de datos personales conforme a la LFPDPPP.">
+<meta property="og:url" content="https://www.awla.live/privacidad.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Paper grain texture — same as main site */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(242,239,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--moss); text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+/* MAIN CONTAINER */
+main {
+  position: relative; z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+/* HEADER */
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* CONTENT */
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 48px 0 18px;
+  padding-top: 8px;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 18px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+/* CTA — link to integral version */
+.see-more {
+  margin-top: 56px;
+  padding: 28px 32px;
+  background: rgba(61,92,62,0.06);
+  border-left: 2px solid var(--moss);
+}
+.see-more p {
+  font-size: 14px;
+  color: var(--ink-mid);
+  margin-bottom: 12px;
+}
+.see-more-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--moss);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.see-more-link:hover { gap: 12px; }
+
+/* FOOTER */
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  text-align: center;
+}
+footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+/* MOBILE */
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 18px; margin: 36px 0 14px; }
+  .content p, .content li { font-size: 15px; }
+  .see-more { padding: 22px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <p class="doc-meta">Documento legal · 01</p>
+  <h1 class="doc-title">Aviso de <em>Privacidad.</em></h1>
+  <p class="doc-updated">Última actualización · 13 abril 2026</p>
+
+  <div class="content">
+
+    <h2>Responsable del tratamiento de datos personales</h2>
+    <p>Pablo Ortiz Gómez, persona física con actividad empresarial y titular de la plataforma educativa digital <strong>AWLA®</strong>, con domicilio en Santiago de Querétaro, Querétaro, México, es responsable del tratamiento de los datos personales que se recaben a través del sitio web <a href="https://www.awla.live">https://www.awla.live</a> y de los servicios digitales asociados.</p>
+    <p>Para cualquier asunto relacionado con la protección de datos personales puede contactarnos en:</p>
+    <ul>
+      <li>Correo electrónico: <a href="mailto:hola@awla.live">hola@awla.live</a></li>
+      <li>Teléfono: 55 3717 5870</li>
+    </ul>
+
+    <h2>Finalidades del tratamiento de los datos personales</h2>
+    <p>Los datos personales que se recaben serán utilizados principalmente para:</p>
+    <ul>
+      <li>Crear y administrar cuentas de usuario dentro de la plataforma AWLA®.</li>
+      <li>Permitir el acceso a cursos, sesiones educativas, consultorías y contenidos digitales.</li>
+      <li>Gestionar pagos, inscripciones y facturación cuando corresponda.</li>
+      <li>Enviar comunicaciones relacionadas con los servicios contratados.</li>
+      <li>Atender dudas, solicitudes de soporte o gestiones administrativas.</li>
+      <li>Cumplir obligaciones legales aplicables.</li>
+    </ul>
+    <p>De manera adicional, los datos de contacto podrán utilizarse para enviar información sobre nuevos cursos, contenidos educativos, eventos o comunicaciones informativas relacionadas con AWLA®. El titular podrá manifestar su negativa para el tratamiento de sus datos para estas finalidades adicionales.</p>
+
+    <h2>Consulta del Aviso de Privacidad Integral</h2>
+    <p>El <strong>Aviso de Privacidad Integral</strong>, donde se describe con mayor detalle el tratamiento de los datos personales, los mecanismos para ejercer derechos <strong>ARCO</strong>, la revocación del consentimiento y demás información aplicable, se encuentra disponible para consulta:</p>
+
+    <div class="see-more">
+      <p>Documento completo con todos los apartados legales, transferencias de datos, medidas de seguridad y derechos del titular.</p>
+      <a href="/privacidad-integral.html" class="see-more-link">
+        Ver Aviso de Privacidad Integral →
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+</body>
+</html>
