@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Política de Cambios y Devoluciones de AWLA. Condiciones para cancelaciones, reprogramaciones y reembolsos de cursos y consultoría.">
+<meta name="robots" content="index, follow">
+<title>Política de Cambios y Devoluciones · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Política de Cambios y Devoluciones · AWLA">
+<meta property="og:description" content="Condiciones para cancelaciones, reprogramaciones y reembolsos en AWLA.">
+<meta property="og:url" content="https://www.awla.live/devoluciones.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(242,239,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--moss); text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+main {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* TOC */
+.toc {
+  margin-bottom: 56px;
+  padding: 28px 32px;
+  background: rgba(26,26,24,0.025);
+  border-left: 2px solid rgba(26,26,24,0.15);
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: section;
+}
+.toc li {
+  counter-increment: section;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.toc li::before {
+  content: counter(section, upper-roman) ". ";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--moss);
+  font-size: 11px;
+  margin-right: 6px;
+}
+.toc a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--moss); }
+
+/* CONTENT */
+.content section {
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.content h2 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--moss);
+  letter-spacing: 2px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin: 24px 0 12px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.content h3 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--moss);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+/* TABLE */
+.table-wrap {
+  margin: 24px 0;
+  overflow-x: auto;
+  border: 1px solid rgba(26,26,24,0.1);
+  border-radius: 4px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 600px;
+}
+thead {
+  background: rgba(61,92,62,0.05);
+  border-bottom: 1px solid rgba(26,26,24,0.12);
+}
+th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+td {
+  padding: 14px 16px;
+  vertical-align: top;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+tbody tr:last-child td { border-bottom: none; }
+td strong { color: var(--ink); }
+
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  text-align: center;
+}
+footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 17px; flex-direction: column; gap: 4px; }
+  .content h3 { font-size: 14px; flex-direction: column; gap: 2px; }
+  .content p, .content li { font-size: 15px; }
+  .toc { padding: 22px 24px; }
+  table { font-size: 13px; }
+  th, td { padding: 12px 14px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <p class="doc-meta">Documento legal · 05</p>
+  <h1 class="doc-title">Cambios y <em>Devoluciones.</em></h1>
+  <p class="doc-updated">Última actualización · 13 abril 2026</p>
+
+  <div class="toc">
+    <p class="toc-title">Contenido</p>
+    <ol>
+      <li><a href="#s1">Introducción y alcance</a></li>
+      <li><a href="#s2">Relación con los términos de contratación</a></li>
+      <li><a href="#s3">Servicios cubiertos</a></li>
+      <li><a href="#s4">Condiciones generales para cambios y devoluciones</a></li>
+      <li><a href="#s5">Plazos para solicitar cambios o devoluciones</a></li>
+      <li><a href="#s6">Condiciones específicas por tipo de servicio</a></li>
+      <li><a href="#s7">Casos en los que no procede la devolución</a></li>
+      <li><a href="#s8">Procedimiento para solicitar cambios o devoluciones</a></li>
+      <li><a href="#s9">Evaluación y forma de los reembolsos</a></li>
+      <li><a href="#s10">Casos especiales y prevención de abuso</a></li>
+      <li><a href="#s11">Evaluación de solicitudes</a></li>
+      <li><a href="#s12">Atención de dudas y modificaciones</a></li>
+      <li><a href="#s13">Ley aplicable</a></li>
+    </ol>
+  </div>
+
+  <div class="content">
+
+    <section id="s1">
+      <h2><span class="num">I</span><span>Introducción y alcance</span></h2>
+      <p>La política de cambios y devoluciones de <strong>AWLA®</strong> establece los supuestos, condiciones y procedimientos que aplican a cancelaciones, cambios, reprogramaciones o devoluciones relacionados con los servicios educativos digitales y de consultoría ofertados en la plataforma AWLA®. AWLA® es un proyecto operado por <strong>Pablo Ortiz Gómez</strong> en Santiago de Querétaro, México. Esta política complementa el ecosistema documental de la plataforma, buscando equilibrar la protección al consumidor con la viabilidad operativa y la claridad contractual.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">II</span><span>Relación con los términos y condiciones de contratación</span></h2>
+      <p>La política no sustituye los <a href="/terminos.html">Términos de Uso</a> ni los <a href="/contratacion.html">Términos y Condiciones de Contratación</a>, sino que los desarrolla. Los términos de contratación remiten de manera expresa a la política para regular las cancelaciones y devoluciones. En ellos se indica que AWLA® cuenta con una "Política de Cambios y Devoluciones" que forma parte del contrato y que regula los supuestos de cancelación, reembolso o modificación de servicios.</p>
+      <p>Además, se resumen plazos clave: para <strong>cursos on-demand</strong> se permite cancelar y devolver dentro de los tres días naturales siguientes a la compra siempre que no se haya consumido una parte sustancial del curso; para <strong>cursos en vivo</strong>, la cancelación sin penalización es posible hasta 24 horas antes de la fecha de inicio; y para <strong>consultoría personalizada</strong>, el cliente puede cancelar y obtener reembolso dentro de los tres días naturales siguientes a la compra siempre que no se haya realizado ninguna sesión. Los términos también subrayan que AWLA® procurará resolver inconformidades de forma razonable y evitar cláusulas abusivas.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">III</span><span>Servicios cubiertos</span></h2>
+      <p>Esta política aplica a tres tipos de servicios ofrecidos por AWLA®:</p>
+      <ul>
+        <li><strong>Cursos on-demand.</strong> Contenido educativo pregrabado disponible durante un periodo determinado (por lo general, 90 días a partir de la activación del servicio). Pueden incluir acceso a módulos, materiales descargables y comunidad de acompañamiento.</li>
+        <li><strong>Cursos en vivo o en tiempo real.</strong> Programas impartidos mediante sesiones virtuales con fecha y hora específicas. A veces incluyen acceso a grabaciones posteriores.</li>
+        <li><strong>Consultoría personalizada.</strong> Servicios de mentoría o asesoría individual contratados por hora o mediante paquetes de horas. Pueden incluir entregables personalizados (videos, documentos, recomendaciones).</li>
+      </ul>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">IV</span><span>Condiciones generales para cambios y devoluciones</span></h2>
+      <p>Para solicitar cambios, cancelaciones o devoluciones, deben cumplirse los siguientes requisitos:</p>
+      <ul>
+        <li><strong>Plazos.</strong> La solicitud debe presentarse dentro de los plazos establecidos para cada tipo de servicio (ver tabla de la sección V).</li>
+        <li><strong>Titular de la compra.</strong> Solo el titular o la persona registrada como usuaria puede realizar la solicitud.</li>
+        <li><strong>Uso del servicio.</strong> No debe haberse consumido una parte sustancial del contenido digital ni haberse completado el servicio. Cuando se haya utilizado la mayor parte del curso o las horas contratadas, la devolución puede no proceder.</li>
+        <li><strong>Buena fe.</strong> AWLA® evaluará cada caso con criterios de buena fe, razonabilidad y naturaleza del servicio contratado.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">V</span><span>Plazos para solicitar cambios o devoluciones</span></h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de servicio</th>
+              <th>Plazo para solicitar cancelación / devolución</th>
+              <th>Condiciones principales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cursos on-demand</strong></td>
+              <td>Dentro de los 3 días naturales posteriores a la compra</td>
+              <td>No haber consumido una parte sustancial del curso. El consumo sustancial incluye ver varios módulos, descargar materiales clave o usar recursos esenciales.</td>
+            </tr>
+            <tr>
+              <td><strong>Cursos en vivo</strong></td>
+              <td>Hasta 24 horas antes del inicio del curso</td>
+              <td>La solicitud debe enviarse al correo oficial. Si incluye acceso a grabación, la falta de asistencia no da derecho automático a devolución.</td>
+            </tr>
+            <tr>
+              <td><strong>Consultoría personalizada</strong></td>
+              <td>Dentro de los 3 días naturales posteriores a la contratación</td>
+              <td>Debe no haberse realizado ninguna sesión. Una sesión reprogramada requiere aviso con 24 horas de anticipación.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Las solicitudes presentadas fuera de estos plazos se analizarán caso por caso, sin obligación automática de reembolso.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">VI</span><span>Condiciones específicas por tipo de servicio</span></h2>
+
+      <h3><span class="num">6.1</span><span>Cursos on-demand</span></h3>
+      <ul>
+        <li>El acceso al contenido suele otorgarse por 90 días a partir de la activación. El usuario puede visualizar los módulos de manera ilimitada dentro de ese periodo.</li>
+        <li>El usuario puede cancelar y solicitar devolución dentro de los 3 días naturales posteriores a la compra siempre que no haya consumido de manera sustancial el curso.</li>
+        <li>Se considera "consumo sustancial" cuando el usuario ha visto múltiples módulos o lecciones, descargado material relevante o utilizado recursos esenciales del curso.</li>
+        <li>Cuando exista consumo sustancial, la devolución puede no proceder. En esos casos AWLA® puede ofrecer alternativas como extensión del acceso, cambio por otro curso o crédito para futuros servicios.</li>
+      </ul>
+
+      <h3><span class="num">6.2</span><span>Cursos en vivo</span></h3>
+      <ul>
+        <li>El cliente puede cancelar su participación en un curso en vivo hasta 24 horas antes del inicio, enviando una solicitud al correo de atención. Si la cancelación se hace en ese periodo, AWLA® ofrece como opciones la reprogramación del lugar en otra edición, un crédito para otro servicio o, en su caso, un reembolso conforme a la política.</li>
+        <li>Las solicitudes realizadas con menos de 24 horas de anticipación se consideran <strong>no show</strong>; salvo circunstancias excepcionales, no habrá devolución ni reprogramación automática.</li>
+        <li>Cuando el curso incluye acceso posterior a la grabación, la falta de asistencia no genera derecho automático a devolución.</li>
+      </ul>
+
+      <h3><span class="num">6.3</span><span>Consultoría personalizada</span></h3>
+      <ul>
+        <li>La consultoría se contrata por hora o mediante paquetes de horas. El usuario puede cancelar y obtener devolución dentro de los 3 días naturales posteriores a la contratación siempre que no se haya realizado ninguna sesión.</li>
+        <li>Si la sesión ya está programada, el usuario puede reprogramarla notificando con al menos 24 horas de anticipación. Reprogramar no implica devolución salvo lo que disponga la política.</li>
+        <li>Si el usuario no se presenta a una sesión sin avisar (<strong>no show</strong>), la sesión podrá considerarse consumida. En caso de haber prestado parte del servicio (por ejemplo, algunas horas del paquete), AWLA® puede evaluar devoluciones parciales de las horas no utilizadas cuando resulte razonable.</li>
+      </ul>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">VII</span><span>Casos en los que no procede la devolución</span></h2>
+      <p>La devolución podrá no proceder cuando:</p>
+      <ul>
+        <li>Se haya prestado completamente el servicio o consumido una parte sustancial del contenido digital.</li>
+        <li>El usuario haya descargado o accedido de forma significativa a materiales exclusivos del curso.</li>
+        <li>La cancelación se solicite fuera de los plazos establecidos.</li>
+        <li>El usuario incumpla las reglas de uso de la plataforma o comparta su cuenta con terceros, lo que puede implicar suspensión sin reembolso.</li>
+        <li>El acceso al servicio se haya suspendido por uso indebido, como la distribución no autorizada de contenidos.</li>
+      </ul>
+      <p>Estas medidas buscan proteger la propiedad intelectual y la integridad del modelo educativo de AWLA®.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">VIII</span><span>Procedimiento para solicitar cambios o devoluciones</span></h2>
+      <ul>
+        <li>El usuario debe enviar una solicitud al correo <a href="mailto:hola@awla.live">hola@awla.live</a>.</li>
+        <li>La solicitud debe incluir: nombre completo, correo electrónico asociado a la compra, descripción de la situación, servicio contratado y petición concreta (cancelación, cambio o devolución).</li>
+        <li>Proporcionar estos datos ayuda a agilizar la revisión y respuesta.</li>
+      </ul>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">IX</span><span>Evaluación y forma de los reembolsos</span></h2>
+      <p>AWLA® revisará cada solicitud individualmente considerando el tipo de servicio, el momento de la solicitud, el grado de uso del servicio y las circunstancias particulares. La respuesta se procurará emitir en un plazo razonable, generalmente no mayor a <strong>10 días hábiles</strong>.</p>
+      <p>Cuando proceda un reembolso, se realizará preferentemente mediante el mismo método de pago. Si esto no es posible, se acordará un mecanismo equivalente con el usuario. El procesamiento podrá requerir un plazo administrativo razonable. AWLA® notificará al usuario cuando el reembolso haya sido procesado.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">X</span><span>Casos especiales y prevención de abuso</span></h2>
+      <p>AWLA® podrá ofrecer soluciones alternativas en situaciones extraordinarias, por ejemplo cuando existan fallas técnicas relevantes, cancelaciones o reprogramaciones iniciadas por AWLA® o problemas operativos imprevistos. Las opciones pueden incluir acceso a grabaciones, reprogramación, extensión del acceso al contenido o devoluciones parciales o totales según corresponda.</p>
+      <p>AWLA® podrá rechazar solicitudes de cancelación o devolución cuando existan indicios razonables de uso indebido del servicio o cuando se detecten patrones reiterados de contratación seguidos de solicitudes de devolución sin causa justificada.</p>
+      <p>Para efectos de esta política, AWLA® podrá considerar como uso indebido, entre otros supuestos:</p>
+      <ul>
+        <li>la contratación repetida de servicios con posterior solicitud de devolución tras haber accedido sustancialmente al contenido;</li>
+        <li>el uso del servicio en condiciones contrarias a los Términos y Condiciones de Uso o de Contratación;</li>
+        <li>la utilización del servicio con fines distintos a aquellos para los que fue ofrecido;</li>
+        <li>cualquier conducta que evidencie un aprovechamiento abusivo de las políticas de cancelación o devolución.</li>
+      </ul>
+      <p>Cada solicitud será evaluada de manera individual considerando las circunstancias del caso, el historial de uso del servicio y la información proporcionada por el usuario.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">XI</span><span>Evaluación de solicitudes</span></h2>
+      <p>Las solicitudes relacionadas con cancelaciones, cambios, reprogramaciones o devoluciones serán analizadas caso por caso por AWLA®, tomando en cuenta la naturaleza del servicio contratado, el momento en que se presenta la solicitud, el uso que se haya hecho del servicio, la información proporcionada por el usuario y las circunstancias particulares reportadas.</p>
+      <p>AWLA® procurará resolver dichas solicitudes de manera razonable, transparente y compatible con la viabilidad operativa de los servicios ofrecidos.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">XII</span><span>Atención de dudas y modificaciones</span></h2>
+      <p>Los usuarios pueden dirigir cualquier duda o inconformidad a <a href="mailto:hola@awla.live">hola@awla.live</a> o al teléfono <strong>+52 55 3717 5870</strong>. AWLA® buscará resolver las situaciones mediante comunicación directa y de buena fe. La política puede ser actualizada; las modificaciones se publicarán en la plataforma y aplicarán únicamente a contrataciones futuras.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="num">XIII</span><span>Ley aplicable</span></h2>
+      <p>La política se rige por la legislación mexicana, en particular la <strong>Ley Federal de Protección al Consumidor</strong>, el <strong>Código de Comercio</strong> en materia de contratación electrónica y demás disposiciones aplicables a servicios digitales. En caso de controversia, las partes procurarán resolver la situación de manera amistosa. El usuario conserva su derecho de acudir a la Procuraduría Federal del Consumidor (PROFECO) o a las autoridades competentes.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+</body>
+</html>

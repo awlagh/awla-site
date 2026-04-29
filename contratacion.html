@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Términos y Condiciones de Contratación de AWLA. Reglas para la adquisición de cursos, masterclasses y consultoría personalizada.">
+<meta name="robots" content="index, follow">
+<title>Términos de Contratación · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Términos de Contratación · AWLA">
+<meta property="og:description" content="Reglas para la adquisición de servicios educativos y consultoría en AWLA.">
+<meta property="og:url" content="https://www.awla.live/contratacion.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(242,239,232,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--moss); text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+main {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* Intro block */
+.intro {
+  margin-bottom: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(26,26,24,0.08);
+}
+.intro p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 14px;
+}
+.intro strong { color: var(--ink); font-weight: 600; }
+.intro a { color: var(--moss); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+/* TOC */
+.toc {
+  margin-bottom: 56px;
+  padding: 28px 32px;
+  background: rgba(26,26,24,0.025);
+  border-left: 2px solid rgba(26,26,24,0.15);
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: section;
+}
+.toc li {
+  counter-increment: section;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.toc li::before {
+  content: counter(section, upper-roman) ". ";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--moss);
+  font-size: 11px;
+  margin-right: 6px;
+}
+.toc a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--moss); }
+
+/* CONTENT */
+.content section {
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.content h2 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--moss);
+  letter-spacing: 2px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin: 24px 0 12px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.content h3 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--moss);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  text-align: center;
+}
+footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 17px; flex-direction: column; gap: 4px; }
+  .content h3 { font-size: 14px; flex-direction: column; gap: 2px; }
+  .content p, .content li { font-size: 15px; }
+  .toc { padding: 22px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <p class="doc-meta">Documento legal · 04</p>
+  <h1 class="doc-title">Términos de <em>Contratación.</em></h1>
+  <p class="doc-updated">Última actualización · 13 abril 2026 · Vigencia desde 13 abril 2026</p>
+
+  <div class="intro">
+    <p>Los presentes <strong>Términos y Condiciones Generales de Contratación</strong> (en adelante, los <strong>"Términos"</strong>) regulan la contratación de los servicios educativos digitales y de consultoría ofrecidos a través de la plataforma AWLA®, disponible en <a href="https://www.awla.live">https://www.awla.live</a> (en adelante, la <strong>"Plataforma"</strong>).</p>
+    <p>Los presentes Términos establecen las condiciones bajo las cuales los clientes pueden contratar y utilizar los cursos, programas formativos, sesiones en vivo, consultorías personalizadas y demás servicios educativos ofrecidos por AWLA® (en adelante, los <strong>"Servicios"</strong>).</p>
+    <p>Al registrarse, acceder, contratar o utilizar cualquiera de los Servicios disponibles en la Plataforma, usted (en adelante, <strong>Cliente</strong>) declara haber leído, comprendido y aceptado íntegramente los presentes Términos, los cuales constituyen un <strong>acuerdo legalmente vinculante</strong> entre el cliente y <strong>Pablo Ortiz Gómez</strong>, titular de la marca AWLA®, con domicilio en Santiago de Querétaro, Querétaro, México (en adelante, <strong>"AWLA®"</strong> o el <strong>"Titular"</strong>).</p>
+    <p>En caso de que el cliente no esté de acuerdo con estos Términos, deberá abstenerse de utilizar la Plataforma o de contratar cualquiera de los Servicios ofrecidos a través de la misma. La aceptación de los presentes Términos se realiza por <strong>medios electrónicos</strong>, mediante mecanismos digitales de consentimiento disponibles en la Plataforma, y produce todos los efectos legales correspondientes conforme a la <strong>legislación mexicana aplicable</strong>, incluyendo lo previsto en el <strong>Código de Comercio</strong> en materia de mensajes de datos y contratación electrónica.</p>
+  </div>
+
+  <div class="toc">
+    <p class="toc-title">Contenido</p>
+    <ol>
+      <li><a href="#s1">Identidad del proveedor</a></li>
+      <li><a href="#s2">Objeto y alcance</a></li>
+      <li><a href="#s3">Definiciones</a></li>
+      <li><a href="#s4">Elegibilidad del cliente</a></li>
+      <li><a href="#s5">Servicios ofrecidos y modalidades de contratación</a></li>
+      <li><a href="#s6">Propiedad intelectual de contenidos y metodologías</a></li>
+      <li><a href="#s7">Información precontractual y alcances de cada oferta</a></li>
+      <li><a href="#s8">Proceso de contratación electrónica</a></li>
+      <li><a href="#s9">Precios, pagos, facturación y validación</a></li>
+      <li><a href="#s10">Acceso, vigencia y activación de los servicios</a></li>
+      <li><a href="#s11">Requisitos técnicos y herramientas de terceros</a></li>
+      <li><a href="#s12">Cuentas personales e intransferibles</a></li>
+      <li><a href="#s13">Restricciones de uso y prohibición de compartir accesos</a></li>
+      <li><a href="#s14">Cursos en vivo, grabaciones y acceso posterior</a></li>
+      <li><a href="#s15">Consultoría personalizada, paquetes, reprogramaciones y no show</a></li>
+      <li><a href="#s16">Comunidad y beneficios complementarios</a></li>
+      <li><a href="#s17">Cancelaciones, cambios y devoluciones</a></li>
+      <li><a href="#s18">Promociones y condiciones especiales</a></li>
+      <li><a href="#s19">Propiedad intelectual y materiales</a></li>
+      <li><a href="#s20">Entregables y alcance de uso en consultoría</a></li>
+      <li><a href="#s21">Limitación razonable de responsabilidad</a></li>
+      <li><a href="#s22">Plataformas y servicios de terceros</a></li>
+      <li><a href="#s23">Atención al cliente, aclaraciones y soporte</a></li>
+      <li><a href="#s24">Modificaciones a los términos</a></li>
+      <li><a href="#s25">Ley aplicable y jurisdicción</a></li>
+      <li><a href="#s26">Aceptación electrónica</a></li>
+    </ol>
+  </div>
+
+  <div class="content">
+
+    <section id="s1">
+      <h2><span class="num">I</span><span>Identidad del proveedor</span></h2>
+      <p><strong>Titular y nombre comercial.</strong> El presente documento regula la relación contractual de prestación de servicios educativos digitales entre <strong>Pablo Ortiz Gómez</strong>, en su carácter de <strong>persona física con actividad empresarial</strong> (en adelante, <strong>AWLA®</strong>, <strong>el Titular</strong> o <strong>el Proveedor</strong>), y la persona física que contrata los servicios para su uso personal (en adelante, <strong>el Cliente</strong>). El Titular opera bajo el nombre comercial AWLA® y tiene su domicilio en la ciudad de Querétaro, México. Para contacto y aclaraciones se pone a disposición el dominio <a href="https://www.awla.live">https://www.awla.live</a>, el correo electrónico de atención <a href="mailto:hola@awla.live">hola@awla.live</a> y el número telefónico <strong>+52 55 3717 5870</strong>. Conforme a la Norma Mexicana NMX-COE-001-SCFI-2018, las condiciones contractuales deben identificar claramente al proveedor y sus canales de contacto.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">II</span><span>Objeto y alcance</span></h2>
+      <p>Este instrumento establece los <strong>términos y condiciones de contratación</strong> aplicables a la adquisición y prestación de <strong>servicios educativos digitales y consultoría individual</strong> ofrecidos por AWLA® a clientes consumidores finales. Se distinguen expresamente de los <a href="/terminos.html">Términos de Uso de la plataforma</a>, <a href="/privacidad-integral.html">Aviso de Privacidad</a>, <a href="/cookies.html">Política de Cookies</a>, <a href="/devoluciones.html">Política de Cambios y Devoluciones</a>, Reglas de Comunidad y cualquier contrato específico para servicios empresariales o consultoría corporativa. La contratación aquí regulada se refiere exclusivamente a cursos on-demand, cursos en tiempo real (en vivo), masterclasses y servicios de consultoría personalizados.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">III</span><span>Definiciones</span></h2>
+      <p>Para efectos de este documento:</p>
+      <ul>
+        <li><strong>AWLA® o el Titular:</strong> Pablo Ortiz Gómez, persona física con actividad empresarial que opera bajo el nombre comercial AWLA®, proveedor de los servicios descritos.</li>
+        <li><strong>Cliente:</strong> persona física, mayor de edad y con capacidad legal para contratar, que adquiere los servicios para su uso personal como consumidor final. En caso de que la persona usuaria sea menor de edad, deberá contar con la autorización expresa de su tutor.</li>
+        <li><strong>Plataforma:</strong> sitio web y cualquier subplataforma de alojamiento de contenidos gestionada por AWLA®, así como los canales de comunidad (p. ej., WhatsApp), videoconferencias (p. ej., Zoom, Google Meet) y procesadores de pago externos.</li>
+        <li><strong>Servicios:</strong> conjunto de cursos on-demand, cursos en vivo, masterclasses, sesiones grupales de preguntas y respuestas y consultoría 1:1 o paquetes de horas ofrecidos por AWLA®.</li>
+        <li><strong>Planes:</strong> modalidades de servicios con distintos alcances (Plan Básico, Intermedio, Plus/Premium u otros que AWLA® publique). El alcance final de cada plan se especifica en la oferta comercial vigente publicada al momento de la contratación y forma parte integrante del contrato.</li>
+        <li><strong>Cursos on-demand:</strong> programas grabados disponibles vía streaming o descarga controlada, con acceso durante un plazo definido (por defecto 90 días). Pueden incluir distintos niveles de beneficios según el plan contratado.</li>
+        <li><strong>Cursos en vivo o en tiempo real:</strong> sesiones virtuales programadas con fecha y hora específicas, que pueden grabarse y ponerse a disposición del cliente para su consulta posterior.</li>
+        <li><strong>Consultoría personalizada:</strong> servicios individuales de asesoría o mentoría, contratables por hora o mediante paquetes de horas, que pueden incluir entregables (video, PDF, documentos o recomendaciones estratégicas). Para servicios empresariales se requerirá contrato independiente.</li>
+        <li><strong>Materiales y recursos complementarios:</strong> documentos, archivos multimedia, plantillas u otros contenidos digitales que acompañan a los servicios según el plan contratado.</li>
+        <li><strong>Comunidad:</strong> grupo de acompañamiento operado usualmente a través de WhatsApp y sesiones grupales de preguntas y respuestas, sujeto a reglas internas de convivencia.</li>
+      </ul>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">IV</span><span>Elegibilidad del cliente</span></h2>
+      <p>Los servicios de AWLA® están dirigidos a personas físicas mayores de 18 años con capacidad legal para contratar. Los menores de edad deberán contar con la autorización de sus padres o tutores. Al aceptar estos términos, el Cliente declara que cumple con los requisitos de elegibilidad.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">V</span><span>Servicios ofrecidos y modalidades de contratación</span></h2>
+
+      <h3><span class="num">5.1</span><span>Cursos on-demand</span></h3>
+      <p>Los <strong>cursos on-demand</strong> consisten en acceso a módulos y contenidos grabados disponibles a través de la Plataforma. Salvo que se indique lo contrario en la oferta publicada, el acceso se concede por <strong>90 días</strong> a partir de la activación del servicio. Dentro de dicho periodo el cliente puede visualizar los contenidos de forma ilimitada. Existen distintos planes que pueden incluir o excluir beneficios adicionales, como comunidad de acompañamiento o sesiones mensuales de preguntas y respuestas vía Meet. El plan <strong>Básico</strong> otorga acceso a los módulos sin sesiones de preguntas ni consultoría; el plan <strong>Intermedio</strong> añade acceso a la comunidad y a sesiones mensuales grupales; el plan <strong>Plus o Premium</strong> incluye, además, horas de consultoría personalizada. AWLA® se reserva la facultad de ofrecer nuevas modalidades o de modificar la denominación de los planes, pero siempre respetará la descripción publicada al momento de la compra.</p>
+      <p><strong>Evaluación de solicitudes extraordinarias.</strong> En situaciones excepcionales, AWLA® podrá evaluar solicitudes extraordinarias relacionadas con reprogramaciones, extensiones de acceso, ajustes de agenda o situaciones operativas particulares vinculadas con los servicios contratados. Para dicha evaluación podrán considerarse, entre otros elementos:</p>
+      <ul>
+        <li>la existencia de fallas técnicas comprobables en la plataforma o en los sistemas utilizados para la prestación del servicio;</li>
+        <li>causas de fuerza mayor o caso fortuito;</li>
+        <li>situaciones médicas o personales debidamente acreditadas;</li>
+        <li>la fecha en que se presenta la solicitud en relación con la programación del servicio;</li>
+        <li>el impacto operativo que la solicitud pudiera generar en la agenda, disponibilidad o dinámica del servicio.</li>
+      </ul>
+      <p>La determinación correspondiente será comunicada al cliente a través de los medios de contacto registrados y se adoptará procurando mantener un equilibrio razonable entre la atención al cliente y la viabilidad operativa de los servicios ofrecidos por AWLA®.</p>
+
+      <h3><span class="num">5.2</span><span>Cursos en vivo y masterclasses</span></h3>
+      <p>Los <strong>cursos en vivo</strong> son sesiones virtuales que se programan en fechas y horarios específicos. La inscripción suele abrirse aproximadamente cinco semanas antes del inicio y puede cerrarse anticipadamente según disponibilidad. AWLA® podrá grabar las sesiones por razones operativas o académicas; el Cliente reconoce que su participación puede ser grabada y que la grabación se pondrá a disposición sólo de las personas autorizadas. Si la oferta aplicable contempla acceso a la grabación para quienes no puedan asistir en vivo, se enviará o habilitará dicho acceso conforme a la política vigente.</p>
+      <p>El Cliente podrá <strong>cancelar su participación</strong> en un curso en vivo hasta <strong>24 horas antes</strong> del inicio enviando una solicitud al correo de atención. Las solicitudes posteriores serán consideradas como no show. Las devoluciones, bonificaciones o reprogramaciones se regirán por la <a href="/devoluciones.html">Política de Cambios y Devoluciones</a> correspondiente.</p>
+
+      <h3><span class="num">5.3</span><span>Consultoría personalizada</span></h3>
+      <p>La <strong>consultoría personalizada</strong> puede contratarse por hora individual o mediante paquetes de horas. Los servicios se prestan mediante videoconferencia o llamadas, e incluyen asesoría estratégica, adaptaciones para proyectos individuales y, en su caso, entregables como videos grabados, archivos PDF o documentos personalizados. Salvo que la oferta indique lo contrario, los servicios deben pagarse por adelantado. En algunos casos de clientes empresariales los pagos podrán diferirse hasta completar procesos internos de alta como proveedor; estos supuestos no se regulan en este contrato B2C y deberán documentarse en contrato independiente.</p>
+      <p>El cliente puede <strong>reprogramar</strong> una sesión de consultoría notificando por escrito con al menos <strong>24 horas de anticipación</strong>. En caso de notificación tardía o de <strong>no show</strong>, AWLA® podrá considerar como consumida la sesión sin obligación de reprogramarla. AWLA® se reserva la facultad de reprogramar sesiones por causas justificadas, notificando al Cliente a la brevedad y acordando una nueva fecha. La reprogramación no implica devolución salvo disposición en la política de cambios y devoluciones.</p>
+
+      <h3><span class="num">5.4</span><span>Materiales y recursos complementarios</span></h3>
+      <p>Según el plan o servicio contratado, AWLA® puede proporcionar recursos adicionales (plantillas, archivos, enlaces, materiales audiovisuales u otros contenidos).</p>
+
+      <h3><span class="num">5.5</span><span>Comunidad y sesiones grupales</span></h3>
+      <p>Algunos planes incluyen acceso a una <strong>comunidad de acompañamiento</strong> (generalmente en WhatsApp) y a sesiones grupales periódicas de preguntas y respuestas. Estos beneficios son complementarios y se encuentran sujetos a reglas de convivencia que podrá encontrar en el documento denominado <strong>Reglas de Comunidad</strong>. La participación en la comunidad no equivale a asesoría ilimitada ni a disponibilidad permanente; AWLA® podrá moderar, limitar o dar de baja a participantes que infrinjan las reglas, sin reembolso.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">VI</span><span>Propiedad intelectual de contenidos y metodologías</span></h2>
+      <p>Los contenidos educativos, metodologías, materiales didácticos, presentaciones, grabaciones, plantillas, guías, prompts, estructuras creativas, recursos audiovisuales y demás elementos desarrollados o proporcionados por AWLA® dentro de sus cursos, programas formativos o servicios de consultoría se encuentran protegidos por la legislación aplicable en materia de propiedad intelectual y derechos de autor.</p>
+      <p>La contratación de los servicios ofrecidos por AWLA® <strong>no implica la transmisión ni cesión de derechos de propiedad intelectual</strong> sobre dichos contenidos. El Cliente adquiere únicamente una <strong>licencia de uso personal, limitada y no transferible</strong> para utilizar los materiales educativos dentro del contexto de su formación individual.</p>
+      <p>En consecuencia, queda prohibido, salvo autorización expresa y por escrito del Titular:</p>
+      <ul>
+        <li>reproducir, distribuir o comercializar los materiales educativos;</li>
+        <li>revender cursos, metodologías o estructuras formativas de AWLA®;</li>
+        <li>compartir prompts, materiales o contenidos protegidos con fines comerciales;</li>
+        <li>utilizar los contenidos para crear programas educativos derivados sin autorización del Titular.</li>
+      </ul>
+      <p>El incumplimiento de estas disposiciones podrá dar lugar a la suspensión del acceso a los servicios y, en su caso, al ejercicio de las acciones legales correspondientes.</p>
+      <p>Cuando los programas educativos incluyan el uso de herramientas de inteligencia artificial operadas por terceros, el Cliente reconoce que dichas herramientas pueden generar resultados variables y que AWLA® no controla el funcionamiento interno de dichas tecnologías.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">VII</span><span>Información precontractual y alcances de cada oferta</span></h2>
+      <p>El <strong>sitio web, la landing page, la ficha del producto, el carrito de compra y la página de inscripción</strong> contienen la información comercial esencial (precio, características, duración, contenidos, beneficios, fechas y horarios, límites de cupo, términos específicos). Dicha información forma parte integral del contrato. Conforme al artículo 76 Bis de la Ley Federal de Protección al Consumidor (LFPC), en las transacciones electrónicas se debe proporcionar al consumidor información sobre términos, condiciones, costos y formas de pago antes de celebrar la transacción. El Cliente reconoce haber consultado y entendido la información publicada antes de realizar su compra.</p>
+      <p>En caso de discrepancia entre la información publicada y estos términos, prevalecerá la oferta específica vigente al momento de la compra. AWLA® se compromete a describir los servicios de manera veraz, evitando prácticas engañosas y ofreciendo mecanismos para la presentación de reclamaciones de conformidad con la LFPC.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">VIII</span><span>Proceso de contratación electrónica y perfeccionamiento del consentimiento</span></h2>
+
+      <h3><span class="num">8.1</span><span>Solicitud y aceptación</span></h3>
+      <p>Para contratar un servicio, el cliente debe proporcionar los datos solicitados (nombre, correo electrónico y otros requeridos) y seleccionar el plan o modalidad deseada. Antes de completar el pago, se mostrará un resumen de la operación para que el Cliente verifique los datos y condiciones. Conforme al artículo 76 Bis 1 de la LFPC, los proveedores deben ofrecer mecanismos para que el consumidor pueda verificar y aceptar la transacción, así como soportes de prueba y medidas de seguridad.</p>
+      <p>La contratación se perfecciona cuando el Cliente <strong>marca la casilla de aceptación</strong> o activa el botón correspondiente declarando que ha leído y acepta estos términos y condiciones de contratación, y realiza el pago correspondiente. Esta manifestación se realiza mediante <strong>mensaje de datos</strong> y <strong>firma electrónica</strong>, que la legislación mexicana reconoce como válidos y con la misma fuerza legal que los documentos impresos. La firma electrónica identifica al firmante y demuestra su aprobación del contenido. Una vez confirmado el pago, AWLA® enviará un correo de bienvenida o habilitará el acceso a los servicios adquiridos, lo que constituye prueba de aceptación y formalización del contrato.</p>
+
+      <h3><span class="num">8.2</span><span>Confirmación y soporte de la operación</span></h3>
+      <p>Tras la contratación, el Cliente recibirá un comprobante electrónico con el resumen de la compra, datos de contacto y, en su caso, credenciales de acceso. Conforme a la LFPC, AWLA® conservará un registro de la transacción como mensaje de datos para efectos probatorios. El Cliente debe revisar la información y reportar cualquier error dentro de las 24 horas siguientes.</p>
+      <p>AWLA® conservará, como parte del expediente electrónico de cada transacción, la versión específica de la oferta comercial vigente al momento de la contratación, incluyendo la descripción del servicio, precio, características, beneficios, duración, condiciones aplicables y cualquier promoción o restricción asociada.</p>
+      <p>Dicha información se almacenará como mensaje de datos junto con los registros de aceptación del cliente, comprobante de pago y confirmación de contratación, con el fin de garantizar la trazabilidad de la relación contractual.</p>
+      <p>En caso de discrepancia entre versiones posteriores de la oferta publicada y la contratación realizada, prevalecerá la versión de la oferta vigente al momento en que el Cliente haya aceptado la contratación, la cual podrá ser consultada por las partes como evidencia del acuerdo celebrado.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">IX</span><span>Precios, pagos, facturación y validación</span></h2>
+
+      <h3><span class="num">9.1</span><span>Precios y moneda</span></h3>
+      <p>Todos los precios se expresan en <strong>pesos mexicanos (MXN)</strong> e incluyen impuestos aplicables, salvo que se indique lo contrario. AWLA® se compromete a informar claramente el precio total a pagar, incluidos cargos adicionales, descuentos o bonificaciones cuando apliquen, cumpliendo con la obligación de transparencia prevista en la LFPC. Las promociones y cupones tendrán vigencia y condiciones específicas descritas en la oferta comercial.</p>
+
+      <h3><span class="num">9.2</span><span>Métodos de pago y validación</span></h3>
+      <p>Los servicios pueden pagarse mediante transferencia bancaria, depósito, tarjetas de crédito o débito, PayPal y demás pasarelas o procesadores habilitados por AWLA®. La disponibilidad de cada método puede variar según el servicio. El Cliente es responsable de proporcionar información correcta y suficiente para procesar el pago. En caso de pago por transferencia o depósito, el acceso se activará una vez que el importe haya sido confirmado en la cuenta del Titular; AWLA® puede requerir comprobante.</p>
+      <p>Para completar la compra en línea, el Cliente será dirigido a un procesador de pagos externo. Estos procesadores cuentan con sus propios términos y políticas de privacidad; AWLA® no almacena ni procesa información bancaria del Cliente más allá de lo necesario para confirmar el pago. Los pagos con tarjetas están sujetos a la aprobación de la entidad emisora; AWLA® no se responsabiliza por retrasos imputables a terceros.</p>
+
+      <h3><span class="num">9.3</span><span>Facturación (CFDI)</span></h3>
+      <p>Si el Cliente requiere <strong>Comprobante Fiscal Digital por Internet (CFDI)</strong> deberá solicitarlo por correo electrónico a <a href="mailto:hola@awla.live">hola@awla.live</a> dentro del mes calendario de la compra, proporcionando los datos fiscales completos. AWLA® emitirá el CFDI conforme a la legislación fiscal mexicana; el Titular puede rechazar solicitudes fuera de plazo o incompletas. En servicios de consultoría para personas morales o empresas, podrán aplicarse reglas específicas que deberán pactarse por contrato independiente.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">X</span><span>Acceso, vigencia y activación de los servicios</span></h2>
+
+      <h3><span class="num">10.1</span><span>Activación del servicio</span></h3>
+      <p>El acceso a los cursos on-demand, cursos en vivo o consultoría se activará una vez que AWLA® confirme el pago. Para servicios pregrabados, se enviará una confirmación con los accesos correspondientes. Para cursos en vivo, se enviará información para unirse a la sesión (enlace, fecha y hora). En consultoría, se acordará la fecha y hora con el Cliente. El acceso es personal e intransferible; está prohibido compartir cuentas, contraseñas, enlaces o grabaciones.</p>
+
+      <h3><span class="num">10.2</span><span>Duración</span></h3>
+      <p>Los cursos on-demand tienen una vigencia predeterminada (90 días) a partir de la activación. Los cursos en vivo se prestan en la fecha y hora indicadas; el acceso a la grabación, cuando proceda, se habilitará por un periodo determinado. Las horas o paquetes de consultoría deben consumirse dentro del plazo indicado en la oferta; si el plazo no se especifica, se entenderá que deberá utilizarse dentro de 90 días naturales desde la primera sesión. La falta de uso del servicio dentro del periodo no genera reembolso salvo disposición expresa en la <a href="/devoluciones.html">Política de Cambios y Devoluciones</a>.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">XI</span><span>Requisitos técnicos y herramientas de terceros</span></h2>
+      <p>El cliente es responsable de contar con <strong>conexión a Internet, dispositivos compatibles</strong> (computadora, tablet o teléfono inteligente) y las <strong>herramientas de terceros</strong> necesarias para aprovechar los servicios (por ejemplo, ChatGPT, Midjourney, Runway u otras mencionadas en la oferta). Estos servicios externos no forman parte del precio de AWLA®, salvo que se indique expresamente lo contrario, y están sujetos a sus propias condiciones. AWLA® no garantiza la compatibilidad ni el funcionamiento continuo de dichos terceros, y no será responsable por cambios, restricciones o fallas de plataformas ajenas. El Cliente debe verificar de manera previa que cuenta con las licencias o accesos necesarios.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">XII</span><span>Cuentas personales e intransferibles</span></h2>
+      <p>El acceso otorgado al Cliente es <strong>personal, individual e intransferible</strong>. Las cuentas no pueden compartirse, sublicenciar, revenderse, cederse ni ponerse a disposición de terceros. La contratación está concebida para <strong>uso individual</strong> y no para explotación comercial o empresarial conjunta. El Cliente se obliga a mantener la confidencialidad de sus credenciales y a notificar inmediatamente cualquier uso no autorizado. El uso compartido o colectivo constituirá incumplimiento y facultará a AWLA® a suspender o cancelar el acceso sin reembolso.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="num">XIII</span><span>Restricciones de uso y prohibición de compartir accesos</span></h2>
+      <p>Queda prohibido:</p>
+      <ul>
+        <li>Utilizar la plataforma para fines ilícitos, fraudulentos, difamatorios, contrarios a la ley, derechos de terceros, seguridad de la plataforma o finalidad del servicio.</li>
+        <li>Compartir, reproducir, grabar, transmitir, distribuir o comercializar total o parcialmente los contenidos, materiales, grabaciones o entregables sin autorización escrita de AWLA®.</li>
+        <li>Permitir que varias personas, equipos, empresas, agencias o grupos utilicen un mismo acceso. Si una empresa desea capacitar a varias personas o contratar consultoría para fines corporativos, deberá celebrarse un contrato independiente.</li>
+        <li>Manipular o intervenir la plataforma o los sistemas utilizados por AWLA® o sus proveedores de tecnología.</li>
+      </ul>
+      <p>El incumplimiento de estas restricciones podrá dar lugar a la suspensión o terminación del servicio sin responsabilidad para AWLA®.</p>
+    </section>
+
+    <section id="s14">
+      <h2><span class="num">XIV</span><span>Cursos en vivo, grabaciones y acceso posterior</span></h2>
+      <p>AWLA® informa a los titulares que determinadas actividades, como clases en tiempo real, masterclasses, sesiones grupales de preguntas y respuestas o consultorías, pueden ser grabadas. La <strong>imagen y la voz</strong> de los participantes podrían ser captadas y almacenadas para:</p>
+      <ul>
+        <li>Permitir la asistencia de los inscritos que no pudieron participar en tiempo real.</li>
+        <li>Facilitar la revisión académica y la retroalimentación.</li>
+        <li>Asegurar la calidad educativa y mejorar los contenidos.</li>
+        <li>Conservar evidencias operativas y administrativas.</li>
+      </ul>
+      <p>Estas grabaciones se comparten exclusivamente con los participantes del curso o servicio correspondiente y no se utilizan con fines publicitarios o promocionales sin la autorización previa, expresa, específica y separada del titular. El titular que no desee que su imagen o voz aparezcan podrá optar por no activar su cámara o micrófono durante las sesiones o solicitar canales alternos de interacción.</p>
+    </section>
+
+    <section id="s15">
+      <h2><span class="num">XV</span><span>Consultoría personalizada, paquetes, reprogramaciones y no show</span></h2>
+      <p>La consultoría personalizada se rige por las condiciones descritas en la sección 5.3 y en la oferta específica. Además:</p>
+      <ul>
+        <li><strong>Reprogramaciones:</strong> el Cliente podrá solicitar la reprogramación de una sesión enviando un correo a <a href="mailto:hola@awla.live">hola@awla.live</a> con al menos 24 horas de anticipación. El otorgamiento de reprogramaciones adicionales quedará a discreción de AWLA®.</li>
+        <li><strong>No show y retardos:</strong> si el Cliente no se presenta en la fecha y hora acordadas o llega con un retraso mayor a 15 minutos, se considerará <strong>no show</strong> y la sesión se tendrá por consumida. AWLA® podrá ofrecer reagendar una vez por cortesía, pero no estará obligado a hacerlo. Los no shows reiterados pueden dar lugar a la terminación anticipada de las sesiones sin reembolso.</li>
+        <li><strong>Reprogramación por AWLA®:</strong> AWLA® podrá reprogramar una sesión por motivos de fuerza mayor o indisponibilidad del consultor, notificando al Cliente a la brevedad y ofreciendo fechas alternativas razonables.</li>
+        <li><strong>Entregables:</strong> cuando la consultoría incluya materiales o recomendaciones personalizadas, estos se entregarán en formato digital (video, PDF u otro) y se regirán por las cláusulas de propiedad intelectual y de uso limitado.</li>
+      </ul>
+    </section>
+
+    <section id="s16">
+      <h2><span class="num">XVI</span><span>Comunidad y beneficios complementarios</span></h2>
+      <p>La participación en comunidades de acompañamiento y sesiones grupales de preguntas y respuestas constituye un beneficio adicional al curso o plan contratado. El Cliente acepta cumplir las <strong>Reglas de Comunidad</strong> que se publicarán separadamente y que contemplan normas de respeto, confidencialidad, prohibición de spam, uso de lenguaje adecuado y otras disposiciones. AWLA® se reserva el derecho de moderar la comunidad, silenciar o expulsar a participantes que incumplan las reglas o utilicen la comunidad con fines de autopromoción, hostigamiento o actos ilícitos. La comunidad no implica asesoría ilimitada; las consultas específicas deben canalizarse a las sesiones grupales o a la consultoría contratada.</p>
+    </section>
+
+    <section id="s17">
+      <h2><span class="num">XVII</span><span>Cancelaciones, cambios, devoluciones y remisión a política específica</span></h2>
+      <p>AWLA® cuenta con una <a href="/devoluciones.html">Política de Cambios y Devoluciones</a> que regula los supuestos de cancelación, reembolso, revocación o modificación de servicios. Dicha política forma parte integral del contrato y podrá consultarse en la Plataforma. De manera enunciativa y sujeta a dicha política:</p>
+      <ul>
+        <li><strong>Cursos on-demand:</strong> el Cliente podrá solicitar la cancelación y devolución dentro de los <strong>tres días naturales</strong> siguientes a la compra, siempre que no haya consumido una parte sustancial del curso. Para revocaciones posteriores o cuando se haya consumido el contenido, aplicará lo dispuesto en la política.</li>
+        <li><strong>Cursos en vivo:</strong> la cancelación sin penalización será posible hasta <strong>24 horas antes</strong> de la fecha de inicio; en este caso se podrá optar por reprogramación, crédito o reembolso parcial conforme a la política. Después de dicho plazo, la cancelación se considerará no show.</li>
+        <li><strong>Consultoría personalizada:</strong> podrá cancelar y reembolsar dentro de los <strong>tres días naturales</strong> siguientes a la compra, siempre que no se haya llevado a cabo ninguna sesión. Una vez iniciadas las sesiones, se aplicarán cargos proporcionales y no habrá reembolsos por horas no utilizadas salvo acuerdo en contrario.</li>
+      </ul>
+      <p>El Cliente reconoce que la filosofía de AWLA® se orienta a la resolución razonable de inconformidades, evitando cláusulas abusivas o desproporcionadas. Conforme a la LFPC, renunciar a los términos ofrecidos, permitir modificaciones unilaterales sin notificación, imponer cargos ocultos o renovar automáticamente sin consentimiento constituyen cláusulas abusivas. AWLA® se abstiene de incurrir en dichas prácticas y ofrece canales de atención para resolver reclamaciones de manera amistosa.</p>
+    </section>
+
+    <section id="s18">
+      <h2><span class="num">XVIII</span><span>Promociones y condiciones especiales</span></h2>
+      <p>AWLA® podrá ofrecer descuentos, cupones, promociones, becas u otros beneficios temporales. Cada promoción indicará sus condiciones, vigencia, monto de descuento, servicios aplicables y restricciones. Las promociones no serán acumulables entre sí, salvo que se indique expresamente. AWLA® se reserva el derecho de cancelar una promoción cuando se detecte abuso o uso indebido. La contratación con descuento no afecta la calidad del servicio ni los derechos básicos del consumidor.</p>
+    </section>
+
+    <section id="s19">
+      <h2><span class="num">XIX</span><span>Propiedad intelectual y materiales</span></h2>
+      <p>Todos los <strong>contenidos, clases, videos, textos, imágenes, prompts, métodos, diseños, marcas, signos distintivos, logotipos y materiales</strong> generados o puestos a disposición por AWLA® están protegidos por la legislación aplicable y pertenecen al Titular o a terceros licenciantes. El Cliente recibe únicamente un <strong>derecho limitado, no exclusivo, no sublicenciable</strong> de acceso y uso personal de los contenidos durante la vigencia del servicio contratado. Queda estrictamente prohibido grabar, copiar, distribuir, transmitir, comercializar, modificar, crear obras derivadas, o explotar los contenidos sin consentimiento escrito del Titular. Ninguna disposición de este contrato implica una cesión de derechos de propiedad intelectual.</p>
+      <p>En caso de entregables personalizados de consultoría, AWLA® otorga al Cliente una licencia no exclusiva para utilizar dichos materiales exclusivamente para fines personales o internos relacionados con su proyecto. La reproducción o divulgación a terceros requerirá autorización expresa y, en su caso, podrá sujetarse a compensación adicional.</p>
+    </section>
+
+    <section id="s20">
+      <h2><span class="num">XX</span><span>Entregables y alcance de uso en consultoría</span></h2>
+      <p>Cuando la consultoría incluya <strong>entregables</strong> (videos, documentos o recomendaciones), se entenderá que estos constituyen obras protegidas. El Cliente podrá utilizarlos únicamente para los fines acordados y conforme a la licencia limitada otorgada. AWLA® se reserva todos los derechos de autor. Los entregables no serán divulgados públicamente ni utilizados comercialmente por el Cliente sin autorización previa. Para proyectos corporativos o de desarrollo empresarial, las partes deberán firmar un contrato independiente que regule la cesión o licencia de derechos de uso.</p>
+    </section>
+
+    <section id="s21">
+      <h2><span class="num">XXI</span><span>Limitación razonable de responsabilidad</span></h2>
+      <p>AWLA® se compromete a prestar los servicios de acuerdo con estándares profesionales y a proporcionar contenidos de calidad. No obstante, el Cliente reconoce y acepta que:</p>
+      <ul>
+        <li>Los cursos, masterclasses y consultorías tienen naturaleza <strong>educativa y formativa</strong>; no garantizan resultados económicos, comerciales, artísticos o profesionales específicos.</li>
+        <li>AWLA® no será responsable por fallas o interrupciones causadas por terceros (proveedores de hosting, plataformas educativas, pasarelas de pago, software de videoconferencia, servicios de mensajería, etc.), fuerza mayor o caso fortuito. En tales supuestos, AWLA® trabajará para restablecer el servicio, pero no asumirá responsabilidades de indemnización.</li>
+        <li>La responsabilidad total de AWLA® frente al Cliente por cualquier incumplimiento se limitará, en la medida permitida por la ley, al <strong>importe pagado</strong> por el servicio correspondiente. Esta limitación no excluye los derechos irrenunciables previstos en la LFPC.</li>
+        <li>AWLA® utilizará la información del Cliente de manera confidencial y adoptará medidas de seguridad para protegerla. Sin embargo, debido a la naturaleza de Internet, no se garantiza la ausencia de vulnerabilidades; el Cliente debe adoptar medidas de protección propias.</li>
+      </ul>
+    </section>
+
+    <section id="s22">
+      <h2><span class="num">XXII</span><span>Plataformas y servicios de terceros</span></h2>
+      <p>AWLA® utiliza <strong>subplataformas educativas</strong>, herramientas de videoconferencia (como Zoom o Google Meet), aplicaciones de mensajería (como WhatsApp) y procesadores de pago externos para prestar sus servicios. Estos terceros cuentan con sus propios términos y condiciones y políticas de privacidad. AWLA® no controla su funcionamiento ni garantiza su disponibilidad permanente. El Cliente acepta que determinadas incidencias técnicas o interrupciones pueden depender de dichos terceros y que AWLA® no será responsable por fallas ajenas a su control. La contratación de AWLA® no supone la adquisición de licencias o suscripciones de dichos terceros salvo que se ofrezca expresamente.</p>
+      <p>Conforme a la LFPC, AWLA® se obliga a informar al consumidor de los mecanismos de identidad, pago y entrega, así como de los mecanismos para presentar quejas o reclamos. La Plataforma dispone de formularios o correos de contacto para estos fines.</p>
+    </section>
+
+    <section id="s23">
+      <h2><span class="num">XXIII</span><span>Atención al cliente, aclaraciones y soporte</span></h2>
+      <p>Para dudas, aclaraciones, soporte técnico, reprogramaciones o reclamaciones, el Cliente puede contactar a AWLA® mediante:</p>
+      <ul>
+        <li>Correo electrónico: <a href="mailto:hola@awla.live">hola@awla.live</a></li>
+        <li>Teléfono de atención: +52 55 3717 5870</li>
+      </ul>
+      <p>AWLA® recibirá y atenderá los planteamientos en un plazo razonable. Para reclamaciones formales, el Cliente deberá proporcionar su nombre completo, medio de contacto, descripción clara del servicio adquirido, evidencia de pago y explicación de la inconformidad. AWLA® responderá dentro de un plazo máximo de 10 días hábiles.</p>
+      <p>El Cliente también puede acudir a la Procuraduría Federal del Consumidor (PROFECO) para presentar quejas cuando considere que sus derechos han sido vulnerados. Se recuerda que la LFPC garantiza que toda información recibida y transmitida en las transacciones electrónicas será tratada de manera confidencial y que el consumidor puede acudir a las autoridades cuando identifique cláusulas abusivas.</p>
+    </section>
+
+    <section id="s24">
+      <h2><span class="num">XXIV</span><span>Modificaciones a los términos</span></h2>
+      <p>AWLA® podrá modificar estos términos y condiciones cuando sea necesario para actualizar sus servicios o cumplir con nuevas disposiciones legales. Cualquier modificación será publicada en la Plataforma e identificará la fecha de entrada en vigor. Las modificaciones se aplicarán <strong>únicamente a contratos futuros</strong>; las contrataciones en curso continuarán rigiéndose por la versión vigente al momento de su formalización. AWLA® notificará a los clientes registrados mediante correo electrónico o aviso destacado cuando se trate de cambios relevantes. En ningún caso se realizarán modificaciones unilaterales retroactivas que perjudiquen al Cliente, en congruencia con las prohibiciones de la LFPC respecto de cláusulas abusivas.</p>
+    </section>
+
+    <section id="s25">
+      <h2><span class="num">XXV</span><span>Ley aplicable y jurisdicción</span></h2>
+      <p>El presente contrato se interpreta y ejecuta conforme a las leyes mexicanas, especialmente la Ley Federal de Protección al Consumidor, el Código de Comercio y las disposiciones en materia de protección de datos personales. En caso de controversia, las partes procurarán resolverla de manera amistosa mediante contacto directo y, de ser necesario, a través de los mecanismos de conciliación de PROFECO. Si no se logra una solución, las partes podrán acudir a la jurisdicción competente en la ciudad de Querétaro, México. Esta cláusula no limita los derechos irrenunciables del consumidor a acudir a las autoridades correspondientes, y evita imponer jurisdicciones extranjeras consideradas abusivas.</p>
+    </section>
+
+    <section id="s26">
+      <h2><span class="num">XXVI</span><span>Aceptación electrónica</span></h2>
+      <p>Al marcar la casilla de aceptación o activar el botón de compra, el Cliente manifiesta su consentimiento pleno, libre, informado y expreso sobre el contenido de estos términos y condiciones de contratación. El consentimiento se formaliza a través de un <strong>mensaje de datos</strong> y la utilización de <strong>firma electrónica</strong>, los cuales son reconocidos por el Código de Comercio como equivalentes a la firma autógrafa y surten los mismos efectos legales. La manifestación de aceptación queda registrada en los sistemas de AWLA® como prueba de la transacción. El Cliente declara haber leído detenidamente este instrumento antes de contratar y acepta que la versión publicada en la Plataforma al momento de la compra es la que rige su relación con el Titular.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+</body>
+</html>
