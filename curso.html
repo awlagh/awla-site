@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a18">
+<meta name="format-detection" content="telephone=no">
+
+<title>El curso · AWLA · Próximamente</title>
+<meta name="description" content="El curso on demand de AWLA pronto estará listo. Únete a la lista de espera y te avisaremos cuando lance.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.awla.live/curso.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AWLA">
+<meta property="og:title" content="El curso · AWLA · Próximamente">
+<meta property="og:description" content="Estamos curando cada lección. Únete a la lista de espera.">
+<meta property="og:url" content="https://www.awla.live/curso.html">
+<meta property="og:locale" content="es_MX">
+<meta property="og:image" content="https://www.awla.live/og-image.jpg">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://assets.mailerlite.com">
+<link rel="preconnect" href="https://groot.mailerlite.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --ink:      #1a1a18;
+  --term:     #1c1c1a;
+  --term2:    #242420;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+  --moss-bright: #86ac87;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px; line-height: 1.6;
+  color: var(--screen); background: var(--term);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  pointer-events: none; z-index: 1;
+  background-image:
+    radial-gradient(rgba(228,224,214,0.025) 1px, transparent 1px),
+    radial-gradient(rgba(228,224,214,0.015) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6; mix-blend-mode: screen;
+}
+
+body::after {
+  content: ''; position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse at top, rgba(61,92,62,0.08) 0%, transparent 60%);
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 6vw;
+  background: rgba(28,28,26,0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(228,224,214,0.06);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--screen); text-decoration: none;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: rgba(134,172,135,0.85); text-decoration: none;
+  text-transform: uppercase; transition: opacity 0.2s;
+}
+.nav-back:hover { opacity: 0.6; }
+
+main {
+  position: relative; z-index: 2;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 140px 6vw 80px;
+}
+
+.container { max-width: 560px; width: 100%; text-align: center; }
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(134,172,135,0.85);
+  margin-bottom: 24px;
+}
+.doc-meta::before { content: '› '; color: rgba(134,172,135,0.6); }
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(40px, 7vw, 72px);
+  font-weight: 600; line-height: 1;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  color: var(--screen);
+  text-transform: uppercase;
+}
+.hero-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic; font-weight: 400;
+  color: var(--moss-bright);
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+
+.hero-subtitle {
+  font-family: 'Barlow', sans-serif;
+  font-size: 17px; font-weight: 300;
+  color: rgba(228,224,214,0.55);
+  line-height: 1.5; margin-bottom: 56px;
+  max-width: 420px; margin-left: auto; margin-right: auto;
+}
+
+.divider {
+  width: 32px; height: 1px;
+  background: rgba(134,172,135,0.5);
+  margin: 0 auto 32px;
+}
+
+.form-section {
+  background: rgba(36,36,32,0.4);
+  border: 1px solid rgba(228,224,214,0.06);
+  border-radius: 12px;
+  padding: 36px 32px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+
+.form-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(134,172,135,0.85);
+  margin-bottom: 14px;
+}
+
+.form-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--screen);
+  margin-bottom: 6px;
+}
+
+.form-helper {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  color: rgba(228,224,214,0.5);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* MailerLite overrides */
+#mlb2-40613311.ml-form-embedContainer { width: 100% !important; max-width: 100% !important; }
+#mlb2-40613311 .ml-form-embedWrapper {
+  background-color: transparent !important;
+  border: none !important;
+  width: 100% !important; max-width: 100% !important;
+}
+#mlb2-40613311 .ml-form-embedBody { padding: 0 !important; }
+#mlb2-40613311 .ml-form-embedContent { display: none !important; }
+#mlb2-40613311 .ml-form-formContent { margin: 0 0 16px 0 !important; }
+
+#mlb2-40613311 input[type="email"] {
+  background-color: rgba(28,28,26,0.6) !important;
+  color: var(--screen) !important;
+  border: 1px solid rgba(228,224,214,0.15) !important;
+  border-radius: 6px !important;
+  font-family: 'Barlow', sans-serif !important;
+  font-size: 15px !important;
+  padding: 14px 16px !important;
+  height: auto !important;
+  line-height: 1.4 !important;
+  width: 100% !important;
+  transition: border-color 0.2s !important;
+}
+#mlb2-40613311 input[type="email"]:focus {
+  outline: none !important;
+  border-color: rgba(134,172,135,0.6) !important;
+}
+#mlb2-40613311 input[type="email"]::placeholder { color: rgba(228,224,214,0.35) !important; }
+
+#mlb2-40613311 .ml-form-embedPermissions { text-align: left !important; margin-bottom: 14px !important; }
+#mlb2-40613311 .ml-form-embedPermissions p {
+  font-family: 'Barlow', sans-serif !important;
+  font-size: 12px !important;
+  color: rgba(228,224,214,0.5) !important;
+  line-height: 1.5 !important;
+}
+#mlb2-40613311 .ml-form-embedPermissions p a {
+  color: var(--moss-bright) !important;
+  text-decoration: underline !important;
+}
+
+#mlb2-40613311 .ml-form-checkboxRow {
+  margin: 0 0 16px 0 !important;
+  text-align: left !important;
+  float: none !important;
+}
+#mlb2-40613311 .ml-form-checkboxRow label {
+  padding-left: 28px !important;
+  position: relative !important;
+}
+#mlb2-40613311 .ml-form-checkboxRow .label-description p {
+  font-family: 'Barlow', sans-serif !important;
+  font-size: 12px !important;
+  color: rgba(228,224,214,0.55) !important;
+  line-height: 1.5 !important;
+}
+#mlb2-40613311 .ml-form-checkboxRow .label-description p a { color: var(--moss-bright) !important; }
+
+#mlb2-40613311 .ml-form-checkboxRow .label-description::before {
+  background-color: rgba(28,28,26,0.6) !important;
+  border-color: rgba(228,224,214,0.25) !important;
+  border-radius: 3px !important;
+  width: 16px !important; height: 16px !important;
+  top: 2px !important;
+}
+#mlb2-40613311 .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before {
+  background-color: var(--moss-bright) !important;
+  border-color: var(--moss-bright) !important;
+}
+
+#mlb2-40613311 .ml-form-embedSubmit { margin: 16px 0 0 0 !important; float: none !important; }
+#mlb2-40613311 .ml-form-embedSubmit button[type="submit"],
+#mlb2-40613311 .ml-form-embedSubmit button.primary {
+  background-color: var(--moss-bright) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: var(--term) !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  padding: 14px 20px !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  height: auto !important;
+}
+#mlb2-40613311 .ml-form-embedSubmit button[type="submit"]:hover {
+  background-color: rgba(134,172,135,0.85) !important;
+}
+
+#mlb2-40613311 .ml-form-successBody { padding: 0 !important; text-align: center !important; }
+#mlb2-40613311 .ml-form-successContent h4 {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: var(--screen) !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+}
+#mlb2-40613311 .ml-form-successContent p {
+  font-family: 'Barlow', sans-serif !important;
+  font-size: 15px !important;
+  color: rgba(228,224,214,0.6) !important;
+  text-align: center !important;
+  line-height: 1.6 !important;
+}
+
+#mlb2-40613311 .ml-form-recaptcha {
+  margin: 0 auto 16px !important;
+  display: flex !important;
+  justify-content: center !important;
+  float: none !important;
+}
+
+#mlb2-40613311 .ml-form-embedMailerLite-GDPR { display: none !important; }
+
+.alt-section { margin-top: 32px; text-align: center; }
+.alt-section .or {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(228,224,214,0.3);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.alt-section .or::before,
+.alt-section .or::after {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: rgba(228,224,214,0.15);
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+.btn-instagram {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.7);
+  text-decoration: none;
+  padding: 12px 20px;
+  border: 1px solid rgba(228,224,214,0.15);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.btn-instagram:hover {
+  color: var(--screen);
+  border-color: rgba(228,224,214,0.35);
+  background: rgba(228,224,214,0.02);
+}
+.btn-instagram svg { width: 14px; height: 14px; fill: currentColor; }
+
+.page-footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw;
+  border-top: 1px solid rgba(228,224,214,0.05);
+  text-align: center;
+}
+.page-footer .copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: rgba(228,224,214,0.2);
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  main { padding: 100px 20px 60px; }
+  .form-section { padding: 28px 20px; }
+  .hero-title { font-size: 44px; }
+  .hero-subtitle { font-size: 15px; margin-bottom: 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AWLA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<main>
+  <div class="container">
+    <p class="doc-meta">Curso · Próximamente</p>
+
+    <h1 class="hero-title">El curso<br><em>pronto.</em></h1>
+
+    <p class="hero-subtitle">Estamos curando cada lección. Te avisamos cuando esté listo.</p>
+
+    <div class="divider"></div>
+
+    <div class="form-section">
+      <p class="form-label">Lista de espera</p>
+      <h2 class="form-heading">Avísame</h2>
+      <p class="form-helper">Recibirás un correo cuando lancemos el curso on demand.</p>
+
+      <!-- MailerLite Embedded Form -->
+      <div id="mlb2-40613311" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-40613311">
+        <div class="ml-form-align-center">
+          <div class="ml-form-embedWrapper embedForm">
+            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+              <div class="ml-form-embedContent">
+                <h4>Lista de espera</h4>
+                <p>Te avisamos cuando el curso esté listo.</p>
+              </div>
+
+              <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/subscribe" data-code="" method="post" target="_blank">
+                <div class="ml-form-formContent">
+                  <div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                      <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Tu correo" autocomplete="email">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ml-form-embedPermissions">
+                  <div class="ml-form-embedPermissionsContent default privacy-policy">
+                    <p>Al suscribirte aceptas nuestro <a href="/privacidad.html" target="_blank">Aviso de Privacidad</a>.</p>
+                  </div>
+                </div>
+
+                <div class="ml-form-checkboxRow ml-validate-required">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    <div class="label-description">
+                      <p>Acepto recibir comunicaciones de AWLA y haber leído el <a href="/privacidad.html" target="_blank">Aviso de Privacidad</a>.</p>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="ml-form-recaptcha ml-validate-required">
+                  <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                </div>
+
+                <input type="hidden" name="ml-submit" value="1">
+
+                <div class="ml-form-embedSubmit">
+                  <button type="submit" class="primary">Avísame cuando esté listo</button>
+                  <button disabled="disabled" style="display:none;" type="button" class="loading">
+                    <span class="sr-only">Loading...</span>
+                  </button>
+                </div>
+
+                <input type="hidden" name="anticsrf" value="true">
+              </form>
+            </div>
+
+            <div class="ml-form-successBody row-success" style="display:none">
+              <div class="ml-form-successContent">
+                <h4>Te avisaremos</h4>
+                <p>Revisa tu correo para confirmar tu suscripción.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End MailerLite Form -->
+    </div>
+
+    <div class="alt-section">
+      <p class="or">o</p>
+      <a href="https://www.instagram.com/awla.live" target="_blank" rel="noopener" class="btn-instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+        @awla.live
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="page-footer">
+  <span class="copy">© 2026 AWLA® · awla.live</span>
+</footer>
+
+<script>
+  function ml_webform_success_40613311() {
+    var $ = ml_jQuery || jQuery;
+    $('.ml-subscribe-form-40613311 .row-success').show();
+    $('.ml-subscribe-form-40613311 .row-form').hide();
+  }
+</script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+<script>
+  fetch("https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel");
+</script>
+
+</body>
+</html>
