@@ -74,24 +74,47 @@ body::after {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 6vw;
-  background: rgba(28,28,26,0.85);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 14px 6vw;
+  background: rgba(28,28,26,0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid rgba(228,224,214,0.06);
 }
 .nav-logo {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 18px; font-weight: 600;
-  letter-spacing: 5px; text-transform: uppercase;
-  color: var(--screen); text-decoration: none;
+  display: flex; align-items: center;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 22px; width: auto;
+  display: block;
+}
+.nav-r {
+  display: flex; align-items: center; gap: 22px;
+}
+.nav-r::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(228,224,214,0.18);
+  margin-right: 6px;
 }
 .nav-back {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; letter-spacing: 2px;
-  color: rgba(134,172,135,0.85); text-decoration: none;
-  text-transform: uppercase; transition: opacity 0.2s;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2px;
+  color: rgba(228,224,214,0.55); text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
 }
-.nav-back:hover { opacity: 0.6; }
+.nav-back:hover { color: var(--screen); }
+
+@media (max-width: 600px) {
+  nav { padding: 12px 16px; }
+  .nav-logo img { height: 18px; }
+  .nav-r { gap: 14px; }
+  .nav-r::before { display: none; }
+}
 
 main {
   position: relative; z-index: 2;
@@ -339,15 +362,57 @@ main {
 
 .page-footer {
   position: relative; z-index: 2;
-  padding: 40px 6vw;
+  padding: 40px 6vw 32px;
   border-top: 1px solid rgba(228,224,214,0.05);
-  text-align: center;
 }
-.page-footer .copy {
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(228,224,214,0.25);
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0; margin: 0;
+}
+.footer-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: rgba(228,224,214,0.3);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-links a:hover { color: var(--moss-bright); }
+.footer-copy {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 9px; letter-spacing: 2px;
   color: rgba(228,224,214,0.2);
   text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .page-footer { padding: 32px 20px 24px; }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .footer-links { gap: 14px; }
 }
 
 @media (max-width: 600px) {
@@ -356,13 +421,151 @@ main {
   .hero-title { font-size: 44px; }
   .hero-subtitle { font-size: 15px; margin-bottom: 40px; }
 }
+
+/* ── COOKIE BANNER (Consent Mode) ── */
+#ck {
+  position: fixed; bottom: 24px; left: 24px; z-index: 9999;
+  width: calc(100% - 48px); max-width: 420px;
+  background: rgba(26,26,24,0.97);
+  border: 1px solid rgba(61,92,62,0.3);
+  border-radius: 8px;
+  padding: 22px 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateY(calc(100% + 32px)); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+  pointer-events: none;
+}
+#ck.on { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+#ck .ck-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss-bright);
+  margin-bottom: 12px;
+}
+#ck p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: rgba(228,224,214,0.7);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+#ck p a {
+  color: var(--screen);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+#ck p a:hover { color: var(--moss-bright); }
+
+.ck-actions {
+  display: flex; gap: 8px; margin-top: 16px;
+  flex-wrap: wrap; align-items: center;
+}
+.ck-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.ck-btn-primary {
+  background: var(--moss-bright); color: var(--term);
+  flex: 1; min-width: 100px;
+}
+.ck-btn-primary:hover { background: rgba(134,172,135,0.85); }
+
+.ck-btn-ghost {
+  background: transparent;
+  color: rgba(228,224,214,0.7);
+  border: 1px solid rgba(228,224,214,0.15);
+  flex: 1; min-width: 90px;
+}
+.ck-btn-ghost:hover { color: var(--screen); border-color: rgba(228,224,214,0.35); }
+
+.ck-btn-link {
+  background: transparent; color: rgba(228,224,214,0.5);
+  padding: 10px 0; text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.ck-btn-link:hover { color: var(--screen); }
+
+.ck-panel { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(228,224,214,0.08); }
+#ck.expanded .ck-panel { display: block; }
+#ck.expanded .ck-actions-initial { display: none; }
+#ck.expanded .ck-actions-save { display: flex; }
+
+.ck-actions-save { display: none; gap: 8px; margin-top: 16px; }
+
+.ck-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 14px; padding: 12px 0;
+  border-bottom: 1px solid rgba(228,224,214,0.05);
+}
+.ck-row:last-child { border-bottom: none; }
+.ck-row-info { flex: 1; min-width: 0; }
+.ck-row-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--screen);
+  margin-bottom: 2px;
+}
+.ck-row-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 400;
+  color: rgba(228,224,214,0.5);
+  line-height: 1.45;
+}
+
+.ck-toggle {
+  position: relative; width: 34px; height: 18px;
+  flex-shrink: 0;
+}
+.ck-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+.ck-toggle-slider {
+  position: absolute; inset: 0; cursor: pointer;
+  background: rgba(228,224,214,0.15);
+  border-radius: 18px;
+  transition: background 0.2s;
+}
+.ck-toggle-slider::before {
+  content: ''; position: absolute; left: 2px; top: 2px;
+  width: 14px; height: 14px;
+  background: rgba(228,224,214,0.8);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.ck-toggle input:checked + .ck-toggle-slider { background: var(--moss-bright); }
+.ck-toggle input:checked + .ck-toggle-slider::before { transform: translateX(16px); }
+.ck-toggle input:disabled + .ck-toggle-slider { opacity: 0.6; cursor: not-allowed; }
+
+@media (max-width: 600px) {
+  #ck {
+    bottom: 12px; left: 12px; right: 12px;
+    width: auto; max-width: none;
+    padding: 18px 18px;
+  }
+  .ck-btn { font-size: 9px; padding: 11px 14px; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">AWLA</a>
-  <a href="/" class="nav-back">← Volver</a>
+  <a href="/" class="nav-logo" aria-label="AWLA — Inicio">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.png" alt="AWLA">
+  </a>
+  <div class="nav-r">
+    <a href="/" class="nav-back">← Volver al sitio</a>
+  </div>
 </nav>
 
 <main>
@@ -456,9 +659,189 @@ main {
   </div>
 </main>
 
+<!-- COOKIE BANNER (Consent Mode) -->
+<div id="ck" role="dialog" aria-label="Preferencias de cookies" aria-live="polite">
+  <p class="ck-head">Cookies</p>
+  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies.html">Política de cookies</a>.</p>
+
+  <div class="ck-actions ck-actions-initial">
+    <button class="ck-btn ck-btn-link" onclick="ckPersonalize()">Personalizar</button>
+    <button class="ck-btn ck-btn-ghost" onclick="ckReject()">Rechazar</button>
+    <button class="ck-btn ck-btn-primary" onclick="ckAcceptAll()">Aceptar todo</button>
+  </div>
+
+  <div class="ck-panel">
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Esenciales</p>
+        <p class="ck-row-desc">Necesarias para el funcionamiento del sitio.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" checked disabled>
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Analíticas</p>
+        <p class="ck-row-desc">Nos ayudan a entender cómo se usa el sitio.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" id="ck-analytics">
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Marketing</p>
+        <p class="ck-row-desc">Para campañas y publicidad personalizada.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" id="ck-marketing">
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="ck-actions ck-actions-save">
+    <button class="ck-btn ck-btn-primary" onclick="ckSavePrefs()">Guardar mis preferencias</button>
+  </div>
+</div>
+
 <footer class="page-footer">
-  <span class="copy">© 2026 AWLA® · awla.live</span>
+  <div class="footer-inner">
+    <span class="footer-logo">AWLA</span>
+    <ul class="footer-links">
+      <li><a href="/privacidad.html">Aviso de Privacidad</a></li>
+      <li><a href="/terminos.html">Términos de Uso</a></li>
+      <li><a href="/contratacion.html">Términos de Contratación</a></li>
+      <li><a href="/devoluciones.html">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies.html">Política de Cookies</a></li>
+      <li><a href="#" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 AWLA® · awla.live</span>
+  </div>
 </footer>
+
+<script>
+// ── COOKIES (Consent Mode) ────────────────────────
+const CK_KEY = 'awla_ck_v1';
+const CK_POLICY_VERSION = '1.0';
+
+const ckDefaults = {
+  necessary: true,
+  analytics: false,
+  marketing: false,
+  timestamp: null,
+  version: CK_POLICY_VERSION
+};
+
+function ckGetState() {
+  try {
+    const raw = localStorage.getItem(CK_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function ckSaveState(state) {
+  state.timestamp = new Date().toISOString();
+  state.version = CK_POLICY_VERSION;
+  try {
+    localStorage.setItem(CK_KEY, JSON.stringify(state));
+  } catch(e) { /* Storage blocked: silently fail */ }
+  ckApplyConsent(state);
+}
+
+function ckApplyConsent(state) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  gtag('consent', 'update', {
+    'ad_storage':            state.marketing ? 'granted' : 'denied',
+    'ad_user_data':          state.marketing ? 'granted' : 'denied',
+    'ad_personalization':    state.marketing ? 'granted' : 'denied',
+    'analytics_storage':     state.analytics ? 'granted' : 'denied',
+    'functionality_storage': 'granted',
+    'security_storage':      'granted'
+  });
+}
+
+(function ckSetDefaults() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+})();
+
+(function ckBootstrap() {
+  const existing = ckGetState();
+  if (existing) ckApplyConsent(existing);
+})();
+
+window.addEventListener('load',()=>{
+  const ck = document.getElementById('ck');
+  if(!ckGetState()) {
+    setTimeout(()=>ck.classList.add('on'),800);
+  }
+});
+
+function ckAcceptAll() {
+  ckSaveState({ necessary: true, analytics: true, marketing: true });
+  ckHide();
+}
+
+function ckReject() {
+  ckSaveState({ necessary: true, analytics: false, marketing: false });
+  ckHide();
+}
+
+function ckPersonalize() {
+  document.getElementById('ck').classList.add('expanded');
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+}
+
+function ckSavePrefs() {
+  ckSaveState({
+    necessary: true,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  });
+  ckHide();
+}
+
+function ckHide() {
+  const ck = document.getElementById('ck');
+  ck.classList.remove('on');
+  setTimeout(()=>ck.classList.remove('expanded'), 600);
+}
+
+window.ckOpenPreferences = function() {
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+  const ck = document.getElementById('ck');
+  ck.classList.add('on');
+  ck.classList.add('expanded');
+};
+
+window.resetCookies = () => {
+  localStorage.removeItem(CK_KEY);
+  document.getElementById('ck').classList.remove('expanded');
+  document.getElementById('ck').classList.add('on');
+};
+</script>
 
 <script>
   function ml_webform_success_40613311() {
