@@ -888,6 +888,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   .testi-grid { grid-template-columns: 1fr; }
   .serv-compact { grid-template-columns: 1fr; }
   .partners-row { gap: 8px; }
+  /* c3 Narrativa con IA: stack vertically on mobile */
+  .c3-split { grid-template-columns: 1fr !important; gap: 24px !important; padding-top: 18vh !important; }
+  .c3-split .mix-title { font-size: clamp(36px, 9vw, 56px) !important; }
 }
 @media (max-width: 768px) {
   /* Hide Trabajo and Servicios in mobile, keep Contacto + CTA visible */
@@ -1332,22 +1335,26 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     03 / 15
   </div>
 
-  <div class="cc" style="padding-top:14vh;display:flex;flex-direction:column;gap:24px;max-width:1200px">
-    <p class="lbl lbl-term">› Trabajo</p>
-    <h2 class="cond-lg mix-title" id="c3-title">
-      <span class="c" style="color:var(--screen)">Narrativa</span><br><span class="s" style="color:var(--moss);font-size:1em">con IA.</span>
-    </h2>
-    <p style="font-family:'Barlow',sans-serif;font-size:15px;line-height:1.6;color:rgba(228,224,214,0.65);max-width:680px;font-style:italic">
-      Ciudad de México, 1968. Elena, una astronauta mexicana atrapada en el espacio en 1994, envía una transmisión al pasado para advertir a su antiguo maestro: su obsesión por el legado será la razón por la que ella nunca volverá.
-    </p>
-    <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(228,224,214,0.45);text-transform:uppercase">Click para reproducir con sonido</p>
+  <div class="cc c3-split" style="padding-top:14vh;display:grid;grid-template-columns:40fr 60fr;gap:48px;align-items:center;width:100%;max-width:1400px">
+    <!-- LEFT COLUMN: TEXT -->
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <p class="lbl lbl-term">› Trabajo</p>
+      <h2 class="cond-lg mix-title" id="c3-title" style="font-size:clamp(48px,5.5vw,84px);line-height:1.05">
+        <span class="c" style="color:var(--screen)">Narrativa</span><br><span class="s" style="color:var(--moss);font-size:1em">con IA.</span>
+      </h2>
+      <p style="font-family:'Barlow',sans-serif;font-size:14.5px;line-height:1.6;color:rgba(228,224,214,0.65);font-style:italic">
+        Ciudad de México, 1968. Elena, una astronauta mexicana atrapada en el espacio en 1994, envía una transmisión al pasado para advertir a su antiguo maestro: su obsesión por el legado será la razón por la que ella nunca volverá.
+      </p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(228,224,214,0.45);text-transform:uppercase;margin-top:8px">Click para reproducir con sonido</p>
+    </div>
 
-    <div style="margin-top:16px">
-      <div class="vid-wrap" onclick="playVid(this)" style="aspect-ratio:16/9;max-width:100%;width:100%">
+    <!-- RIGHT COLUMN: VIDEO -->
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="vid-wrap" onclick="playVid(this)" style="aspect-ratio:16/9;width:100%">
         <iframe src="https://player.vimeo.com/video/1189229933?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe>
         <div class="play-btn"><span>▶ Reproducir</span></div>
       </div>
-      <div class="vid-cap" style="margin-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase">
+      <div class="vid-cap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase">
         <span class="vid-title" style="color:var(--screen);font-weight:500">La Misión Azteca</span>
         <span class="vid-tools" style="color:rgba(228,224,214,0.45)">Nano Banana · Runway · Seedance · Suno</span>
       </div>
