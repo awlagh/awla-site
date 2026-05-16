@@ -935,8 +935,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   .serv-compact { grid-template-columns: 1fr; }
   .partners-row { gap: 8px; }
   /* c3 Narrativa con IA: stack vertically on mobile */
-  .c3-split { grid-template-columns: 1fr !important; gap: 24px !important; padding-top: 18vh !important; }
+  .c3-split { grid-template-columns: 1fr !important; gap: 24px !important; padding-top: 11vh !important; }
   .c3-split .mix-title { font-size: clamp(36px, 9vw, 56px) !important; }
+
+  /* ── MOBILE TIGHTENING — close vertical gaps in Trabajo cards ── */
+  /* Trabajo cards (c5, c6, c7): reduce top padding so title starts higher */
+  #c5 > .cc,
+  #c6 > .cc,
+  #c7 > .cc { padding-top: calc(70px + 2vh) !important; }
 }
 @media (max-width: 768px) {
   /* Hide Trabajo and Servicios in mobile, keep Contacto + CTA visible */
@@ -1056,7 +1062,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   #c0 > div[style*="top:88px"] { display: none !important; }
   #c0 > div[style*="bottom:8vh"] {
     left: 12px !important; right: 12px !important;
-    bottom: 14px !important;
+    bottom: 18vh !important;
   }
   #hero-title { font-size: clamp(32px, 11vw, 52px) !important; }
   #c0 .btn { font-size: 9px !important; padding: 8px 12px !important; }
