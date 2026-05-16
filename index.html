@@ -651,10 +651,10 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 }
 .gal-cell img {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.4s ease, opacity 0.3s;
+  transition: transform 0.5s ease, opacity 0.3s;
   display: block;
 }
-.gal-cell:hover img { transform: scale(1.04); opacity: 0.85; }
+.gal-cell:hover img { transform: scale(1.06); opacity: 0.6; }
 .gal-cell.gal-ph {
   border: 1px dashed rgba(228,224,214,0.08);
 }
@@ -663,17 +663,63 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   position: absolute; inset: 0;
   background: rgba(28,28,26,0.6);
   pointer-events: none;
+  z-index: 1;
 }
-.gal-cell::after {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(61,92,62,0); transition: background 0.3s;
-  pointer-events: none;
-}
-.gal-cell:hover::after { background: rgba(61,92,62,0.08); }
 
-@media (max-width: 768px) {
-  #gal-grid { grid-template-columns: repeat(3,1fr) !important; height: 60vh !important; }
+/* Overlay with titles */
+.gal-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 16px;
+  background: linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.85) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
 }
+.gal-cell:hover .gal-overlay { opacity: 1; }
+.gal-overlay-style {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2.5px;
+  color: var(--moss-bright, rgba(134,172,135,1));
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.gal-overlay-theme {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--screen);
+  line-height: 1.1;
+}
+
+/* Mobile: titles always visible below grid cell */
+@media (max-width: 768px) {
+  #gal-grid { grid-template-columns: repeat(3,1fr) !important; height: auto !important; max-height: none !important; gap: 4px !important; }
+  .gal-cell {
+    aspect-ratio: 2/3;
+  }
+  .gal-overlay {
+    opacity: 1 !important;
+    padding: 8px 8px;
+    background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,0.92) 100%);
+  }
+  .gal-overlay-style { font-size: 7px; letter-spacing: 1.5px; margin-bottom: 2px; }
+  .gal-overlay-theme { font-size: 11px; }
+  .gal-cell:hover img { transform: none; opacity: 1; }
+
+  /* Lightbox responsive */
+  .lb-container > div { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .lb-container { padding: 40px 20px !important; }
+  #lb-theme { font-size: 26px !important; }
+  #lightbox-img { max-height: 50vh !important; }
+}
+
+/* Lightbox button hover states */
+#lb-copy-btn:hover { color: var(--screen) !important; border-color: rgba(134,172,135,0.6) !important; }
+#lb-copy-btn.copied { color: rgba(134,172,135,1) !important; border-color: rgba(134,172,135,0.6) !important; }
 
 /* ── CONTACTO EMAIL ── */
 .cta-email {
@@ -946,31 +992,31 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   #c1-title { max-width: 90vw !important; }
   
   /* Slide 3 metadata mobile */
-  #c9 [style*="top:88px"] { top: 20px !important; font-size: 8px !important; letter-spacing: 1px !important; }
-  #c9 [style*="left:6vw"] { left: 12px !important; }
-  #c9 [style*="right:6vw"] { right: 12px !important; }
+  #c10 [style*="top:88px"] { top: 20px !important; font-size: 8px !important; letter-spacing: 1px !important; }
+  #c10 [style*="left:6vw"] { left: 12px !important; }
+  #c10 [style*="right:6vw"] { right: 12px !important; }
 
   /* About slide c4 — stack on mobile */
-  #c10 > .cc { padding-top: calc(env(safe-area-inset-top, 0px) + 64px + 4vh) !important; padding-bottom: 8vh !important; }
-  #c10 > .cc > div { grid-template-columns: 1fr !important; gap: 28px !important; }
-  #c10-title { font-size: clamp(28px, 7.5vw, 38px) !important; margin-bottom: 16px !important; }
-  #c10 .field-row { padding: 7px 0 !important; }
-  #c10 .field-key { min-width: 90px !important; font-size: 8px !important; }
-  #c10 .field-val { font-size: 9px !important; }
-  #c10 .body-paper { font-size: 14px !important; line-height: 1.7 !important; }
-  #c10 { height: auto !important; min-height: 100vh; }
+  #c11 > .cc { padding-top: calc(env(safe-area-inset-top, 0px) + 64px + 4vh) !important; padding-bottom: 8vh !important; }
+  #c11 > .cc > div { grid-template-columns: 1fr !important; gap: 28px !important; }
+  #c11-title { font-size: clamp(28px, 7.5vw, 38px) !important; margin-bottom: 16px !important; }
+  #c11 .field-row { padding: 7px 0 !important; }
+  #c11 .field-key { min-width: 90px !important; font-size: 8px !important; }
+  #c11 .field-val { font-size: 9px !important; }
+  #c11 .body-paper { font-size: 14px !important; line-height: 1.7 !important; }
+  #c11 { height: auto !important; min-height: 100vh; }
 
   /* Slide 3 portrait video — stack on mobile */
-  #c9-split { grid-template-columns: 1fr !important; min-height: auto !important; }
-  #c9-split .split-l { padding-right: 0; padding-bottom: 24px; }
-  #c9-split > div:last-child { padding: 0; }
-  #c9-split > div:last-child > div { max-width: 280px !important; margin: 0 auto; }
+  #c10-split { grid-template-columns: 1fr !important; min-height: auto !important; }
+  #c10-split .split-l { padding-right: 0; padding-bottom: 24px; }
+  #c10-split > div:last-child { padding: 0; }
+  #c10-split > div:last-child > div { max-width: 280px !important; margin: 0 auto; }
 
   /* Servicios — stack on mobile, image smaller */
   .serv-img-grid { grid-template-columns: 1fr !important; }
   .serv-img-media { aspect-ratio: 16/9; }
-  #c13, #c14 { height: auto !important; min-height: 100vh; }
-  #c13 .serv-img-body, #c14 .serv-img-body { padding: 20px; }
+  #c14, #c15 { height: auto !important; min-height: 100vh; }
+  #c14 .serv-img-body, #c15 .serv-img-body { padding: 20px; }
 
   /* Slides metadata mobile — respect notch / status bar */
   .card [style*="top:88px"] {
@@ -1024,15 +1070,15 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   #c1 .cc-mid { padding: 0 16px; }
 
   /* ── SLIDE 4 TRABAJO label overlap ── */
-  #c4 .cc, #c5 .cc, #c6 .cc {
+  #c5 .cc, #c6 .cc, #c7 .cc {
     padding-top: calc(env(safe-area-inset-top, 0px) + 64px + 5vh) !important;
   }
 
   /* ── METODOLOGÍA + SERVICIOS — match new label position in mobile ── */
-  #c8 > div[style*="padding-top:calc"] {
+  #c9 > div[style*="padding-top:calc"] {
     padding-top: calc(env(safe-area-inset-top, 0px) + 64px + 4vh) !important;
   }
-  #c13 .cc, #c14 .cc {
+  #c14 .cc, #c15 .cc {
     padding-top: calc(env(safe-area-inset-top, 0px) + 64px + 1.5vh) !important;
     padding-bottom: 6vh !important;
   }
@@ -1041,12 +1087,12 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     padding-top: calc(env(safe-area-inset-top, 0px) + 64px + 4vh) !important;
   }
   /* Hide FLUJO on mobile to reduce clutter */
-  #c4 > div[style*="top:88px"] > div > span:nth-child(3),
   #c5 > div[style*="top:88px"] > div > span:nth-child(3),
   #c6 > div[style*="top:88px"] > div > span:nth-child(3),
-  #c4 > div[style*="top:88px"] > div > span:nth-child(4),
+  #c7 > div[style*="top:88px"] > div > span:nth-child(3),
   #c5 > div[style*="top:88px"] > div > span:nth-child(4),
-  #c6 > div[style*="top:88px"] > div > span:nth-child(4) { display: none !important; }
+  #c6 > div[style*="top:88px"] > div > span:nth-child(4),
+  #c7 > div[style*="top:88px"] > div > span:nth-child(4) { display: none !important; }
 
   /* ── TRABAJO titles ── */
   .cond-lg { font-size: clamp(28px, 9vw, 44px) !important; }
@@ -1057,7 +1103,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   #li { padding: 0 6% !important; }
 
   /* ── METODOLOGÍA ── */
-  #c8-title { font-size: clamp(26px, 8vw, 40px) !important; }
+  #c9-title { font-size: clamp(26px, 8vw, 40px) !important; }
   .met-grid { grid-template-columns: 1fr 1fr !important; height: auto !important; min-height: 0 !important; }
   .met-cell { min-height: 140px !important; }
   .met-cell-title { font-size: 12px !important; }
@@ -1076,39 +1122,39 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   }
 
   /* ── CURSO ── */
-  #c5 .split-50 { grid-template-columns: 1fr !important; height: auto !important; }
-  #c5 .split-r { height: 40vw !important; min-height: 180px; }
+  #c6 .split-50 { grid-template-columns: 1fr !important; height: auto !important; }
+  #c6 .split-r { height: 40vw !important; min-height: 180px; }
 
   /* ── ABOUT (c9) ── */
-  #c6 .cc > div { grid-template-columns: 1fr !important; gap: 24px !important; }
-  #c6 .lbl { display: none !important; } /* hide "sobre awla" — title says it all */
+  #c7 .cc > div { grid-template-columns: 1fr !important; gap: 24px !important; }
+  #c7 .lbl { display: none !important; } /* hide "sobre awla" — title says it all */
 
   /* ── TESTIMONIOS (c10) ── */
   .testi-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
   .testi-cell { padding: 18px !important; }
   .testi-quote { font-size: 13px !important; line-height: 1.6 !important; }
-  #c11 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
+  #c12 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
 
   /* ── FILOSOFÍA (c11) ── */
-  #c12 .cc > div { grid-template-columns: 1fr !important; gap: 20px !important; }
-  #c12 .rule { display: none !important; }
+  #c13 .cc > div { grid-template-columns: 1fr !important; gap: 20px !important; }
+  #c13 .rule { display: none !important; }
   .field-row { gap: 12px !important; }
   .field-val-term { font-size: 12px !important; }
 
   /* ── SERVICIOS ── */
-  #c13 .mix-title, #c14 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
+  #c14 .mix-title, #c15 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
   /* Hide "para equipos y marcas" that overlaps title */
-  #c13 > .cc > div > p[style*="opacity:0.5"],
-  #c14 > .cc > div > p[style*="opacity:0.5"] { display: none !important; }
+  #c14 > .cc > div > p[style*="opacity:0.5"],
+  #c15 > .cc > div > p[style*="opacity:0.5"] { display: none !important; }
   .serv-img-title { font-size: 16px !important; }
   .serv-img-desc { font-size: 12px !important; }
 
   /* ── CONTACTO (c14) ── */
-  #c15 .cc-mid { padding: 0 16px; }
-  #c15-title { font-size: clamp(38px, 12vw, 60px) !important; }
-  #c15 .body { font-size: 13px !important; }
-  #c15 .cta-email { font-size: clamp(16px, 5.5vw, 26px) !important; }
-  #c15 > div[style*="bottom:32px"] { display: none !important; }
+  #c16 .cc-mid { padding: 0 16px; }
+  #c16-title { font-size: clamp(38px, 12vw, 60px) !important; }
+  #c16 .body { font-size: 13px !important; }
+  #c16 .cta-email { font-size: clamp(16px, 5.5vw, 26px) !important; }
+  #c16 > div[style*="bottom:32px"] { display: none !important; }
 
   /* ── GENERAL spacing ── */
   .cc { padding-left: 16px !important; padding-right: 16px !important; }
@@ -1177,9 +1223,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   </a>
   <div class="nav-r">
     <ul class="nav-links">
-      <li><a onclick="gC(3)">Trabajo</a></li>
-      <li><a onclick="gC(13)">Servicios</a></li>
-      <li><a onclick="gC(15)">Contacto</a></li>
+      <li><a onclick="gC(4)">Trabajo</a></li>
+      <li><a onclick="gC(14)">Servicios</a></li>
+      <li><a onclick="gC(16)">Contacto</a></li>
     </ul>
     <a href="/curso.html" class="nav-cta">Ver curso</a>
   </div>
@@ -1218,7 +1264,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — simple marker -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    00 / 15
+    00 / 16
   </div>
 
   <!-- CENTER LEFT — main title -->
@@ -1240,13 +1286,13 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="/curso.html" class="btn btn-moss">Ver el curso</a>
-      <a onclick="gC(3)" class="btn btn-outline-term" style="cursor:pointer">Ver trabajo</a>
+      <a onclick="gC(4)" class="btn btn-outline-term" style="cursor:pointer">Ver trabajo</a>
     </div>
   </div>
 
   <!-- BOTTOM RIGHT — index -->
   <div style="position:absolute;bottom:8vh;right:6vw;z-index:10;text-align:right">
-    <p class="meta" style="color:rgba(228,224,214,0.2);letter-spacing:3px">00 / 15</p>
+    <p class="meta" style="color:rgba(228,224,214,0.2);letter-spacing:3px">00 / 16</p>
   </div>
 </div>
 
@@ -1263,7 +1309,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — simple marker -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    01 / 15
+    01 / 16
   </div>
 
   <div class="cc-mid">
@@ -1286,7 +1332,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    02 / 15
+    02 / 16
   </div>
 
   <div style="width:100%;height:100%;display:flex;flex-direction:column;padding:calc(88px + 3vh) 6vw 4vh">
@@ -1297,32 +1343,170 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
         <h2 class="mix-title" id="c2-title" style="font-size:clamp(28px,3.5vw,44px);line-height:1.05">
           <span class="c" style="color:var(--screen)">Galería de </span><span class="s" style="color:var(--moss);font-size:1em">estilos.</span>
         </h2>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(228,224,214,0.45);text-transform:uppercase;margin-top:8px">Realismo y cinematografía</p>
       </div>
       <p class="meta meta-term" style="opacity:0.5">Click para ampliar</p>
     </div>
-    <!-- Gallery grid — fills remaining space -->
-    <div id="gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
-      <!-- 9 cells -->
-      <div class="gal-cell" onclick="openLightbox(0)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-01.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(1)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-02.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(2)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-03.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(3)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-04.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(4)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-05.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(5)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-06.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(6)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-07.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(7)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-08.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
-      <div class="gal-cell" onclick="openLightbox(8)"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gal-09.jpg" alt="" onerror="this.parentElement.classList.add('gal-ph')"></div>
+    <!-- Gallery 1 grid: 6 cells in 3x2 layout -->
+    <div id="gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
+      <div class="gal-cell" onclick="openLightbox(0)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano.jpg" alt="Retrato fotorrealista de anciano artesano generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">FOTORREALISMO</div>
+          <div class="gal-overlay-theme">Retrato</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(1)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa.jpg" alt="Dirección de fotografía cinematográfica con icebergs generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">CINEMATOGRAFÍA</div>
+          <div class="gal-overlay-theme">Paisaje</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(2)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu.jpg" alt="Arquitectura biofuturista de bambú generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">ARQUITECTURA</div>
+          <div class="gal-overlay-theme">Bio-futurista</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(3)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico.jpg" alt="Editorial de moda con vestido arquitectónico generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">EDITORIAL</div>
+          <div class="gal-overlay-theme">Moda</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(4)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite.jpg" alt="Fotografía de producto comercial wellness generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">PRODUCTO</div>
+          <div class="gal-overlay-theme">Wellness</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(5)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista.jpg" alt="Fotografía gastronómica hiperrealista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">GASTRONOMÍA</div>
+          <div class="gal-overlay-theme">Comida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 3 · GALERÍA 2 — CONCEPTUAL Y EXPERIMENTAL ─────────────────────────── -->
+<div class="card card-term grain-term" id="c3" data-i="3">
+
+  <!-- TOP LEFT -->
+  <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
+      <span style="color:rgba(134,172,135,0.9)">CAP</span><span>02 / Imagen</span>
+    </div>
+  </div>
+
+  <!-- TOP RIGHT -->
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
+    03 / 16
+  </div>
+
+  <div style="width:100%;height:100%;display:flex;flex-direction:column;padding:calc(88px + 3vh) 6vw 4vh">
+    <!-- Title block -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap;gap:12px">
+      <div>
+        <p class="lbl lbl-term">Imagen</p>
+        <h2 class="mix-title" id="c3-title" style="font-size:clamp(28px,3.5vw,44px);line-height:1.05">
+          <span class="c" style="color:var(--screen)">Galería de </span><span class="s" style="color:var(--moss);font-size:1em">exploración.</span>
+        </h2>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(228,224,214,0.45);text-transform:uppercase;margin-top:8px">Conceptual y experimental</p>
+      </div>
+      <p class="meta meta-term" style="opacity:0.5">Click para ampliar</p>
+    </div>
+    <!-- Gallery 2 grid: 6 cells in 3x2 layout -->
+    <div id="gal-grid-2" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
+      <div class="gal-cell" onclick="openLightbox(6)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-lodal.jpg" alt="Branding e identidad visual LODAL generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">BRANDING</div>
+          <div class="gal-overlay-theme">Identidad</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(7)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador.jpg" alt="Consistencia de personaje explorador futurista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">CHARACTER SHEET</div>
+          <div class="gal-overlay-theme">Personaje</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(8)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica.jpg" alt="Materialidad cerámica tecnológica generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">MATERIALIDAD</div>
+          <div class="gal-overlay-theme">Cerámica</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(9)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-criaturas.jpg" alt="Worldbuilding de paisaje con criaturas generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">WORLDBUILDING</div>
+          <div class="gal-overlay-theme">Paisaje</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(10)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl.jpg" alt="Art toy vinyl 3D personaje generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">3D</div>
+          <div class="gal-overlay-theme">Art Toy</div>
+        </div>
+      </div>
+      <div class="gal-cell" onclick="openLightbox(11)">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico.jpg" alt="Retrato experimental anacrónico generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <div class="gal-overlay">
+          <div class="gal-overlay-style">EXPERIMENTAL</div>
+          <div class="gal-overlay-theme">Retrato</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- LIGHTBOX -->
-<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(10,10,10,0.95);z-index:9000;align-items:center;justify-content:center;cursor:pointer" onclick="closeLightbox()">
-  <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;object-fit:contain;display:block">
-  <div style="position:absolute;top:24px;right:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;color:rgba(228,224,214,0.5);text-transform:uppercase">ESC / click para cerrar</div>
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(10,10,10,0.97);z-index:9000;cursor:pointer;overflow-y:auto" onclick="closeLightbox()">
+  <div class="lb-container" onclick="event.stopPropagation()" style="cursor:default;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 6vw">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:48px;max-width:1400px;width:100%;align-items:center">
+      <!-- LEFT: Image -->
+      <div style="display:flex;align-items:center;justify-content:center">
+        <img id="lightbox-img" src="" alt="" style="max-width:100%;max-height:80vh;object-fit:contain;display:block;border-radius:4px">
+      </div>
+      <!-- RIGHT: Metadata -->
+      <div class="lb-meta" style="display:flex;flex-direction:column;gap:24px">
+        <div>
+          <div id="lb-style" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;color:rgba(134,172,135,1);text-transform:uppercase;margin-bottom:8px"></div>
+          <h3 id="lb-theme" style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:600;line-height:1.05;color:var(--screen);margin:0"></h3>
+        </div>
+
+        <div style="height:1px;background:rgba(228,224,214,0.1)"></div>
+
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2.5px;color:rgba(134,172,135,0.85);text-transform:uppercase;margin-bottom:10px">Prompt usado</div>
+          <p id="lb-prompt" style="font-family:'Barlow',sans-serif;font-size:13.5px;line-height:1.65;color:rgba(228,224,214,0.7);font-style:italic;margin:0;white-space:pre-wrap"></p>
+        </div>
+
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2.5px;color:rgba(134,172,135,0.85);text-transform:uppercase;margin-bottom:6px">Herramientas</div>
+          <p id="lb-tools" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;color:rgba(228,224,214,0.6);margin:0"></p>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <button onclick="copyPrompt()" id="lb-copy-btn" style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;background:transparent;color:rgba(228,224,214,0.7);border:1px solid rgba(228,224,214,0.2);padding:10px 16px;border-radius:4px;cursor:pointer;transition:all 0.2s">Copiar prompt</button>
+          <button onclick="closeLightbox()" style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;background:transparent;color:rgba(228,224,214,0.45);border:1px solid rgba(228,224,214,0.1);padding:10px 16px;border-radius:4px;cursor:pointer;transition:all 0.2s">Cerrar (ESC)</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- ─── 6 · TRABAJO A ─────────────────────────── -->
-<div class="card card-term grain-term" id="c3" data-i="3" style="justify-content:flex-start;padding-top:0">
+<div class="card card-term grain-term" id="c4" data-i="4" style="justify-content:flex-start;padding-top:0">
   <!-- TOP LEFT -->
   <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
     <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
@@ -1332,14 +1516,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   </div>
   <!-- TOP RIGHT -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(228,224,214,0.5)">
-    03 / 15
+    04 / 16
   </div>
 
   <div class="cc c3-split" style="padding-top:14vh;display:grid;grid-template-columns:40fr 60fr;gap:48px;align-items:center;width:100%;max-width:1400px">
     <!-- LEFT COLUMN: TEXT -->
     <div style="display:flex;flex-direction:column;gap:20px">
       <p class="lbl lbl-term">› Trabajo</p>
-      <h2 class="cond-lg mix-title" id="c3-title" style="font-size:clamp(48px,5.5vw,84px);line-height:1.05">
+      <h2 class="cond-lg mix-title" id="c4-title" style="font-size:clamp(48px,5.5vw,84px);line-height:1.05">
         <span class="c" style="color:var(--screen)">Narrativa</span><br><span class="s" style="color:var(--moss);font-size:1em">con IA.</span>
       </h2>
       <p style="font-family:'Barlow',sans-serif;font-size:14.5px;line-height:1.6;color:rgba(228,224,214,0.65);font-style:italic">
@@ -1362,7 +1546,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   </div>
 </div>
 
-<div class="card card-term grain-term" id="c4" data-i="4" style="justify-content:flex-start;padding-top:0">
+<div class="card card-term grain-term" id="c5" data-i="5" style="justify-content:flex-start;padding-top:0">
   <!-- TOP LEFT -->
   <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
     <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
@@ -1371,13 +1555,13 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </div>
   </div>
   <!-- TOP RIGHT -->
-  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">04 / 15</div>
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">05 / 16</div>
 
   <div class="cc" style="width:100%;padding-top:calc(88px + 4.5vh);display:flex;flex-direction:column;height:100%;padding-bottom:4vh">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:12px">
       <div>
         <p class="lbl lbl-term">Trabajo</p>
-        <h2 class="cond-lg mix-title" id="c4-title">
+        <h2 class="cond-lg mix-title" id="c5-title">
           <span class="c" style="color:var(--screen)">IA dirigida.</span><br><span class="s" style="color:var(--moss);font-size:1em">No generada.</span>
         </h2>
       </div>
@@ -1397,7 +1581,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 7 · TRABAJO B ─────────────────────────── -->
-<div class="card card-term2 grain-term" id="c5" data-i="5" style="justify-content:flex-start;padding-top:0">
+<div class="card card-term2 grain-term" id="c6" data-i="6" style="justify-content:flex-start;padding-top:0">
   <!-- TOP LEFT -->
   <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
     <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
@@ -1406,13 +1590,13 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </div>
   </div>
   <!-- TOP RIGHT -->
-  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">05 / 15</div>
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">06 / 16</div>
 
   <div class="cc" style="width:100%;padding-top:calc(88px + 4.5vh);display:flex;flex-direction:column;height:100%;padding-bottom:4vh">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:12px">
       <div>
         <p class="lbl lbl-term">Trabajo</p>
-        <h2 class="cond-lg mix-title" id="c5-title">
+        <h2 class="cond-lg mix-title" id="c6-title">
           <span class="c" style="color:var(--screen)">Criterio</span><br><span class="s" style="color:var(--moss);font-size:1em">y selección.</span>
         </h2>
       </div>
@@ -1432,7 +1616,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 8 · TRABAJO C ─────────────────────────── -->
-<div class="card card-term grain-term" id="c6" data-i="6" style="justify-content:flex-start;padding-top:0">
+<div class="card card-term grain-term" id="c7" data-i="7" style="justify-content:flex-start;padding-top:0">
   <!-- TOP LEFT -->
   <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
     <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;color:rgba(228,224,214,0.9)">
@@ -1441,13 +1625,13 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </div>
   </div>
   <!-- TOP RIGHT -->
-  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">06 / 15</div>
+  <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">07 / 16</div>
 
   <div class="cc" style="width:100%;padding-top:calc(88px + 4.5vh);display:flex;flex-direction:column;height:100%;padding-bottom:4vh">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:12px">
       <div>
         <p class="lbl lbl-term">Trabajo</p>
-        <h2 class="cond-lg mix-title" id="c6-title">
+        <h2 class="cond-lg mix-title" id="c7-title">
           <span class="c" style="color:var(--screen)">Animación</span><br><span class="s" style="color:var(--moss);font-size:1em">desde la palabra.</span>
         </h2>
       </div>
@@ -1466,10 +1650,10 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   </div>
 </div>
 
-<div class="card card-term grain-term" id="c7" data-i="7" style="position:relative">
+<div class="card card-term grain-term" id="c8" data-i="8" style="position:relative">
   <!-- TOP RIGHT — slide counter -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    07 / 15
+    08 / 16
   </div>
   
   <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
@@ -1480,7 +1664,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 5 · METODOLOGÍA ────────────────────────── -->
-<div class="card card-term grain-term" id="c8" data-i="8">
+<div class="card card-term grain-term" id="c9" data-i="9">
 
   <!-- TOP LEFT -->
   <div style="position:absolute;top:88px;left:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;line-height:1.9">
@@ -1490,14 +1674,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   </div>
   <!-- TOP RIGHT -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    08 / 15
+    09 / 16
   </div>
 
   <div style="width:100%;height:100%;display:flex;flex-direction:column;padding:0 6vw;padding-top:calc(88px + 3vh)">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px">
       <div>
         <p class="lbl lbl-term">Metodología</p>
-        <h2 class="mix-title" id="c8-title" style="font-size:clamp(28px,4vw,54px)">
+        <h2 class="mix-title" id="c9-title" style="font-size:clamp(28px,4vw,54px)">
           <span class="c" style="color:var(--screen)">Cómo trabaja<br></span><span class="s" style="color:var(--moss);font-size:1em">AWLA.</span>
         </h2>
       </div>
@@ -1569,7 +1753,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 3 · QUÉ ES + SOCIAL PROOF (papel) ────── -->
-<div class="card card-paper grain-paper" id="c9" data-i="9">
+<div class="card card-paper grain-paper" id="c10" data-i="10">
   <div class="p5b" id="p5nodes"></div>
 
   <!-- TOP LEFT — ficha simplified -->
@@ -1581,14 +1765,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — simple marker -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:var(--moss)">
-    09 / 15
+    10 / 16
   </div>
 
   <div class="cc" style="width:100%;padding-top:6vh">
-    <div id="c9-split" style="display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:72vh">
+    <div id="c10-split" style="display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:72vh">
       <div class="split-l">
         <p class="lbl lbl-paper">El curso</p>
-        <h2 class="serif-lg" id="c9-serif" style="color:var(--ink);margin-bottom:20px">Una escuela de <em class="glitch-target">criterio visual</em> que usa la IA como medio, no como fin.</h2>
+        <h2 class="serif-lg" id="c10-serif" style="color:var(--ink);margin-bottom:20px">Una escuela de <em class="glitch-target">criterio visual</em> que usa la IA como medio, no como fin.</h2>
         <p class="body body-paper" style="max-width:440px;margin-bottom:24px">Aprende a pensar visualmente, dirigir con palabras y construir un lenguaje propio con IA. Para fotógrafos, cineastas, diseñadores y creadores visuales.</p>
         <div class="partners-row">
           <span class="partner-tag">Creative Partner · Runway</span>
@@ -1610,7 +1794,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 4 · ABOUT (papel) ─────────────────────── -->
-<div class="card card-paper grain-paper" id="c10" data-i="10">
+<div class="card card-paper grain-paper" id="c11" data-i="11">
   <div class="p5b" id="p5about"></div>
 
   <!-- TOP LEFT -->
@@ -1622,7 +1806,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:var(--moss)">
-    10 / 15
+    11 / 16
   </div>
 
   <div class="cc" style="width:100%;padding-top:6vh">
@@ -1631,7 +1815,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       <!-- LEFT — ficha institucional -->
       <div>
         <p class="lbl lbl-paper">Sobre AWLA</p>
-        <h2 class="mix-title" id="c10-title" style="font-size:clamp(32px,4.5vw,58px);margin-bottom:28px">
+        <h2 class="mix-title" id="c11-title" style="font-size:clamp(32px,4.5vw,58px);margin-bottom:28px">
           <span class="c" style="color:var(--ink)">Laboratorio de<br></span><span class="s" style="color:var(--moss);font-size:0.95em">IA creativa.</span>
         </h2>
         <div style="margin-top:8px">
@@ -1674,7 +1858,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 9 · TESTIMONIOS (papel) ──────────────── -->
-<div class="card card-paper grain-paper" id="c11" data-i="11">
+<div class="card card-paper grain-paper" id="c12" data-i="12">
   <div class="p5b" id="p5nodes2"></div>
 
   <!-- TOP LEFT — ficha simplified -->
@@ -1686,12 +1870,12 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — counter -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:var(--moss)">
-    11 / 15
+    12 / 16
   </div>
 
   <div class="cc" style="width:100%;padding-top:6vh">
     <p class="lbl lbl-paper">Opiniones sobre AWLA</p>
-    <h2 class="mix-title" id="c11-title" style="font-size:clamp(30px,4.5vw,58px)">
+    <h2 class="mix-title" id="c12-title" style="font-size:clamp(30px,4.5vw,58px)">
       <span class="c" style="color:var(--ink)">Lo que dicen<br></span><span class="s" style="color:var(--moss);font-size:1em">los estudiantes.</span>
     </h2>
     <div class="testi-grid" id="testi-grid">
@@ -1701,7 +1885,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 10 · FILOSOFÍA (terminal) ─────────────── -->
-<div class="card card-term2 grain-term" id="c12" data-i="12">
+<div class="card card-term2 grain-term" id="c13" data-i="13">
   <div class="p5b" id="p5sym1"></div>
 
   <!-- TOP LEFT — ficha simplified -->
@@ -1713,14 +1897,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — counter -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    12 / 15
+    13 / 16
   </div>
 
   <div class="cc" style="width:100%;padding-top:6vh">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:6vw;align-items:start">
       <div>
         <p class="lbl lbl-term">Postura</p>
-        <h2 class="cond-lg mix-title" id="c12-title" style="color:var(--screen);text-transform:uppercase;margin-bottom:0">
+        <h2 class="cond-lg mix-title" id="c13-title" style="color:var(--screen);text-transform:uppercase;margin-bottom:0">
           <span class="c" style="color:var(--screen)">Lo que<br></span><span class="s" style="color:var(--moss);font-size:1em">creemos.</span>
         </h2>
         <div class="rule rule-term" style="margin-top:20px;margin-bottom:20px"></div>
@@ -1757,7 +1941,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 11 · SERVICIOS A (terminal) — Workshops + Consultoría ── -->
-<div class="card card-term grain-term" id="c13" data-i="13" style="justify-content:flex-start;padding-top:0;">
+<div class="card card-term grain-term" id="c14" data-i="14" style="justify-content:flex-start;padding-top:0;">
   <div class="p5b" id="p5grid1"></div>
 
   <!-- TOP LEFT -->
@@ -1769,14 +1953,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — counter -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    13 / 15
+    14 / 16
   </div>
 
   <div class="cc" style="width:100%;padding-top:calc(88px + 3.5vh);padding-bottom:2vh">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:0">
       <div>
         <p class="lbl lbl-term">Más allá del curso</p>
-        <h2 class="mix-title" id="c13-title" style="font-size:clamp(26px,3.8vw,50px)">
+        <h2 class="mix-title" id="c14-title" style="font-size:clamp(26px,3.8vw,50px)">
           <span class="c" style="color:var(--screen)">AWLA también<br></span><span class="s" style="color:var(--moss);font-size:1em">trabaja contigo.</span>
         </h2>
       </div>
@@ -1820,7 +2004,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 12 · SERVICIOS B (terminal) — Dirección + Producción ── -->
-<div class="card card-term2 grain-term" id="c14" data-i="14" style="justify-content:flex-start;padding-top:0;">
+<div class="card card-term2 grain-term" id="c15" data-i="15" style="justify-content:flex-start;padding-top:0;">
   <div class="p5b" id="p5grid2"></div>
 
   <!-- TOP LEFT -->
@@ -1832,14 +2016,14 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — counter -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    14 / 15
+    15 / 16
   </div>
 
   <div class="cc" style="width:100%;padding-top:calc(88px + 3.5vh);padding-bottom:4vh">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px">
       <div>
         <p class="lbl lbl-term">Producción</p>
-        <h2 class="mix-title" id="c14-title" style="font-size:clamp(26px,3.8vw,50px)">
+        <h2 class="mix-title" id="c15-title" style="font-size:clamp(26px,3.8vw,50px)">
           <span class="c" style="color:var(--screen)">Del concepto</span><br><span class="s" style="color:var(--moss);font-size:1em">a la pieza.</span>
         </h2>
       </div>
@@ -1882,7 +2066,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 </div>
 
 <!-- ─── 13 · CONTACTO (terminal) ─────────────── -->
-<div class="card card-term grain-term" id="c15" data-i="15">
+<div class="card card-term grain-term" id="c16" data-i="16">
   <div class="p5b" id="p5contact"></div>
 
   <!-- TOP LEFT — simplified -->
@@ -1894,12 +2078,12 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
   <!-- TOP RIGHT — counter -->
   <div style="position:absolute;top:88px;right:6vw;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:right;color:rgba(134,172,135,0.85)">
-    15 / 15
+    16 / 16
   </div>
 
   <div class="cc-mid">
     <p class="lbl lbl-term" style="justify-content:center">Contacto</p>
-    <h2 class="mix-title" id="c15-title" style="max-width:700px;font-size:clamp(48px,7vw,96px);margin-bottom:24px">
+    <h2 class="mix-title" id="c16-title" style="max-width:700px;font-size:clamp(48px,7vw,96px);margin-bottom:24px">
       <span class="s" style="color:var(--screen);font-style:italic">Hablemos.</span>
     </h2>
     <p class="body body-term" style="max-width:540px;margin:0 auto 8px;line-height:1.7">¿Buscas consultoría o un workshop? ¿O prefieres dejar la dirección y producción en nuestras manos?</p>
@@ -2235,23 +2419,160 @@ new p5(p=>{
 
 
 // ── LIGHTBOX ─────────────────────────────────
-const galImgs = [
-  'gal-01','gal-02','gal-03',
-  'gal-04','gal-05','gal-06',
-  'gal-07','gal-08','gal-09'
-].map(n => `https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/${n}.jpg`);
+const galleryData = [
+  // ── GALERÍA 1: REALISMO Y CINEMATOGRAFÍA ──
+  {
+    file: 'retrato-fotorrealista-anciano-artesano.jpg',
+    style: 'FOTORREALISMO',
+    theme: 'Retrato',
+    prompt: 'A hyper-realistic, candid portrait of an elderly artisan in their workshop. Shot on a vintage camera using a Minolta Rokkor 50mm lens. Medium format photography, Kodak Portra 400 film stock. Visible natural skin texture, asymmetrical facial features, gentle wrinkles, and natural film grain. Natural window light illuminating the dust motes in the air, deep depth of field, photorealistic, raw, undocumented aesthetic.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: 'direccion-fotografia-icebergs-canoa.jpg',
+    style: 'CINEMATOGRAFÍA',
+    theme: 'Paisaje',
+    prompt: 'photography, point of view, human eye, eye-level, blue hour a small canoe in a misty, grey-blue eternal sea, surrounded by giant whales and ice mountains, misty atmosphere, cool and calm mood, sense of loneliness and isolation soft, diffused light, grey and blue color palette, misty texture, saturated, contrasted.',
+    tools: 'Gemini Image 3 Pro'
+  },
+  {
+    file: 'arquitectura-biofuturista-bambu.jpg',
+    style: 'ARQUITECTURA',
+    theme: 'Bio-futurista',
+    prompt: 'Exterior view of a bio-futuristic brutalist architectural structure shaped like an organic spiral, built entirely from rammed earth, bamboo, and reclaimed wood. The building is integrated seamlessly into a lush forest ecosystem. Large curved windows reveal a warm, minimalist interior designed for sound meditation. Golden hour lighting, highly detailed, architectural photography, sustainable bioconstruction concept.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: 'editorial-moda-vestido-arquitectonico.jpg',
+    style: 'EDITORIAL',
+    theme: 'Moda',
+    prompt: 'editorial fashion photography, full-body shot, medium format film look — monochromatic sage green, model in architectural dress, standing in brutalist concrete archway ruins in the jungle, a baby albino giraffe by her side, dramatic side lighting from the right, hyperrealistic textures, sexy, elegant but modern mood, saturated and contrasted colors with warm shadows.',
+    tools: 'GPT Image 2'
+  },
+  {
+    file: 'producto-comercial-wellness-aceite.jpg',
+    style: 'PRODUCTO',
+    theme: 'Wellness',
+    prompt: 'A premium luxury wellness campaign still, a woman in her early 30s in a minimal warm-toned bathroom, gently applying body oil to her upper arm / collarbone as part of a self-care ritual. Natural diffused morning light enters softly through a nearby window, warm skin tones, soft shadows, realistic skin texture, subtle gloss on the skin, quiet intimacy, sensual but not sexual, elegant and minimal composition. The product bottle is clearly visible on a stone or marble sink. Soft linen towel, refined premium wellness atmosphere, tasteful, elevated, cinematic, realistic.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: 'gastronomia-hamburguesa-hiperrealista.jpg',
+    style: 'GASTRONOMÍA',
+    theme: 'Comida',
+    prompt: 'Close-up food photography, softbox lighting with subtle gradient a freshly made hamburger with vibrant, contrasting colors, placed on a cool, stylized background with geometric patterns, subtle condensation and sheen effects to enhance freshness, minimalist design elements to add depth and visual interest high color saturation, contrasting accents, and a clean, modern aesthetic.',
+    tools: 'Midjourney + Profile'
+  },
+  // ── GALERÍA 2: CONCEPTUAL Y EXPERIMENTAL ──
+  {
+    file: 'branding-identidad-visual-lodal.jpg',
+    style: 'BRANDING',
+    theme: 'Identidad',
+    prompt: 'Construcción iterativa con ChatGPT + Photoshop Generativo. Proceso de diálogo entre dirección creativa y herramientas de IA generativa para construir un sistema de identidad visual completo, desde el logotipo hasta aplicaciones en contexto.',
+    tools: 'GPT Image + Photoshop'
+  },
+  {
+    file: 'consistencia-personaje-explorador.jpg',
+    style: 'CHARACTER SHEET',
+    theme: 'Personaje',
+    prompt: 'Character reference sheet of a futuristic explorer. Wearing a rugged, tactical jacket with subtle cybernetic enhancements. Multiple angles on a clean white background: front view, side profile, and back view. Consistent facial features, consistent clothing details. Concept art style, flat studio lighting, highly detailed, model sheet.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: 'materialidad-ceramica-tecnologica.jpg',
+    style: 'MATERIALIDAD',
+    theme: 'Cerámica',
+    prompt: 'technological ceramic, blend of traditional japanese ceramic with microchips inserted, futuristic classical art.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: 'worldbuilding-paisaje-criaturas.jpg',
+    style: 'WORLDBUILDING',
+    theme: 'Paisaje',
+    prompt: 'foto, plano general, ángulo de ojos un paisaje terrestre inimaginable con criaturas pacíficas y únicas, con texturas y detalles que parezcan reales, iluminado con una luz suave y natural, con colores cálidos y saturados, y una sensación de profundidad y realismo suave, natural, con texturas y detalles que parezcan reales, sin texto legible.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: '3d-art-toy-personaje-vinyl.jpg',
+    style: '3D',
+    theme: 'Art Toy',
+    prompt: 'A stylized 3D designer vinyl Art Toy of a "creative android" character. Glossy plastic and matte vinyl textures. The character is holding a tiny, glowing lightbulb. Rendered in Octane, soft studio lighting with a subtle rim light, cute and highly detailed, trending on ArtStation, blind box toy aesthetic, pastel background.',
+    tools: 'Midjourney + Profile'
+  },
+  {
+    file: 'experimental-retrato-anacronico.jpg',
+    style: 'EXPERIMENTAL',
+    theme: 'Retrato',
+    prompt: 'oil painting mixed with vintage photography, medium shot, eye-level, symmetrical composition a 1920s family portrait with four members and a dog, set in a brutalist monochrome environment, surrounded by anachronistic technology elements: computers, phones, a robot server, WiFi devices soft dramatic lighting reminiscent of traditional vintage portraits, saturated color palette, painterly texture, retro-futurist anachronism.',
+    tools: 'Midjourney + Profile'
+  }
+];
+
+const CDN_BASE = 'https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/';
+let currentLbIndex = 0;
 
 function openLightbox(i) {
+  currentLbIndex = i;
+  const item = galleryData[i];
+  if (!item) return;
+
   const lb = document.getElementById('lightbox');
-  document.getElementById('lightbox-img').src = galImgs[i];
-  lb.style.display = 'flex';
+  document.getElementById('lightbox-img').src = CDN_BASE + item.file;
+  document.getElementById('lightbox-img').alt = `${item.style} — ${item.theme}`;
+  document.getElementById('lb-style').textContent = item.style;
+  document.getElementById('lb-theme').textContent = item.theme;
+  document.getElementById('lb-prompt').textContent = item.prompt;
+  document.getElementById('lb-tools').textContent = item.tools;
+
+  // Reset copy button state
+  const copyBtn = document.getElementById('lb-copy-btn');
+  copyBtn.textContent = 'Copiar prompt';
+  copyBtn.classList.remove('copied');
+
+  lb.style.display = 'block';
+  document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', lbKeyHandler);
 }
+
 function closeLightbox() {
   document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
   document.removeEventListener('keydown', lbKeyHandler);
 }
-function lbKeyHandler(e) { if (e.key === 'Escape') closeLightbox(); }
+
+function lbKeyHandler(e) {
+  if (e.key === 'Escape') closeLightbox();
+}
+
+function copyPrompt() {
+  const prompt = galleryData[currentLbIndex].prompt;
+  const btn = document.getElementById('lb-copy-btn');
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copiar prompt';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = prompt;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copiar prompt';
+        btn.classList.remove('copied');
+      }, 2000);
+    } catch(e) {}
+    document.body.removeChild(ta);
+  });
+}
 
 // ── P5 ABOUT (nodos papel) ────────────────────
 mkNodes('p5about', [242,239,232], [61,92,62,18], [61,92,62,8]);
@@ -2503,7 +2824,7 @@ function runLoop(){
 // ── LOOP CARD OBSERVER ─────────────────────────
 new IntersectionObserver(e=>{
   e.forEach(x=>{if(x.isIntersecting){lClear();runLoop();}else lClear();});
-},{threshold:0.5}).observe(document.getElementById('c7'));
+},{threshold:0.5}).observe(document.getElementById('c8'));
 </script>
 </body>
 </html>
