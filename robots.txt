@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Disallow legacy experiments
+Disallow: /seed-builder.html
+Disallow: /imagen.html
+Disallow: /functions/
+
+# Sitemap
 Sitemap: https://www.awla.live/sitemap.xml
