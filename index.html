@@ -43,7 +43,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://vumbnail.com" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://player.vimeo.com">
 
 <!-- Structured data: Schema.org graph -->
 <script type="application/ld+json">
@@ -205,10 +207,19 @@
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap');
+<!-- Performance: preload LCP element (hero video) -->
+<link rel="preload" as="video" type="video/mp4" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg.mp4">
 
+<!-- Performance: preload critical fonts -->
+<link rel="preload" href="https://fonts.gstatic.com/s/barlowcondensed/v12/HTxwL3I-JCGChYJ8VI-L6OO_au7B6xnK-Q.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Google Fonts loaded with non-blocking pattern -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap"></noscript>
+
+<!-- p5.js deferred to not block rendering -->
+<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js" defer></script>
+<style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -762,6 +773,8 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 .vid-wrap { position: relative; overflow: hidden; cursor:pointer; border-radius: 8px; }
 .vid-wrap::before { content:''; display:block; padding-top:56.25%; }
 .vid-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; pointer-events:none; }
+.vid-wrap .vid-poster { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 0.3s, opacity 0.2s; }
+.vid-wrap:hover .vid-poster { transform: scale(1.02); opacity: 0.9; }
 .vid-wrap .play-btn {
   position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
   z-index:5; opacity:0.45; transition:opacity 0.25s, background 0.25s;
@@ -1004,9 +1017,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform 0.6s ease;
-  filter: brightness(0.7);
+  filter: brightness(0.4);
 }
-.met-cell:hover img { transform: scale(1.04); filter: brightness(0.85); }
+.met-cell:hover img { transform: scale(1.04); filter: brightness(0.55); }
 .met-cell-ph {
   position: absolute; inset: 0;
   background: rgba(28,28,26,0.92);
@@ -1501,42 +1514,42 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <!-- Gallery 1 grid: 6 cells in 3x2 layout -->
     <div id="gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
       <div class="gal-cell" onclick="openLightbox(0)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano.jpg" alt="Retrato fotorrealista de anciano artesano generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano.webp" alt="Retrato fotorrealista de anciano artesano generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">FOTORREALISMO</div>
           <div class="gal-overlay-theme">Retrato</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(1)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa.jpg" alt="Dirección de fotografía cinematográfica con icebergs generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa.webp" alt="Dirección de fotografía cinematográfica con icebergs generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">CINEMATOGRAFÍA</div>
           <div class="gal-overlay-theme">Paisaje</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(2)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu.jpg" alt="Arquitectura biofuturista de bambú generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu.webp" alt="Arquitectura biofuturista de bambú generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">ARQUITECTURA</div>
           <div class="gal-overlay-theme">Bio-futurista</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(3)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico.jpg" alt="Editorial de moda con vestido arquitectónico generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico.webp" alt="Editorial de moda con vestido arquitectónico generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">EDITORIAL</div>
           <div class="gal-overlay-theme">Moda</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(4)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite.jpg" alt="Fotografía de producto comercial wellness generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite.webp" alt="Fotografía de producto comercial wellness generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">PRODUCTO</div>
           <div class="gal-overlay-theme">Wellness</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(5)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista.jpg" alt="Fotografía gastronómica hiperrealista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista.webp" alt="Fotografía gastronómica hiperrealista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">GASTRONOMÍA</div>
           <div class="gal-overlay-theme">Comida</div>
@@ -1576,42 +1589,42 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <!-- Gallery 2 grid: 6 cells in 3x2 layout -->
     <div id="gal-grid-2" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
       <div class="gal-cell" onclick="openLightbox(6)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-lodal.jpg" alt="Branding e identidad visual LODAL generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-generada-ia.webp" alt="Branding e identidad visual generada con IA · AWLA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">BRANDING</div>
           <div class="gal-overlay-theme">Identidad</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(7)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador.jpg" alt="Consistencia de personaje explorador futurista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador.webp" alt="Consistencia de personaje explorador futurista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">CHARACTER SHEET</div>
           <div class="gal-overlay-theme">Personaje</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(8)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica.jpg" alt="Materialidad cerámica tecnológica generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica.webp" alt="Materialidad cerámica tecnológica generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">MATERIALIDAD</div>
           <div class="gal-overlay-theme">Cerámica</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(9)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-criaturas.jpg" alt="Worldbuilding de paisaje con criaturas generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-fantastico-ia.webp" alt="Worldbuilding de paisaje fantástico generado con IA · AWLA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">WORLDBUILDING</div>
           <div class="gal-overlay-theme">Paisaje</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(10)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl.jpg" alt="Art toy vinyl 3D personaje generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl.webp" alt="Art toy vinyl 3D personaje generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">3D</div>
           <div class="gal-overlay-theme">Art Toy</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(11)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico.jpg" alt="Retrato experimental anacrónico generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico.webp" alt="Retrato experimental anacrónico generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">EXPERIMENTAL</div>
           <div class="gal-overlay-theme">Retrato</div>
@@ -1686,7 +1699,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <!-- RIGHT COLUMN: VIDEO -->
     <div style="display:flex;flex-direction:column;gap:14px">
       <div class="vid-wrap" onclick="playVid(this)" style="aspect-ratio:16/9;width:100%">
-        <iframe src="https://player.vimeo.com/video/1189229933?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe>
+        <img src="https://vumbnail.com/1189229933.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1189229933" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;">
         <div class="play-btn"><span>▶ Reproducir</span></div>
       </div>
       <div class="vid-cap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase">
@@ -1720,11 +1733,11 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </div>
     <div class="vid-grid vid-grid-2" style="flex:1;align-content:start">
       <div>
-        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1177858852?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-wrap" onclick="playVid(this)"><img src="https://vumbnail.com/1177858852.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1177858852" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;"><div class="play-btn"><span>▶ Reproducir</span></div></div>
         <div class="vid-cap"><span class="vid-title">CINCH</span><span class="vid-tools">Midjourney · Runway · Veo · Suno</span></div>
       </div>
       <div>
-        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1178044394?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-wrap" onclick="playVid(this)"><img src="https://vumbnail.com/1178044394.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1178044394" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;"><div class="play-btn"><span>▶ Reproducir</span></div></div>
         <div class="vid-cap"><span class="vid-title">The Mind Behind AI</span><span class="vid-tools">Midjourney · Luma · Veo · Suno</span></div>
       </div>
     </div>
@@ -1755,11 +1768,11 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </div>
     <div class="vid-grid vid-grid-2" style="flex:1;align-content:start">
       <div>
-        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1183595375?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-wrap" onclick="playVid(this)"><img src="https://vumbnail.com/1183595375.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1183595375" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;"><div class="play-btn"><span>▶ Reproducir</span></div></div>
         <div class="vid-cap"><span class="vid-title">Scroll</span><span class="vid-tools">Midjourney · Runway · Kling · Suno</span></div>
       </div>
       <div>
-        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1179419590?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-wrap" onclick="playVid(this)"><img src="https://vumbnail.com/1179419590.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1179419590" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;"><div class="play-btn"><span>▶ Reproducir</span></div></div>
         <div class="vid-cap"><span class="vid-title">Form</span><span class="vid-tools">Midjourney · Runway · Kling · Suno</span></div>
       </div>
     </div>
@@ -1790,11 +1803,11 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </div>
     <div class="vid-grid vid-grid-2" style="flex:1;align-content:start">
       <div>
-        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1154526156?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-wrap" onclick="playVid(this)"><img src="https://vumbnail.com/1154526156.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1154526156" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;"><div class="play-btn"><span>▶ Reproducir</span></div></div>
         <div class="vid-cap"><span class="vid-title">Robo-Tito</span><span class="vid-tools">Midjourney · Runway · Veo · Suno</span></div>
       </div>
       <div>
-        <div class="vid-wrap" onclick="playVid(this)"><iframe src="https://player.vimeo.com/video/1139882830?badge=0&autopause=0&background=1&app_id=58479" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen></iframe><div class="play-btn"><span>▶ Reproducir</span></div></div>
+        <div class="vid-wrap" onclick="playVid(this)"><img src="https://vumbnail.com/1139882830.jpg" alt="Video poster" loading="lazy" decoding="async" data-vid-id="1139882830" class="vid-poster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;"><div class="play-btn"><span>▶ Reproducir</span></div></div>
         <div class="vid-cap"><span class="vid-title">Cleo & Tata</span><span class="vid-tools">Midjourney · Runway · Veo · Suno</span></div>
       </div>
     </div>
@@ -1807,7 +1820,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     08 / 16
   </div>
   
-  <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  <video autoplay loop muted playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
     <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/loop-bg.mp4" type="video/mp4">
   </video>
   <div style="position:absolute;inset:0;background:rgba(10,10,10,0.52);z-index:1;"></div>
@@ -1840,7 +1853,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <div class="met-grid">
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-01.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-01-intencion-criterio.webp" alt="Método AWLA paso 1: intención y criterio en dirección con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">01</p>
@@ -1850,7 +1863,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-02.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-02-escena-narrativa.webp" alt="Método AWLA paso 2: escena y narrativa antes del prompt" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">02</p>
@@ -1860,7 +1873,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-03.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-03-palabra-direccion-arte.webp" alt="Método AWLA paso 3: el prompt como dirección de arte" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">03</p>
@@ -1870,7 +1883,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-04.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-04-mirada-lenguaje-visual.webp" alt="Método AWLA paso 4: mirada y lenguaje visual con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">04</p>
@@ -1880,7 +1893,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-05.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-05-estilo-direccion-visual.webp" alt="Método AWLA paso 5: estilo y dirección visual propia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">05</p>
@@ -1890,7 +1903,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/met-06.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-06-pipeline-audiovisual.webp" alt="Método AWLA paso 6: pipeline audiovisual con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">06</p>
@@ -1931,7 +1944,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
       <div style="display:flex;align-items:center;justify-content:center;padding:0 2vw;">
         <div style="position:relative;width:100%;max-width:420px;aspect-ratio:3/4;overflow:hidden;border-radius:10px;background:rgba(26,26,24,0.06);">
-          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <video autoplay loop muted playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
             <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/about-image.mp4" type="video/mp4">
           </video>
           <!-- fallback grain texture if video fails -->
@@ -2121,9 +2134,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <div class="serv-img-grid">
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-01-workshops.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-workshops-ia-equipos-creativos.webp" alt="Workshops de IA generativa para equipos creativos · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-01-workshops.jpg</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-workshops-ia-equipos-creativos.webp</span>
           </div>
         </div>
         <div class="serv-img-body">
@@ -2137,9 +2150,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-02-consultoria.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-consultoria-direccion-creativa-ia.webp" alt="Consultoría en dirección creativa con IA · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-02-consultoria.jpg</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-consultoria-direccion-creativa-ia.webp</span>
           </div>
         </div>
         <div class="serv-img-body">
@@ -2183,9 +2196,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <div class="serv-img-grid">
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-03-direccion.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-direccion-creativa-ia-marcas.webp" alt="Dirección creativa con IA para marcas y agencias · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-03-direccion.jpg</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-direccion-creativa-ia-marcas.webp</span>
           </div>
         </div>
         <div class="serv-img-body">
@@ -2199,9 +2212,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/serv-04-produccion.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-produccion-audiovisual-ia-campanas.webp" alt="Producción audiovisual con IA para campañas · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">serv-04-produccion.jpg</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-produccion-audiovisual-ia-campanas.webp</span>
           </div>
         </div>
         <div class="serv-img-body">
@@ -2441,14 +2454,26 @@ function uiUpdate(i){
   nav.className = (navOn?'':'nav-off ') + (light?'light':'');
 }
 
-// ── VIDEO PLAY ON CLICK ────────────────────────
+// ── VIDEO PLAY ON CLICK (Facade pattern - creates iframe on demand) ────────────────────────
 function playVid(wrap) {
-  const iframe = wrap.querySelector('iframe');
-  const src = iframe.src;
-  // Switch from background=1 to normal player (controls + autoplay + sound)
-  iframe.src = src
-    .replace('background=1', 'background=0')
-    + (src.includes('autoplay=1') ? '' : '&autoplay=1');
+  // If iframe already exists (user clicked already), do nothing
+  if (wrap.querySelector('iframe')) return;
+
+  const poster = wrap.querySelector('.vid-poster');
+  if (!poster) return;
+
+  const vidId = poster.dataset.vidId;
+  if (!vidId) return;
+
+  // Create the Vimeo iframe with autoplay and sound enabled
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://player.vimeo.com/video/${vidId}?badge=0&autopause=0&autoplay=1&app_id=58479`;
+  iframe.setAttribute('allow', 'autoplay;fullscreen;picture-in-picture');
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+
+  // Replace poster with iframe
+  poster.replaceWith(iframe);
   wrap.classList.add('playing');
 }
 
@@ -2573,42 +2598,42 @@ new p5(p=>{
 const galleryData = [
   // ── GALERÍA 1: REALISMO Y CINEMATOGRAFÍA ──
   {
-    file: 'retrato-fotorrealista-anciano-artesano.jpg',
+    file: 'retrato-fotorrealista-anciano-artesano.webp',
     style: 'FOTORREALISMO',
     theme: 'Retrato',
     prompt: 'A hyper-realistic, candid portrait of an elderly artisan in their workshop. Shot on a vintage camera using a Minolta Rokkor 50mm lens. Medium format photography, Kodak Portra 400 film stock. Visible natural skin texture, asymmetrical facial features, gentle wrinkles, and natural film grain. Natural window light illuminating the dust motes in the air, deep depth of field, photorealistic, raw, undocumented aesthetic.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: 'direccion-fotografia-icebergs-canoa.jpg',
+    file: 'direccion-fotografia-icebergs-canoa.webp',
     style: 'CINEMATOGRAFÍA',
     theme: 'Paisaje',
     prompt: 'photography, point of view, human eye, eye-level, blue hour a small canoe in a misty, grey-blue eternal sea, surrounded by giant whales and ice mountains, misty atmosphere, cool and calm mood, sense of loneliness and isolation soft, diffused light, grey and blue color palette, misty texture, saturated, contrasted.',
     tools: 'Gemini Image 3 Pro'
   },
   {
-    file: 'arquitectura-biofuturista-bambu.jpg',
+    file: 'arquitectura-biofuturista-bambu.webp',
     style: 'ARQUITECTURA',
     theme: 'Bio-futurista',
     prompt: 'Exterior view of a bio-futuristic brutalist architectural structure shaped like an organic spiral, built entirely from rammed earth, bamboo, and reclaimed wood. The building is integrated seamlessly into a lush forest ecosystem. Large curved windows reveal a warm, minimalist interior designed for sound meditation. Golden hour lighting, highly detailed, architectural photography, sustainable bioconstruction concept.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: 'editorial-moda-vestido-arquitectonico.jpg',
+    file: 'editorial-moda-vestido-arquitectonico.webp',
     style: 'EDITORIAL',
     theme: 'Moda',
     prompt: 'editorial fashion photography, full-body shot, medium format film look — monochromatic sage green, model in architectural dress, standing in brutalist concrete archway ruins in the jungle, a baby albino giraffe by her side, dramatic side lighting from the right, hyperrealistic textures, sexy, elegant but modern mood, saturated and contrasted colors with warm shadows.',
     tools: 'GPT Image 2'
   },
   {
-    file: 'producto-comercial-wellness-aceite.jpg',
+    file: 'producto-comercial-wellness-aceite.webp',
     style: 'PRODUCTO',
     theme: 'Wellness',
     prompt: 'A premium luxury wellness campaign still, a woman in her early 30s in a minimal warm-toned bathroom, gently applying body oil to her upper arm / collarbone as part of a self-care ritual. Natural diffused morning light enters softly through a nearby window, warm skin tones, soft shadows, realistic skin texture, subtle gloss on the skin, quiet intimacy, sensual but not sexual, elegant and minimal composition. The product bottle is clearly visible on a stone or marble sink. Soft linen towel, refined premium wellness atmosphere, tasteful, elevated, cinematic, realistic.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: 'gastronomia-hamburguesa-hiperrealista.jpg',
+    file: 'gastronomia-hamburguesa-hiperrealista.webp',
     style: 'GASTRONOMÍA',
     theme: 'Comida',
     prompt: 'Close-up food photography, softbox lighting with subtle gradient a freshly made hamburger with vibrant, contrasting colors, placed on a cool, stylized background with geometric patterns, subtle condensation and sheen effects to enhance freshness, minimalist design elements to add depth and visual interest high color saturation, contrasting accents, and a clean, modern aesthetic.',
@@ -2616,42 +2641,42 @@ const galleryData = [
   },
   // ── GALERÍA 2: CONCEPTUAL Y EXPERIMENTAL ──
   {
-    file: 'branding-identidad-visual-lodal.jpg',
+    file: 'branding-identidad-visual-generada-ia.webp',
     style: 'BRANDING',
     theme: 'Identidad',
     prompt: 'Construcción iterativa con ChatGPT + Photoshop Generativo. Proceso de diálogo entre dirección creativa y herramientas de IA generativa para construir un sistema de identidad visual completo, desde el logotipo hasta aplicaciones en contexto.',
     tools: 'GPT Image + Photoshop'
   },
   {
-    file: 'consistencia-personaje-explorador.jpg',
+    file: 'consistencia-personaje-explorador.webp',
     style: 'CHARACTER SHEET',
     theme: 'Personaje',
     prompt: 'Character reference sheet of a futuristic explorer. Wearing a rugged, tactical jacket with subtle cybernetic enhancements. Multiple angles on a clean white background: front view, side profile, and back view. Consistent facial features, consistent clothing details. Concept art style, flat studio lighting, highly detailed, model sheet.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: 'materialidad-ceramica-tecnologica.jpg',
+    file: 'materialidad-ceramica-tecnologica.webp',
     style: 'MATERIALIDAD',
     theme: 'Cerámica',
     prompt: 'technological ceramic, blend of traditional japanese ceramic with microchips inserted, futuristic classical art.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: 'worldbuilding-paisaje-criaturas.jpg',
+    file: 'worldbuilding-paisaje-fantastico-ia.webp',
     style: 'WORLDBUILDING',
     theme: 'Paisaje',
     prompt: 'foto, plano general, ángulo de ojos un paisaje terrestre inimaginable con criaturas pacíficas y únicas, con texturas y detalles que parezcan reales, iluminado con una luz suave y natural, con colores cálidos y saturados, y una sensación de profundidad y realismo suave, natural, con texturas y detalles que parezcan reales, sin texto legible.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: '3d-art-toy-personaje-vinyl.jpg',
+    file: '3d-art-toy-personaje-vinyl.webp',
     style: '3D',
     theme: 'Art Toy',
     prompt: 'A stylized 3D designer vinyl Art Toy of a "creative android" character. Glossy plastic and matte vinyl textures. The character is holding a tiny, glowing lightbulb. Rendered in Octane, soft studio lighting with a subtle rim light, cute and highly detailed, trending on ArtStation, blind box toy aesthetic, pastel background.',
     tools: 'Midjourney + Profile'
   },
   {
-    file: 'experimental-retrato-anacronico.jpg',
+    file: 'experimental-retrato-anacronico.webp',
     style: 'EXPERIMENTAL',
     theme: 'Retrato',
     prompt: 'oil painting mixed with vintage photography, medium shot, eye-level, symmetrical composition a 1920s family portrait with four members and a dog, set in a brutalist monochrome environment, surrounded by anachronistic technology elements: computers, phones, a robot server, WiFi devices soft dramatic lighting reminiscent of traditional vintage portraits, saturated color palette, painterly texture, retro-futurist anachronism.',
