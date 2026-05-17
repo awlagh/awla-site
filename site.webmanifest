@@ -1,27 +1,25 @@
 {
-  "name": "AWLA",
+  "name": "AWLA · Dirección creativa con IA",
   "short_name": "AWLA",
-  "description": "Escuela de dirección creativa con IA",
+  "description": "Cursos, consultoría y producción de dirección creativa con IA generativa.",
+  "lang": "es-MX",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f2efe8",
   "theme_color": "#1a1a18",
   "icons": [
     {
-      "src": "/favicon.png",
-      "sizes": "32x32",
-      "type": "image/png"
+      "src": "/favicon.svg?v=2",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/apple-touch-icon.png?v=2",
       "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
