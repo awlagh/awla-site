@@ -1,10 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#f2efe8"/>
-  <text x="16" y="25"
-        font-family="'Barlow Condensed', 'Arial Narrow', sans-serif"
-        font-size="28"
-        font-weight="700"
-        fill="#3d5c3e"
-        text-anchor="middle"
-        letter-spacing="-1">A</text>
+<svg width="601" height="564" viewBox="0 0 601 564" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M158 385H98L0 563H236V512H92.7081L158 385Z" fill="#3A3A36"/>
+<path d="M140 299H205L301 121L397 299H463L301 0L140 299Z" fill="#3A3A36"/>
+<path d="M366 512V563.107H601L508.5 385H446L511 512H366Z" fill="#3A3A36"/>
 </svg>
