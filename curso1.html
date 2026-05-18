@@ -259,54 +259,87 @@ a { color: inherit; }
 .skip-link:focus { top: 8px; }
 
 /* ════════════════════════════════════════════════
-   NAV
+   NAV (heredado de awla.live · patrón index)
    ════════════════════════════════════════════════ */
 nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 38px;
-  background: rgba(242,239,232,.78);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 6vw;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  background: rgba(28,28,26,0.55);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid var(--rule-soft);
+  border-bottom: 1px solid rgba(228,224,214,0.06);
 }
-.nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-.nav-logo img { height: 22px; width: auto; }
+
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img {
+  height: 22px; width: auto;
+  display: block;
+  transition: opacity 0.3s;
+}
+.nav-logo .logo-light { display: none; }
+.nav-logo .logo-dark { display: block; }
+
 .nav-r { display: flex; align-items: center; gap: 22px; }
-.nav-back {
-  font: 500 12px var(--mono);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  text-decoration: none;
-  transition: color .2s;
+.nav-r::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(228,224,214,0.18);
+  margin-right: 6px;
+  transition: background 0.3s;
 }
-.nav-back:hover { color: var(--moss); }
+
+.nav-links {
+  display: flex; gap: 22px; list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: 2px;
+  color: rgba(228,224,214,0.55); text-decoration: none;
+  text-transform: uppercase; transition: color 0.2s; cursor: pointer;
+}
+.nav-links a:hover { color: var(--screen); }
+
 .nav-cta {
-  font: 500 12px var(--mono);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--paper);
-  background: var(--moss);
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 2px;
-  transition: background .2s, transform .2s;
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--moss-bright); text-decoration: none;
+  border: 1px solid rgba(134,172,135,0.5); padding: 7px 16px;
+  transition: all 0.2s;
 }
-.nav-cta:hover { background: #2d4a2e; transform: translateY(-1px); }
+.nav-cta:hover { background: rgba(134,172,135,0.12); border-color: var(--moss-bright); color: var(--screen); }
+
+/* Light mode (cuando se hace scroll a secciones en paper) */
+nav.light {
+  background: rgba(242,239,232,0.7);
+  border-bottom-color: rgba(26,26,24,0.06);
+}
+nav.light .nav-logo .logo-dark { display: none; }
+nav.light .nav-logo .logo-light { display: block; }
+nav.light .nav-r::before { background: rgba(26,26,24,0.15); }
+nav.light .nav-links a { color: rgba(26,26,24,0.45); }
+nav.light .nav-links a:hover { color: var(--ink); }
+nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
+nav.light .nav-cta:hover { background: rgba(61,92,62,0.12); border-color: var(--moss); color: var(--moss); }
 
 @media (max-width: 640px) {
-  nav { padding: 14px 20px; }
+  nav { padding: 12px 20px; }
+  .nav-r { gap: 14px; }
+  .nav-r::before { display: none; }
   .nav-logo img { height: 18px; }
-  .nav-back { display: none; }
-  .nav-cta { padding: 8px 12px; font-size: 11px; }
+  .nav-links { gap: 16px; }
+  .nav-links li:nth-child(1) { display: none; }
+  .nav-cta { padding: 6px 12px; }
 }
 
 /* ════════════════════════════════════════════════
    LAYOUT
    ════════════════════════════════════════════════ */
-main { padding-top: 60px; }
+main { padding-top: 50px; }
 section {
   padding: 110px 38px;
   position: relative;
@@ -1457,40 +1490,64 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 /* ════════════════════════════════════════════════
-   FOOTER
+   FOOTER (mismo patrón que awla.live · index)
    ════════════════════════════════════════════════ */
 .page-footer {
-  background: var(--ink);
-  color: var(--screen);
-  padding: 56px 38px 40px;
+  background: var(--term);
+  padding: 0 6vw 32px;
+  position: relative;
+  overflow: hidden;
 }
 .footer-inner {
-  max-width: 1240px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 32px; flex-wrap: wrap;
+  border-top: 1px solid rgba(228,224,214,0.07);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  position: relative;
+  z-index: 10;
+  max-width: none;
+  margin: 0;
 }
 .footer-logo { display: flex; align-items: center; }
-.footer-logo img { height: 16px; width: auto; opacity: .45; transition: opacity .2s; }
-.footer-logo:hover img { opacity: .7; }
-.footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 24px; }
-.footer-links a {
-  font: 400 12px var(--mono);
-  letter-spacing: .04em;
-  color: rgba(228,224,214,.65);
-  text-decoration: none;
-  transition: color .2s;
+.footer-logo img {
+  height: 16px;
+  width: auto;
+  opacity: 0.45;
+  transition: opacity 0.2s;
 }
-.footer-links a:hover { color: var(--moss-bright); }
+.footer-logo:hover img { opacity: 0.7; }
+.footer-links {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: rgba(228,224,214,0.65);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--moss); }
+.footer-links a.current { color: var(--moss); }
 .footer-copy {
-  font: 400 12px var(--mono);
-  letter-spacing: .04em;
-  color: rgba(228,224,214,.5);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: rgba(228,224,214,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
-  .page-footer { padding: 40px 24px 32px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .footer-links { gap: 14px; }
+  .page-footer { padding: 0 20px 24px; }
+  .footer-inner { gap: 16px; }
 }
 
 /* ════════════════════════════════════════════════
@@ -1585,14 +1642,19 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 <a class="skip-link" href="#main">Saltar al contenido</a>
 
 <!-- ════════════════════════════════════════════════
-     NAV
+     NAV (mismo patrón que awla.live)
      ════════════════════════════════════════════════ -->
-<nav>
+<nav id="nav">
   <a href="/" class="nav-logo" aria-label="AWLA — Inicio">
-    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
+    <img class="logo-dark" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA" width="450" height="100">
+    <img class="logo-light" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
   </a>
   <div class="nav-r">
-    <a href="/" class="nav-back">← Volver al sitio</a>
+    <ul class="nav-links">
+      <li><a href="/#c4">Trabajo</a></li>
+      <li><a href="/#c14">Servicios</a></li>
+      <li><a href="/#c16">Contacto</a></li>
+    </ul>
     <a href="#pago" class="nav-cta">Aparta tu lugar</a>
   </div>
 </nav>
@@ -2445,13 +2507,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </div>
 
 <!-- ════════════════════════════════════════════════
-     FOOTER
+     FOOTER (mismo patrón que awla.live)
      ════════════════════════════════════════════════ -->
-<footer class="page-footer">
+<div id="footer" class="page-footer">
   <div class="footer-inner">
-    <a href="/" class="footer-logo" aria-label="AWLA · Inicio">
-      <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA" width="200" height="44">
-    </a>
+    <div class="footer-logo">
+      <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA" width="450" height="100">
+    </div>
     <ul class="footer-links">
       <li><a href="/privacidad.html">Aviso de Privacidad</a></li>
       <li><a href="/terminos.html">Términos de Uso</a></li>
@@ -2462,7 +2524,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     </ul>
     <span class="footer-copy">© 2026 AWLA® · awla.live</span>
   </div>
-</footer>
+</div>
 
 <!-- ════════════════════════════════════════════════
      SCRIPTS
@@ -2599,6 +2661,34 @@ window.resetCookies = () => {
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
 <script>
   fetch("https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel");
+</script>
+
+<!-- Nav theme toggle (dark sobre hero, light sobre paper) -->
+<script>
+(function navTheme(){
+  const nav = document.getElementById('nav');
+  const hero = document.querySelector('.hero');
+  const pay  = document.querySelector('.s-pay');
+  if (!nav || !hero) return;
+
+  // El nav arranca dark (sobre hero). Cambia a light cuando el hero deja de cubrir el viewport,
+  // y vuelve a dark sobre la sección .s-pay (fondo --term).
+  function checkTheme() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const navHeight = nav.offsetHeight;
+    let inDark = heroBottom > navHeight; // sobre el hero
+    if (pay) {
+      const payRect = pay.getBoundingClientRect();
+      if (payRect.top < navHeight && payRect.bottom > navHeight) {
+        inDark = true; // sobre la sección oscura de pago
+      }
+    }
+    nav.classList.toggle('light', !inDark);
+  }
+  checkTheme();
+  window.addEventListener('scroll', checkTheme, { passive: true });
+  window.addEventListener('resize', checkTheme);
+})();
 </script>
 
 </body>
