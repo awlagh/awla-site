@@ -207,7 +207,9 @@
 </script>
 
 <!-- Performance: preload LCP element (hero video) -->
-<link rel="preload" as="video" type="video/mp4" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-v2.mp4">
+<!-- Performance: preload LCP element (hero video) - serves different file by viewport -->
+<link rel="preload" as="video" type="video/mp4" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-mobile-v2.mp4" media="(max-width: 768px)">
+<link rel="preload" as="video" type="video/mp4" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-v2.mp4" media="(min-width: 769px)">
 
 <!-- Performance: preload critical fonts -->
 <link rel="preload" href="https://fonts.gstatic.com/s/barlowcondensed/v12/HTxwL3I-JCGChYJ8VI-L6OO_au7B6xnK-Q.woff2" as="font" type="font/woff2" crossorigin>
@@ -1387,9 +1389,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   </a>
   <div class="nav-r">
     <ul class="nav-links">
-      <li><a onclick="gC(4)">Trabajo</a></li>
-      <li><a onclick="gC(14)">Servicios</a></li>
-      <li><a onclick="gC(16)">Contacto</a></li>
+      <li><a href="#c4" onclick="gC(4);return false;">Trabajo</a></li>
+      <li><a href="#c14" onclick="gC(14);return false;">Servicios</a></li>
+      <li><a href="#c16" onclick="gC(16);return false;">Contacto</a></li>
     </ul>
     <a href="/curso.html" class="nav-cta">Ver curso</a>
   </div>
@@ -1411,6 +1413,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 <div class="card card-term grain-term" id="c0" data-i="0">
   <div class="vbg">
     <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.6;">
+      <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-mobile-v2.mp4" type="video/mp4" media="(max-width: 768px)">
       <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-v2.mp4" type="video/mp4">
     </video>
     <!-- graduated overlay: light top-left, darker bottom -->
@@ -1450,7 +1453,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="/curso.html" class="btn btn-moss">Ver el curso</a>
-      <a onclick="gC(4)" class="btn btn-outline-term" style="cursor:pointer">Ver trabajo</a>
+      <a href="#c4" onclick="gC(4);return false;" class="btn btn-outline-term" style="cursor:pointer">Ver trabajo</a>
     </div>
   </div>
 
@@ -1514,42 +1517,42 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <!-- Gallery 1 grid: 6 cells in 3x2 layout -->
     <div id="gal-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
       <div class="gal-cell" onclick="openLightbox(0)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano.webp" alt="Retrato fotorrealista de anciano artesano generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/retrato-fotorrealista-anciano-artesano.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Retrato fotorrealista de anciano artesano generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">FOTORREALISMO</div>
           <div class="gal-overlay-theme">Retrato</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(1)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa.webp" alt="Dirección de fotografía cinematográfica con icebergs generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/direccion-fotografia-icebergs-canoa.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Dirección de fotografía cinematográfica con icebergs generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">CINEMATOGRAFÍA</div>
           <div class="gal-overlay-theme">Paisaje</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(2)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu.webp" alt="Arquitectura biofuturista de bambú generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/arquitectura-biofuturista-bambu.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Arquitectura biofuturista de bambú generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">ARQUITECTURA</div>
           <div class="gal-overlay-theme">Bio-futurista</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(3)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico.webp" alt="Editorial de moda con vestido arquitectónico generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/editorial-moda-vestido-arquitectonico.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Editorial de moda con vestido arquitectónico generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">EDITORIAL</div>
           <div class="gal-overlay-theme">Moda</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(4)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite.webp" alt="Fotografía de producto comercial wellness generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/producto-comercial-wellness-aceite.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Fotografía de producto comercial wellness generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">PRODUCTO</div>
           <div class="gal-overlay-theme">Wellness</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(5)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista.webp" alt="Fotografía gastronómica hiperrealista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gastronomia-hamburguesa-hiperrealista.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Fotografía gastronómica hiperrealista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">GASTRONOMÍA</div>
           <div class="gal-overlay-theme">Comida</div>
@@ -1589,42 +1592,42 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <!-- Gallery 2 grid: 6 cells in 3x2 layout -->
     <div id="gal-grid-2" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px;width:100%;flex:1;align-content:start;max-height:72vh">
       <div class="gal-cell" onclick="openLightbox(6)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-generada-ia.webp" alt="Branding e identidad visual generada con IA · AWLA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-generada-ia.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-generada-ia-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/branding-identidad-visual-generada-ia.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Branding e identidad visual generada con IA · AWLA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">BRANDING</div>
           <div class="gal-overlay-theme">Identidad</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(7)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador.webp" alt="Consistencia de personaje explorador futurista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consistencia-personaje-explorador.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Consistencia de personaje explorador futurista generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">CHARACTER SHEET</div>
           <div class="gal-overlay-theme">Personaje</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(8)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica.webp" alt="Materialidad cerámica tecnológica generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/materialidad-ceramica-tecnologica.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Materialidad cerámica tecnológica generada con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">MATERIALIDAD</div>
           <div class="gal-overlay-theme">Cerámica</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(9)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-fantastico-ia.webp" alt="Worldbuilding de paisaje fantástico generado con IA · AWLA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-fantastico-ia.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-fantastico-ia-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/worldbuilding-paisaje-fantastico-ia.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Worldbuilding de paisaje fantástico generado con IA · AWLA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">WORLDBUILDING</div>
           <div class="gal-overlay-theme">Paisaje</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(10)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl.webp" alt="Art toy vinyl 3D personaje generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/3d-art-toy-personaje-vinyl.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Art toy vinyl 3D personaje generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">3D</div>
           <div class="gal-overlay-theme">Art Toy</div>
         </div>
       </div>
       <div class="gal-cell" onclick="openLightbox(11)">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico.webp" alt="Retrato experimental anacrónico generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/experimental-retrato-anacronico.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Retrato experimental anacrónico generado con IA" loading="lazy" onerror="this.parentElement.classList.add('gal-ph')">
         <div class="gal-overlay">
           <div class="gal-overlay-style">EXPERIMENTAL</div>
           <div class="gal-overlay-theme">Retrato</div>
@@ -1853,7 +1856,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <div class="met-grid">
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-01-intencion-criterio.webp" alt="Método AWLA paso 1: intención y criterio en dirección con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-01-intencion-criterio.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-01-intencion-criterio-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-01-intencion-criterio.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Método AWLA paso 1: intención y criterio en dirección con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">01</p>
@@ -1863,7 +1866,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-02-escena-narrativa.webp" alt="Método AWLA paso 2: escena y narrativa antes del prompt" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-02-escena-narrativa.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-02-escena-narrativa-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-02-escena-narrativa.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Método AWLA paso 2: escena y narrativa antes del prompt" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">02</p>
@@ -1873,7 +1876,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-03-palabra-direccion-arte.webp" alt="Método AWLA paso 3: el prompt como dirección de arte" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-03-palabra-direccion-arte.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-03-palabra-direccion-arte-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-03-palabra-direccion-arte.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Método AWLA paso 3: el prompt como dirección de arte" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">03</p>
@@ -1883,7 +1886,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-04-mirada-lenguaje-visual.webp" alt="Método AWLA paso 4: mirada y lenguaje visual con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-04-mirada-lenguaje-visual.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-04-mirada-lenguaje-visual-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-04-mirada-lenguaje-visual.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Método AWLA paso 4: mirada y lenguaje visual con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">04</p>
@@ -1893,7 +1896,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-05-estilo-direccion-visual.webp" alt="Método AWLA paso 5: estilo y dirección visual propia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-05-estilo-direccion-visual.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-05-estilo-direccion-visual-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-05-estilo-direccion-visual.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Método AWLA paso 5: estilo y dirección visual propia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">05</p>
@@ -1903,7 +1906,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
 
       <div class="met-cell">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-06-pipeline-audiovisual.webp" alt="Método AWLA paso 6: pipeline audiovisual con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-06-pipeline-audiovisual.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-06-pipeline-audiovisual-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/metodo-06-pipeline-audiovisual.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Método AWLA paso 6: pipeline audiovisual con IA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="met-cell-ph" style="display:none"></div>
         <div class="met-cell-body">
           <p class="met-cell-num">06</p>
@@ -2134,7 +2137,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <div class="serv-img-grid">
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-workshops-ia-equipos-creativos.webp" alt="Workshops de IA generativa para equipos creativos · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-workshops-ia-equipos-creativos.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-workshops-ia-equipos-creativos-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-workshops-ia-equipos-creativos.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Workshops de IA generativa para equipos creativos · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
             <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-workshops-ia-equipos-creativos.webp</span>
           </div>
@@ -2150,7 +2153,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-consultoria-direccion-creativa-ia.webp" alt="Consultoría en dirección creativa con IA · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-consultoria-direccion-creativa-ia.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-consultoria-direccion-creativa-ia-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-consultoria-direccion-creativa-ia.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Consultoría en dirección creativa con IA · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
             <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-consultoria-direccion-creativa-ia.webp</span>
           </div>
@@ -2196,7 +2199,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     <div class="serv-img-grid">
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-direccion-creativa-ia-marcas.webp" alt="Dirección creativa con IA para marcas y agencias · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-direccion-creativa-ia-marcas.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-direccion-creativa-ia-marcas-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-direccion-creativa-ia-marcas.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Dirección creativa con IA para marcas y agencias · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
             <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-direccion-creativa-ia-marcas.webp</span>
           </div>
@@ -2212,7 +2215,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
       <div class="serv-img-cell">
         <div class="serv-img-media">
-          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-produccion-audiovisual-ia-campanas.webp" alt="Producción audiovisual con IA para campañas · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-produccion-audiovisual-ia-campanas.webp" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-produccion-audiovisual-ia-campanas-mobile.webp 360w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/servicio-produccion-audiovisual-ia-campanas.webp 800w" sizes="(max-width: 600px) 360px, 800px" alt="Producción audiovisual con IA para campañas · AWLA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-ph-term" style="display:none">
             <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(228,224,214,0.2);text-transform:uppercase">servicio-produccion-audiovisual-ia-campanas.webp</span>
           </div>
