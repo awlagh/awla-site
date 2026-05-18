@@ -217,7 +217,8 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap"></noscript>
 
 <!-- p5.js (needed for hero, loop, about, method sketches - must load synchronously) -->
-<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+<!-- p5.js deferred to not block rendering. Sketches initialize on window load. -->
+<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js" defer></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -894,7 +895,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 14px; position: relative; z-index: 10;
 }
-.footer-logo img { height: 16px; opacity: 0.45; transition: opacity 0.2s; }
+.footer-logo img { height: 16px; width: auto; opacity: 0.45; transition: opacity 0.2s; }
 .footer-logo:hover img { opacity: 0.7; }
 .footer-links { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
 .footer-links a { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(228,224,214,0.65); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
@@ -1381,8 +1382,8 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo" onclick="gC(0);return false;" aria-label="AWLA — Inicio">
-    <img class="logo-dark" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA">
-    <img class="logo-light" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA">
+    <img class="logo-dark" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA" width="450" height="100">
+    <img class="logo-light" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
   </a>
   <div class="nav-r">
     <ul class="nav-links">
@@ -2275,7 +2276,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 <div id="footer">
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA">
+      <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA" width="450" height="100">
     </div>
     <ul class="footer-links">
       <li><a href="/privacidad.html">Aviso de Privacidad</a></li>
@@ -2490,39 +2491,13 @@ cards.forEach((c,i)=>{ if(i>0) c.classList.add('pre-enter'); });
 cards.forEach(c=>io.observe(c));
 
 // ── P5 SKETCHES ───────────────────────────────────
-
-// 1. código cayendo — sin eco
-new p5(p=>{
-  const fr=["def awla():","    pass","class IA:","    self.human = True",
-    "if intención == True:","    dirigir()","criterio > volumen",
-    "prompt = intención + contexto","for idea in ideas:","    awla.entrenar(idea)",
-    "def decidir(opciones):","    return mejor(opciones)","# No herramientas",
-    "output = modelo.generar(prompt)","imagen = dirigir(prompt)","criterio = humano",
-    "awla.train()","class Dirección:","    intent = True","return criterio"];
-  let s=[];
-  p.setup=()=>{
-    const el=document.getElementById('p5code');
-    p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5code');
-    p.textFont('Courier New');p.textSize(14);
-    for(let i=0;i<22;i++) s.push({t:p.random(fr),x:p.random(p.width),y:p.random(p.height),sp:p.random(0.12,0.35),a:p.random(85,145)});
-  };
-  p.draw=()=>{
-    p.background(28,28,26);
-    s.forEach(c=>{
-      p.fill(110,140,110,c.a);p.noStroke();p.text(c.t,c.x,c.y);
-      c.y+=c.sp;
-      if(c.y>p.height+18){c.y=-18;c.t=p.random(fr);c.x=p.random(p.width);c.a=p.random(80,140);}
-    });
-  };
-  p.windowResized=()=>{const el=document.getElementById('p5code');p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
-},'p5code');
-
-// 2. nodos papel
+// Function definitions (no p5 dependency until called)
 function mkNodes(id, bg, dotC, lineC) {
   new p5(p=>{
     let n=[];
     p.setup=()=>{
       const el=document.getElementById(id);
+      if(!el) return;
       p.createCanvas(el.offsetWidth,el.offsetHeight).parent(id);
       for(let i=0;i<50;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.15,0.15),vy:p.random(-0.15,0.15)});
       p.strokeWeight(0.6);
@@ -2536,18 +2511,16 @@ function mkNodes(id, bg, dotC, lineC) {
         for(let j=i+1;j<n.length;j++){const b=n[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<100){p.stroke(...lineC,p.map(d,0,100,lineC[3]||25,0));p.line(a.x,a.y,b.x,b.y);}}
       });
     };
-    p.windowResized=()=>{const el=document.getElementById(id);p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+    p.windowResized=()=>{const el=document.getElementById(id);if(el)p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
   }, id);
 }
-mkNodes('p5nodes',  [242,239,232], [26,26,24,30], [26,26,24]);
-mkNodes('p5nodes2', [242,239,232], [26,26,24,28], [26,26,24]);
 
-// 3. grid simbólico — dark
 function mkGrid(id, bg) {
   new p5(p=>{
     let nd=[];
     p.setup=()=>{
       const el=document.getElementById(id);
+      if(!el) return;
       p.createCanvas(el.offsetWidth,el.offsetHeight).parent(id);
       const sp=90;
       for(let x=0;x<p.width+sp;x+=sp) for(let y=0;y<p.height+sp;y+=sp)
@@ -2561,36 +2534,82 @@ function mkGrid(id, bg) {
         for(let j=i+1;j<nd.length;j++){const b=nd[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<100){p.stroke(228,224,214,p.map(d,0,100,8,0));p.strokeWeight(0.12);p.line(a.x,a.y,b.x,b.y);}}
       });
     };
-    p.windowResized=()=>{const el=document.getElementById(id);p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+    p.windowResized=()=>{const el=document.getElementById(id);if(el)p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
   }, id);
 }
-mkGrid('p5sym1',  [28,28,26]);
-mkGrid('p5grid1', [28,28,26]);
-mkGrid('p5grid2', [36,36,32]);
 
-// 4. nodos teal contacto — responsive count
-new p5(p=>{
-  let n=[];
-  p.setup=()=>{
-    const el=document.getElementById('p5contact');
-    p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5contact');
-    // fewer nodes overall, and scale down further on mobile
-    const isMobile = p.width < 768;
-    const count = isMobile ? 18 : 38;
-    for(let i=0;i<count;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.1,0.1),vy:p.random(-0.1,0.1)});
-    p.strokeWeight(0.3);
-  };
-  p.draw=()=>{
-    p.background(28,28,26,12);
-    n.forEach((a,i)=>{
-      a.x+=a.vx;a.y+=a.vy;
-      if(a.x<0||a.x>p.width)a.vx*=-1;if(a.y<0||a.y>p.height)a.vy*=-1;
-      p.fill(61,92,62,14);p.noStroke();p.ellipse(a.x,a.y,2);
-      for(let j=i+1;j<n.length;j++){const b=n[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<150){p.stroke(61,92,62,p.map(d,0,150,15,0));p.line(a.x,a.y,b.x,b.y);}}
-    });
-  };
-  p.windowResized=()=>{const el=document.getElementById('p5contact');p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
-},'p5contact');
+// Initialize all p5 sketches after window load (p5 is loaded by then thanks to defer)
+function initP5Sketches() {
+  // 1. código cayendo — sin eco (Hero)
+  new p5(p=>{
+    const fr=["def awla():","    pass","class IA:","    self.human = True",
+      "if intención == True:","    dirigir()","criterio > volumen",
+      "prompt = intención + contexto","for idea in ideas:","    awla.entrenar(idea)",
+      "def decidir(opciones):","    return mejor(opciones)","# No herramientas",
+      "output = modelo.generar(prompt)","imagen = dirigir(prompt)","criterio = humano",
+      "awla.train()","class Dirección:","    intent = True","return criterio"];
+    let s=[];
+    p.setup=()=>{
+      const el=document.getElementById('p5code');
+      if(!el) return;
+      p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5code');
+      p.textFont('Courier New');p.textSize(14);
+      for(let i=0;i<22;i++) s.push({t:p.random(fr),x:p.random(p.width),y:p.random(p.height),sp:p.random(0.12,0.35),a:p.random(85,145)});
+    };
+    p.draw=()=>{
+      p.background(28,28,26);
+      s.forEach(c=>{
+        p.fill(110,140,110,c.a);p.noStroke();p.text(c.t,c.x,c.y);
+        c.y+=c.sp;
+        if(c.y>p.height+18){c.y=-18;c.t=p.random(fr);c.x=p.random(p.width);c.a=p.random(80,140);}
+      });
+    };
+    p.windowResized=()=>{const el=document.getElementById('p5code');if(el)p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+  },'p5code');
+
+  // 2. nodos papel
+  mkNodes('p5nodes',  [242,239,232], [26,26,24,30], [26,26,24]);
+  mkNodes('p5nodes2', [242,239,232], [26,26,24,28], [26,26,24]);
+
+  // 3. grid simbólico — dark
+  mkGrid('p5sym1',  [28,28,26]);
+  mkGrid('p5grid1', [28,28,26]);
+  mkGrid('p5grid2', [36,36,32]);
+
+  // 4. nodos teal contacto — responsive count
+  new p5(p=>{
+    let n=[];
+    p.setup=()=>{
+      const el=document.getElementById('p5contact');
+      if(!el) return;
+      p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5contact');
+      const isMobile = p.width < 768;
+      const count = isMobile ? 18 : 38;
+      for(let i=0;i<count;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.1,0.1),vy:p.random(-0.1,0.1)});
+      p.strokeWeight(0.3);
+    };
+    p.draw=()=>{
+      p.background(28,28,26,12);
+      n.forEach((a,i)=>{
+        a.x+=a.vx;a.y+=a.vy;
+        if(a.x<0||a.x>p.width)a.vx*=-1;if(a.y<0||a.y>p.height)a.vy*=-1;
+        p.fill(61,92,62,14);p.noStroke();p.ellipse(a.x,a.y,2);
+        for(let j=i+1;j<n.length;j++){const b=n[j],d=p.dist(a.x,a.y,b.x,b.y);if(d<150){p.stroke(61,92,62,p.map(d,0,150,15,0));p.line(a.x,a.y,b.x,b.y);}}
+      });
+    };
+    p.windowResized=()=>{const el=document.getElementById('p5contact');if(el)p.resizeCanvas(el.offsetWidth,el.offsetHeight);};
+  },'p5contact');
+
+  // 5. P5 about (nodos papel verde)
+  mkNodes('p5about', [242,239,232], [61,92,62,18], [61,92,62,8]);
+}
+
+// Run after window load — p5 is guaranteed loaded by then
+if (document.readyState === 'complete') {
+  initP5Sketches();
+} else {
+  window.addEventListener('load', initP5Sketches);
+}
 
 
 // ── LIGHTBOX ─────────────────────────────────
@@ -2748,9 +2767,6 @@ function copyPrompt() {
     document.body.removeChild(ta);
   });
 }
-
-// ── P5 ABOUT (nodos papel) ────────────────────
-mkNodes('p5about', [242,239,232], [61,92,62,18], [61,92,62,8]);
 
 // ── TESTIMONIOS LOADER ───────────────────────────
 (async function loadTestimonios() {
