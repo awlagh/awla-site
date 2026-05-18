@@ -1299,6 +1299,88 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   pointer-events: none;
 }
 .btn-placeholder:hover { transform: none; }
+
+/* Botón mini (comprobante WhatsApp, pago completo, factura) */
+.btn-mini {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  font: 500 11px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--moss-bright);
+  background: transparent;
+  border: 1px solid rgba(134,172,135,0.3);
+  border-radius: 2px;
+  transition: all .2s;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+}
+.btn-mini:hover {
+  background: rgba(134,172,135,0.08);
+  border-color: var(--moss-bright);
+  color: var(--screen);
+  transform: translateY(-1px);
+}
+.btn-mini .arrow {
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+.btn-mini-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  background: rgba(134,172,135,0.16);
+  border-radius: 50%;
+  font-size: 10px;
+  color: var(--moss-bright);
+  margin-right: 4px;
+}
+.btn-mini-alt {
+  color: rgba(228,224,214,0.7);
+  border-color: rgba(228,224,214,0.15);
+}
+.btn-mini-alt:hover {
+  color: var(--moss-bright);
+  border-color: rgba(134,172,135,0.4);
+}
+
+/* Divisor en el bloque de pago */
+.pay-divider {
+  border: 0;
+  border-top: 1px solid rgba(228,224,214,0.08);
+  margin: 8px 0;
+}
+
+/* Bloque alternativo (pago completo discreto) */
+.pay-alt {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pay-alt-text {
+  font: 400 13px var(--sans);
+  line-height: 1.5;
+  color: rgba(228,224,214,0.65);
+  margin: 0;
+  padding: 0 4px;
+}
+.pay-alt-text strong {
+  color: var(--moss-bright);
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+.pay-alt-text em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--screen);
+}
 .btn-meta {
   font: 400 11px var(--mono);
   letter-spacing: .08em;
@@ -1398,6 +1480,101 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 @media (max-width: 768px) { .s-close { padding: 80px 24px; } }
+
+/* ════════════════════════════════════════════════
+   STICKER DE PRECIO (franja oscura entre secciones)
+   ════════════════════════════════════════════════ */
+.s-sticker {
+  background: var(--term);
+  color: var(--screen);
+  padding: 38px 6vw;
+  position: relative;
+  border-top: 1px solid rgba(228,224,214,0.04);
+  border-bottom: 1px solid rgba(228,224,214,0.04);
+}
+.sticker-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.sticker-data {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.sticker-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sticker-label {
+  font: 500 10px var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.5);
+}
+.sticker-value {
+  font-family: var(--cond);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -.01em;
+  color: var(--screen);
+}
+.sticker-cur {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--moss-bright);
+  margin-left: 8px;
+}
+.sticker-note {
+  font: 400 11px var(--mono);
+  color: rgba(228,224,214,0.4);
+  letter-spacing: .05em;
+}
+.sticker-sep {
+  width: 1px;
+  height: 48px;
+  background: rgba(228,224,214,0.14);
+}
+.sticker-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 26px;
+  font: 500 13px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--moss);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background .2s, transform .2s;
+  white-space: nowrap;
+}
+.sticker-cta:hover { background: #2d4a2e; transform: translateY(-2px); }
+.sticker-cta .arrow { font-family: var(--sans); font-weight: 400; letter-spacing: 0; font-size: 17px; }
+
+@media (max-width: 880px) {
+  .s-sticker { padding: 32px 24px; }
+  .sticker-inner { gap: 28px; }
+  .sticker-data { gap: 22px; width: 100%; justify-content: space-between; }
+  .sticker-sep { display: none; }
+  .sticker-value { font-size: 28px; }
+  .sticker-cta { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .sticker-data { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .sticker-block { width: 100%; }
+}
 
 /* ════════════════════════════════════════════════
    ONDEMAND BLOCK (antes del footer)
@@ -1752,79 +1929,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     04 · TUTOR
-     ════════════════════════════════════════════════ -->
-<section class="s-tutor">
-  <div class="wrap">
-    <p class="cap"><span>Cap 03</span><span>/</span><span>Sobre el tutor</span></p>
-    <span class="eyebrow">Sobre el tutor</span>
-
-    <div class="about-grid">
-      <div class="tutor-photo">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo.webp"
-             alt="Retrato de Domingo Pablo, director audiovisual y fundador de AWLA"
-             loading="lazy" width="700" height="900"
-             onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
-        <div class="placeholder" style="display:none">Retrato<br>Domingo Pablo</div>
-      </div>
-
-      <div>
-        <h2 class="tutor-name">Domingo <em>Pablo</em>.</h2>
-        <p class="tutor-role">Director audiovisual · Artista digital · Educador</p>
-
-        <p class="tutor-bio">
-          Su trabajo combina cine, inteligencia artificial, arte digital y enseñanza. Es fundador de <em>AWLA</em>, un laboratorio de criterio visual con IA generativa enfocado en prompting con intención y lenguaje visual propio.
-        </p>
-
-        <p class="tutor-bio" style="color: var(--ink-faint);">
-          En este curso comparte su método para integrar herramientas generativas al proceso creativo sin perder estilo, mirada ni voz propia.
-        </p>
-
-        <div class="partner-row">
-          <span class="lbl">Socio creativo</span>
-          <p class="partner-name">Runway</p>
-          <span class="lbl">Programas creativos</span>
-          <p class="programs">Luma · Leonardo · Pika · Hailuo · Magnific</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
-     05 · QUÉ VAS A APRENDER
-     ════════════════════════════════════════════════ -->
-<section class="s-learn">
-  <div class="wrap">
-    <p class="cap"><span>Cap 04</span><span>/</span><span>Aprendizajes</span></p>
-    <span class="eyebrow">Qué vas a aprender</span>
-    <h2 class="display">De una idea a una <em>pieza final</em>, sin depender de resultados aleatorios.</h2>
-
-    <div class="learn-grid">
-      <div>
-        <div class="learn-row"><span class="n">01</span><span>Traducir tu mirada al lenguaje de la IA sin perder estilo.</span></div>
-        <div class="learn-row"><span class="n">02</span><span>Usar <em>prompting</em> como dirección visual.</span></div>
-        <div class="learn-row"><span class="n">03</span><span>Convertir ideas en escenas claras y específicas.</span></div>
-        <div class="learn-row"><span class="n">04</span><span>Traducir lenguaje audiovisual a prompts.</span></div>
-        <div class="learn-row"><span class="n">05</span><span>Trabajar composición, plano, luz, color y atmósfera.</span></div>
-      </div>
-      <div>
-        <div class="learn-row"><span class="n">06</span><span>Construir una estética coherente para tu proyecto.</span></div>
-        <div class="learn-row"><span class="n">07</span><span>Desarrollar personajes, marcas, productos y mundos.</span></div>
-        <div class="learn-row"><span class="n">08</span><span>Pasar de imagen fija a video generativo.</span></div>
-        <div class="learn-row"><span class="n">09</span><span>Integrar sonido, ritmo y montaje.</span></div>
-        <div class="learn-row"><span class="n">10</span><span>Integrar IA sin perder voz de marca ni criterio propio.</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
-     06 · QUÉ VAS A CREAR
+     04 · QUÉ VAS A CREAR
      ════════════════════════════════════════════════ -->
 <section class="s-create">
   <div class="wrap">
-    <p class="cap"><span>Cap 05</span><span>/</span><span>El proyecto</span></p>
+    <p class="cap"><span>Cap 03</span><span>/</span><span>El proyecto</span></p>
     <div class="create-grid">
       <div>
         <span class="eyebrow">Qué vas a crear</span>
@@ -1857,7 +1966,106 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     07 · EL PROCESO
+     05 · PARA QUIÉN
+     ════════════════════════════════════════════════ -->
+<section class="s-audience">
+  <div class="wrap">
+    <p class="cap"><span>Cap 04</span><span>/</span><span>Para quién</span></p>
+    <div class="head-grid">
+      <div>
+        <span class="eyebrow">Para quién es</span>
+        <h2 class="display">No necesitas dominar <em>IA</em>.</h2>
+      </div>
+      <p>
+        Si vienes del mundo creativo, audiovisual, diseño o comunicación, este curso te ayuda a trasladar tu criterio a herramientas generativas. Si vienes de otro campo, te da una estructura clara para crear visualmente con intención.
+      </p>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience">Creativos visuales</div>
+      <div class="audience">Directores</div>
+      <div class="audience">Fotógrafos</div>
+      <div class="audience">Diseñadores</div>
+      <div class="audience">Cineastas</div>
+      <div class="audience">Documentalistas</div>
+      <div class="audience">Artistas</div>
+      <div class="audience">Productores</div>
+      <div class="audience">Publicistas</div>
+      <div class="audience">Agencias</div>
+      <div class="audience">Marcas</div>
+      <div class="audience">Emprendedores</div>
+      <div class="audience">Creadores de contenido</div>
+      <div class="audience">Equipos de marketing</div>
+      <div class="audience">Proyectos turísticos</div>
+      <div class="audience">Equipos creativos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     06 · STICKER DE PRECIO (highlight breve)
+     ════════════════════════════════════════════════ -->
+<section class="s-sticker" aria-labelledby="sticker-title">
+  <div class="sticker-inner">
+    <div class="sticker-data">
+      <div class="sticker-block">
+        <span class="sticker-label">Inversión Gen 01</span>
+        <span class="sticker-value">$7,500<span class="sticker-cur">MXN</span></span>
+        <span class="sticker-note">Regular $10,800 MXN</span>
+      </div>
+      <div class="sticker-sep" aria-hidden="true"></div>
+      <div class="sticker-block">
+        <span class="sticker-label">Inicio</span>
+        <span class="sticker-value">30<span class="sticker-cur">jun · mar</span></span>
+        <span class="sticker-note">Cierra · 1 ago</span>
+      </div>
+      <div class="sticker-sep" aria-hidden="true"></div>
+      <div class="sticker-block">
+        <span class="sticker-label">Cupo</span>
+        <span class="sticker-value">25<span class="sticker-cur">lugares</span></span>
+        <span class="sticker-note">Generación 01</span>
+      </div>
+    </div>
+    <a href="https://wa.me/525537175870?text=Hola%2C%20quiero%20apartar%20mi%20lugar%20en%20Del%20texto%20a%20la%20pieza%20Gen%2001"
+       class="sticker-cta"
+       target="_blank" rel="noopener"
+       aria-label="Apartar lugar con $1,000 MXN por WhatsApp">
+      <span>Apartar con $1,000 MXN</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     07 · QUÉ VAS A APRENDER
+     ════════════════════════════════════════════════ -->
+<section class="s-learn">
+  <div class="wrap">
+    <p class="cap"><span>Cap 05</span><span>/</span><span>Aprendizajes</span></p>
+    <span class="eyebrow">Qué vas a aprender</span>
+    <h2 class="display">De una idea a una <em>pieza final</em>, sin depender de resultados aleatorios.</h2>
+
+    <div class="learn-grid">
+      <div>
+        <div class="learn-row"><span class="n">01</span><span>Traducir tu mirada al lenguaje de la IA sin perder estilo.</span></div>
+        <div class="learn-row"><span class="n">02</span><span>Usar <em>prompting</em> como dirección visual.</span></div>
+        <div class="learn-row"><span class="n">03</span><span>Convertir ideas en escenas claras y específicas.</span></div>
+        <div class="learn-row"><span class="n">04</span><span>Traducir lenguaje audiovisual a prompts.</span></div>
+        <div class="learn-row"><span class="n">05</span><span>Trabajar composición, plano, luz, color y atmósfera.</span></div>
+      </div>
+      <div>
+        <div class="learn-row"><span class="n">06</span><span>Construir una estética coherente para tu proyecto.</span></div>
+        <div class="learn-row"><span class="n">07</span><span>Desarrollar personajes, marcas, productos y mundos.</span></div>
+        <div class="learn-row"><span class="n">08</span><span>Pasar de imagen fija a video generativo.</span></div>
+        <div class="learn-row"><span class="n">09</span><span>Integrar sonido, ritmo y montaje.</span></div>
+        <div class="learn-row"><span class="n">10</span><span>Integrar IA sin perder voz de marca ni criterio propio.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     08 · EL PROCESO
      ════════════════════════════════════════════════ -->
 <section class="s-process">
   <div class="wrap">
@@ -1882,7 +2090,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     08 · TEMARIO (con fechas reales Gen 01)
+     09 · TEMARIO (con fechas reales Gen 01)
      ════════════════════════════════════════════════ -->
 <section class="s-temario">
   <div class="wrap">
@@ -1955,7 +2163,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     09 · HERRAMIENTAS
+     10 · HERRAMIENTAS
      ════════════════════════════════════════════════ -->
 <section class="s-tools">
   <div class="wrap">
@@ -2007,7 +2215,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     10 · PROYECTO PUBLICADO
+     11 · PROYECTO PUBLICADO
      ════════════════════════════════════════════════ -->
 <section class="s-pub">
   <div class="wrap">
@@ -2062,48 +2270,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     11 · PARA QUIÉN
-     ════════════════════════════════════════════════ -->
-<section class="s-audience">
-  <div class="wrap">
-    <p class="cap"><span>Cap 10</span><span>/</span><span>Para quién</span></p>
-    <div class="head-grid">
-      <div>
-        <span class="eyebrow">Para quién es</span>
-        <h2 class="display">No necesitas dominar <em>IA</em>.</h2>
-      </div>
-      <p>
-        Si vienes del mundo creativo, audiovisual, diseño o comunicación, este curso te ayuda a trasladar tu criterio a herramientas generativas. Si vienes de otro campo, te da una estructura clara para crear visualmente con intención.
-      </p>
-    </div>
-
-    <div class="audience-grid">
-      <div class="audience">Creativos visuales</div>
-      <div class="audience">Directores</div>
-      <div class="audience">Fotógrafos</div>
-      <div class="audience">Diseñadores</div>
-      <div class="audience">Cineastas</div>
-      <div class="audience">Documentalistas</div>
-      <div class="audience">Artistas</div>
-      <div class="audience">Productores</div>
-      <div class="audience">Publicistas</div>
-      <div class="audience">Agencias</div>
-      <div class="audience">Marcas</div>
-      <div class="audience">Emprendedores</div>
-      <div class="audience">Creadores de contenido</div>
-      <div class="audience">Equipos de marketing</div>
-      <div class="audience">Proyectos turísticos</div>
-      <div class="audience">Equipos creativos</div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
      12 · COMUNIDAD
      ════════════════════════════════════════════════ -->
 <section class="s-community">
   <div class="wrap">
-    <p class="cap"><span>Cap 11</span><span>/</span><span>Comunidad</span></p>
+    <p class="cap"><span>Cap 10</span><span>/</span><span>Comunidad</span></p>
     <div class="head-row">
       <div>
         <span class="eyebrow">Comunidad</span>
@@ -2138,7 +2309,47 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     13 · FORMATO
+     13 · TUTOR
+     ════════════════════════════════════════════════ -->
+<section class="s-tutor">
+  <div class="wrap">
+    <p class="cap"><span>Cap 11</span><span>/</span><span>Sobre el tutor</span></p>
+    <span class="eyebrow">Sobre el tutor</span>
+
+    <div class="about-grid">
+      <div class="tutor-photo">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo.webp"
+             alt="Retrato de Domingo Pablo, director audiovisual y fundador de AWLA"
+             loading="lazy" width="700" height="900"
+             onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
+        <div class="placeholder" style="display:none">Retrato<br>Domingo Pablo</div>
+      </div>
+
+      <div>
+        <h2 class="tutor-name">Domingo <em>Pablo</em>.</h2>
+        <p class="tutor-role">Director audiovisual · Artista digital · Educador</p>
+
+        <p class="tutor-bio">
+          Su trabajo combina cine, inteligencia artificial, arte digital y enseñanza. Es fundador de <em>AWLA</em>, un laboratorio de criterio visual con IA generativa enfocado en prompting con intención y lenguaje visual propio.
+        </p>
+
+        <p class="tutor-bio" style="color: var(--ink-faint);">
+          En este curso comparte su método para integrar herramientas generativas al proceso creativo sin perder estilo, mirada ni voz propia.
+        </p>
+
+        <div class="partner-row">
+          <span class="lbl">Socio creativo</span>
+          <p class="partner-name">Runway</p>
+          <span class="lbl">Programas creativos</span>
+          <p class="programs">Luma · Leonardo · Pika · Hailuo · Magnific</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     14 · FORMATO
      ════════════════════════════════════════════════ -->
 <section class="s-format">
   <div class="wrap">
@@ -2174,7 +2385,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     14 · FAQ
+     15 · FAQ
      ════════════════════════════════════════════════ -->
 <section class="s-faq">
   <div class="wrap">
@@ -2225,7 +2436,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     15 · INVERSIÓN
+     16 · INVERSIÓN
      ════════════════════════════════════════════════ -->
 <section class="s-pricing">
   <div class="wrap">
@@ -2273,7 +2484,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     16 · PAGO / POLÍTICAS
+     17 · PAGO / POLÍTICAS
      ════════════════════════════════════════════════ -->
 <section class="s-pay" id="pago">
   <div class="wrap">
@@ -2281,32 +2492,58 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <div class="pay-grid">
       <div>
         <span class="eyebrow">Aparta tu lugar</span>
-        <h2>Reserva con <em>$1,000 MXN</em>.</h2>
+        <h2>Dos pagos · <em>una inscripción</em>.</h2>
         <p class="pay-intro">
-          Te escribimos por <em>WhatsApp</em> para confirmar tu lugar, enviarte los datos de pago y resolver cualquier duda antes de avanzar.
+          La reserva de <em>$1,000 MXN</em> confirma tu lugar y se descuenta del total. El monto restante de <em>$6,500 MXN</em> se liquida antes del 27 de junio.
         </p>
 
         <div class="pay-cta-block">
-          <a href="https://wa.me/525537175870?text=Hola%2C%20quiero%20apartar%20mi%20lugar%20en%20Del%20texto%20a%20la%20pieza%20Gen%2001"
+          <a href="https://mpago.li/1k6bR1c"
              class="btn btn-primary"
              target="_blank" rel="noopener"
-             aria-label="Apartar lugar con $1,000 MXN por WhatsApp">
+             aria-label="Reservar lugar con $1,000 MXN por Mercado Pago">
             <span>Reservar · $1,000 MXN</span>
             <span class="arrow">→</span>
           </a>
-          <p class="btn-meta">Te conecta por <strong>WhatsApp</strong> · respondemos en horario de oficina.</p>
+          <p class="btn-meta">Pago seguro vía <strong>Mercado Pago</strong> · confirma tu lugar.</p>
 
-          <a href="https://wa.me/525537175870?text=Hola%2C%20quiero%20pagar%20el%20curso%20Del%20texto%20a%20la%20pieza%20Gen%2001%20completo"
+          <a href="https://mpago.li/26fb1Cd"
              class="btn btn-secondary"
              target="_blank" rel="noopener"
-             aria-label="Pagar el curso completo por WhatsApp">
-            <span>Pago completo</span>
+             aria-label="Liquidar inscripción con $6,500 MXN por Mercado Pago">
+            <span>Ya reservé · liquidar $6,500 MXN</span>
             <span class="arrow">→</span>
           </a>
-          <p class="btn-meta">Disponible por <strong>WhatsApp</strong> · pronto agregaremos Stripe y Mercado Pago.</p>
+          <p class="btn-meta">Solo si ya hiciste tu reserva · antes del <strong>27 de junio</strong>.</p>
+
+          <a href="https://wa.me/525537175870?text=Hola%2C%20enviamos%20comprobante%20de%20pago%20de%20Del%20texto%20a%20la%20pieza%20Gen%2001"
+             class="btn-mini"
+             target="_blank" rel="noopener"
+             aria-label="Enviar comprobante de pago por WhatsApp">
+            <span class="btn-mini-icon" aria-hidden="true">✓</span>
+            <span>Enviar comprobante · WhatsApp 55 3717 5870</span>
+            <span class="arrow">→</span>
+          </a>
+
+          <hr class="pay-divider">
+
+          <div class="pay-alt">
+            <p class="pay-alt-text">
+              ¿Prefieres pagar completo? Escríbenos <strong>"PAGO COMPLETO"</strong> por WhatsApp y te enviamos el link de <em>$7,500 MXN</em>.
+            </p>
+            <a href="https://wa.me/525537175870?text=PAGO%20COMPLETO%20%C2%B7%20Quiero%20pagar%20Del%20texto%20a%20la%20pieza%20Gen%2001%20completo%20por%20%247%2C500%20MXN"
+               class="btn-mini btn-mini-alt"
+               target="_blank" rel="noopener"
+               aria-label="Solicitar link de pago completo $7,500 por WhatsApp">
+              <span>Pago completo · $7,500 MXN</span>
+              <span class="arrow">→</span>
+            </a>
+          </div>
+
+          <hr class="pay-divider">
 
           <a href="mailto:hola@awla.live?subject=Factura%20o%20pago%20para%20empresa%20%C2%B7%20Del%20texto%20a%20la%20pieza"
-             class="btn btn-secondary"
+             class="btn-mini btn-mini-alt"
              aria-label="Solicitar factura o pago para empresa por correo">
             <span>Factura · pago para empresa</span>
             <span class="arrow">→</span>
@@ -2360,7 +2597,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     17 · CIERRE
+     18 · CIERRE
      ════════════════════════════════════════════════ -->
 <section class="s-close">
   <div class="wrap">
@@ -2663,26 +2900,29 @@ window.resetCookies = () => {
   fetch("https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel");
 </script>
 
-<!-- Nav theme toggle (dark sobre hero, light sobre paper) -->
+<!-- Nav theme toggle (dark sobre hero/sticker/pago, light sobre paper) -->
 <script>
 (function navTheme(){
   const nav = document.getElementById('nav');
   const hero = document.querySelector('.hero');
+  const sticker = document.querySelector('.s-sticker');
   const pay  = document.querySelector('.s-pay');
   if (!nav || !hero) return;
 
-  // El nav arranca dark (sobre hero). Cambia a light cuando el hero deja de cubrir el viewport,
-  // y vuelve a dark sobre la sección .s-pay (fondo --term).
+  function isOverDark(el, navHeight) {
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return r.top < navHeight && r.bottom > navHeight;
+  }
+
   function checkTheme() {
-    const heroBottom = hero.getBoundingClientRect().bottom;
     const navHeight = nav.offsetHeight;
-    let inDark = heroBottom > navHeight; // sobre el hero
-    if (pay) {
-      const payRect = pay.getBoundingClientRect();
-      if (payRect.top < navHeight && payRect.bottom > navHeight) {
-        inDark = true; // sobre la sección oscura de pago
-      }
-    }
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    // El nav arranca dark mientras cubra el hero. Después solo vuelve a dark sobre sticker o pago.
+    const overHero = heroBottom > navHeight;
+    const overSticker = isOverDark(sticker, navHeight);
+    const overPay = isOverDark(pay, navHeight);
+    const inDark = overHero || overSticker || overPay;
     nav.classList.toggle('light', !inDark);
   }
   checkTheme();
