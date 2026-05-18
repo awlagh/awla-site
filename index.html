@@ -2491,6 +2491,34 @@ cards.forEach((c,i)=>{ if(i>0) c.classList.add('pre-enter'); });
 cards.forEach(c=>io.observe(c));
 
 // ── P5 SKETCHES ───────────────────────────────────
+// Performance helpers: mobile throttling + visibility-based pause
+const P5_IS_MOBILE = window.innerWidth < 768;
+const P5_TARGET_FPS = P5_IS_MOBILE ? 20 : 60;
+
+function p5MobileOptimize(p) {
+  // Reduce frameRate on mobile (66% less CPU per second)
+  p.frameRate(P5_TARGET_FPS);
+  // Reduce pixelDensity on mobile (75% less pixels to render on retina)
+  if (P5_IS_MOBILE) p.pixelDensity(1);
+}
+
+function p5AttachVisibility(p, id) {
+  // Pause sketch when not visible, resume when visible
+  // This is the single biggest CPU saver - sketches don't waste cycles when off-screen
+  const el = document.getElementById(id);
+  if (!el) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        p.loop();
+      } else {
+        p.noLoop();
+      }
+    });
+  }, { threshold: 0.05 });
+  observer.observe(el);
+}
+
 // Function definitions (no p5 dependency until called)
 function mkNodes(id, bg, dotC, lineC) {
   new p5(p=>{
@@ -2499,8 +2527,10 @@ function mkNodes(id, bg, dotC, lineC) {
       const el=document.getElementById(id);
       if(!el) return;
       p.createCanvas(el.offsetWidth,el.offsetHeight).parent(id);
+      p5MobileOptimize(p);
       for(let i=0;i<50;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.15,0.15),vy:p.random(-0.15,0.15)});
       p.strokeWeight(0.6);
+      p5AttachVisibility(p, id);
     };
     p.draw=()=>{
       p.clear(); p.background(...bg);
@@ -2522,9 +2552,11 @@ function mkGrid(id, bg) {
       const el=document.getElementById(id);
       if(!el) return;
       p.createCanvas(el.offsetWidth,el.offsetHeight).parent(id);
+      p5MobileOptimize(p);
       const sp=90;
       for(let x=0;x<p.width+sp;x+=sp) for(let y=0;y<p.height+sp;y+=sp)
         nd.push({x:x+p.random(-9,9),y:y+p.random(-9,9),off:p.random(p.TWO_PI),al:p.random(8,20)});
+      p5AttachVisibility(p, id);
     };
     p.draw=()=>{
       p.clear();p.background(...bg);
@@ -2553,8 +2585,10 @@ function initP5Sketches() {
       const el=document.getElementById('p5code');
       if(!el) return;
       p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5code');
+      p5MobileOptimize(p);
       p.textFont('Courier New');p.textSize(14);
       for(let i=0;i<22;i++) s.push({t:p.random(fr),x:p.random(p.width),y:p.random(p.height),sp:p.random(0.12,0.35),a:p.random(85,145)});
+      p5AttachVisibility(p, 'p5code');
     };
     p.draw=()=>{
       p.background(28,28,26);
@@ -2583,10 +2617,12 @@ function initP5Sketches() {
       const el=document.getElementById('p5contact');
       if(!el) return;
       p.createCanvas(el.offsetWidth,el.offsetHeight).parent('p5contact');
+      p5MobileOptimize(p);
       const isMobile = p.width < 768;
       const count = isMobile ? 18 : 38;
       for(let i=0;i<count;i++) n.push({x:p.random(p.width),y:p.random(p.height),vx:p.random(-0.1,0.1),vy:p.random(-0.1,0.1)});
       p.strokeWeight(0.3);
+      p5AttachVisibility(p, 'p5contact');
     };
     p.draw=()=>{
       p.background(28,28,26,12);
