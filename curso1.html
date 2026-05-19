@@ -1524,6 +1524,91 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 /* ════════════════════════════════════════════════
+   TESTIMONIOS (Voces · Cap 13)
+   ════════════════════════════════════════════════ */
+.s-testimonios { background: var(--paper); }
+.testi-head { margin-top: 24px; max-width: 760px; }
+.testi-title {
+  font-size: clamp(36px, 5.5vw, 76px);
+  line-height: 0.95;
+  margin: 18px 0 0;
+}
+.testi-title .c { color: var(--ink); }
+.testi-title .s { color: var(--moss); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+.testi-cell {
+  padding: 32px 28px;
+  border: 1px solid rgba(26,26,24,0.08);
+  background: rgba(26,26,24,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-radius: 8px;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.testi-cell:hover {
+  background: rgba(26,26,24,0.04);
+  border-color: rgba(61,92,62,0.25);
+  transform: translateY(-2px);
+}
+.testi-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
+}
+.testi-author {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--moss);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Skeleton mientras carga */
+.testi-grid:empty::before,
+.testi-grid:empty::after,
+.testi-skeleton {
+  display: block;
+  height: 220px;
+  border: 1px solid rgba(26,26,24,0.08);
+  background: rgba(26,26,24,0.02);
+  border-radius: 8px;
+  content: '';
+}
+
+/* Footer del bloque */
+.testi-foot {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.testi-foot-k { color: var(--ink-mid); }
+.testi-foot-v { color: var(--moss); }
+.testi-foot-sep { opacity: 0.5; }
+
+@media (max-width: 960px) {
+  .testi-grid { grid-template-columns: 1fr; gap: 12px; }
+  .testi-cell { padding: 24px 22px; }
+  .testi-quote { font-size: 14px; }
+}
+
+/* ════════════════════════════════════════════════
    INVERSIÓN
    ════════════════════════════════════════════════ */
 .s-pricing { background: var(--paper2); }
@@ -2787,11 +2872,34 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     15 · INVERSIÓN
+     15 · TESTIMONIOS (Voces)
+     ════════════════════════════════════════════════ -->
+<section class="s-testimonios">
+  <div class="wrap">
+    <p class="cap"><span>Cap 13</span><span>/</span><span>Voces</span></p>
+    <div class="testi-head">
+      <span class="lbl lbl-paper">Opiniones sobre AWLA</span>
+      <h2 class="mix-title testi-title">
+        <span class="c">Lo que dicen<br></span><span class="s">los estudiantes.</span>
+      </h2>
+    </div>
+    <div class="testi-grid" id="testi-grid" aria-live="polite">
+      <!-- Cargado dinámicamente desde testimonios.json (fallback embebido en JS) -->
+    </div>
+    <p class="testi-foot">
+      <span class="testi-foot-k">Cursos previos AWLA</span>
+      <span class="testi-foot-sep" aria-hidden="true">·</span>
+      <span class="testi-foot-v"><span id="testi-count">00</span> opiniones</span>
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     16 · INVERSIÓN
      ════════════════════════════════════════════════ -->
 <section class="s-pricing">
   <div class="wrap">
-    <p class="cap"><span>Cap 13</span><span>/</span><span>Inversión</span></p>
+    <p class="cap"><span>Cap 14</span><span>/</span><span>Inversión</span></p>
     <div class="pricing-grid">
       <div>
         <span class="lbl lbl-paper">Inversión</span>
@@ -2835,11 +2943,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     16 · PAGO / POLÍTICAS
+     17 · PAGO / POLÍTICAS
      ════════════════════════════════════════════════ -->
 <section class="s-pay grain-term" id="pago">
   <div class="wrap">
-    <p class="cap"><span>Cap 14</span><span>/</span><span>Pago</span></p>
+    <p class="cap"><span>Cap 15</span><span>/</span><span>Pago</span></p>
     <div class="pay-grid">
       <div>
         <span class="lbl lbl-term">Aparta tu lugar</span>
@@ -2947,11 +3055,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     17 · FAQ
+     18 · FAQ
      ════════════════════════════════════════════════ -->
 <section class="s-faq">
   <div class="wrap">
-    <p class="cap"><span>Cap 15</span><span>/</span><span>FAQ</span></p>
+    <p class="cap"><span>Cap 16</span><span>/</span><span>FAQ</span></p>
     <div class="head-row">
       <div>
         <span class="lbl lbl-paper">Preguntas frecuentes</span>
@@ -2998,11 +3106,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     18 · CIERRE
+     19 · CIERRE
      ════════════════════════════════════════════════ -->
 <section class="s-close">
   <div class="wrap">
-    <p class="cap"><span>Cap 16</span><span>/</span><span>Cierre</span></p>
+    <p class="cap"><span>Cap 17</span><span>/</span><span>Cierre</span></p>
     <span class="lbl lbl-paper">Una última cosa</span>
     <h2 class="cond-xl cond-xl-paper close-text">
       Del <em>texto</em><br>
@@ -3320,6 +3428,51 @@ window.resetCookies = () => {
       btn.replaceWith(iframe);
     }, { once: true });
   });
+})();
+</script>
+
+<!-- Testimonios loader: trae JSON con fallback embebido -->
+<script>
+(async function loadTestimonios() {
+  const grid = document.getElementById('testi-grid');
+  const countEl = document.getElementById('testi-count');
+  if (!grid) return;
+
+  // Fallback embebido (por si jsdelivr/GitHub fallan)
+  const fallback = [
+    { quote: "El curso me pareció genial para iniciar en el mundo de la IA, es altamente recomendable. Pablo también fue un gran asesor, siempre resolviendo las dudas en todo momento.", author: "@pepzlaroid" },
+    { quote: "El curso de AWLA fue una excelente introducción al mundo de la IA. Como creativo, me dio una alternativa clave: generar imágenes mediante prompts, logrando mayor precisión al comunicar ideas.", author: "@ledicenelvega" },
+    { quote: "Me ayudó a integrar la inteligencia artificial como parte de mis herramientas creativas para llegar más lejos en el desarrollo de mis proyectos e ideas.", author: "@vlakat" }
+  ];
+
+  let data = fallback;
+  try {
+    const res = await fetch('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/testimonios.json');
+    if (res.ok) {
+      const json = await res.json();
+      if (json.testimonios && json.testimonios.length) data = json.testimonios;
+    }
+  } catch (e) {
+    // Usa fallback silenciosamente
+  }
+
+  if (countEl) countEl.textContent = String(data.length).padStart(2, '0');
+
+  // Elige 3 al azar (o todos si hay menos de 3)
+  const shuffled = [...data].sort(() => Math.random() - 0.5);
+  const selected = shuffled.slice(0, 3);
+
+  // Helper para escapar HTML del JSON (seguridad básica)
+  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+
+  grid.innerHTML = selected.map(t => `
+    <article class="testi-cell">
+      <p class="testi-quote">"${esc(t.quote)}"</p>
+      <p class="testi-author">${esc(t.author)}</p>
+    </article>
+  `).join('');
 })();
 </script>
 
