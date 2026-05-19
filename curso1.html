@@ -811,7 +811,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .manifest-foot { margin-top: 32px; }
 .manifest-foot p { font-size: clamp(15px, 1.5vw, 18px); line-height: 1.6; color: var(--ink-mid); margin: 24px 0 0; max-width: 50ch; }
 
-/* ─── Reel card (3:4) · componente reusable ─── */
+/* ─── Reel card (3:4) · Vimeo facade ─── */
 .reel-card {
   position: relative;
   margin: 0;
@@ -819,15 +819,73 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   flex-direction: column;
   gap: 14px;
 }
-.reel-video {
+
+.reel-facade {
+  position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
-  background: var(--paper2);
   border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper2);
+  cursor: pointer;
+  border: 0;
+  padding: 0;
   display: block;
   box-shadow: 0 12px 32px rgba(26,26,24,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.reel-facade:hover { box-shadow: 0 16px 40px rgba(26,26,24,0.14); }
+.reel-facade:hover .reel-poster { transform: scale(1.03); }
+.reel-facade:hover .reel-play {
+  background: var(--moss);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.reel-facade:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 4px;
+}
+
+.reel-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.reel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(28, 28, 26, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--screen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.reel-play svg {
+  margin-left: 3px; /* compensa el peso visual del triángulo play */
+}
+
+/* Iframe inyectado al click (reemplaza el botón) */
+.reel-iframe {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  border: 0;
+  display: block;
+  box-shadow: 0 12px 32px rgba(26,26,24,0.08);
+  background: var(--term);
+}
+
 .reel-caption {
   display: flex;
   justify-content: flex-end;
@@ -2213,18 +2271,27 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
       <div class="manifest-reel-col">
         <figure class="reel-card">
-          <video
-            class="reel-video"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="metadata"
-            poster="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp"
-            aria-label="Reel de Instagram · Manifiesto AWLA">
-            <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla.mp4" type="video/mp4">
-            Tu navegador no soporta video HTML5.
-          </video>
+          <button
+            type="button"
+            class="reel-facade"
+            data-vimeo-id="1193445791"
+            aria-label="Reproducir reel · Manifiesto AWLA">
+            <img
+              class="reel-poster"
+              src="https://vumbnail.com/1193445791_large.webp"
+              srcset="https://vumbnail.com/1193445791_medium.webp 480w, https://vumbnail.com/1193445791_large.webp 720w"
+              sizes="(max-width: 880px) 380px, 420px"
+              alt="Poster del reel · Manifiesto AWLA"
+              loading="lazy"
+              decoding="async"
+              width="720" height="960"
+              onerror="this.onerror=null;this.src='https://vumbnail.com/1193445791.jpg';">
+            <span class="reel-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+          </button>
           <figcaption class="reel-caption">
             <a href="https://www.instagram.com/awla.live" target="_blank" rel="noopener">
               <span class="reel-caption-k">Ver en</span>
@@ -3232,6 +3299,28 @@ window.resetCookies = () => {
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
 <script>
   fetch("https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel");
+</script>
+
+<!-- Reel facade: carga iframe de Vimeo solo al click -->
+<script>
+(function reelFacade(){
+  const facades = document.querySelectorAll('.reel-facade');
+  if (!facades.length) return;
+
+  facades.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.vimeoId;
+      if (!id) return;
+      const iframe = document.createElement('iframe');
+      iframe.className = 'reel-iframe';
+      iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&dnt=1&playsinline=1&pip=0`;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.title = 'Reel · Manifiesto AWLA';
+      btn.replaceWith(iframe);
+    }, { once: true });
+  });
+})();
 </script>
 
 <!-- Nav theme toggle (dark sobre hero/sticker/pago, light sobre paper) -->
