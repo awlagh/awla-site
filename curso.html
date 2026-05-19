@@ -199,10 +199,18 @@
         },
         {
           "@type": "Question",
+          "name": "¿AWLA garantiza un resultado específico?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AWLA acompaña tu proceso con método y herramientas. El resultado final depende de tu dedicación, decisiones creativas y condiciones técnicas. No garantizamos un nivel de habilidad o estilo específico al cierre del curso."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "¿Qué pasa al terminar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Presentas tu proyecto final y se publica en la página de alumnos AWLA, una página pública que reúne los proyectos de cada generación."
+            "text": "Presentas tu proyecto final y podrá publicarse en la galería de alumnos AWLA, previa autorización y cumplimiento del proceso del curso."
           }
         }
       ]
@@ -233,12 +241,20 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
 <link rel="manifest" href="/site.webmanifest">
 
-<!-- Preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Preconnect: solo esenciales para evitar conflicto entre handshakes -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="preconnect" href="https://assets.mailerlite.com">
-<link rel="preconnect" href="https://groot.mailerlite.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<!-- MailerLite y reCAPTCHA se cargan bajo demanda, no requieren preconnect inicial -->
+
+<!-- Preload hero image (LCP element) -->
+<link rel="preload" as="image"
+      href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-del-texto-a-la-pieza-hero.webp"
+      fetchpriority="high"
+      media="(min-width: 769px)">
+<link rel="preload" as="image"
+      href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-del-texto-a-la-pieza-hero-mobile.webp"
+      fetchpriority="high"
+      media="(max-width: 768px)">
 
 <!-- Fonts oficiales AWLA · manual v1 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" media="print" onload="this.media='all'">
@@ -254,7 +270,7 @@
   --paper2:    #eceae2;
   --ink:       #1a1a18;
   --ink-mid:   #3a3a36;
-  --ink-faint: #8a8880;
+  --ink-faint: #6a685f;
 
   /* terminal world */
   --term:      #1c1c1a;
@@ -681,13 +697,21 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background-color: var(--term);
-  background-image: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-del-texto-a-la-pieza-hero.webp');
-  background-size: cover; background-position: center;
+  background: var(--term);
+  display: block;
+  overflow: hidden;
 }
-.hero-bg::after {
-  content: ''; position: absolute; inset: 0;
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero-bg-overlay {
+  position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(to bottom, rgba(26,26,24,.65) 0%, rgba(26,26,24,.45) 40%, rgba(26,26,24,.88) 100%);
+  pointer-events: none;
 }
 .hero-meta-top {
   position: relative; z-index: 2;
@@ -1297,7 +1321,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   display: block;
   margin-bottom: 14px;
 }
-.session h4 {
+.session h3 {
   font-family: var(--font-condensed);
   font-weight: 600;
   font-size: clamp(20px, 2.2vw, 26px);
@@ -1306,7 +1330,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink);
   letter-spacing: -.005em;
 }
-.session h4 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.session h3 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
 .session .date {
   font: 400 12px var(--font-mono);
   color: var(--ink-mid);
@@ -1443,6 +1467,26 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
    PROYECTO PUBLICADO
    ════════════════════════════════════════════════ */
 .s-pub { background: var(--paper2); }
+
+/* Microaviso legal (reutilizable en varias secciones) */
+.micro-legal {
+  margin-top: 36px;
+  padding: 14px 18px;
+  border-left: 2px solid rgba(26,26,24,0.15);
+  font: 400 12px var(--font-body);
+  line-height: 1.55;
+  color: var(--ink-mid);
+  max-width: 70ch;
+  background: rgba(26,26,24,0.02);
+  border-radius: 0 3px 3px 0;
+}
+.micro-legal a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+.micro-legal a:hover { color: var(--ink); }
 .pub-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1916,6 +1960,29 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .pay-grid h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss-bright); }
 .pay-intro { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.6; color: rgba(228,224,214,.78); margin: 0 0 24px; max-width: 46ch; }
 .pay-intro em { font-family: var(--font-serif); font-style: italic; color: var(--moss-bright); }
+
+/* Aviso legal compacto antes de los botones de pago */
+.pay-legal {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  color: rgba(228,224,214,0.5);
+  margin: 0 0 28px;
+  max-width: 52ch;
+  padding: 14px 16px;
+  border-left: 2px solid rgba(134,172,135,0.3);
+  background: rgba(228,224,214,0.03);
+  border-radius: 0 2px 2px 0;
+}
+.pay-legal a {
+  color: var(--moss-bright);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.pay-legal a:hover { color: var(--screen); }
 .pay-cta-block { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
 
 
@@ -2049,7 +2116,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .policy:last-child { border-bottom: 1px solid var(--rule-screen); }
 .policy .n { font: 500 12px var(--font-mono); letter-spacing: .14em; color: var(--moss-bright); }
-.policy h5 {
+.policy h4 {
   font-family: var(--font-condensed);
   font-weight: 600;
   font-size: clamp(17px, 1.8vw, 21px);
@@ -2546,7 +2613,17 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
      01 · HERO (Portada)
      ════════════════════════════════════════════════ -->
 <section class="hero grain-term" aria-labelledby="hero-title">
-  <div class="hero-bg" role="presentation"></div>
+  <picture class="hero-bg">
+    <source media="(max-width: 768px)"
+            srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-del-texto-a-la-pieza-hero-mobile.webp">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-del-texto-a-la-pieza-hero.webp"
+         alt=""
+         fetchpriority="high"
+         decoding="async"
+         width="1600" height="900"
+         class="hero-bg-img">
+  </picture>
+  <div class="hero-bg-overlay" aria-hidden="true"></div>
 
   <div class="hero-meta-top">
     <span class="pair"><span class="k">ID</span><span>AWLA 2026</span></span>
@@ -2624,7 +2701,15 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
             aria-label="Reproducir reel · Manifiesto AWLA">
             <img
               class="reel-poster"
-              src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp"
+              src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster-600.webp"
+              srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster-400.webp 400w,
+                      https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster-600.webp 600w,
+                      https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp 900w"
+              sizes="(max-width: 880px) 380px, 420px"
+              srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster-400.webp 400w,
+                      https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster-600.webp 600w,
+                      https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp 900w"
+              sizes="(max-width: 880px) 380px, 420px"
               alt="Poster del reel · Manifiesto AWLA"
               loading="lazy"
               decoding="async"
@@ -2665,8 +2750,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="course-img">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-frame-cinematografico.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-frame-cinematografico-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-frame-cinematografico-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-frame-cinematografico.webp 900w"
+             sizes="(max-width: 880px) 380px, 460px"
              alt="Frame cinematográfico generado con IA · Curso Del texto a la pieza"
-             loading="lazy" width="800" height="800"
+             loading="lazy" decoding="async" width="800" height="800"
              onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
         <div class="placeholder" style="display:none">Frame cinematográfico<br>talento + paisaje</div>
       </div>
@@ -2702,8 +2791,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="proyecto-img">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proyecto-final-still.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proyecto-final-still-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proyecto-final-still-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proyecto-final-still.webp 900w"
+             sizes="(max-width: 880px) 380px, 460px"
              alt="Still del proyecto final · Pieza audiovisual de alumno AWLA"
-             loading="lazy" width="800" height="800"
+             loading="lazy" decoding="async" width="800" height="800"
              onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
         <div class="placeholder" style="display:none">Still del proyecto<br>~ 1 min</div>
       </div>
@@ -2832,7 +2925,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <div class="process-images">
       <figure class="process-image">
         <img
-          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-inicial-idea.webp"
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-inicial-idea-600.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-inicial-idea-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-inicial-idea-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-inicial-idea.webp 900w"
+             sizes="(max-width: 880px) 380px, 380px"
           alt="Fase inicial · de la idea al primer texto · proceso creativo AWLA"
           loading="lazy" decoding="async" width="600" height="800"
           onerror="this.style.display='none';this.parentElement.querySelector('.process-placeholder').style.display='flex';">
@@ -2844,7 +2941,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </figure>
       <figure class="process-image">
         <img
-          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-construccion-imagen.webp"
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-construccion-imagen-600.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-construccion-imagen-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-construccion-imagen-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-construccion-imagen.webp 900w"
+             sizes="(max-width: 880px) 380px, 380px"
           alt="Fase de construcción visual · escena, imagen y video con IA · proceso AWLA"
           loading="lazy" decoding="async" width="600" height="800"
           onerror="this.style.display='none';this.parentElement.querySelector('.process-placeholder').style.display='flex';">
@@ -2856,7 +2957,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </figure>
       <figure class="process-image">
         <img
-          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-final-pieza.webp"
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-final-pieza-600.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-final-pieza-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-final-pieza-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-final-pieza.webp 900w"
+             sizes="(max-width: 880px) 380px, 380px"
           alt="Fase final · pieza terminada con sonido y montaje · proceso AWLA"
           loading="lazy" decoding="async" width="600" height="800"
           onerror="this.style.display='none';this.parentElement.querySelector('.process-placeholder').style.display='flex';">
@@ -2893,52 +2998,52 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <div class="sessions">
       <div class="session">
         <span class="num">Sesión 01</span>
-        <h4>Idea, intención y <em>creación</em> con IA</h4>
+        <h3>Idea, intención y <em>creación</em> con IA</h3>
         <p class="date"><strong>Mar 30 jun</strong><br>7:00 – 9:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 02</span>
-        <h4>Del <em>texto</em> a la escena</h4>
+        <h3>Del <em>texto</em> a la escena</h3>
         <p class="date"><strong>Sáb 4 jul</strong><br>10:00 am – 12:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 03</span>
-        <h4>Prompting como <em>dirección</em> visual</h4>
+        <h3>Prompting como <em>dirección</em> visual</h3>
         <p class="date"><strong>Mar 7 jul</strong><br>7:00 – 9:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 04</span>
-        <h4>Lenguaje visual <em>aplicado</em> a IA</h4>
+        <h3>Lenguaje visual <em>aplicado</em> a IA</h3>
         <p class="date"><strong>Sáb 11 jul</strong><br>10:00 am – 12:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 05</span>
-        <h4>Estilo, cámara y <em>estética</em></h4>
+        <h3>Estilo, cámara y <em>estética</em></h3>
         <p class="date"><strong>Mar 14 jul</strong><br>7:00 – 9:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 06</span>
-        <h4>Personajes, marcas y <em>mundos</em></h4>
+        <h3>Personajes, marcas y <em>mundos</em></h3>
         <p class="date"><strong>Sáb 18 jul</strong><br>10:00 am – 12:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 07</span>
-        <h4>Imagen en <em>movimiento</em></h4>
+        <h3>Imagen en <em>movimiento</em></h3>
         <p class="date"><strong>Mar 21 jul</strong><br>7:00 – 9:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 08</span>
-        <h4>Sonido, atmósfera y <em>montaje</em></h4>
+        <h3>Sonido, atmósfera y <em>montaje</em></h3>
         <p class="date"><strong>Sáb 25 jul</strong><br>10:00 am – 12:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 09</span>
-        <h4>Ensamble y <em>revisión</em></h4>
+        <h3>Ensamble y <em>revisión</em></h3>
         <p class="date"><strong>Mar 28 jul</strong><br>7:00 – 9:00 pm</p>
       </div>
       <div class="session">
         <span class="num">Sesión 10</span>
-        <h4>Presentación <em>final</em></h4>
+        <h3>Presentación <em>final</em></h3>
         <p class="date"><strong>Sáb 1 ago</strong><br>10:00 am – 12:00 pm</p>
       </div>
     </div>
@@ -2998,7 +3103,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <p class="tools-note">Durante el curso revisamos opciones y cada alumno decide qué herramientas usar según su proyecto.</p>
     <p class="tools-disclaimer">
       <span class="tools-disclaimer-k">Importante</span>
-      Las suscripciones a las herramientas <em>no están incluidas</em> en el costo del curso. Cada plataforma se contrata por separado según las necesidades de tu proyecto.
+      Las suscripciones a las herramientas <em>no están incluidas</em> en el costo del curso. Cada plataforma se contrata por separado, sujeta a sus propios términos, precios, disponibilidad y políticas de privacidad.
     </p>
   </div>
 </section>
@@ -3055,6 +3160,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         </div>
       </div>
     </div>
+
+    <p class="micro-legal">La publicación está sujeta a completar el proceso, presentar la pieza final y autorizar su publicación. Cada participante conserva los derechos y permisos de los materiales que integre.</p>
   </div>
 </section>
 
@@ -3094,6 +3201,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="meta">Colaboraciones que nacen aquí</span>
       </div>
     </div>
+
+    <p class="micro-legal">Al unirte al grupo de WhatsApp, tu nombre, número y foto de perfil podrán ser visibles para otros integrantes, según la configuración de WhatsApp.</p>
   </div>
 </section>
 
@@ -3108,8 +3217,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <div class="about-grid">
       <div class="tutor-photo">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo.webp 900w"
+             sizes="(max-width: 880px) 360px, 420px"
              alt="Retrato de Domingo Pablo, director audiovisual y fundador de AWLA"
-             loading="lazy" width="700" height="900"
+             loading="lazy" decoding="async" width="700" height="900"
              onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
         <div class="placeholder" style="display:none">Retrato<br>Domingo Pablo</div>
       </div>
@@ -3176,6 +3289,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
     </div>
     <p class="format-note">El enlace de Zoom se envía por correo a cada participante registrado.</p>
+    <p class="micro-legal">Las sesiones se graban con fines académicos y de acceso posterior. Si prefieres no aparecer, puedes mantener cámara y micrófono apagados.</p>
   </div>
 </section>
 
@@ -3268,6 +3382,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           La reserva de <em>$1,000 MXN</em> confirma tu lugar y se descuenta del total. El monto restante de <em>$6,500 MXN</em> se liquida antes del 27 de junio.
         </p>
 
+        <p class="pay-legal">
+          Al realizar tu pago aceptas los <a href="/terminos" target="_blank" rel="noopener">Términos de Uso</a>, <a href="/contratacion" target="_blank" rel="noopener">Términos de Contratación</a>, <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
+        </p>
+
         <div class="pay-cta-block">
           <a href="https://mpago.li/1k6bR1c"
              class="btn btn-moss btn-lg btn-flex"
@@ -3318,7 +3436,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
             <span>Solicitar factura</span>
             <span class="arrow">→</span>
           </a>
-          <p class="btn-meta">Escribe a <strong>hola@awla.live</strong> · respondemos en 24 hrs hábiles.</p>
+          <p class="btn-meta">Solicítala dentro del mes calendario de la compra con tus datos fiscales. Escribe a <strong>hola@awla.live</strong>.</p>
         </div>
       </div>
 
@@ -3330,29 +3448,29 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <div class="policy">
             <span class="n">01</span>
             <div>
-              <h5>La reserva confirma tu lugar.</h5>
+              <h4>La reserva confirma tu lugar.</h4>
               <p>El monto de $1,000 MXN se descuenta del total del curso.</p>
             </div>
           </div>
           <div class="policy">
             <span class="n">02</span>
             <div>
-              <h5>Precio Gen 01 respetado.</h5>
+              <h4>Precio Gen 01 respetado.</h4>
               <p>El precio lanzamiento de $7,500 MXN se respeta a quienes reservan antes del 15 de junio. Después, aplica el precio regular.</p>
             </div>
           </div>
           <div class="policy">
             <span class="n">03</span>
             <div>
-              <h5>Liquidación antes del 27 de junio.</h5>
+              <h4>Liquidación antes del 27 de junio.</h4>
               <p>Si la liquidación no se completa antes del 27 de junio, el lugar podrá liberarse a la lista de espera.</p>
             </div>
           </div>
           <div class="policy">
             <span class="n">04</span>
             <div>
-              <h5>Reserva no reembolsable, transferible.</h5>
-              <p>La reserva no es reembolsable, pero puede transferirse a la siguiente generación o a otra persona.</p>
+              <h4>Reserva no reembolsable, transferible.</h4>
+              <p>La reserva no es reembolsable, pero puede transferirse a otra generación o persona, previa confirmación de AWLA. Más detalles en la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a>.</p>
             </div>
           </div>
         </div>
@@ -3410,8 +3528,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <p class="a">No. También trabajamos lenguaje visual, imagen, video, sonido y montaje.</p>
       </div>
       <div class="faq-item">
+        <p class="q">¿AWLA garantiza un resultado específico?</p>
+        <p class="a">AWLA acompaña tu proceso con método y herramientas. El resultado final depende de tu dedicación, decisiones creativas y condiciones técnicas. No garantizamos un nivel de habilidad o estilo específico al cierre del curso.</p>
+      </div>
+      <div class="faq-item">
         <p class="q">¿Qué pasa al terminar?</p>
-        <p class="a">Presentas tu proyecto final y se publica en la página de alumnos AWLA.</p>
+        <p class="a">Presentas tu proyecto final y podrá publicarse en la galería de alumnos AWLA, previa autorización y cumplimiento del proceso del curso.</p>
       </div>
     </div>
   </div>
@@ -3448,7 +3570,15 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
       <figure class="close-image">
         <img
-          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza.webp"
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza-600.webp"
+          srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza-400.webp 400w,
+                  https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza-600.webp 600w,
+                  https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza.webp 900w"
+          sizes="(max-width: 880px) 380px, 480px"
+          srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza-400.webp 400w,
+                  https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza-600.webp 600w,
+                  https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza.webp 1000w"
+          sizes="(max-width: 880px) 380px, 460px"
           alt="Cierre · Del texto a la pieza · Curso de IA generativa en AWLA"
           loading="lazy" decoding="async" width="800" height="1000"
           onerror="this.style.display='none';this.parentElement.querySelector('.close-placeholder').style.display='flex';">
@@ -3488,7 +3618,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
               <div class="ml-form-embedPermissions">
                 <div class="ml-form-embedPermissionsContent default privacy-policy">
-                  <p>Al suscribirte aceptas nuestro <a href="/privacidad.html" target="_blank">Aviso de Privacidad</a>.</p>
+                  <p>Al suscribirte aceptas nuestro <a href="/privacidad-integral" target="_blank">Aviso de Privacidad</a>.</p>
                 </div>
               </div>
 
@@ -3496,7 +3626,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
                 <label class="checkbox">
                   <input type="checkbox">
                   <div class="label-description">
-                    <p>Acepto recibir comunicaciones de AWLA y haber leído el <a href="/privacidad.html" target="_blank">Aviso de Privacidad</a>.</p>
+                    <p>Acepto recibir comunicaciones de AWLA y haber leído el <a href="/privacidad-integral" target="_blank">Aviso de Privacidad</a>.</p>
                   </div>
                 </label>
               </div>
@@ -3538,7 +3668,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
      ════════════════════════════════════════════════ -->
 <div id="ck" role="dialog" aria-label="Preferencias de cookies" aria-live="polite">
   <p class="ck-head">Cookies</p>
-  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies.html">Política de cookies</a>.</p>
+  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies">Política de cookies</a>.</p>
 
   <div class="ck-actions ck-actions-initial">
     <button class="ck-btn ck-btn-link" onclick="ckPersonalize()">Personalizar</button>
@@ -3593,11 +3723,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA · awla.live" width="450" height="100" loading="lazy">
     </div>
     <ul class="footer-links">
-      <li><a href="/privacidad.html">Aviso de Privacidad</a></li>
-      <li><a href="/terminos.html">Términos de Uso</a></li>
-      <li><a href="/contratacion.html">Términos de Contratación</a></li>
-      <li><a href="/devoluciones.html">Cambios y Devoluciones</a></li>
-      <li><a href="/cookies.html">Política de Cookies</a></li>
+      <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
+      <li><a href="/terminos">Términos de Uso</a></li>
+      <li><a href="/contratacion">Términos de Contratación</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies">Política de Cookies</a></li>
       <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
     </ul>
     <span class="footer-copy">© 2026 AWLA® · awla.live</span>
@@ -3727,18 +3857,78 @@ window.resetCookies = () => {
 };
 </script>
 
-<!-- MailerLite -->
+<!-- ════════════════════════════════════════════════
+     Lazy load: MailerLite + reCAPTCHA solo al acercarse al formulario
+     ════════════════════════════════════════════════ -->
 <script>
-  function ml_webform_success_40613311() {
-    var $ = ml_jQuery || jQuery;
-    $('.ml-subscribe-form-40613311 .row-success').show();
-    $('.ml-subscribe-form-40613311 .row-form').hide();
+(function lazyFormDeps(){
+  let loaded = false;
+  function loadFormDeps() {
+    if (loaded) return;
+    loaded = true;
+
+    // MailerLite jQuery + webforms
+    const ml = document.createElement('script');
+    ml.src = 'https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b';
+    ml.async = true;
+    document.head.appendChild(ml);
+
+    // Beacon de tracking de MailerLite (después que cargue el form)
+    setTimeout(() => {
+      fetch('https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel')
+        .catch(() => {});
+    }, 1000);
+
+    // reCAPTCHA: cargar después de MailerLite
+    setTimeout(() => {
+      const rc = document.createElement('script');
+      rc.src = 'https://www.google.com/recaptcha/api.js';
+      rc.async = true;
+      rc.defer = true;
+      document.head.appendChild(rc);
+    }, 500);
   }
+
+  // Trigger 1: el formulario entra al viewport (con margen anticipado)
+  const formSection = document.querySelector('.s-ondemand');
+  if (formSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadFormDeps();
+        obs.disconnect();
+      }
+    }, { rootMargin: '600px 0px' });
+    obs.observe(formSection);
+  } else {
+    // Fallback: si no hay IntersectionObserver, carga después de 5s
+    setTimeout(loadFormDeps, 5000);
+  }
+
+  // Trigger 2: el usuario hace focus o click en cualquier campo del form
+  const formEl = document.querySelector('#mlb2-40613311 form, #mlb2-40613311 input, #mlb2-40613311 button');
+  if (formEl) {
+    ['focus', 'click', 'touchstart'].forEach(evt => {
+      formEl.addEventListener(evt, loadFormDeps, { once: true, passive: true });
+    });
+  }
+})();
 </script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
-<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+
 <script>
-  fetch("https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel");
+  // Helper de MailerLite success (carga inmediata, sin dependencias)
+  function ml_webform_success_40613311() {
+    if (typeof ml_jQuery !== 'undefined' || typeof jQuery !== 'undefined') {
+      var $ = (typeof ml_jQuery !== 'undefined') ? ml_jQuery : jQuery;
+      $('.ml-subscribe-form-40613311 .row-success').show();
+      $('.ml-subscribe-form-40613311 .row-form').hide();
+    } else {
+      // Fallback sin jQuery
+      const success = document.querySelector('.ml-subscribe-form-40613311 .row-success');
+      const form = document.querySelector('.ml-subscribe-form-40613311 .row-form');
+      if (success) success.style.display = 'block';
+      if (form) form.style.display = 'none';
+    }
+  }
 </script>
 
 <!-- Reel facade: carga iframe de Vimeo solo al click -->
@@ -3817,6 +4007,9 @@ window.resetCookies = () => {
   const pay  = document.querySelector('.s-pay');
   if (!nav || !hero) return;
 
+  let ticking = false;
+  let cachedNavHeight = nav.offsetHeight;
+
   function isOverDark(el, navHeight) {
     if (!el) return false;
     const r = el.getBoundingClientRect();
@@ -3824,18 +4017,28 @@ window.resetCookies = () => {
   }
 
   function checkTheme() {
-    const navHeight = nav.offsetHeight;
     const heroBottom = hero.getBoundingClientRect().bottom;
-    // El nav arranca dark mientras cubra el hero. Después solo vuelve a dark sobre sticker o pago.
-    const overHero = heroBottom > navHeight;
-    const overSticker = isOverDark(sticker, navHeight);
-    const overPay = isOverDark(pay, navHeight);
+    const overHero = heroBottom > cachedNavHeight;
+    const overSticker = isOverDark(sticker, cachedNavHeight);
+    const overPay = isOverDark(pay, cachedNavHeight);
     const inDark = overHero || overSticker || overPay;
     nav.classList.toggle('light', !inDark);
+    ticking = false;
   }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(checkTheme);
+      ticking = true;
+    }
+  }
+
   checkTheme();
-  window.addEventListener('scroll', checkTheme, { passive: true });
-  window.addEventListener('resize', checkTheme);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    cachedNavHeight = nav.offsetHeight;
+    onScroll();
+  });
 })();
 </script>
 
