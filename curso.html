@@ -183,10 +183,10 @@
         },
         {
           "@type": "Question",
-          "name": "¿Tengo que pagar todas las herramientas?",
+          "name": "¿Las suscripciones a las herramientas están incluidas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Algunas versiones gratuitas funcionan para empezar. Tú decides si quieres invertir en alguna según tu proyecto."
+            "text": "No. El costo del curso cubre las sesiones, acompañamiento y material de AWLA. Las plataformas de IA (Midjourney, Runway, etc.) se contratan por separado. Algunas tienen versión gratuita suficiente para empezar; tú decides en qué invertir según tu proyecto."
           }
         },
         {
@@ -1403,6 +1403,34 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .tools-note { font-size: 14px; line-height: 1.4; color: var(--ink-mid); margin: 16px 0 0; max-width: 70ch; }
 
+/* Disclaimer sobre suscripciones */
+.tools-disclaimer {
+  margin: 24px 0 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--moss);
+  background: rgba(61,92,62,0.04);
+  font: 400 13px var(--font-body);
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 70ch;
+  border-radius: 0 4px 4px 0;
+}
+.tools-disclaimer-k {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+.tools-disclaimer em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--moss);
+}
+
 @media (max-width: 1100px) { .tools { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
   .tools { grid-template-columns: repeat(2, 1fr); }
@@ -1833,6 +1861,32 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   left: 0;
   color: var(--moss);
   font-weight: 500;
+}
+
+/* Nota "no incluye" debajo de la lista */
+.includes-note {
+  margin: 20px 0 0;
+  padding: 16px 18px;
+  background: rgba(26,26,24,0.04);
+  border-radius: 4px;
+  font: 400 13px var(--font-body);
+  line-height: 1.55;
+  color: var(--ink-mid);
+}
+.includes-note-k {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+.includes-note em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink);
 }
 
 @media (max-width: 880px) { .pricing-grid { grid-template-columns: 1fr; gap: 40px; } }
@@ -2942,6 +2996,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <p class="right">Las herramientas pueden cambiar. El método permanece.</p>
     </div>
     <p class="tools-note">Durante el curso revisamos opciones y cada alumno decide qué herramientas usar según su proyecto.</p>
+    <p class="tools-disclaimer">
+      <span class="tools-disclaimer-k">Importante</span>
+      Las suscripciones a las herramientas <em>no están incluidas</em> en el costo del curso. Cada plataforma se contrata por separado según las necesidades de tu proyecto.
+    </p>
   </div>
 </section>
 
@@ -3187,6 +3245,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <li>Acceso a grabaciones por 90 días</li>
           <li>Publicación en la página de alumnos AWLA al concluir</li>
         </ul>
+        <p class="includes-note">
+          <span class="includes-note-k">No incluye</span>
+          Suscripciones a herramientas de IA (Midjourney, Runway, Higgsfield, etc). Cada plataforma se contrata por separado según el proyecto. <em>Trabajamos con versiones gratuitas y de pago según convenga.</em>
+        </p>
       </div>
     </div>
   </div>
@@ -3340,8 +3402,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <p class="a">Trabajaremos con un ecosistema flexible de imagen, video, asistencia, sonido y edición: Midjourney, Gemini, ChatGPT, Runway, Higgsfield, Luma, Suno y CapCut. Las herramientas pueden cambiar según cada proyecto.</p>
       </div>
       <div class="faq-item">
-        <p class="q">¿Tengo que pagar todas las herramientas?</p>
-        <p class="a">No. Algunas versiones gratuitas funcionan para empezar. Tú decides si quieres invertir en alguna según tu proyecto.</p>
+        <p class="q">¿Las suscripciones a las herramientas están incluidas?</p>
+        <p class="a">No. El costo del curso cubre las sesiones, acompañamiento y material de AWLA. Las plataformas de IA (Midjourney, Runway, etc.) se contratan por separado. Algunas tienen versión gratuita suficiente para empezar; tú decides en qué invertir según tu proyecto.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Es solo un curso de prompts?</p>
