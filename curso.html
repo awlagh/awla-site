@@ -159,10 +159,10 @@
         },
         {
           "@type": "Question",
-          "name": "¿La IA reemplaza mi creatividad?",
+          "name": "¿Voy a perder mi estilo personal usando IA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. La usamos como herramienta. La intención, el criterio y la mirada siguen siendo humanos."
+            "text": "No. El curso te ayuda a usar IA como medio, no como sustituto. Tu mirada y criterio son lo que la dirige."
           }
         },
         {
@@ -212,7 +212,7 @@
       "@id": "https://www.awla.live/curso.html#reel-manifiesto",
       "name": "Manifiesto AWLA · La IA no sustituye tu creatividad, la potencia",
       "description": "Reel del manifiesto AWLA. La inteligencia artificial como herramienta creativa: explorar, construir imagen, desarrollar escenas y ampliar procesos sin perder estilo, criterio ni voz propia.",
-      "thumbnailUrl": "https://vumbnail.com/1193445791_large.webp",
+      "thumbnailUrl": "https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp",
       "uploadDate": "2025-09-01",
       "contentUrl": "https://vimeo.com/1193445791",
       "embedUrl": "https://player.vimeo.com/video/1193445791",
@@ -1023,15 +1023,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink-faint);
   text-align: center;
 }
-.tutor-name {
-  font-family: var(--font-condensed);
-  font-weight: 600;
-  font-size: clamp(48px, 6vw, 96px);
-  line-height: .98;
-  margin: 0;
-  color: var(--ink);
-}
-.tutor-name em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.tutor-name-h { max-width: 12ch; }
 .tutor-role {
   font: 500 12px var(--font-mono);
   letter-spacing: .12em;
@@ -1059,6 +1051,46 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--moss);
 }
 .partner-row .programs { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: .02em; }
+
+/* Link a portafolio del tutor */
+.tutor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 14px 20px;
+  border: 1px solid rgba(26,26,24,0.15);
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  transition: all 0.2s;
+}
+.tutor-link:hover {
+  border-color: var(--moss);
+  background: rgba(61,92,62,0.04);
+}
+.tutor-link-k {
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+.tutor-link-v {
+  color: var(--moss);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+.tutor-link-arrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-left: 4px;
+  color: var(--moss);
+}
 
 @media (max-width: 880px) {
   .s-tutor .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1161,6 +1193,72 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink-mid);
   max-width: 60ch;
   margin-top: 50px;
+}
+
+/* Grid de 3 imágenes representativas del proceso */
+.process-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.process-image {
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.process-image img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--paper2);
+  display: block;
+  box-shadow: 0 8px 24px rgba(26,26,24,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.process-image:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(26,26,24,0.10);
+}
+.process-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--paper2);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.process-cap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.process-cap-n {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.process-cap-l {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(15px, 1.4vw, 18px);
+  letter-spacing: 0;
+  color: var(--ink);
+  text-transform: lowercase;
+}
+
+@media (max-width: 880px) {
+  .process-images { grid-template-columns: 1fr; gap: 24px; max-width: 380px; margin: 56px auto 0; }
 }
 
 @media (max-width: 880px) { .flow { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
@@ -1938,21 +2036,56 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   background: var(--paper);
   text-align: left;
 }
+.close-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 24px;
+}
+.close-text-col { min-width: 0; }
+.close-image {
+  margin: 0;
+  position: relative;
+}
+.close-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--paper2);
+  display: block;
+  box-shadow: 0 16px 40px rgba(26,26,24,0.10);
+}
+.close-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--paper2);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+}
 .close-text {
   font-family: var(--font-condensed);
   font-weight: 600;
-  font-size: clamp(48px, 7vw, 108px);
+  font-size: clamp(40px, 5.5vw, 84px);
   line-height: 1;
   letter-spacing: -.02em;
-  margin: 32px 0;
+  margin: 22px 0;
   max-width: 18ch;
   color: var(--ink);
 }
-.close-text em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.close-text em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); text-transform: none; }
 .close-text .dim { color: var(--ink-faint); }
 .close-cta {
-  margin-top: 48px;
-  padding-top: 32px;
+  margin-top: 36px;
+  padding-top: 28px;
   border-top: 1px solid var(--rule);
   max-width: 540px;
 }
@@ -1975,6 +2108,43 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   margin: 14px 0 0;
 }
 
+/* Link "Conoce más sobre AWLA" */
+.awla-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+  padding: 16px 22px;
+  border: 1px solid rgba(26,26,24,0.15);
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent;
+  transition: all 0.2s;
+}
+.awla-explore:hover {
+  border-color: var(--moss);
+  background: rgba(61,92,62,0.04);
+}
+.awla-explore-k { color: var(--ink-faint); font-weight: 400; }
+.awla-explore-v { color: var(--ink); font-weight: 500; }
+.awla-explore-arrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-left: 4px;
+  color: var(--moss);
+  transition: transform 0.2s;
+}
+.awla-explore:hover .awla-explore-arrow { transform: translateX(4px); }
+
+@media (max-width: 880px) {
+  .close-grid { grid-template-columns: 1fr; gap: 40px; }
+  .close-image { max-width: 380px; margin: 0 auto; width: 100%; }
+}
 @media (max-width: 768px) { .s-close { padding: 80px 24px; } }
 
 /* ════════════════════════════════════════════════
@@ -2400,14 +2570,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
             aria-label="Reproducir reel · Manifiesto AWLA">
             <img
               class="reel-poster"
-              src="https://vumbnail.com/1193445791_large.webp"
-              srcset="https://vumbnail.com/1193445791_medium.webp 480w, https://vumbnail.com/1193445791_large.webp 720w"
-              sizes="(max-width: 880px) 380px, 420px"
+              src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp"
               alt="Poster del reel · Manifiesto AWLA"
               loading="lazy"
               decoding="async"
               width="720" height="960"
-              onerror="this.onerror=null;this.src='https://vumbnail.com/1193445791.jpg';">
+              onerror="this.onerror=null;this.src='https://vumbnail.com/1193445791_large.jpg';">
             <span class="reel-play" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                 <path d="M8 5v14l11-7z"/>
@@ -2605,6 +2773,45 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <div class="flow-step"><span class="n">05</span><span class="lbl">video</span></div>
       <div class="flow-step"><span class="n">06</span><span class="lbl">sonido</span></div>
       <div class="flow-step"><span class="n">07</span><span class="lbl">pieza final</span></div>
+    </div>
+
+    <div class="process-images">
+      <figure class="process-image">
+        <img
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-inicial-idea.webp"
+          alt="Fase inicial · de la idea al primer texto · proceso creativo AWLA"
+          loading="lazy" decoding="async" width="600" height="800"
+          onerror="this.style.display='none';this.parentElement.querySelector('.process-placeholder').style.display='flex';">
+        <div class="process-placeholder" style="display:none">Idea · Texto</div>
+        <figcaption class="process-cap">
+          <span class="process-cap-n">01 — 02</span>
+          <span class="process-cap-l">De la idea al texto</span>
+        </figcaption>
+      </figure>
+      <figure class="process-image">
+        <img
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-construccion-imagen.webp"
+          alt="Fase de construcción visual · escena, imagen y video con IA · proceso AWLA"
+          loading="lazy" decoding="async" width="600" height="800"
+          onerror="this.style.display='none';this.parentElement.querySelector('.process-placeholder').style.display='flex';">
+        <div class="process-placeholder" style="display:none">Imagen · Video</div>
+        <figcaption class="process-cap">
+          <span class="process-cap-n">03 — 05</span>
+          <span class="process-cap-l">De la escena al video</span>
+        </figcaption>
+      </figure>
+      <figure class="process-image">
+        <img
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/proceso-fase-final-pieza.webp"
+          alt="Fase final · pieza terminada con sonido y montaje · proceso AWLA"
+          loading="lazy" decoding="async" width="600" height="800"
+          onerror="this.style.display='none';this.parentElement.querySelector('.process-placeholder').style.display='flex';">
+        <div class="process-placeholder" style="display:none">Sonido · Pieza final</div>
+        <figcaption class="process-cap">
+          <span class="process-cap-n">06 — 07</span>
+          <span class="process-cap-l">Del sonido a la pieza</span>
+        </figcaption>
+      </figure>
     </div>
 
     <p class="process-note">
@@ -2850,7 +3057,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
 
       <div>
-        <h2 class="cond-xl cond-xl-paper">Domingo <em>Pablo</em>.</h2>
+        <h2 class="cond-lg cond-lg-paper tutor-name-h">Domingo <em>Pablo</em>.</h2>
         <p class="tutor-role">Director audiovisual · Artista digital · Educador</p>
 
         <p class="tutor-bio">
@@ -2867,6 +3074,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="lbl">Programas creativos</span>
           <p class="programs">Luma · Leonardo · Pika · Hailuo · Magnific</p>
         </div>
+
+        <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
+          <span class="tutor-link-k">Portafolio</span>
+          <span class="tutor-link-v">domingopablo.com</span>
+          <span class="tutor-link-arrow">↗</span>
+        </a>
       </div>
     </div>
   </div>
@@ -3037,10 +3250,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
           <hr class="pay-divider">
 
-          <a href="mailto:hola@awla.live?subject=Factura%20o%20pago%20para%20empresa%20%C2%B7%20Del%20texto%20a%20la%20pieza"
+          <a href="mailto:hola@awla.live?subject=Factura%20%C2%B7%20Del%20texto%20a%20la%20pieza"
              class="btn-mini btn-mini-alt"
-             aria-label="Solicitar factura o pago para empresa por correo">
-            <span>Factura · pago para empresa</span>
+             aria-label="Solicitar factura por correo">
+            <span>Solicitar factura</span>
             <span class="arrow">→</span>
           </a>
           <p class="btn-meta">Escribe a <strong>hola@awla.live</strong> · respondemos en 24 hrs hábiles.</p>
@@ -3115,8 +3328,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <p class="a">No es obligatorio. Si vienes con experiencia, la traducimos a IA. Si estás empezando, te damos la base.</p>
       </div>
       <div class="faq-item">
-        <p class="q">¿La IA reemplaza mi creatividad?</p>
-        <p class="a">No. La usamos como herramienta. La intención, el criterio y la mirada siguen siendo humanos.</p>
+        <p class="q">¿Voy a perder mi estilo personal usando IA?</p>
+        <p class="a">No. El curso te ayuda a usar IA como medio, no como sustituto. Tu mirada y criterio son lo que la dirige.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Qué voy a crear?</p>
@@ -3148,17 +3361,37 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 <section class="s-close">
   <div class="wrap">
     <p class="cap"><span>Cap 17</span><span>/</span><span>Cierre</span></p>
-    <span class="lbl lbl-paper">Una última cosa</span>
-    <h2 class="cond-xl cond-xl-paper close-text">
-      Del <em>texto</em><br>
-      <span class="dim">a la</span> <em>pieza</em>.<br>
-      <span class="dim">De la intención</span><br>
-      al <em>resultado</em>.
-    </h2>
 
-    <div class="close-cta">
-      <a href="#pago" class="primary-link">Aparta tu lugar →</a>
-      <p class="meta">O escríbenos por DM en Instagram · @awla.live</p>
+    <div class="close-grid">
+      <div class="close-text-col">
+        <span class="lbl lbl-paper">Una última cosa</span>
+        <h2 class="cond-xl cond-xl-paper close-text">
+          Del <em>texto</em><br>
+          <span class="dim">a la</span> <em>pieza</em>.<br>
+          <span class="dim">De la intención</span><br>
+          al <em>resultado</em>.
+        </h2>
+
+        <div class="close-cta">
+          <a href="#pago" class="primary-link">Aparta tu lugar →</a>
+          <p class="meta">O escríbenos por DM en Instagram · @awla.live</p>
+        </div>
+
+        <a href="/" class="awla-explore">
+          <span class="awla-explore-k">Más allá del curso</span>
+          <span class="awla-explore-v">Conoce más sobre AWLA</span>
+          <span class="awla-explore-arrow">→</span>
+        </a>
+      </div>
+
+      <figure class="close-image">
+        <img
+          src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/cierre-curso-del-texto-a-la-pieza.webp"
+          alt="Cierre · Del texto a la pieza · Curso de IA generativa en AWLA"
+          loading="lazy" decoding="async" width="800" height="1000"
+          onerror="this.style.display='none';this.parentElement.querySelector('.close-placeholder').style.display='flex';">
+        <div class="close-placeholder" style="display:none">Imagen<br>cierre</div>
+      </figure>
     </div>
   </div>
 </section>
