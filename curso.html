@@ -1160,6 +1160,17 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .partner-row .programs { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: .02em; }
 
+/* Disclaimer de marcas debajo de partner-row */
+.partner-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 14px 0 0;
+  opacity: 0.7;
+}
+
 /* Link a portafolio del tutor */
 .tutor-link {
   display: inline-flex;
@@ -2122,6 +2133,15 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   transition: color 0.2s;
 }
 .pay-legal a:hover { color: var(--screen); }
+.pay-legal-note {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(228,224,214,0.08);
+  font-size: 10px;
+  color: rgba(228,224,214,0.4);
+  letter-spacing: 0.2px;
+}
 .pay-cta-block { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
 
 
@@ -3037,7 +3057,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   <div class="wrap">
     <p class="cap"><span>Cap 05</span><span>/</span><span>Aprendizajes</span></p>
     <span class="lbl lbl-paper">Qué vas a aprender</span>
-    <h2 class="cond-lg cond-lg-paper">De una idea a una <em>pieza final</em>, sin depender de resultados aleatorios.</h2>
+    <h2 class="cond-lg cond-lg-paper">De una idea a una <em>pieza final</em>, con método para dirigir mejor tus resultados.</h2>
 
     <div class="learn-grid">
       <div>
@@ -3357,7 +3377,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
     </div>
 
-    <p class="micro-legal">Al unirte al grupo de WhatsApp, tu nombre, número y foto de perfil podrán ser visibles para otros integrantes, según la configuración de WhatsApp.</p>
+    <p class="micro-legal">Al unirte al grupo de WhatsApp, tu nombre, número y foto de perfil podrán ser visibles para otros integrantes, según la configuración de WhatsApp. El grupo es para fines educativos del curso; no se permite spam, uso comercial no autorizado, acoso ni difusión de materiales del curso fuera del grupo.</p>
   </div>
 </section>
 
@@ -3400,6 +3420,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="lbl">Programas creativos</span>
           <p class="programs">Luma · Leonardo · Pika · Hailuo · Magnific</p>
         </div>
+        <p class="partner-disclaimer">Las marcas mencionadas pertenecen a sus respectivos titulares.</p>
 
         <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
           <span class="tutor-link-k">Portafolio</span>
@@ -3571,7 +3592,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
             </div>
           </div>
           <div class="price-deadline">
-            <em>Apartas con $1,000 MXN.</em> Liquidas $6,500 MXN antes del 27 de junio. El total se respeta al precio del momento de la reserva.
+            <em>Apartas con $1,000 MXN</em> que se descuentan del total. Liquidas $6,500 MXN antes del 27 de junio. El precio se respeta al momento de la reserva.
           </div>
         </div>
       </div>
@@ -3613,6 +3634,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
         <p class="pay-legal">
           Al realizar tu pago aceptas los <a href="/terminos" target="_blank" rel="noopener">Términos de Uso</a>, <a href="/contratacion" target="_blank" rel="noopener">Términos de Contratación</a>, <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
+          <span class="pay-legal-note">Las sesiones se graban con fines académicos para acceso posterior de participantes.</span>
+        </p>
         </p>
 
         <div class="pay-cta-block">
