@@ -2632,6 +2632,22 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   text-transform: uppercase;
 }
 
+/* Versionado de documentos legales (LFPDPPP trazabilidad) */
+.footer-legal-version {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.4);
+  margin: 4px 0 8px;
+}
+.footer-legal-k { color: rgba(134,172,135,0.7); }
+.footer-legal-sep { opacity: 0.4; }
+
 @media (max-width: 768px) {
   .page-footer { padding: 0 20px 24px; }
   .footer-inner { gap: 16px; }
@@ -3943,6 +3959,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <li><a href="/cookies">Política de Cookies</a></li>
       <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
     </ul>
+    <p class="footer-legal-version">
+      <span class="footer-legal-k">Documentos legales</span>
+      <span class="footer-legal-sep" aria-hidden="true">·</span>
+      <span>Versión 1.0</span>
+      <span class="footer-legal-sep" aria-hidden="true">·</span>
+      <span>Última actualización: mayo 2026</span>
+    </p>
     <span class="footer-copy">© 2026 AWLA® · awla.live</span>
   </div>
 </div>

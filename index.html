@@ -290,10 +290,15 @@
 }
 </script>
 
-<!-- Performance: preload LCP element (hero video) -->
-<!-- Performance: preload LCP element (hero video) - serves different file by viewport -->
-<link rel="preload" as="video" type="video/mp4" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-mobile-v2.mp4" media="(max-width: 768px)">
-<link rel="preload" as="video" type="video/mp4" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-v2.mp4" media="(min-width: 769px)">
+<!-- Performance: preload LCP element (hero image) -->
+<link rel="preload" as="image" type="image/webp"
+      href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-awla-desktop.webp"
+      fetchpriority="high"
+      media="(min-width: 769px)">
+<link rel="preload" as="image" type="image/webp"
+      href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-awla-mobile.webp"
+      fetchpriority="high"
+      media="(max-width: 768px)">
 
 <!-- Performance: preload critical fonts -->
 <link rel="preload" href="https://fonts.gstatic.com/s/barlowcondensed/v12/HTxwL3I-JCGChYJ8VI-L6OO_au7B6xnK-Q.woff2" as="font" type="font/woff2" crossorigin>
@@ -989,6 +994,22 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 .footer-links a.current { color: var(--moss); }
 .footer-copy { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(228,224,214,0.5); letter-spacing: 2px; text-transform: uppercase; }
 
+/* Versionado de documentos legales (LFPDPPP trazabilidad) */
+.footer-legal-version {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.4);
+  margin: 4px 0 8px;
+}
+.footer-legal-k { color: rgba(134,172,135,0.7); }
+.footer-legal-sep { opacity: 0.4; }
+
 /* ── TESTIMONIALS · slider horizontal ── */
 .testi-grid {
   display: flex;
@@ -1507,7 +1528,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 <!-- COOKIE BANNER (Consent Mode) -->
 <div id="ck" role="dialog" aria-label="Preferencias de cookies" aria-live="polite">
   <p class="ck-head">Cookies</p>
-  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies.html">Política de cookies</a>.</p>
+  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies">Política de cookies</a>.</p>
 
   <div class="ck-actions ck-actions-initial">
     <button class="ck-btn ck-btn-link" onclick="ckPersonalize()">Personalizar</button>
@@ -1584,10 +1605,15 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 <!-- ─── 1 · HERO ─────────────────────────────── -->
 <div class="card card-term grain-term" id="c0" data-i="0">
   <div class="vbg">
-    <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0.6;">
-      <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-mobile-v2.mp4" type="video/mp4" media="(max-width: 768px)">
-      <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-bg-v2.mp4" type="video/mp4">
-    </video>
+    <picture>
+      <source media="(max-width: 768px)" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-awla-mobile.webp" type="image/webp">
+      <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-awla-desktop.webp"
+           alt=""
+           fetchpriority="high"
+           decoding="async"
+           width="1920" height="1080"
+           style="width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.7;">
+    </picture>
     <!-- graduated overlay: light top-left, darker bottom -->
     <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(28,28,26,0.08) 0%, rgba(28,28,26,0.0) 40%, rgba(28,28,26,0.55) 75%, rgba(28,28,26,0.92) 100%);"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(28,28,26,0.32) 0%, rgba(28,28,26,0.0) 55%);"></div>
@@ -2526,13 +2552,20 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA" width="450" height="100">
     </div>
     <ul class="footer-links">
-      <li><a href="/privacidad.html">Aviso de Privacidad</a></li>
-      <li><a href="/terminos.html">Términos de Uso</a></li>
-      <li><a href="/contratacion.html">Términos de Contratación</a></li>
-      <li><a href="/devoluciones.html">Cambios y Devoluciones</a></li>
-      <li><a href="/cookies.html">Política de Cookies</a></li>
+      <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
+      <li><a href="/terminos">Términos de Uso</a></li>
+      <li><a href="/contratacion">Términos de Contratación</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies">Política de Cookies</a></li>
       <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
     </ul>
+    <p class="footer-legal-version">
+      <span class="footer-legal-k">Documentos legales</span>
+      <span class="footer-legal-sep" aria-hidden="true">·</span>
+      <span>Versión 1.0</span>
+      <span class="footer-legal-sep" aria-hidden="true">·</span>
+      <span>Última actualización: mayo 2026</span>
+    </p>
     <span class="footer-copy">© 2026 AWLA® · awla.live</span>
   </div>
 </div>
