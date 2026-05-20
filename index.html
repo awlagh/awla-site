@@ -201,6 +201,90 @@
           }
         }
       ]
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@pepzlaroid" },
+      "reviewBody": "El curso me pareció genial para iniciar en el mundo de la IA, es altamente recomendable. Particularmente lo uso para trabajar en creación de imagen. Pablo también fue un gran asesor, siempre resolviendo las dudas en todo momento.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@ledicenelvega" },
+      "reviewBody": "El curso de AWLA fue una excelente introducción al mundo de la Inteligencia Artificial, especialmente para aprender a usar Midjourney y la creación de imágenes con IA. Como creativo, suelo necesitar referencias audiovisuales, y encontrar la imagen adecuada puede ser tardado; este curso me dio una alternativa clave: generar imágenes mediante prompts, logrando mayor precisión al comunicar ideas en pitches.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@vlakat" },
+      "reviewBody": "El curso que tomé en AWLA, además de ser express, me ayudó a integrar la inteligencia artificial como parte de mis herramientas creativas para llegar más lejos en el desarrollo de mis proyectos e ideas.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@karinaminujin" },
+      "reviewBody": "Excelente el curso. Me resultó muy útil, muy claro y práctico.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@aresvid" },
+      "reviewBody": "Tomé este curso y me pareció sensacional la forma de abordar a la IA desde una perspectiva cinematográfica. Quedé muy contento porque lo tomé de forma asincrónica y me funcionó muy bien, lo pude ver con calma y por fortuna las dudas que tenía se resolvieron a través de preguntas de mis compañeros.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@maucastrodirector" },
+      "reviewBody": "Recomiendo ampliamente el curso de IA. El instructor es muy experimentado y despejó todas mis inquietudes de manera muy clara.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Cursos AWLA",
+        "url": "https://www.awla.live"
+      },
+      "author": { "@type": "Person", "name": "@pacodel61" },
+      "reviewBody": "Estoy muy satisfecho, feliz y agradecido de haber recibido tu asesoría, fue tan nutritivo que a partir de él por fin pude crear algo cinematográfico. Mis obstáculos desaparecieron y ahora exploro nuevas herramientas porque me siento seguro. Antes andaba dando palos a ciegas, gracias a ti ya sé qué buscar y cómo encontrar lo que necesito.",
+      "inLanguage": "es-MX",
+      "publisher": { "@type": "Organization", "name": "AWLA", "url": "https://www.awla.live" }
     }
   ]
 }
@@ -905,19 +989,109 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 .footer-links a.current { color: var(--moss); }
 .footer-copy { font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: rgba(228,224,214,0.5); letter-spacing: 2px; text-transform: uppercase; }
 
-/* ── TESTIMONIALS ── */
-.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 40px; }
+/* ── TESTIMONIALS · slider horizontal ── */
+.testi-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  margin-top: 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 12px;
+  scroll-padding-left: 0;
+  position: relative;
+}
+.testi-grid::-webkit-scrollbar { display: none; }
+
 .testi-cell {
-  padding: 32px 28px; border: 1px solid rgba(26,26,24,0.08);
-  background: rgba(26,26,24,0.02); display: flex; flex-direction: column; gap: 16px;
+  flex: 0 0 calc((100% - 32px) / 3); /* desktop: 3 visibles */
+  position: relative;
+  padding: 36px 28px 28px;
+  border: 1px solid rgba(26,26,24,0.08);
+  background: rgba(26,26,24,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   border-radius: 8px;
+  scroll-snap-align: start;
+  min-width: 0;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
+
+@media (max-width: 959px) {
+  .testi-cell { flex: 0 0 calc((100% - 16px) / 2); }
+}
+@media (max-width: 639px) {
+  .testi-cell { flex: 0 0 85%; }
+}
+
+.testi-cell:hover {
+  background: rgba(26,26,24,0.04);
+  border-color: rgba(61,92,62,0.25);
+  transform: translateY(-2px);
+}
+
+/* Comilla decorativa (acento editorial) */
+.testi-mark {
+  position: absolute;
+  top: 14px;
+  left: 22px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--moss);
+  opacity: 0.28;
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+}
+
 .testi-quote {
-  font-family: 'DM Serif Display', serif; font-style: italic;
-  font-size: clamp(14px, 1.4vw, 17px); line-height: 1.6;
-  color: var(--ink); flex: 1;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.6;
+  color: var(--ink);
+  flex: 1;
+  margin: 0;
+  padding-top: 14px;
 }
-.testi-author { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--moss); text-transform: uppercase; }
+.testi-author {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--moss);
+  text-transform: uppercase;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(26,26,24,0.06);
+}
+
+/* Dots nav slider */
+.testi-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(26,26,24,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.testi-dot.is-active {
+  background: var(--moss);
+  transform: scale(1.35);
+}
+.testi-dot:hover { background: rgba(26,26,24,0.35); }
 
 /* ── SERVICIOS WITH IMAGE ── */
 .serv-img-grid {
@@ -1088,7 +1262,6 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 }
 
 @media (max-width: 768px) {
-  .testi-grid { grid-template-columns: 1fr; }
   .serv-compact { grid-template-columns: 1fr; }
   .partners-row { gap: 8px; }
   /* c3 Narrativa con IA: stack vertically on mobile */
@@ -1292,9 +1465,8 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   #c7 .cc > div { grid-template-columns: 1fr !important; gap: 24px !important; }
   #c7 .lbl { display: none !important; } /* hide "sobre awla" — title says it all */
 
-  /* ── TESTIMONIOS (c10) ── */
-  .testi-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-  .testi-cell { padding: 18px !important; }
+  /* ── TESTIMONIOS (c12) ── */
+  .testi-cell { padding: 24px 20px !important; }
   .testi-quote { font-size: 13px !important; line-height: 1.6 !important; }
   #c12 .mix-title { font-size: clamp(24px, 8vw, 38px) !important; }
 
@@ -2046,7 +2218,79 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       <span class="c" style="color:var(--ink)">Lo que dicen<br></span><span class="s" style="color:var(--moss);font-size:1em">los estudiantes.</span>
     </h2>
     <div class="testi-grid" id="testi-grid">
-      <!-- Loaded dynamically from GitHub JSON -->
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">El curso me pareció genial para iniciar en el mundo de la IA, es altamente recomendable. Particularmente lo uso para trabajar en creación de imagen. Pablo también fue un gran asesor, siempre resolviendo las dudas en todo momento.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@pepzlaroid</span>
+        </p>
+      </article>
+
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">El curso de AWLA fue una excelente introducción al mundo de la Inteligencia Artificial, especialmente para aprender a usar Midjourney y la creación de imágenes con IA. Como creativo, suelo necesitar referencias audiovisuales, y encontrar la imagen adecuada puede ser tardado; este curso me dio una alternativa clave: generar imágenes mediante prompts, logrando mayor precisión al comunicar ideas en pitches.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@ledicenelvega</span>
+        </p>
+      </article>
+
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">El curso que tomé en AWLA, además de ser express, me ayudó a integrar la inteligencia artificial como parte de mis herramientas creativas para llegar más lejos en el desarrollo de mis proyectos e ideas.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@vlakat</span>
+        </p>
+      </article>
+
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">Excelente el curso. Me resultó muy útil, muy claro y práctico.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@karinaminujin</span>
+        </p>
+      </article>
+
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">Tomé este curso y me pareció sensacional la forma de abordar a la IA desde una perspectiva cinematográfica. Quedé muy contento porque lo tomé de forma asincrónica y me funcionó muy bien, lo pude ver con calma y por fortuna las dudas que tenía se resolvieron a través de preguntas de mis compañeros.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@aresvid</span>
+        </p>
+      </article>
+
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">Recomiendo ampliamente el curso de IA. El instructor es muy experimentado y despejó todas mis inquietudes de manera muy clara.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@maucastrodirector</span>
+        </p>
+      </article>
+
+      <article class="testi-cell" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Cursos AWLA">
+        <span class="testi-mark" aria-hidden="true">"</span>
+        <p class="testi-quote" itemprop="reviewBody">Estoy muy satisfecho, feliz y agradecido de haber recibido tu asesoría, fue tan nutritivo que a partir de él por fin pude crear algo cinematográfico. Mis obstáculos desaparecieron y ahora exploro nuevas herramientas porque me siento seguro. Antes andaba dando palos a ciegas, gracias a ti ya sé qué buscar y cómo encontrar lo que necesito.</p>
+        <p class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">@pacodel61</span>
+        </p>
+      </article>
+    </div>
+
+    <!-- Slider nav (dots) -->
+    <div class="testi-slider-nav" aria-hidden="true">
+      <button type="button" class="testi-dot is-active" data-i="0" aria-label="Testimonio 1"></button>
+      <button type="button" class="testi-dot" data-i="1" aria-label="Testimonio 2"></button>
+      <button type="button" class="testi-dot" data-i="2" aria-label="Testimonio 3"></button>
+      <button type="button" class="testi-dot" data-i="3" aria-label="Testimonio 4"></button>
+      <button type="button" class="testi-dot" data-i="4" aria-label="Testimonio 5"></button>
+      <button type="button" class="testi-dot" data-i="5" aria-label="Testimonio 6"></button>
+      <button type="button" class="testi-dot" data-i="6" aria-label="Testimonio 7"></button>
     </div>
   </div>
 </div>
@@ -2261,7 +2505,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <a href="mailto:hola@awla.live" class="btn btn-moss">Escribir</a>
-      <a href="https://wa.me/525537175870?text=Hola%20AWLA%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s" target="_blank" class="btn btn-outline-term" style="display:inline-flex;align-items:center;gap:8px">
+      <a href="https://wa.me/5214421234567?text=Hola%20AWLA%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s" target="_blank" class="btn btn-outline-term" style="display:inline-flex;align-items:center;gap:8px">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.7">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
@@ -2807,42 +3051,35 @@ function copyPrompt() {
   });
 }
 
-// ── TESTIMONIOS LOADER ───────────────────────────
-(async function loadTestimonios() {
+// ── TESTIMONIOS SLIDER SYNC ──────────────────────
+(function testimoniosSlider() {
   const grid = document.getElementById('testi-grid');
-  const countEl = document.getElementById('testi-count');
-  if (!grid) return;
+  const dots = document.querySelectorAll('.testi-dot');
+  if (!grid || !dots.length) return;
 
-  // Fallback data embedded in case GitHub fails
-  const fallback = [
-    { quote: "El curso me pareció genial para iniciar en el mundo de la IA, es altamente recomendable. Pablo también fue un gran asesor, siempre resolviendo las dudas en todo momento.", author: "@pepzlaroid" },
-    { quote: "El curso de AWLA fue una excelente introducción al mundo de la IA. Como creativo, me dio una alternativa clave: generar imágenes mediante prompts, logrando mayor precisión al comunicar ideas.", author: "@ledicenelvega" },
-    { quote: "Me ayudó a integrar la inteligencia artificial como parte de mis herramientas creativas para llegar más lejos en el desarrollo de mis proyectos e ideas.", author: "@vlakat" }
-  ];
+  // Sync dots con scroll del grid
+  let ticking = false;
+  grid.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const cells = grid.children;
+      const cellWidth = cells[0]?.offsetWidth || 1;
+      const activeIdx = Math.round(grid.scrollLeft / (cellWidth + 16));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
+      ticking = false;
+    });
+  }, { passive: true });
 
-  let data = fallback;
-  try {
-    const res = await fetch('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/testimonios.json');
-    if (res.ok) {
-      const json = await res.json();
-      if (json.testimonios && json.testimonios.length) data = json.testimonios;
-    }
-  } catch (e) {
-    // Use fallback silently
-  }
-
-  if (countEl) countEl.textContent = String(data.length).padStart(2, '0');
-
-  // Pick 3 random (or all if less than 3)
-  const shuffled = [...data].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, 3);
-
-  grid.innerHTML = selected.map(t => `
-    <div class="testi-cell">
-      <p class="testi-quote">"${t.quote}"</p>
-      <p class="testi-author">${t.author}</p>
-    </div>
-  `).join('');
+  // Click en dot → scroll a esa celda
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const cells = grid.children;
+      if (cells[i]) {
+        grid.scrollTo({ left: cells[i].offsetLeft - grid.offsetLeft, behavior: 'smooth' });
+      }
+    });
+  });
 })();
 
 // ── TITLE GLITCH ─────────────────────────────────
