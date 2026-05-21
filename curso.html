@@ -1152,19 +1152,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   line-height: 1.7;
 }
 
-/* Disclaimer legal debajo de bio CPP */
-.tutor-bio-disclaimer {
-  margin: 14px 0 0;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  line-height: 1.6;
-  max-width: 60ch;
-  opacity: 0.8;
-}
-
 /* Link a portafolio del tutor */
 .tutor-link {
   display: inline-flex;
@@ -1515,34 +1502,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   margin: 0;
 }
 .tools-note { font-size: 14px; line-height: 1.4; color: var(--ink-mid); margin: 16px 0 0; max-width: 70ch; }
-
-/* Disclaimer sobre suscripciones */
-.tools-disclaimer {
-  margin: 24px 0 0;
-  padding: 18px 22px;
-  border-left: 3px solid var(--moss);
-  background: rgba(61,92,62,0.04);
-  font: 400 13px var(--font-body);
-  line-height: 1.6;
-  color: var(--ink);
-  max-width: 70ch;
-  border-radius: 0 4px 4px 0;
-}
-.tools-disclaimer-k {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--moss);
-  font-weight: 500;
-  display: block;
-  margin-bottom: 6px;
-}
-.tools-disclaimer em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--moss);
-}
 
 @media (max-width: 1100px) { .tools { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
@@ -2246,32 +2205,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   font-weight: 500;
 }
 
-/* Nota "no incluye" debajo de la lista */
-.includes-note {
-  margin: 20px 0 0;
-  padding: 16px 18px;
-  background: rgba(26,26,24,0.04);
-  border-radius: 4px;
-  font: 400 13px var(--font-body);
-  line-height: 1.55;
-  color: var(--ink-mid);
-}
-.includes-note-k {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  font-weight: 500;
-  display: block;
-  margin-bottom: 6px;
-}
-.includes-note em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--ink);
-}
-
 @media (max-width: 880px) { .pricing-grid { grid-template-columns: 1fr; gap: 40px; } }
 @media (max-width: 480px) {
   .price-row { grid-template-columns: 1fr; gap: 18px; }
@@ -2326,15 +2259,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   transition: color 0.2s;
 }
 .pay-legal a:hover { color: var(--screen); }
-.pay-legal-note {
-  display: block;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(228,224,214,0.08);
-  font-size: 10px;
-  color: rgba(228,224,214,0.4);
-  letter-spacing: 0.2px;
-}
 .pay-cta-block { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
 
 
@@ -3464,11 +3388,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <p class="left">No necesitas pagar todas las plataformas para comenzar.</p>
       <p class="right">Las herramientas pueden cambiar. El método permanece.</p>
     </div>
-    <p class="tools-note">Durante el curso revisamos opciones y cada alumno decide qué herramientas usar según su proyecto.</p>
-    <p class="tools-disclaimer">
-      <span class="tools-disclaimer-k">Importante</span>
-      Las suscripciones a las herramientas <em>no están incluidas</em> en el costo del curso. Cada plataforma se contrata por separado, sujeta a sus propios términos, precios, disponibilidad y políticas de privacidad.
-    </p>
+    <p class="tools-note">Durante el curso revisamos opciones y cada alumno decide qué herramientas usar según su proyecto. Las suscripciones a plataformas externas no están incluidas y se contratan por separado.</p>
   </div>
 </section>
 
@@ -3528,7 +3448,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
     </div>
 
-    <p class="micro-legal">La publicación en la galería es opcional y queda a elección de cada participante. Requiere completar el proceso, presentar la pieza final y autorizar expresamente su publicación. Cada participante conserva los derechos sobre su obra y es responsable de contar con los permisos necesarios sobre los materiales que integre.</p>
+    <p class="micro-legal">La publicación es opcional y requiere autorización expresa. Cada participante conserva los derechos de su obra.</p>
   </div>
 </section>
 
@@ -3569,7 +3489,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
     </div>
 
-    <p class="micro-legal">Al unirte al grupo de WhatsApp, tu nombre, número y foto de perfil podrán ser visibles para otros integrantes, según la configuración de WhatsApp. El grupo es para fines educativos del curso; no se permite spam, uso comercial no autorizado, acoso ni difusión de materiales del curso fuera del grupo.</p>
+    <p class="micro-legal">Al unirte al grupo de WhatsApp, tu nombre y foto de perfil son visibles para otros participantes. Es un espacio educativo del curso.</p>
   </div>
 </section>
 
@@ -3609,7 +3529,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <p class="tutor-bio tutor-bio-cpp">
           Ha sido invitado al <em>Creative Partners Program</em> (CPP) de <em>Runway</em> y ha participado en programas creativos de <em>Leonardo</em>, <em>Luma</em>, <em>Pika</em>, <em>Magnific</em> y <em>Hailuo</em>, entre otros.
         </p>
-        <p class="tutor-bio-disclaimer">Las marcas mencionadas pertenecen a sus respectivos titulares. Su mención corresponde a experiencia profesional de Pablo y no implica representación, distribución oficial, patrocinio ni certificación por parte de AWLA.</p>
 
         <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
           <span class="tutor-link-k">Portafolio</span>
@@ -3811,10 +3730,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <li>Acceso a grabaciones por 90 días</li>
           <li>Posibilidad de publicar tu proyecto en la galería AWLA (opcional)</li>
         </ul>
-        <p class="includes-note">
-          <span class="includes-note-k">No incluye</span>
-          Suscripciones a herramientas de IA (Midjourney, Runway, Higgsfield, etc). Cada plataforma se contrata por separado según el proyecto. <em>Trabajamos con versiones gratuitas y de pago según convenga.</em>
-        </p>
       </div>
     </div>
   </div>
@@ -3836,7 +3751,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
         <p class="pay-legal">
           Al realizar tu pago aceptas los <a href="/terminos" target="_blank" rel="noopener">Términos de Uso</a>, <a href="/contratacion" target="_blank" rel="noopener">Términos de Contratación</a>, <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
-          <span class="pay-legal-note">Las sesiones se graban con fines académicos para acceso posterior de participantes.</span>
         </p>
 
         <div class="pay-cta-block">
