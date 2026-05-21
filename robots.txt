@@ -1,3 +1,6 @@
+# AWLA · awla.live
+# robots.txt
+
 User-agent: *
 Allow: /
 
@@ -5,6 +8,25 @@ Allow: /
 Disallow: /seed-builder.html
 Disallow: /imagen.html
 Disallow: /functions/
+
+# Disallow legacy URLs (migradas a slugs limpios)
+Disallow: /curso.html
+Disallow: /privacidad.html
+Disallow: /privacidad-integral.html
+Disallow: /terminos.html
+Disallow: /contratacion.html
+Disallow: /devoluciones.html
+Disallow: /cookies.html
+
+# Bots agresivos sin valor SEO
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
 
 # Sitemap
 Sitemap: https://www.awla.live/sitemap.xml

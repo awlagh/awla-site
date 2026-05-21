@@ -12,14 +12,14 @@
 <meta name="keywords" content="curso de IA generativa, curso de IA en México, curso IA LATAM, curso Midjourney español, curso Runway, prompting cinematográfico, dirección creativa con IA, curso online creación audiovisual, AWLA, Del texto a la pieza, curso de IA en línea, aprender IA generativa">
 <meta name="author" content="Domingo Pablo">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://www.awla.live/curso.html">
+<link rel="canonical" href="https://www.awla.live/curso">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AWLA">
 <meta property="og:title" content="Curso de IA generativa en LATAM · Del texto a la pieza · AWLA">
 <meta property="og:description" content="Curso online en vivo de dirección creativa con IA. Midjourney, Runway, prompting cinematográfico. 10 sesiones · 20 hrs · proyecto final.">
-<meta property="og:url" content="https://www.awla.live/curso.html">
+<meta property="og:url" content="https://www.awla.live/curso">
 <meta property="og:locale" content="es_MX">
 <meta property="og:image" content="https://www.awla.live/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,7 +41,7 @@
   "@graph": [
     {
       "@type": "BreadcrumbList",
-      "@id": "https://www.awla.live/curso.html#breadcrumb",
+      "@id": "https://www.awla.live/curso#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -53,16 +53,16 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Curso · Del texto a la pieza",
-          "item": "https://www.awla.live/curso.html"
+          "item": "https://www.awla.live/curso"
         }
       ]
     },
     {
       "@type": "Course",
-      "@id": "https://www.awla.live/curso.html#course",
+      "@id": "https://www.awla.live/curso#course",
       "name": "Del texto a la pieza · Curso online de creación audiovisual con IA",
       "description": "Curso online en vivo de AWLA para convertir ideas en piezas visuales y audiovisuales con IA generativa. Aprende prompting creativo, lenguaje visual y pipeline completo, desde la idea inicial hasta una pieza final publicada. 10 sesiones de 2 horas, en vivo por Zoom. Generación 01: inicia el 30 de junio 2026.",
-      "url": "https://www.awla.live/curso.html",
+      "url": "https://www.awla.live/curso",
       "image": "https://www.awla.live/og-image.jpg",
       "inLanguage": "es-MX",
       "educationalLevel": "Principiante a avanzado",
@@ -131,7 +131,7 @@
         "price": "5800",
         "priceCurrency": "MXN",
         "category": "Curso online en vivo",
-        "url": "https://www.awla.live/curso.html",
+        "url": "https://www.awla.live/curso",
         "validFrom": "2026-05-18",
         "priceValidUntil": "2026-06-10",
         "description": "Precio lanzamiento Generación 01. Reserva con $1,000 MXN antes del 10 de junio."
@@ -139,7 +139,7 @@
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.awla.live/curso.html#faq",
+      "@id": "https://www.awla.live/curso#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -217,7 +217,7 @@
     },
     {
       "@type": "VideoObject",
-      "@id": "https://www.awla.live/curso.html#reel-manifiesto",
+      "@id": "https://www.awla.live/curso#reel-manifiesto",
       "name": "Manifiesto AWLA · La IA no sustituye tu creatividad, la potencia",
       "description": "Reel del manifiesto AWLA. La inteligencia artificial como herramienta creativa: explorar, construir imagen, desarrollar escenas y ampliar procesos sin perder estilo, criterio ni voz propia.",
       "thumbnailUrl": "https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/reel-manifiesto-awla-poster.webp",
@@ -4248,58 +4248,76 @@ window.resetCookies = () => {
 </script>
 
 <!-- ════════════════════════════════════════════════
-     Lazy load: MailerLite + reCAPTCHA solo al acercarse al formulario
+     Lazy load extremo · MailerLite + reCAPTCHA
+     · MailerLite carga cuando el form entra al viewport
+     · reCAPTCHA carga SOLO cuando el usuario hace focus en un input
      ════════════════════════════════════════════════ -->
 <script>
 (function lazyFormDeps(){
-  let loaded = false;
-  function loadFormDeps() {
-    if (loaded) return;
-    loaded = true;
+  let mlLoaded = false;
+  let rcLoaded = false;
 
-    // MailerLite jQuery + webforms
+  function loadMailerLite() {
+    if (mlLoaded) return;
+    mlLoaded = true;
+
+    // MailerLite jQuery + webforms (NO incluye reCAPTCHA)
     const ml = document.createElement('script');
     ml.src = 'https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b';
     ml.async = true;
     document.head.appendChild(ml);
 
-    // Beacon de tracking de MailerLite (después que cargue el form)
+    // Beacon de tracking (sin esperar nada)
     setTimeout(() => {
       fetch('https://assets.mailerlite.com/jsonp/2304368/forms/186128848452060866/takel')
         .catch(() => {});
     }, 1000);
-
-    // reCAPTCHA: cargar después de MailerLite
-    setTimeout(() => {
-      const rc = document.createElement('script');
-      rc.src = 'https://www.google.com/recaptcha/api.js';
-      rc.async = true;
-      rc.defer = true;
-      document.head.appendChild(rc);
-    }, 500);
   }
 
-  // Trigger 1: el formulario entra al viewport (con margen anticipado)
+  function loadRecaptcha() {
+    if (rcLoaded) return;
+    rcLoaded = true;
+
+    const rc = document.createElement('script');
+    rc.src = 'https://www.google.com/recaptcha/api.js';
+    rc.async = true;
+    rc.defer = true;
+    document.head.appendChild(rc);
+  }
+
+  // Trigger 1 · MailerLite cuando el form entra al viewport
   const formSection = document.querySelector('.s-ondemand');
   if (formSection && 'IntersectionObserver' in window) {
     const obs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        loadFormDeps();
+        loadMailerLite();
         obs.disconnect();
       }
     }, { rootMargin: '600px 0px' });
     obs.observe(formSection);
   } else {
-    // Fallback: si no hay IntersectionObserver, carga después de 5s
-    setTimeout(loadFormDeps, 5000);
+    setTimeout(loadMailerLite, 5000);
   }
 
-  // Trigger 2: el usuario hace focus o click en cualquier campo del form
-  const formEl = document.querySelector('#mlb2-40613311 form, #mlb2-40613311 input, #mlb2-40613311 button');
-  if (formEl) {
-    ['focus', 'click', 'touchstart'].forEach(evt => {
-      formEl.addEventListener(evt, loadFormDeps, { once: true, passive: true });
+  // Trigger 2 · reCAPTCHA SOLO cuando el usuario interactúa con un input/botón del form
+  // Esto reduce ~1MB de JS para usuarios que ven la página pero no interactúan con el form
+  function attachRecaptchaTriggers() {
+    const formInputs = document.querySelectorAll('#mlb2-40613311 input, #mlb2-40613311 textarea, #mlb2-40613311 button');
+    formInputs.forEach(el => {
+      ['focus', 'click', 'touchstart'].forEach(evt => {
+        el.addEventListener(evt, () => {
+          loadMailerLite(); // por si no se cargó aún
+          loadRecaptcha();
+        }, { once: true, passive: true });
+      });
     });
+  }
+
+  // Adjuntar los triggers cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachRecaptchaTriggers);
+  } else {
+    attachRecaptchaTriggers();
   }
 })();
 </script>

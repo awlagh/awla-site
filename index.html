@@ -307,9 +307,20 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap"></noscript>
 
-<!-- p5.js (needed for hero, loop, about, method sketches - must load synchronously) -->
-<!-- p5.js deferred to not block rendering. Sketches initialize on window load. -->
-<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js" defer></script>
+<!-- p5.js · cargado solo en desktop (mejora LCP mobile considerablemente) -->
+<script>
+(function loadP5IfDesktop() {
+  // Skip en mobile (viewport <= 768px) y dispositivos con poca CPU
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+  // Skip si el dispositivo lo prefiere (reduced motion)
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
+</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -2013,9 +2024,15 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     08 / 16
   </div>
   
-  <video autoplay loop muted playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
-    <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/loop-bg-v2.mp4" type="video/mp4">
-  </video>
+  <picture>
+    <source media="(max-width: 768px)" srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/trabajo-bg-mobile.webp" type="image/webp">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/trabajo-bg-desktop.webp"
+         alt=""
+         loading="lazy"
+         decoding="async"
+         width="1920" height="1080"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+  </picture>
   <div style="position:absolute;inset:0;background:rgba(10,10,10,0.52);z-index:1;"></div>
   <div id="lc" style="position:absolute;inset:0;z-index:2;"></div>
 </div>
@@ -2134,9 +2151,15 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
       </div>
       <div style="display:flex;align-items:center;justify-content:center;padding:0 2vw;">
         <div style="position:relative;width:100%;max-width:420px;aspect-ratio:3/4;overflow:hidden;border-radius:10px;background:rgba(26,26,24,0.06);">
-          <video autoplay loop muted playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <source src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/about-image-v2.mp4" type="video/mp4">
-          </video>
+          <picture>
+            <source srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-preview-600.webp 600w, https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-preview.webp 900w" sizes="(max-width: 768px) 100vw, 420px" type="image/webp">
+            <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-preview.webp"
+                 alt=""
+                 loading="lazy"
+                 decoding="async"
+                 width="900" height="1200"
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          </picture>
           <!-- fallback grain texture if video fails -->
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(to top,rgba(26,26,24,0.5) 0%,transparent 60%)">
             <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(26,26,24,0.35);text-transform:uppercase">awla.live</p>
@@ -2907,10 +2930,18 @@ function initP5Sketches() {
 }
 
 // Run after window load — p5 is guaranteed loaded by then
-if (document.readyState === 'complete') {
+// Defensivo: si p5 no está disponible (mobile o reduced-motion), no ejecutar
+function safeInitP5() {
+  if (typeof p5 === 'undefined') {
+    // p5 no se cargó (mobile o reduced-motion). Esto es esperado.
+    return;
+  }
   initP5Sketches();
+}
+if (document.readyState === 'complete') {
+  safeInitP5();
 } else {
-  window.addEventListener('load', initP5Sketches);
+  window.addEventListener('load', safeInitP5);
 }
 
 

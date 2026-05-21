@@ -1,0 +1,17 @@
+# Redirects 301 · Cloudflare Pages
+# Subir como archivo `_redirects` (sin extensión) a la raíz del proyecto
+
+# Curso: legacy .html → slug limpio
+/curso.html  /curso  301
+
+# Documentos legales: legacy .html → slugs limpios
+/privacidad.html              /privacidad-integral  301
+/privacidad-integral.html     /privacidad-integral  301
+/terminos.html                /terminos             301
+/contratacion.html            /contratacion         301
+/devoluciones.html            /devoluciones         301
+/cookies.html                 /cookies              301
+
+# Subdominios o paths obsoletos
+/seed-builder.html  /  301
+/imagen.html        /  301
