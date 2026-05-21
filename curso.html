@@ -128,13 +128,13 @@
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/LimitedAvailability",
-        "price": "7500",
+        "price": "5800",
         "priceCurrency": "MXN",
         "category": "Curso online en vivo",
         "url": "https://www.awla.live/curso.html",
         "validFrom": "2026-05-18",
-        "priceValidUntil": "2026-06-15",
-        "description": "Precio lanzamiento Generación 01. Reserva con $1,000 MXN antes del 15 de junio."
+        "priceValidUntil": "2026-06-10",
+        "description": "Precio lanzamiento Generación 01. Reserva con $1,000 MXN antes del 10 de junio."
       }
     },
     {
@@ -1820,6 +1820,69 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .faq-item .a { font-size: clamp(13px, 1.2vw, 14px); line-height: 1.55; color: var(--ink-mid); margin: 0; }
 
+/* CTA "Otras dudas" al final del FAQ */
+.faq-cta {
+  margin-top: 56px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: rgba(61,92,62,0.04);
+  border: 1px solid rgba(61,92,62,0.15);
+  border-radius: 8px;
+}
+.faq-cta-text {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -.01em;
+}
+.faq-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: var(--moss);
+  color: var(--screen);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
+  font-weight: 500;
+}
+.faq-cta-btn:hover {
+  background: #2f4a30;
+  transform: translateY(-1px);
+}
+.faq-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  font-size: 10px;
+  font-weight: 700;
+}
+.faq-cta-btn .arrow {
+  transition: transform 0.2s;
+}
+.faq-cta-btn:hover .arrow { transform: translateX(3px); }
+
+@media (max-width: 540px) {
+  .faq-cta { flex-direction: column; align-items: flex-start; padding: 22px 24px; }
+  .faq-cta-btn { width: 100%; justify-content: center; }
+}
+
 @media (max-width: 880px) {
   .faq-grid { grid-template-columns: 1fr; }
   .s-faq .head-row > p { text-align: left; }
@@ -1837,6 +1900,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .testi-title .c { color: var(--ink); }
 .testi-title .s { color: var(--moss); }
+.testi-source-note {
+  font: 400 13px var(--font-body);
+  font-style: italic;
+  color: var(--ink-mid);
+  margin: 18px 0 0;
+  max-width: 540px;
+}
 
 /* Slider horizontal · scroll-snap (desktop + mobile) */
 .testi-grid {
@@ -1996,6 +2066,113 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
+
+/* Versión B · Precio hero prominente */
+.price-hero {
+  padding: 28px 28px 24px;
+  background: rgba(61,92,62,0.06);
+  border: 1px solid rgba(61,92,62,0.2);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+.price-hero-tag {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin: 0 0 12px;
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(61,92,62,0.1);
+  border-radius: 3px;
+}
+.price-hero-val {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(56px, 8vw, 88px);
+  line-height: 1;
+  margin: 8px 0 6px;
+  color: var(--ink);
+  letter-spacing: -.02em;
+}
+.price-hero-cur {
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: var(--ink-mid);
+  margin-left: 8px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.price-hero-meta {
+  font: 400 13px var(--font-body);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  margin: 8px 0 0;
+}
+
+/* Escalera de precios futuros */
+.price-stairs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(26,26,24,0.08);
+  border-radius: 6px;
+  background: rgba(26,26,24,0.02);
+}
+.price-stairs-k {
+  font: 500 9px var(--font-mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.price-stairs-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.price-stair {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 120px;
+}
+.price-stair-label {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.price-stair-val {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: var(--ink-mid);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(26,26,24,0.35);
+  line-height: 1.1;
+}
+.price-stair-when {
+  font: 400 11px var(--font-body);
+  color: var(--ink-faint);
+  font-style: italic;
+}
+.price-stair-sep {
+  font-size: 18px;
+  color: var(--ink-faint);
+  opacity: 0.5;
+}
+@media (max-width: 480px) {
+  .price-stair-sep { display: none; }
+  .price-stairs-row { gap: 18px; }
+}
+.price-row-three {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
 .price-item .price-label {
   font: 500 11px var(--font-mono);
   letter-spacing: .14em;
@@ -2007,7 +2184,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .price-item .price-val {
   font-family: var(--font-condensed);
   font-weight: 600;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(28px, 3.5vw, 40px);
   line-height: 1;
   margin: 0;
   color: var(--ink);
@@ -2018,7 +2195,25 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   text-decoration: line-through;
   text-decoration-thickness: 2px;
 }
+.price-item.gen .price-val { color: var(--ink-mid); }
 .price-item.launch .price-val { color: var(--moss); }
+.price-item.active {
+  position: relative;
+  padding: 14px 16px;
+  background: rgba(61,92,62,0.06);
+  border: 1px solid rgba(61,92,62,0.2);
+  border-radius: 6px;
+  margin: -14px -16px;
+}
+.price-item.active .price-label { color: var(--moss); font-weight: 600; }
+.price-item.active::before {
+  content: "◆";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 10px;
+  color: var(--moss);
+}
 .price-item .price-currency {
   font-size: clamp(12px, 1.1vw, 14px);
   color: var(--ink-mid);
@@ -2084,7 +2279,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 @media (max-width: 880px) { .pricing-grid { grid-template-columns: 1fr; gap: 40px; } }
-@media (max-width: 480px) { .price-row { grid-template-columns: 1fr; gap: 18px; } }
+@media (max-width: 480px) {
+  .price-row { grid-template-columns: 1fr; gap: 18px; }
+  .price-row-three { grid-template-columns: 1fr; gap: 14px; }
+  .price-item.active { margin: 0; }
+}
 
 /* ════════════════════════════════════════════════
    PAGO / POLÍTICAS
@@ -2117,12 +2316,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   font-size: 11px;
   line-height: 1.6;
   letter-spacing: 0.3px;
-  color: rgba(228,224,214,0.5);
+  color: rgba(228,224,214,0.65);
   margin: 0 0 28px;
   max-width: 52ch;
   padding: 14px 16px;
-  border-left: 2px solid rgba(134,172,135,0.3);
-  background: rgba(228,224,214,0.03);
+  border-left: 2px solid rgba(134,172,135,0.5);
+  background: rgba(228,224,214,0.04);
   border-radius: 0 2px 2px 0;
 }
 .pay-legal a {
@@ -3001,17 +3200,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <div class="audience">Fotógrafos</div>
       <div class="audience">Diseñadores</div>
       <div class="audience">Cineastas</div>
-      <div class="audience">Documentalistas</div>
       <div class="audience">Artistas</div>
-      <div class="audience">Productores</div>
       <div class="audience">Publicistas</div>
       <div class="audience">Agencias</div>
       <div class="audience">Marcas</div>
-      <div class="audience">Emprendedores</div>
       <div class="audience">Creadores de contenido</div>
-      <div class="audience">Equipos de marketing</div>
-      <div class="audience">Proyectos turísticos</div>
-      <div class="audience">Equipos creativos</div>
     </div>
   </div>
 </section>
@@ -3024,8 +3217,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <div class="sticker-data">
       <div class="sticker-block">
         <span class="sticker-label">Inversión Gen 01</span>
-        <span class="sticker-value">$7,500<span class="sticker-cur">MXN</span></span>
-        <span class="sticker-note">Regular $10,800 MXN</span>
+        <!-- ⚠ ACTUALIZAR EL 10 DE JUNIO: $5,800 → $7,500 -->
+        <!-- ⚠ ACTUALIZAR EL 18 DE JUNIO: $7,500 → $10,800 -->
+        <span class="sticker-value">$5,800<span class="sticker-cur">MXN</span></span>
+        <span class="sticker-note">Lanzamiento hasta 10 jun · Gen 01 $7,500 · Regular $10,800</span>
       </div>
       <div class="sticker-sep" aria-hidden="true"></div>
       <div class="sticker-block">
@@ -3415,12 +3610,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         </p>
 
         <div class="partner-row">
-          <span class="lbl">Socio creativo</span>
-          <p class="partner-name">Runway</p>
+          <span class="lbl">Runway Creative Partners Program</span>
+          <p class="partner-name">Miembro invitado por Runway</p>
           <span class="lbl">Programas creativos</span>
           <p class="programs">Luma · Leonardo · Pika · Hailuo · Magnific</p>
         </div>
-        <p class="partner-disclaimer">Las marcas mencionadas pertenecen a sus respectivos titulares.</p>
+        <p class="partner-disclaimer">AWLA no representa ni distribuye oficialmente Runway. Las marcas mencionadas pertenecen a sus respectivos titulares.</p>
 
         <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
           <span class="tutor-link-k">Portafolio</span>
@@ -3480,6 +3675,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <h2 class="mix-title testi-title">
         <span class="c">Lo que dicen<br></span><span class="s">los estudiantes.</span>
       </h2>
+      <p class="testi-source-note">Opiniones compartidas por participantes de cursos AWLA previos.</p>
     </div>
 
     <div class="testi-grid" id="testi-grid">
@@ -3577,22 +3773,34 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="lbl lbl-paper">Inversión</span>
         <h2 class="cond-lg cond-lg-paper">Generación 01 · <em>precio lanzamiento</em>.</h2>
 
+        <!-- ⚠ ACTUALIZAR EL 10 DE JUNIO: precio principal $5,800 → $7,500 -->
+        <!-- ⚠ ACTUALIZAR EL 18 DE JUNIO: precio principal $7,500 → $10,800 -->
         <div class="price-card">
-          <span class="price-tag">Curso completo</span>
-          <div class="price-row">
-            <div class="price-item regular">
-              <span class="price-label">Precio regular</span>
-              <p class="price-val">$10,800<span class="price-currency">MXN</span></p>
-              <p class="price-note">Generaciones futuras</p>
-            </div>
-            <div class="price-item launch">
-              <span class="price-label">Precio Gen 01</span>
-              <p class="price-val">$7,500<span class="price-currency">MXN</span></p>
-              <p class="price-note">Disponible hasta el 15 jun</p>
+          <div class="price-hero">
+            <span class="price-hero-tag">Lanzamiento · hasta 10 jun</span>
+            <p class="price-hero-val">$5,800<span class="price-hero-cur">MXN</span></p>
+            <p class="price-hero-meta">Inversión completa del curso · pago en una o varias parcialidades</p>
+          </div>
+
+          <div class="price-stairs">
+            <span class="price-stairs-k">Después</span>
+            <div class="price-stairs-row">
+              <span class="price-stair">
+                <span class="price-stair-label">Gen 01</span>
+                <span class="price-stair-val">$7,500</span>
+                <span class="price-stair-when">hasta 18 jun</span>
+              </span>
+              <span class="price-stair-sep" aria-hidden="true">→</span>
+              <span class="price-stair">
+                <span class="price-stair-label">Regular</span>
+                <span class="price-stair-val">$10,800</span>
+                <span class="price-stair-when">después</span>
+              </span>
             </div>
           </div>
+
           <div class="price-deadline">
-            <em>Apartas con $1,000 MXN</em> que se descuentan del total. Liquidas $6,500 MXN antes del 27 de junio. El precio se respeta al momento de la reserva.
+            <em>Apartas con $1,000 MXN</em> que se descuentan del total. Liquidas el restante antes del 27 de junio. El precio se respeta al momento de la reserva. <em>Hasta 12 meses sin intereses</em> con tarjeta de crédito · Mercado Pago.
           </div>
         </div>
       </div>
@@ -3629,13 +3837,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="lbl lbl-term">Aparta tu lugar</span>
         <h2 class="cond-lg cond-lg-term">Dos pagos · <em>una inscripción</em>.</h2>
         <p class="pay-intro">
-          La reserva de <em>$1,000 MXN</em> confirma tu lugar y se descuenta del total. El monto restante de <em>$6,500 MXN</em> se liquida antes del 27 de junio.
+          La reserva de <em>$1,000 MXN</em> confirma tu lugar y se descuenta del total. El monto restante de <em>$4,800 MXN</em> se liquida antes del 27 de junio. <em>Hasta 12 meses sin intereses</em> con tarjeta de crédito a través de Mercado Pago.
         </p>
 
         <p class="pay-legal">
           Al realizar tu pago aceptas los <a href="/terminos" target="_blank" rel="noopener">Términos de Uso</a>, <a href="/contratacion" target="_blank" rel="noopener">Términos de Contratación</a>, <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
           <span class="pay-legal-note">Las sesiones se graban con fines académicos para acceso posterior de participantes.</span>
-        </p>
         </p>
 
         <div class="pay-cta-block">
@@ -3648,11 +3855,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           </a>
           <p class="btn-meta">Pago seguro vía <strong>Mercado Pago</strong> · confirma tu lugar.</p>
 
+          <!-- ⚠ ACTUALIZAR EL 10 DE JUNIO: $4,800 → $6,500 (precio Gen 01) -->
+          <!-- ⚠ ACTUALIZAR EL 18 DE JUNIO: $6,500 → $9,800 (precio regular) -->
           <a href="https://mpago.li/26fb1Cd"
              class="btn btn-outline-term btn-lg btn-flex"
              target="_blank" rel="noopener"
-             aria-label="Liquidar inscripción con $6,500 MXN por Mercado Pago">
-            <span>Ya reservé · liquidar $6,500 MXN</span>
+             aria-label="Liquidar inscripción con $4,800 MXN por Mercado Pago">
+            <span>Ya reservé · liquidar $4,800 MXN</span>
             <span class="arrow">→</span>
           </a>
           <p class="btn-meta">Solo si ya hiciste tu reserva · antes del <strong>27 de junio</strong>.</p>
@@ -3671,12 +3880,14 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <hr class="pay-divider">
 
           <div class="pay-alt">
+            <!-- ⚠ ACTUALIZAR EL 10 DE JUNIO: $5,800 → $7,500 -->
+            <!-- ⚠ ACTUALIZAR EL 18 DE JUNIO: $7,500 → $10,800 -->
             <p class="pay-alt-text">
-              ¿Prefieres pagar completo de una vez? Escríbenos <strong>"PAGO COMPLETO"</strong> por WhatsApp y te enviamos el link de $7,500 MXN.
-              <a href="https://wa.me/525537175870?text=PAGO%20COMPLETO%20%C2%B7%20Quiero%20pagar%20Del%20texto%20a%20la%20pieza%20Gen%2001%20completo%20por%20%247%2C500%20MXN"
+              ¿Prefieres pagar completo de una vez? Escríbenos <strong>"PAGO COMPLETO"</strong> por WhatsApp y te enviamos el link de $5,800 MXN.
+              <a href="https://wa.me/525537175870?text=PAGO%20COMPLETO%20%C2%B7%20Quiero%20pagar%20Del%20texto%20a%20la%20pieza%20Gen%2001%20completo%20al%20precio%20de%20lanzamiento"
                  class="pay-alt-link"
                  target="_blank" rel="noopener"
-                 aria-label="Solicitar link de pago completo $7,500 por WhatsApp">Pedir link <span class="arrow">→</span></a>
+                 aria-label="Solicitar link de pago completo al precio de lanzamiento por WhatsApp">Pedir link <span class="arrow">→</span></a>
             </p>
           </div>
 
@@ -3707,8 +3918,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <div class="policy">
             <span class="n">02</span>
             <div>
-              <h4>Precio Gen 01 respetado.</h4>
-              <p>El precio lanzamiento de $7,500 MXN se respeta a quienes reservan antes del 15 de junio. Después, aplica el precio regular.</p>
+              <h4>Precio respetado según fecha de reserva.</h4>
+              <p>Lanzamiento $5,800 hasta el 10 jun · Gen 01 $7,500 hasta el 18 jun · Regular $10,800 después. El precio se respeta al momento de la reserva.</p>
             </div>
           </div>
           <div class="policy">
@@ -3721,8 +3932,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <div class="policy">
             <span class="n">04</span>
             <div>
-              <h4>Reserva no reembolsable, transferible.</h4>
-              <p>La reserva no es reembolsable, pero puede transferirse a otra generación o persona, previa confirmación de AWLA. Más detalles en la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a>.</p>
+              <h4>Reserva aplicable al total.</h4>
+              <p>La reserva se aplica al total del curso. Cambios, cancelaciones, reprogramaciones o devoluciones se atienden conforme a la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA. La reserva también puede transferirse a otra generación o persona, previa confirmación.</p>
             </div>
           </div>
         </div>
@@ -3787,6 +3998,18 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <p class="q">¿Qué pasa al terminar?</p>
         <p class="a">Presentas tu proyecto final y podrá publicarse en la galería de alumnos AWLA, previa autorización y cumplimiento del proceso del curso.</p>
       </div>
+    </div>
+
+    <div class="faq-cta">
+      <p class="faq-cta-text">¿Tienes otra duda?</p>
+      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20curso%20Del%20texto%20a%20la%20pieza."
+         class="faq-cta-btn"
+         target="_blank" rel="noopener"
+         aria-label="Hacer una pregunta sobre el curso por WhatsApp">
+        <span class="faq-cta-icon" aria-hidden="true">✓</span>
+        <span>Pregúntanos por WhatsApp</span>
+        <span class="arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
