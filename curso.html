@@ -1141,34 +1141,15 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .tutor-bio { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.8; color: var(--ink-mid); margin: 0 0 18px; max-width: 52ch; }
 .tutor-bio em { font-family: var(--font-serif); font-style: italic; color: var(--moss); }
-.partner-row { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--rule-soft); }
-.partner-row .lbl {
-  display: block;
-  font: 500 11px var(--font-mono);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 8px;
-}
-.partner-row .partner-name {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 36px;
-  line-height: 1;
-  margin: 0 0 24px;
-  color: var(--moss);
-}
-.partner-row .programs { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: .02em; }
 
-/* Disclaimer de marcas debajo de partner-row */
-.partner-disclaimer {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin: 14px 0 0;
-  opacity: 0.7;
+/* Bio CPP: integra reconocimientos profesionales en la bio */
+.tutor-bio-cpp {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  color: var(--ink-mid);
+  font-size: clamp(12px, 1.1vw, 13px);
+  line-height: 1.7;
 }
 
 /* Link a portafolio del tutor */
@@ -3609,13 +3590,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           En este curso comparte su método para integrar herramientas generativas al proceso creativo sin perder estilo, mirada ni voz propia.
         </p>
 
-        <div class="partner-row">
-          <span class="lbl">Runway Creative Partners Program</span>
-          <p class="partner-name">Miembro invitado por Runway</p>
-          <span class="lbl">Programas creativos</span>
-          <p class="programs">Luma · Leonardo · Pika · Hailuo · Magnific</p>
-        </div>
-        <p class="partner-disclaimer">AWLA no representa ni distribuye oficialmente Runway. Las marcas mencionadas pertenecen a sus respectivos titulares.</p>
+        <p class="tutor-bio tutor-bio-cpp">
+          Es <em>Creative Partner</em> (CPP) en <em>Runway</em> y ha formado parte del CPP de <em>Leonardo</em>, <em>Luma</em>, <em>Pika</em>, <em>Magnific</em> y <em>Hailuo</em>, entre otros.
+        </p>
 
         <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
           <span class="tutor-link-k">Portafolio</span>
