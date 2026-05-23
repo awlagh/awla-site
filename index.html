@@ -39,9 +39,9 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <!-- Performance: preconnect to external resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="preconnect" href="https://vumbnail.com" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://player.vimeo.com">
 
@@ -299,9 +299,10 @@
       fetchpriority="high"
       media="(max-width: 768px)">
 
-<!-- Google Fonts · carga no bloqueante con display=swap -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap"></noscript>
+<!-- Google Fonts · preload del CSS para descarga temprana + display=swap -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Barlow:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Barlow:wght@300;400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Barlow:wght@300;400&display=swap"></noscript>
 
 <!-- p5.js · cargado solo en desktop (mejora LCP mobile considerablemente) -->
 <script>
@@ -336,6 +337,7 @@
 
   /* accents */
   --moss:     #3d5c3e;   /* verde musgo */
+  --moss-bright: #5a8a5c; /* moss más claro para texto pequeño sobre oscuro (mejor contraste) */
   --slate:    #3a4a6b;   /* azul pizarra */
   --teal:     #2a7a7a;   /* teal apagado */
   --rust:     #8a4a2a;   /* para variedad */
@@ -465,8 +467,8 @@ nav.nav-off { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 .nav-cta {
   font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px;
   font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--moss); text-decoration: none;
-  border: 1px solid rgba(61,92,62,0.5); padding: 7px 16px;
+  color: var(--moss-bright); text-decoration: none;
+  border: 1px solid rgba(90,138,92,0.6); padding: 7px 16px;
   transition: all 0.2s;
 }
 .nav-cta:hover { background: rgba(61,92,62,0.12); border-color: var(--moss); }
@@ -509,7 +511,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   opacity: 1; transition: opacity 0.4s; pointer-events: none;
 }
 .shint.off { opacity: 0; }
-.shint span { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 8px; letter-spacing: 3px; color: rgba(228,224,214,0.25); text-transform: uppercase; }
+.shint span { font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 8px; letter-spacing: 3px; color: rgba(228,224,214,0.55); text-transform: uppercase; }
 .shint-line { width: 1px; height: 28px; background: linear-gradient(to bottom, rgba(61,92,62,0.6), transparent); animation: sp 1.8s ease-in-out infinite; }
 @keyframes sp { 0%,100%{opacity:.3} 50%{opacity:1} }
 
@@ -535,7 +537,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
   font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 9px; letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--moss);
+  color: var(--moss-bright);
   margin-bottom: 12px;
 }
 #ck p {
@@ -584,7 +586,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
 .ck-btn-ghost:hover { color: var(--screen); border-color: rgba(228,224,214,0.35); }
 
 .ck-btn-link {
-  background: transparent; color: rgba(228,224,214,0.5);
+  background: transparent; color: rgba(228,224,214,0.72);
   padding: 10px 0; text-decoration: underline;
   text-decoration-thickness: 1px; text-underline-offset: 2px;
 }
@@ -2542,7 +2544,7 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
         </svg>
         WhatsApp
       </a>
-      <a href="https://instagram.com/awla.live" target="_blank" class="btn btn-outline-term">@awla.live</a>
+      <a href="https://instagram.com/awla.live" target="_blank" rel="noopener" class="btn btn-outline-term" aria-label="Instagram de AWLA">@awla.live</a>
     </div>
 
     <div style="position:absolute;bottom:32px;left:6vw;right:6vw;display:flex;justify-content:center">
@@ -3274,7 +3276,7 @@ document.getElementById('lc').innerHTML=`
   <div class="lh" id="lhuman">Tú decides.</div>
 </div>
 <div class="lsig">
-  <a href="https://www.awla.live" target="_blank">awla.live</a>
+  <a href="https://www.awla.live" target="_blank" rel="noopener" aria-label="Sitio web de AWLA">awla.live</a>
   <span class="lsig-sep">|</span>
   <span class="lsig-tag">Aprende a dirigir con IA.</span>
 </div>`;
