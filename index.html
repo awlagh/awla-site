@@ -39,9 +39,7 @@
 <link rel="manifest" href="/site.webmanifest">
 
 <!-- Performance: preconnect to external resources -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://player.vimeo.com">
 
@@ -299,10 +297,9 @@
       fetchpriority="high"
       media="(max-width: 768px)">
 
-<!-- Google Fonts · preload del CSS para descarga temprana + display=swap -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Barlow:wght@300;400&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Barlow:wght@300;400&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600&family=Barlow:wght@300;400&display=swap"></noscript>
+<!-- Preload de la fuente del LCP (título hero "IMÁGENES." · Barlow Condensed 600) -->
+<link rel="preload" as="font" type="font/woff2" crossorigin
+      href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-600.woff2">
 
 <!-- p5.js · cargado solo en desktop (mejora LCP mobile considerablemente) -->
 <script>
@@ -319,6 +316,89 @@
 })();
 </script>
 <style>
+/* ════════════════════════════════════════════════
+   FUENTES SELF-HOSTED · servidas desde jsDelivr CDN
+   Más rápido y predecible que Google Fonts
+   ════════════════════════════════════════════════ */
+
+/* Barlow Condensed · títulos */
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-600.woff2') format('woff2');
+}
+
+/* Barlow · cuerpo */
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-400.woff2') format('woff2');
+}
+
+/* DM Serif Display · acentos editoriales */
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/dm-serif-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/dm-serif-400-italic.woff2') format('woff2');
+}
+
+/* IBM Plex Mono · datos y etiquetas */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-500.woff2') format('woff2');
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
