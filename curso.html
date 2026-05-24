@@ -721,7 +721,7 @@ nav {
 .nav-links a {
   font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 9px; font-weight: 400; letter-spacing: 2px;
-  color: rgba(228,224,214,0.55); text-decoration: none;
+  color: rgba(228,224,214,0.72); text-decoration: none;
   text-transform: uppercase; transition: color 0.2s; cursor: pointer;
 }
 .nav-links a:hover { color: var(--screen); }
@@ -729,8 +729,8 @@ nav {
 .nav-cta {
   font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px;
   font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--moss-bright); text-decoration: none;
-  border: 1px solid rgba(134,172,135,0.5); padding: 7px 16px;
+  color: #7ba87d; text-decoration: none;
+  border: 1px solid rgba(134,172,135,0.6); padding: 7px 16px;
   transition: all 0.2s;
 }
 .nav-cta:hover { background: rgba(134,172,135,0.12); border-color: var(--moss-bright); color: var(--screen); }
@@ -743,9 +743,9 @@ nav.light {
 nav.light .nav-logo .logo-dark { display: none; }
 nav.light .nav-logo .logo-light { display: block; }
 nav.light .nav-r::before { background: rgba(26,26,24,0.15); }
-nav.light .nav-links a { color: rgba(26,26,24,0.45); }
+nav.light .nav-links a { color: rgba(26,26,24,0.62); }
 nav.light .nav-links a:hover { color: var(--ink); }
-nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
+nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.55); }
 nav.light .nav-cta:hover { background: rgba(61,92,62,0.12); border-color: var(--moss); color: var(--moss); }
 
 @media (max-width: 768px) {
@@ -2451,7 +2451,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .policy:last-child { border-bottom: 1px solid var(--rule-screen); }
 .policy .n { font: 500 12px var(--font-mono); letter-spacing: .14em; color: var(--moss-bright); }
-.policy h4 {
+.policy h3 {
   font-family: var(--font-condensed);
   font-weight: 600;
   font-size: clamp(17px, 1.8vw, 21px);
@@ -2827,7 +2827,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .footer-copy {
   font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 8px;
-  color: rgba(228,224,214,0.5);
+  color: rgba(228,224,214,0.82);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -2842,11 +2842,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   font-size: 9px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(228,224,214,0.4);
+  color: rgba(228,224,214,0.78);
   margin: 4px 0 8px;
 }
-.footer-legal-k { color: rgba(134,172,135,0.7); }
-.footer-legal-sep { opacity: 0.4; }
+.footer-legal-k { color: rgba(134,172,135,0.95); }
+.footer-legal-sep { opacity: 0.62; }
 
 @media (max-width: 768px) {
   .page-footer { padding: 0 20px 24px; }
@@ -3882,28 +3882,28 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <div class="policy">
             <span class="n">01</span>
             <div>
-              <h4>La reserva confirma tu lugar.</h4>
+              <h3>La reserva confirma tu lugar.</h3>
               <p>El monto de $1,000 MXN se descuenta del total del curso.</p>
             </div>
           </div>
           <div class="policy">
             <span class="n">02</span>
             <div>
-              <h4>Precio respetado según fecha de reserva.</h4>
+              <h3>Precio respetado según fecha de reserva.</h3>
               <p>Lanzamiento $5,800 hasta el 10 jun · Gen 01 $7,500 hasta el 18 jun · Regular $10,800 después. El precio se respeta al momento de la reserva.</p>
             </div>
           </div>
           <div class="policy">
             <span class="n">03</span>
             <div>
-              <h4>Liquidación antes del 27 de junio.</h4>
+              <h3>Liquidación antes del 27 de junio.</h3>
               <p>Si la liquidación no se completa antes del 27 de junio, el lugar podrá liberarse a la lista de espera.</p>
             </div>
           </div>
           <div class="policy">
             <span class="n">04</span>
             <div>
-              <h4>Reserva aplicable al total.</h4>
+              <h3>Reserva aplicable al total.</h3>
               <p>La reserva se aplica al total del curso. Cambios, cancelaciones, reprogramaciones o devoluciones se atienden conforme a la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA. La reserva también puede transferirse a otra generación o persona, previa confirmación.</p>
             </div>
           </div>
