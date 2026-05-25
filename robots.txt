@@ -1,15 +1,46 @@
 # AWLA · awla.live
 # robots.txt
 
-User-agent: *
+# ─── Crawlers de buscadores e IA: bienvenidos ───
+User-agent: Googlebot
 Allow: /
 
-# Disallow legacy experiments
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ─── Regla general ───
+User-agent: *
+Allow: /
 Disallow: /seed-builder.html
 Disallow: /imagen.html
 Disallow: /functions/
-
-# Disallow legacy URLs (migradas a slugs limpios)
 Disallow: /curso.html
 Disallow: /privacidad.html
 Disallow: /privacidad-integral.html
@@ -18,7 +49,7 @@ Disallow: /contratacion.html
 Disallow: /devoluciones.html
 Disallow: /cookies.html
 
-# Bots agresivos sin valor SEO
+# ─── Bots SEO sin valor (scraping de backlinks) ───
 User-agent: AhrefsBot
 Disallow: /
 
@@ -28,5 +59,5 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Sitemap
+# ─── Sitemap ───
 Sitemap: https://www.awla.live/sitemap.xml
