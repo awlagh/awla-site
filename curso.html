@@ -220,6 +220,46 @@
             "@type": "Answer",
             "text": "Presentas tu proyecto final. Si decides, puede publicarse en la galería pública de alumnos AWLA, previa autorización. La publicación es opcional, no requerida para completar el curso."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo tomar el curso con una Mac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. El curso funciona en Mac, Windows o cualquier computadora con buena conexión a internet. Las herramientas que usamos corren desde el navegador, así que no necesitas un equipo especializado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Las clases quedan grabadas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Todas las sesiones se graban y tienes acceso durante 90 días. Si no puedes asistir en vivo a alguna, la ves después y haces tus preguntas en el grupo de WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El precio cambia con el tiempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Manejamos precio de lanzamiento por etapas: entre más pronto reserves, mejor precio. Consulta el precio vigente en la sección de Inversión de esta página."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Tienen el temario disponible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes ver el temario completo de las 10 sesiones en la sección Temario de esta página, con la descripción y el resultado de cada sesión."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo pagar en mensualidades sin intereses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Puedes pagar hasta en 12 meses sin intereses con tarjeta de crédito a través del link de Mercado Pago."
+          }
         }
       ]
     },
@@ -1364,28 +1404,37 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   margin: 0;
 }
 .sessions {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
   margin-top: 56px;
+  border-top: 1px solid var(--rule);
 }
 .session {
-  border-top: 1px solid var(--rule);
-  padding: 20px 0 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
 }
+.session > summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  transition: opacity .2s ease;
+}
+.session > summary::-webkit-details-marker { display: none; }
+.session > summary:hover { opacity: .68; }
 .session .num {
   font: 500 11px var(--font-mono);
   letter-spacing: .14em;
   color: var(--moss);
-  display: block;
-  margin-bottom: 14px;
+  white-space: nowrap;
 }
 .session h3 {
   font-family: var(--font-condensed);
   font-weight: 600;
-  font-size: clamp(20px, 2.2vw, 26px);
-  line-height: 1.05;
-  margin: 0 0 14px;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.1;
+  margin: 0;
   color: var(--ink);
   letter-spacing: -.005em;
 }
@@ -1395,8 +1444,61 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink-mid);
   line-height: 1.45;
   margin: 0;
+  text-align: right;
+  white-space: nowrap;
 }
 .session .date strong { color: var(--ink); font-weight: 500; }
+.session .chev {
+  width: 11px; height: 11px;
+  border-right: 1.5px solid var(--ink-mid);
+  border-bottom: 1.5px solid var(--ink-mid);
+  transform: rotate(45deg);
+  transition: transform .25s ease;
+  margin-right: 4px;
+}
+.session[open] .chev { transform: rotate(-135deg); }
+.session .session-body {
+  padding: 0 0 26px;
+  max-width: 62ch;
+}
+.session .session-body p {
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.62;
+  color: var(--ink-mid);
+  margin: 0 0 14px;
+}
+.session .session-body .result {
+  font: 400 12.5px var(--font-mono);
+  color: var(--moss);
+  line-height: 1.55;
+  letter-spacing: .01em;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule-soft);
+  margin-bottom: 0;
+}
+.session .session-body .result strong { color: var(--ink); font-weight: 500; }
+.temario-route {
+  margin-top: 48px;
+  padding: 28px 32px;
+  background: var(--term);
+  border-radius: 4px;
+}
+.temario-route .route-lbl {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  color: var(--moss-bright);
+  display: block;
+  margin-bottom: 14px;
+}
+.temario-route .route-path {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: clamp(15px, 1.7vw, 20px);
+  line-height: 1.5;
+  color: var(--screen);
+  margin: 0;
+}
+.temario-route .route-path em { font-family: var(--font-serif); font-style: italic; color: var(--moss-bright); }
 .temario-meta {
   margin-top: 40px;
   padding-top: 20px;
@@ -1406,12 +1508,20 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   letter-spacing: .04em;
 }
 
-@media (max-width: 1100px) { .sessions { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
-  .sessions { grid-template-columns: repeat(2, 1fr); gap: 18px; }
   .s-temario .head-row > p { text-align: left; }
+  .session > summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "num chev" "title title" "date date";
+    gap: 8px 16px;
+    padding: 20px 0;
+  }
+  .session .num { grid-area: num; }
+  .session h3 { grid-area: title; }
+  .session .date { grid-area: date; text-align: left; }
+  .session .chev { grid-area: chev; align-self: start; margin-top: 4px; }
+  .temario-route { padding: 24px 22px; }
 }
-@media (max-width: 480px) { .sessions { grid-template-columns: 1fr; } }
 
 /* ════════════════════════════════════════════════
    HERRAMIENTAS
@@ -3271,59 +3381,144 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     </div>
 
     <div class="sessions">
-      <div class="session">
-        <span class="num">Sesión 01</span>
-        <h3>Idea, intención y <em>creación</em> con IA</h3>
-        <p class="date"><strong>Mar 30 jun</strong><br>7:00 – 9:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 02</span>
-        <h3>Del <em>texto</em> a la escena</h3>
-        <p class="date"><strong>Sáb 4 jul</strong><br>10:00 am – 12:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 03</span>
-        <h3>Prompting como <em>dirección</em> visual</h3>
-        <p class="date"><strong>Mar 7 jul</strong><br>7:00 – 9:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 04</span>
-        <h3>Lenguaje visual <em>aplicado</em> a IA</h3>
-        <p class="date"><strong>Sáb 11 jul</strong><br>10:00 am – 12:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 05</span>
-        <h3>Estilo, cámara y <em>estética</em></h3>
-        <p class="date"><strong>Mar 14 jul</strong><br>7:00 – 9:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 06</span>
-        <h3>Personajes, marcas y <em>mundos</em></h3>
-        <p class="date"><strong>Sáb 18 jul</strong><br>10:00 am – 12:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 07</span>
-        <h3>Imagen en <em>movimiento</em></h3>
-        <p class="date"><strong>Mar 21 jul</strong><br>7:00 – 9:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 08</span>
-        <h3>Sonido, atmósfera y <em>montaje</em></h3>
-        <p class="date"><strong>Sáb 25 jul</strong><br>10:00 am – 12:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 09</span>
-        <h3>Ensamble y <em>revisión</em></h3>
-        <p class="date"><strong>Mar 28 jul</strong><br>7:00 – 9:00 pm</p>
-      </div>
-      <div class="session">
-        <span class="num">Sesión 10</span>
-        <h3>Presentación <em>final</em></h3>
-        <p class="date"><strong>Sáb 1 ago</strong><br>10:00 am – 12:00 pm</p>
-      </div>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 01</span>
+          <h3>Idea, intención y <em>creación</em> con IA</h3>
+          <p class="date"><strong>Mar 30 jun</strong><br>7:00 – 9:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Abrimos el proceso creativo desde la intención, no desde la herramienta. Definimos el punto de partida de cada proyecto: qué quieres decir, qué emoción o pregunta sostiene la pieza y cómo convertir esa intuición inicial en una dirección creativa clara.</p>
+          <p>Trabajamos la diferencia entre generar por volumen y crear con intención: la IA produce muchas opciones, pero la dirección, la selección y el sentido siguen siendo decisiones humanas.</p>
+          <p class="result"><strong>Resultado:</strong> una idea base para desarrollar durante el curso, con una intención inicial clara y una primera dirección creativa.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 02</span>
+          <h3>Del <em>texto</em> a la escena</h3>
+          <p class="date"><strong>Sáb 4 jul</strong><br>10:00 am – 12:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Convertimos una idea abstracta en una escena visualmente dirigible: sujeto, acción, lugar, atmósfera, emoción y tensión narrativa. Dejamos de pedir imágenes bonitas para empezar a construir situaciones con intención.</p>
+          <p>La escena funciona como la primera columna vertebral del proyecto: un punto de referencia para generar imágenes, tomar decisiones visuales y evitar que el proceso se vuelva aleatorio.</p>
+          <p class="result"><strong>Resultado:</strong> una escena base clara, con sujeto, acción, lugar, atmósfera, emoción y dirección narrativa.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 03</span>
+          <h3>Prompting como <em>dirección</em> visual</h3>
+          <p class="date"><strong>Mar 7 jul</strong><br>7:00 – 9:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>El prompt no como frase mágica, sino como herramienta de dirección. Estructuramos prompts con jerarquía, claridad y precisión: qué información va primero, qué sostiene la escena y qué afina el resultado.</p>
+          <p>Practicamos iteración: cambiar una variable a la vez para entender qué modifica realmente la imagen. El prompt deja de ser prueba y error para convertirse en un sistema de trabajo.</p>
+          <p class="result"><strong>Resultado:</strong> primeros prompts estructurados para generar imágenes con mayor intención, control y capacidad de iteración.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 04</span>
+          <h3>Lenguaje visual <em>aplicado</em> a IA</h3>
+          <p class="date"><strong>Sáb 11 jul</strong><br>10:00 am – 12:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Traducimos el lenguaje audiovisual a instrucciones que la IA pueda interpretar: composición, planos, encuadres, ángulos, luz, color y atmósfera. Vemos cómo estas decisiones cambian la lectura de una imagen y por qué no son solo estéticas, sino herramientas narrativas.</p>
+          <p>A partir de aquí, cada participante empieza a construir un moodboard vivo del proyecto, reuniendo referencias, primeras imágenes y decisiones de dirección visual.</p>
+          <p class="result"><strong>Resultado:</strong> una dirección visual inicial para el proyecto y primeros materiales para el moodboard.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 05</span>
+          <h3>Estilo, cámara y <em>estética</em></h3>
+          <p class="date"><strong>Mar 14 jul</strong><br>7:00 – 9:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>El estilo como lenguaje, no como copia. Definimos una estética visual coherente para el proyecto: fotografía, cine, editorial, documental, 3D, ilustración o experimental. Abordamos cámara, ópticas, textura, referencias y look visual.</p>
+          <p>El moodboard se vuelve más específico y empezamos a distinguir entre imágenes que solo se ven bien e imágenes que realmente sostienen la intención del proyecto.</p>
+          <p class="result"><strong>Resultado:</strong> una guía visual inicial del proyecto, con estilo, cámara, paleta, atmósfera y moodboard en desarrollo.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 06</span>
+          <h3>Personajes, marcas y <em>mundos</em></h3>
+          <p class="date"><strong>Sáb 18 jul</strong><br>10:00 am – 12:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Identidad visual y construcción de universo. Diseñamos personajes, objetos, productos, marcas, locaciones o mundos visuales con coherencia, para que los elementos del proyecto no se sientan aislados sino parte de un mismo sistema visual.</p>
+          <p>Al cierre, cada participante organiza sus decisiones en un moodboard o storyboard base: el mapa antes de pasar a video, con las imágenes clave que guiarán la generación de clips.</p>
+          <p class="result"><strong>Resultado:</strong> definición visual de personajes, objetos, marcas o mundo, más un moodboard/storyboard base para entrar a la etapa de video.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 07</span>
+          <h3>Imagen en <em>movimiento</em></h3>
+          <p class="date"><strong>Mar 21 jul</strong><br>7:00 – 9:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Pasamos de la imagen fija al video generativo. A partir del storyboard, preparamos imágenes para movimiento y pensamos en keyframes, continuidad, cámara, acción y ritmo visual. Exploramos plataformas de video generativo y cómo adaptar prompts visuales a prompts de movimiento.</p>
+          <p>El objetivo es dirigir el movimiento sin perder la intención original, la estética ni la coherencia del proyecto.</p>
+          <p class="result"><strong>Resultado:</strong> primeras pruebas de video o secuencias en movimiento a partir del moodboard/storyboard del proyecto.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 08</span>
+          <h3>Sonido, atmósfera y <em>montaje</em></h3>
+          <p class="date"><strong>Sáb 25 jul</strong><br>10:00 am – 12:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Incorporamos la dimensión sonora y el ritmo de edición: música, ambiente, voz, textura sonora y ritmo. Vemos cómo el sonido cambia la emoción de una imagen y cómo el montaje convierte clips sueltos en una pieza con lectura, progresión y cierre.</p>
+          <p>Empezamos a pensar la pieza como experiencia audiovisual completa, ordenando el material generado: qué clips sostienen la idea y cuáles sobran.</p>
+          <p class="result"><strong>Resultado:</strong> primer armado audiovisual del proyecto, integrando imagen en movimiento, sonido, atmósfera y ritmo de montaje.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 09</span>
+          <h3>Ensamble y <em>revisión</em></h3>
+          <p class="date"><strong>Mar 28 jul</strong><br>7:00 – 9:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Integramos todo el proceso. Revisamos el proyecto de cada participante: idea, escena, imágenes, clips, sonido, montaje, coherencia visual y dirección final. Trabajamos ajustes concretos de ritmo, claridad, continuidad, atmósfera y sentido.</p>
+          <p>Tomamos decisiones de cierre: qué conservar, qué descartar, qué falta generar y qué ya está funcionando. El foco es convertir el material en una pieza con intención, no solo acumular resultados.</p>
+          <p class="result"><strong>Resultado:</strong> versión avanzada o casi final de la pieza, con ajustes de dirección visual, montaje y coherencia narrativa.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 10</span>
+          <h3>Presentación <em>final</em></h3>
+          <p class="date"><strong>Sáb 1 ago</strong><br>10:00 am – 12:00 pm</p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Presentamos los proyectos finales del grupo. Cada participante comparte su pieza, su proceso y las decisiones que tomó durante el curso. Habrá retroalimentación grupal y cierre del proceso creativo, con énfasis en lo aprendido: método, criterio, lenguaje visual y dirección con IA.</p>
+          <p>Más que mostrar un resultado, la sesión reconoce el recorrido: de dónde partió la idea, cómo evolucionó y cómo se usó la IA como medio dentro del proceso.</p>
+          <p class="result"><strong>Resultado:</strong> presentación final del proyecto y cierre del curso.</p>
+        </div>
+      </details>
     </div>
 
-    <p class="temario-meta">Horarios en zona CDMX (GMT-6). Las sesiones quedan grabadas con acceso de 90 días.</p>
+    <div class="temario-route">
+      <span class="route-lbl">Ruta del curso</span>
+      <p class="route-path">Idea <em>→</em> Escena <em>→</em> Prompt <em>→</em> Imagen <em>→</em> Lenguaje visual <em>→</em> Estilo <em>→</em> Personaje/Mundo <em>→</em> Moodboard/Storyboard <em>→</em> Video <em>→</em> Sonido <em>→</em> Montaje <em>→</em> Pieza final</p>
+    </div>
+
+    <p class="temario-meta">Durante las sesiones puedes hacer tus preguntas en el grupo de WhatsApp y recibir feedback directo del tutor. Horarios en zona CDMX (GMT-6). Las sesiones quedan grabadas con acceso de 90 días.</p>
   </div>
 </section>
 
@@ -3885,6 +4080,26 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <div class="faq-item">
         <p class="q">¿Qué pasa al terminar?</p>
         <p class="a">Presentas tu proyecto final. Si decides, puede publicarse en la galería pública de alumnos AWLA, previa autorización. La publicación es opcional, no requerida para completar el curso.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Las clases quedan grabadas?</p>
+        <p class="a">Sí. Todas las sesiones se graban y tienes acceso durante 90 días. Si no puedes asistir en vivo a alguna, la ves después y haces tus preguntas en el grupo de WhatsApp.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Puedo tomar el curso con una Mac?</p>
+        <p class="a">Sí. Funciona en Mac, Windows o cualquier computadora con buena conexión a internet. Las herramientas que usamos corren desde el navegador, así que no necesitas un equipo especializado.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Tienen el temario disponible?</p>
+        <p class="a">Sí. Puedes ver el temario completo de las 10 sesiones en la sección Temario de esta misma página, con la descripción y el resultado de cada sesión.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿El precio cambia con el tiempo?</p>
+        <p class="a">Sí. Manejamos precio de lanzamiento por etapas: entre más pronto reserves, mejor precio. Consulta el precio vigente en la sección de Inversión.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Puedo pagar en mensualidades sin intereses?</p>
+        <p class="a">Sí. Puedes pagar hasta en 12 meses sin intereses con tarjeta de crédito a través del link de Mercado Pago.</p>
       </div>
     </div>
 
