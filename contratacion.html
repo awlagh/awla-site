@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18201216622"></script>
+<!-- Consent Mode v2 — defaults DENIED antes de cargar cualquier tag de Google -->
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  try {
+    var _ck = JSON.parse(localStorage.getItem('awla_ck_v1'));
+    if (_ck) {
+      gtag('consent', 'update', {
+        'ad_storage':         _ck.marketing ? 'granted' : 'denied',
+        'ad_user_data':       _ck.marketing ? 'granted' : 'denied',
+        'ad_personalization': _ck.marketing ? 'granted' : 'denied',
+        'analytics_storage':  _ck.analytics ? 'granted' : 'denied',
+        'functionality_storage': 'granted',
+        'security_storage':   'granted'
+      });
+    }
+  } catch(e) {}
+</script>
+<!-- Google tag (gtag.js) — se carga después del consent default -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18201216622"></script>
+<script>
   gtag('js', new Date());
   gtag('config', 'AW-18201216622');
 </script>
@@ -909,26 +935,8 @@ function ckApplyConsent(state) {
   });
 }
 
-(function ckSetDefaults() {
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  window.gtag = window.gtag || gtag;
-
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'denied',
-    'functionality_storage': 'granted',
-    'security_storage': 'granted',
-    'wait_for_update': 500
-  });
-})();
-
-(function ckBootstrap() {
-  const existing = ckGetState();
-  if (existing) ckApplyConsent(existing);
-})();
+// Nota: el consent 'default' (denied) y la aplicacion del consentimiento
+// previo guardado se ejecutan en el <head>, antes de cargar gtag.js.
 
 window.addEventListener('load',()=>{
   const ck = document.getElementById('ck');
