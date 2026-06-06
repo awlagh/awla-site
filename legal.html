@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- Consent Mode v2 — defaults DENIED antes de cargar cualquier tag de Google -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  try {
+    var _ck = JSON.parse(localStorage.getItem('awla_ck_v1'));
+    if (_ck) {
+      gtag('consent', 'update', {
+        'ad_storage':         _ck.marketing ? 'granted' : 'denied',
+        'ad_user_data':       _ck.marketing ? 'granted' : 'denied',
+        'ad_personalization': _ck.marketing ? 'granted' : 'denied',
+        'analytics_storage':  _ck.analytics ? 'granted' : 'denied',
+        'functionality_storage': 'granted',
+        'security_storage':   'granted'
+      });
+    }
+  } catch(e) {}
+</script>
+<!-- Google tag (gtag.js) — se carga después del consent default -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18201216622"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'AW-18201216622');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Documentos legales de AWLA: Aviso de Privacidad, Términos de Uso, Términos de Contratación, Política de Cookies y Cambios y Devoluciones.">
+<meta name="robots" content="index, follow">
+<title>Información Legal · AWLA</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Información Legal · AWLA">
+<meta property="og:description" content="Consulta los documentos legales de AWLA: privacidad, términos, cookies y devoluciones.">
+<meta property="og:url" content="https://www.awla.live/legal">
+<meta property="og:type" content="website">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.awla.live/legal">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon-32.png">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/apple-touch-icon.png">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "AWLA", "item": "https://www.awla.live" },
+    { "@type": "ListItem", "position": 2, "name": "Información Legal", "item": "https://www.awla.live/legal" }
+  ]
+}
+</script>
+
+<style>
+/* ── FUENTES SELF-HOSTED ─────────────────────────────── */
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic; font-weight: 400; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/dm-serif-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-400.woff2') format('woff2');
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --rule:     rgba(26,26,24,.12);
+  --rule-soft:rgba(26,26,24,.07);
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+  --moss-bright: #5a8a5c;
+
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body:      'Barlow', sans-serif;
+  --font-serif:     'DM Serif Display', serif;
+  --font-mono:      'IBM Plex Mono', monospace;
+}
+
+html { background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.nav-logo img { height: 22px; width: auto; display: block; }
+.nav-back {
+  font: 400 13px var(--font-mono);
+  color: var(--ink-faint); text-decoration: none;
+  letter-spacing: .04em;
+  transition: color .18s ease;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* ── MAIN ────────────────────────────────────────────── */
+main {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+  width: 100%;
+}
+
+.page-label {
+  font: 400 11px var(--font-mono);
+  letter-spacing: .14em;
+  color: var(--moss);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(36px, 6vw, 60px);
+  line-height: 1.0;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.page-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.page-intro {
+  font: 400 15px/1.6 var(--font-body);
+  color: var(--ink-mid);
+  max-width: 52ch;
+  margin-bottom: 60px;
+}
+
+/* ── LISTA DE DOCUMENTOS ─────────────────────────────── */
+.docs-list {
+  border-top: 1px solid var(--rule);
+  list-style: none;
+}
+
+.doc-item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.doc-link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 0;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity .18s ease;
+}
+.doc-link:hover { opacity: .62; }
+
+.doc-num {
+  font: 400 11px var(--font-mono);
+  color: var(--ink-faint);
+  letter-spacing: .1em;
+  width: 28px;
+}
+
+.doc-info { min-width: 0; }
+
+.doc-name {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 26px);
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -.005em;
+  margin-bottom: 6px;
+}
+
+.doc-desc {
+  font: 400 13px/1.5 var(--font-body);
+  color: var(--ink-faint);
+}
+
+.doc-arrow {
+  font: 400 18px var(--font-mono);
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 40px;
+  background: var(--paper);
+}
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 40px;
+}
+.footer-logo img { height: 18px; width: auto; opacity: .5; }
+.footer-logo:hover img { opacity: .8; }
+.footer-links {
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  list-style: none;
+}
+.footer-links a {
+  font: 400 12px var(--font-mono);
+  color: var(--ink-faint);
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: color .18s ease;
+}
+.footer-links a:hover { color: var(--moss); }
+.footer-links a.current { color: var(--moss); }
+.footer-copy {
+  font: 400 12px var(--font-mono);
+  color: var(--ink-faint);
+  letter-spacing: .04em;
+  margin-left: auto;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  main { padding: 56px 20px 80px; }
+  .doc-link { grid-template-columns: auto 1fr auto; gap: 16px; padding: 22px 0; }
+  footer { padding: 28px 20px; }
+  .footer-copy { margin-left: 0; }
+}
+
+/* ── COOKIE BANNER ───────────────────────────────────── */
+#ck {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 9999; background: var(--term);
+  color: var(--screen); border-radius: 6px;
+  padding: 20px 24px; max-width: 540px; width: calc(100% - 32px);
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  font: 400 13px/1.55 var(--font-body);
+  display: none;
+}
+#ck p { margin-bottom: 14px; }
+#ck p a { color: var(--moss-bright); }
+.ck-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.ck-btn {
+  font: 500 12px var(--font-mono); letter-spacing: .06em;
+  padding: 8px 16px; border-radius: 3px; cursor: pointer; border: none;
+}
+.ck-btn-primary { background: var(--moss); color: #fff; }
+.ck-btn-primary:hover { background: #4e7350; }
+.ck-btn-secondary { background: rgba(255,255,255,.08); color: var(--screen); }
+.ck-btn-secondary:hover { background: rgba(255,255,255,.14); }
+.ck-prefs { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.1); }
+.ck-prefs label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; }
+.ck-prefs span { font-size: 13px; color: var(--screen); }
+.ck-actions-initial { display: flex; }
+.ck-actions-prefs { display: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="AWLA — Inicio">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
+  </a>
+  <div>
+    <a href="/" class="nav-back">← Volver al sitio</a>
+  </div>
+</nav>
+
+<main>
+  <span class="page-label">Información legal</span>
+  <h1 class="page-title">Documentos <em>legales.</em></h1>
+  <p class="page-intro">Aquí encontrarás todos los documentos que rigen el uso del sitio y los servicios de AWLA. Si tienes dudas, escríbenos a <a href="mailto:hola@awla.live" style="color:var(--moss)">hola@awla.live</a>.</p>
+
+  <ul class="docs-list">
+
+    <li class="doc-item">
+      <a href="/privacidad-integral" class="doc-link">
+        <span class="doc-num">01</span>
+        <div class="doc-info">
+          <p class="doc-name">Aviso de Privacidad Integral</p>
+          <p class="doc-desc">Cómo tratamos tus datos personales, tus derechos ARCO y contacto del responsable.</p>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="doc-item">
+      <a href="/privacidad" class="doc-link">
+        <span class="doc-num">02</span>
+        <div class="doc-info">
+          <p class="doc-name">Aviso de Privacidad Simplificado</p>
+          <p class="doc-desc">Versión resumida del aviso de privacidad para consulta rápida.</p>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="doc-item">
+      <a href="/terminos" class="doc-link">
+        <span class="doc-num">03</span>
+        <div class="doc-info">
+          <p class="doc-name">Términos y Condiciones de Uso</p>
+          <p class="doc-desc">Reglas generales de uso del sitio web y sus recursos digitales.</p>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="doc-item">
+      <a href="/contratacion" class="doc-link">
+        <span class="doc-num">04</span>
+        <div class="doc-info">
+          <p class="doc-name">Términos y Condiciones de Contratación</p>
+          <p class="doc-desc">Condiciones específicas para la compra de cursos y servicios AWLA.</p>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="doc-item">
+      <a href="/devoluciones" class="doc-link">
+        <span class="doc-num">05</span>
+        <div class="doc-info">
+          <p class="doc-name">Política de Cambios y Devoluciones</p>
+          <p class="doc-desc">Condiciones para cancelaciones, cambios y reembolsos.</p>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </li>
+
+    <li class="doc-item">
+      <a href="/cookies" class="doc-link">
+        <span class="doc-num">06</span>
+        <div class="doc-info">
+          <p class="doc-name">Política de Cookies</p>
+          <p class="doc-desc">Qué cookies usamos, cómo gestionarlas y configurar tus preferencias.</p>
+        </div>
+        <span class="doc-arrow">→</span>
+      </a>
+    </li>
+
+  </ul>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <a href="https://www.awla.live" aria-label="AWLA — Inicio">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
+      </a>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
+      <li><a href="/terminos">Términos de Uso</a></li>
+      <li><a href="/contratacion">Términos de Contratación</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies">Política de Cookies</a></li>
+      <li><a href="/legal" class="current">Todos los documentos</a></li>
+      <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias de cookies</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 AWLA® · awla.live</span>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="ck" role="dialog" aria-label="Preferencias de cookies">
+  <p>Usamos cookies para mejorar tu experiencia. Puedes aceptarlas, rechazarlas o personalizar tus preferencias. <a href="/cookies">Más información</a>.</p>
+  <div class="ck-actions ck-actions-initial">
+    <button class="ck-btn ck-btn-primary" onclick="ckAcceptAll()">Aceptar todo</button>
+    <button class="ck-btn ck-btn-secondary" onclick="ckRejectAll()">Rechazar</button>
+    <button class="ck-btn ck-btn-secondary" onclick="ckTogglePrefs()">Personalizar</button>
+  </div>
+  <div class="ck-prefs" id="ck-prefs">
+    <label><input type="checkbox" id="ck-analytics"> <span>Analíticas — mejoran el sitio</span></label>
+    <label><input type="checkbox" id="ck-marketing"> <span>Marketing — publicidad personalizada</span></label>
+    <div class="ck-actions ck-actions-prefs" style="display:flex; margin-top:8px;">
+      <button class="ck-btn ck-btn-primary" onclick="ckSavePrefs()">Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CK_KEY = 'awla_ck_v1';
+const CK_POLICY_VERSION = '1.0';
+
+const ckDefaults = { necessary: true, analytics: false, marketing: false, timestamp: null, version: CK_POLICY_VERSION };
+
+function ckGetState() {
+  try { const raw = localStorage.getItem(CK_KEY); return raw ? JSON.parse(raw) : null; } catch(e) { return null; }
+}
+function ckSaveState(state) {
+  state.timestamp = new Date().toISOString();
+  state.version = CK_POLICY_VERSION;
+  try { localStorage.setItem(CK_KEY, JSON.stringify(state)); } catch(e) {}
+}
+function ckApplyConsent(state) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+  gtag('consent', 'update', {
+    'ad_storage':            state.marketing ? 'granted' : 'denied',
+    'ad_user_data':          state.marketing ? 'granted' : 'denied',
+    'ad_personalization':    state.marketing ? 'granted' : 'denied',
+    'analytics_storage':     state.analytics ? 'granted' : 'denied',
+    'functionality_storage': 'granted',
+    'security_storage':      'granted'
+  });
+}
+function ckOpenPreferences() {
+  document.getElementById('ck').style.display = 'block';
+  ckTogglePrefs(true);
+}
+function ckAcceptAll() {
+  const s = { ...ckDefaults, analytics: true, marketing: true };
+  ckSaveState(s); ckApplyConsent(s);
+  document.getElementById('ck').style.display = 'none';
+}
+function ckRejectAll() {
+  const s = { ...ckDefaults };
+  ckSaveState(s); ckApplyConsent(s);
+  document.getElementById('ck').style.display = 'none';
+}
+function ckTogglePrefs(forceOpen) {
+  const p = document.getElementById('ck-prefs');
+  const show = forceOpen || p.style.display === 'none';
+  p.style.display = show ? 'block' : 'none';
+}
+function ckSavePrefs() {
+  const s = {
+    ...ckDefaults,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  };
+  ckSaveState(s); ckApplyConsent(s);
+  document.getElementById('ck').style.display = 'none';
+}
+window.addEventListener('load', () => {
+  const existing = ckGetState();
+  if (!existing) document.getElementById('ck').style.display = 'block';
+});
+</script>
+
+</body>
+</html>
