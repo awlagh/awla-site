@@ -197,13 +197,26 @@ main {
 .nota-msi {
   display: flex; align-items: flex-start; gap: 10px;
   padding: 14px 18px; background: var(--paper2);
-  border-radius: 4px; margin-bottom: 32px;
+  border-radius: 4px; margin-bottom: 10px;
 }
 .nota-msi .msi-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 .nota-msi p {
   font: 400 13px/1.5 var(--font-body); color: var(--ink-mid);
 }
 .nota-msi strong { color: var(--ink); font-weight: 600; }
+
+.nota-transfer {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px; margin-bottom: 32px;
+  background: white; border: 1.5px solid var(--rule); border-radius: 4px;
+  text-decoration: none; transition: border-color .18s ease;
+}
+.nota-transfer:hover { border-color: rgba(61,92,62,.4); }
+.nota-transfer .transfer-icon { font-size: 16px; flex-shrink: 0; }
+.nota-transfer span:last-child {
+  font: 400 13px/1.5 var(--font-body); color: var(--ink-mid);
+}
+.nota-transfer strong { color: var(--moss); font-weight: 600; }
 
 /* ── SEPARADOR ───────────────────────────────────────── */
 .divider { border: none; border-top: 1px solid var(--rule); margin-bottom: 28px; }
@@ -419,6 +432,11 @@ footer {
     <span class="msi-icon">💳</span>
     <p>En Mercado Pago puedes pagar con tarjeta de crédito hasta en <strong>12 meses sin intereses</strong>, o con transferencia bancaria.</p>
   </div>
+
+  <a class="nota-transfer" href="https://wa.me/525537175870?text=Hola%2C%20prefiero%20pagar%20por%20transferencia%20bancaria%20Del%20texto%20a%20la%20pieza%20Gen%2001" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp para pago por transferencia">
+    <span class="transfer-icon">🏦</span>
+    <span>¿Prefieres transferencia bancaria directa? <strong>Contáctanos por WhatsApp →</strong></span>
+  </a>
 
   <hr class="divider">
 

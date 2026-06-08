@@ -2349,6 +2349,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   transition: opacity .18s ease;
 }
 .price-cta-wa:hover { opacity: .65; }
+.cta-ask-term {
+  display: inline-block; margin-top: 16px;
+  font: 400 13px var(--font-mono); color: var(--moss-bright);
+  text-decoration: none; letter-spacing: .03em;
+  transition: opacity .18s ease;
+}
+.cta-ask-term:hover { opacity: .7; }
 .includes-block .eyebrow { margin-bottom: 24px; }
 .includes { list-style: none; padding: 0; margin: 0; }
 .includes li {
@@ -2732,6 +2739,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   gap: 32px;
   flex-wrap: wrap;
 }
+.sticker-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.sticker-cta-wrap .cta-ask-term { margin-top: 10px; }
 .sticker-block {
   display: flex;
   flex-direction: column;
@@ -3099,10 +3113,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </div>
 
   <div class="hero-cta-row">
-    <a href="https://wa.me/525537175870?text=Hola%2C%20quiero%20apartar%20mi%20lugar%20en%20Del%20texto%20a%20la%20pieza%20Gen%2001"
+    <a href="/pagar?tipo=apartado"
        class="btn btn-moss btn-lg btn-flex"
-       target="_blank" rel="noopener"
-       aria-label="Apartar lugar con $1,000 MXN por WhatsApp">
+       aria-label="Aparta tu lugar en Del texto a la pieza Gen 01">
       <span>Aparta tu lugar</span>
       <span class="arrow">→</span>
     </a>
@@ -3111,6 +3124,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <span class="arrow">↓</span>
     </a>
   </div>
+  <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2001" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
 
   <p class="hero-schedule">
     <span class="hero-schedule-k">Horario</span>
@@ -3319,13 +3333,15 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="sticker-note">Generación 01</span>
       </div>
     </div>
-    <a href="https://wa.me/525537175870?text=Hola%2C%20quiero%20apartar%20mi%20lugar%20en%20Del%20texto%20a%20la%20pieza%20Gen%2001"
-       class="btn btn-moss btn-lg btn-flex"
-       target="_blank" rel="noopener"
-       aria-label="Apartar lugar con $1,000 MXN por WhatsApp">
-      <span>Apartar con $1,000 MXN</span>
-      <span class="arrow">→</span>
-    </a>
+    <div class="sticker-cta-wrap">
+      <a href="/pagar?tipo=apartado"
+         class="btn btn-moss btn-lg btn-flex"
+         aria-label="Aparta tu lugar en Del texto a la pieza Gen 01">
+        <span>Aparta tu lugar</span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2001" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+    </div>
   </div>
 </section>
 
