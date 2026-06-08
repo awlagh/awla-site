@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- Consent Mode v2 — defaults DENIED antes de cargar cualquier tag de Google -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  try {
+    var _ck = JSON.parse(localStorage.getItem('awla_ck_v1'));
+    if (_ck) {
+      gtag('consent', 'update', {
+        'ad_storage':         _ck.marketing ? 'granted' : 'denied',
+        'ad_user_data':       _ck.marketing ? 'granted' : 'denied',
+        'ad_personalization': _ck.marketing ? 'granted' : 'denied',
+        'analytics_storage':  _ck.analytics ? 'granted' : 'denied',
+        'functionality_storage': 'granted',
+        'security_storage':   'granted'
+      });
+    }
+  } catch(e) {}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18201216622"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'AW-18201216622');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Completa tu inscripción en Del texto a la pieza · Gen 01. Elige tu modalidad de pago y asegura tu lugar.">
+<meta name="robots" content="noindex, nofollow">
+<title>Completar pago · AWLA</title>
+<link rel="canonical" href="https://www.awla.live/pagar">
+<link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon-32.png">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/apple-touch-icon.png">
+
+<style>
+/* ── FUENTES ─────────────────────────────────────────── */
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic; font-weight: 400; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/dm-serif-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal; font-weight: 500; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-500.woff2') format('woff2');
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:      #f2efe8;
+  --paper2:     #eceae2;
+  --ink:        #1a1a18;
+  --ink-mid:    #3a3a36;
+  --ink-faint:  #8a8880;
+  --rule:       rgba(26,26,24,.12);
+  --rule-soft:  rgba(26,26,24,.07);
+  --term:       #1c1c1a;
+  --term2:      #242420;
+  --screen:     #e4e0d6;
+  --moss:       #3d5c3e;
+  --moss-bright:#5a8a5c;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body:      'Barlow', sans-serif;
+  --font-serif:     'DM Serif Display', serif;
+  --font-mono:      'IBM Plex Mono', monospace;
+}
+
+html { background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.nav-logo img { height: 22px; width: auto; display: block; }
+.nav-back {
+  font: 400 13px var(--font-mono);
+  color: var(--ink-faint); text-decoration: none;
+  letter-spacing: .04em; transition: color .18s ease;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* ── MAIN ────────────────────────────────────────────── */
+main {
+  flex: 1; max-width: 680px; margin: 0 auto;
+  padding: 64px 40px 100px; width: 100%;
+}
+
+.page-label {
+  font: 400 11px var(--font-mono); letter-spacing: .14em;
+  color: var(--moss); text-transform: uppercase;
+  display: block; margin-bottom: 16px;
+}
+.page-title {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(32px, 5vw, 48px); line-height: 1.05;
+  letter-spacing: -.01em; color: var(--ink); margin-bottom: 8px;
+}
+.page-title em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; color: var(--moss);
+}
+.page-intro {
+  font: 400 14px/1.6 var(--font-body); color: var(--ink-mid); margin-bottom: 48px;
+}
+
+/* ── PRECIO BADGE ────────────────────────────────────── */
+.precio-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 11px var(--font-mono); letter-spacing: .12em;
+  color: var(--moss-bright);
+  background: rgba(61,92,62,.1); border: 1px solid rgba(61,92,62,.2);
+  border-radius: 3px; padding: 5px 10px; margin-bottom: 32px;
+}
+.precio-badge::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--moss-bright); border-radius: 50%;
+}
+
+/* ── OPCIONES DE PAGO ────────────────────────────────── */
+.opciones { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+
+.opcion {
+  position: relative; cursor: pointer;
+  border: 1.5px solid var(--rule); border-radius: 6px;
+  padding: 24px 24px 24px 60px;
+  background: white; transition: border-color .18s ease, background .18s ease;
+}
+.opcion:hover { border-color: rgba(61,92,62,.4); }
+.opcion.activa {
+  border-color: var(--moss); background: rgba(61,92,62,.04);
+}
+
+.opcion input[type="radio"] {
+  position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; accent-color: var(--moss); cursor: pointer;
+}
+
+.opcion-header {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 16px; margin-bottom: 8px;
+}
+.opcion-nombre {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(18px, 2.5vw, 22px); color: var(--ink);
+}
+.opcion-monto {
+  font: 600 22px var(--font-condensed); color: var(--ink);
+  white-space: nowrap; letter-spacing: -.01em;
+}
+.opcion-monto .mxn {
+  font-size: 13px; font-family: var(--font-mono);
+  font-weight: 400; color: var(--ink-faint); margin-left: 3px;
+}
+.opcion-desc {
+  font: 400 13px/1.55 var(--font-body); color: var(--ink-mid);
+}
+
+/* ── NOTA MSI ────────────────────────────────────────── */
+.nota-msi {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 14px 18px; background: var(--paper2);
+  border-radius: 4px; margin-bottom: 32px;
+}
+.nota-msi .msi-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.nota-msi p {
+  font: 400 13px/1.5 var(--font-body); color: var(--ink-mid);
+}
+.nota-msi strong { color: var(--ink); font-weight: 600; }
+
+/* ── SEPARADOR ───────────────────────────────────────── */
+.divider { border: none; border-top: 1px solid var(--rule); margin-bottom: 28px; }
+
+/* ── CHECKBOX TÉRMINOS ───────────────────────────────── */
+.terminos-wrap {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 28px; cursor: pointer;
+}
+.terminos-wrap input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+  accent-color: var(--moss); cursor: pointer;
+}
+.terminos-wrap label {
+  font: 400 13px/1.55 var(--font-body); color: var(--ink-mid); cursor: pointer;
+}
+.terminos-wrap a { color: var(--moss); text-decoration: none; }
+.terminos-wrap a:hover { text-decoration: underline; }
+
+/* ── BOTÓN ───────────────────────────────────────────── */
+.btn-pagar {
+  display: block; width: 100%; padding: 18px 24px;
+  font: 600 15px var(--font-condensed); letter-spacing: .06em;
+  text-align: center; text-decoration: none; text-transform: uppercase;
+  background: var(--moss); color: #fff; border: none;
+  border-radius: 4px; cursor: pointer;
+  transition: background .2s ease, opacity .2s ease;
+}
+.btn-pagar:hover:not(:disabled) { background: #4e7350; }
+.btn-pagar:disabled {
+  opacity: .35; cursor: not-allowed; background: var(--ink-faint);
+}
+.btn-pagar .btn-sub {
+  display: block; font: 400 11px var(--font-mono);
+  letter-spacing: .08em; text-transform: none;
+  margin-top: 4px; opacity: .75;
+}
+
+/* ── AVISO MP ────────────────────────────────────────── */
+.aviso-mp {
+  margin-top: 16px; text-align: center;
+  font: 400 12px var(--font-mono); color: var(--ink-faint);
+  letter-spacing: .04em;
+}
+
+/* ── POST-PAGO ───────────────────────────────────────── */
+.postpago {
+  margin-top: 48px; padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.postpago-label {
+  font: 400 11px var(--font-mono); letter-spacing: .14em;
+  color: var(--moss); text-transform: uppercase; margin-bottom: 12px;
+}
+.postpago p {
+  font: 400 14px/1.55 var(--font-body); color: var(--ink-mid); margin-bottom: 16px;
+}
+.postpago strong { color: var(--ink); font-weight: 600; }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 20px; border: 1.5px solid var(--rule); border-radius: 4px;
+  font: 500 13px var(--font-mono); letter-spacing: .04em;
+  color: var(--ink); text-decoration: none; background: white;
+  transition: border-color .18s ease;
+}
+.btn-wa:hover { border-color: rgba(61,92,62,.4); }
+.btn-wa .wa-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--moss); color: #fff; font-size: 11px;
+}
+
+/* ── POLÍTICAS ───────────────────────────────────────── */
+.politicas { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--rule); }
+.politicas-label {
+  font: 400 11px var(--font-mono); letter-spacing: .14em;
+  color: var(--moss); text-transform: uppercase; margin-bottom: 24px;
+}
+.politica {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px;
+  padding: 20px 0; border-top: 1px solid var(--rule-soft);
+}
+.politica:first-of-type { border-top: none; padding-top: 0; }
+.politica .n {
+  font: 400 12px var(--font-mono); color: var(--ink-faint); letter-spacing: .08em;
+}
+.politica h3 {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: 18px; color: var(--ink); margin-bottom: 6px; letter-spacing: -.005em;
+}
+.politica p { font: 400 13px/1.55 var(--font-body); color: var(--ink-mid); }
+.politica a { color: var(--moss); text-decoration: none; }
+.politica a:hover { text-decoration: underline; }
+
+/* ── FACTURA ─────────────────────────────────────────── */
+.factura { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.factura a {
+  font: 500 13px var(--font-mono); color: var(--ink); text-decoration: none;
+  letter-spacing: .04em; border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+}
+.factura a:hover { border-color: var(--moss); color: var(--moss); }
+.factura p {
+  font: 400 12px/1.5 var(--font-body); color: var(--ink-faint); margin-top: 10px;
+}
+.factura strong { color: var(--ink-mid); }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule); padding: 32px 40px;
+  background: var(--paper);
+}
+.footer-inner {
+  max-width: 680px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px 40px;
+}
+.footer-logo img { height: 18px; width: auto; opacity: .5; }
+.footer-logo:hover img { opacity: .8; }
+.footer-links {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none;
+}
+.footer-links a {
+  font: 400 12px var(--font-mono); color: var(--ink-faint);
+  text-decoration: none; letter-spacing: .04em; transition: color .18s ease;
+}
+.footer-links a:hover { color: var(--moss); }
+.footer-copy {
+  font: 400 12px var(--font-mono); color: var(--ink-faint);
+  letter-spacing: .04em; margin-left: auto;
+}
+
+/* ── COOKIE BANNER ───────────────────────────────────── */
+#ck {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 9999; background: var(--term); color: var(--screen);
+  border-radius: 6px; padding: 20px 24px; max-width: 540px;
+  width: calc(100% - 32px); box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  font: 400 13px/1.55 var(--font-body); display: none;
+}
+#ck p { margin-bottom: 14px; }
+#ck p a { color: var(--moss-bright); }
+.ck-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.ck-btn {
+  font: 500 12px var(--font-mono); letter-spacing: .06em;
+  padding: 8px 16px; border-radius: 3px; cursor: pointer; border: none;
+}
+.ck-btn-primary { background: var(--moss); color: #fff; }
+.ck-btn-primary:hover { background: #4e7350; }
+.ck-btn-secondary { background: rgba(255,255,255,.08); color: var(--screen); }
+.ck-btn-secondary:hover { background: rgba(255,255,255,.14); }
+.ck-prefs { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.1); }
+.ck-prefs label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; }
+.ck-prefs span { font-size: 13px; color: var(--screen); }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 640px) {
+  nav { padding: 14px 20px; }
+  main { padding: 48px 20px 80px; }
+  .opcion { padding: 20px 20px 20px 52px; }
+  .opcion-header { flex-direction: column; gap: 4px; }
+  footer { padding: 28px 20px; }
+  .footer-copy { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="AWLA — Inicio">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
+  </a>
+  <a href="/curso" class="nav-back">← Ver el curso</a>
+</nav>
+
+<main>
+  <span class="page-label">Del texto a la pieza · Gen 01</span>
+  <h1 class="page-title">Completa tu <em>inscripción.</em></h1>
+  <p class="page-intro">Elige la modalidad que corresponde a tu situación. En todos los casos el pago se procesa de forma segura a través de Mercado Pago.</p>
+
+  <div class="precio-badge" id="precio-badge">Precio de lanzamiento</div>
+
+  <div class="opciones" id="opciones">
+
+    <label class="opcion" id="opcion-apartado">
+      <input type="radio" name="tipo" value="apartado">
+      <div class="opcion-header">
+        <span class="opcion-nombre">Apartado</span>
+        <span class="opcion-monto">$1,000<span class="mxn">MXN</span></span>
+      </div>
+      <p class="opcion-desc">Asegura tu lugar en el curso. Este monto se descuenta del total al momento de liquidar. Tienes hasta el <strong>27 de junio</strong> para completar tu pago.</p>
+    </label>
+
+    <label class="opcion" id="opcion-liquidacion">
+      <input type="radio" name="tipo" value="liquidacion">
+      <div class="opcion-header">
+        <span class="opcion-nombre">Liquidación</span>
+        <span class="opcion-monto" id="monto-liquidacion">$4,800<span class="mxn">MXN</span></span>
+      </div>
+      <p class="opcion-desc" id="desc-liquidacion">Pago del saldo restante, una vez que tu lugar está apartado con $1,000.</p>
+    </label>
+
+    <label class="opcion" id="opcion-completo">
+      <input type="radio" name="tipo" value="completo">
+      <div class="opcion-header">
+        <span class="opcion-nombre">Pago completo</span>
+        <span class="opcion-monto" id="monto-completo">$5,800<span class="mxn">MXN</span></span>
+      </div>
+      <p class="opcion-desc">Cubre el curso completo en un solo movimiento. Incluye todas las sesiones en vivo, grabaciones (90 días), materiales y grupo de WhatsApp.</p>
+    </label>
+
+  </div>
+
+  <div class="nota-msi">
+    <span class="msi-icon">💳</span>
+    <p>En Mercado Pago puedes pagar con tarjeta de crédito hasta en <strong>12 meses sin intereses</strong>, o con transferencia bancaria.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="terminos-wrap">
+    <input type="checkbox" id="acepto-terminos">
+    <label for="acepto-terminos">
+      Al continuar, confirmo que he leído y acepto los
+      <a href="/contratacion" target="_blank" rel="noopener">Términos y Condiciones de Contratación</a>,
+      el <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y la
+      <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
+    </label>
+  </div>
+
+  <button class="btn-pagar" id="btn-pagar" disabled>
+    Continuar al pago
+    <span class="btn-sub">Serás redirigido a Mercado Pago</span>
+  </button>
+
+  <p class="aviso-mp">Pago seguro · Mercado Pago · awla.live</p>
+
+  <div class="postpago">
+    <p class="postpago-label">Después de pagar</p>
+    <p>Envíanos por <strong>WhatsApp</strong> tu comprobante, nombre completo y correo para confirmar tu lugar.</p>
+    <a class="btn-wa" href="https://wa.me/525537175870?text=Hola%2C%20env%C3%ADo%20comprobante%20de%20pago%20de%20Del%20texto%20a%20la%20pieza%20Gen%2001.%0A%0ANombre%20completo%3A%20%0ACorreo%3A%20%0AAdjunto%20comprobante." target="_blank" rel="noopener" aria-label="Enviar comprobante por WhatsApp">
+      <span class="wa-check">✓</span>
+      <span>Enviar comprobante por WhatsApp</span>
+    </a>
+  </div>
+
+  <div class="politicas">
+    <p class="politicas-label">Para que todo quede claro</p>
+
+    <div class="politica">
+      <span class="n">01</span>
+      <div>
+        <h3>La reserva confirma tu lugar.</h3>
+        <p>El monto de $1,000 MXN se descuenta del total del curso.</p>
+      </div>
+    </div>
+    <div class="politica">
+      <span class="n">02</span>
+      <div>
+        <h3>Precio respetado según fecha de reserva.</h3>
+        <p>Lanzamiento $5,800 hasta el 10 jun · Gen 01 $7,500 hasta el 18 jun · Regular $10,800 después. El precio se respeta al momento de la reserva.</p>
+      </div>
+    </div>
+    <div class="politica">
+      <span class="n">03</span>
+      <div>
+        <h3>Liquidación antes del 27 de junio.</h3>
+        <p>Si la liquidación no se completa antes del 27 de junio, el lugar podrá liberarse a la lista de espera.</p>
+      </div>
+    </div>
+    <div class="politica">
+      <span class="n">04</span>
+      <div>
+        <h3>Reserva aplicable al total.</h3>
+        <p>La reserva se aplica al total del curso. Cambios, cancelaciones, reprogramaciones o devoluciones se atienden conforme a la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA. La reserva también puede transferirse a otra generación o persona, previa confirmación.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="factura">
+    <a href="mailto:hola@awla.live?subject=Factura%20%C2%B7%20Del%20texto%20a%20la%20pieza">Solicitar factura →</a>
+    <p>Solicítala dentro del mes calendario de la compra con tus datos fiscales. Escribe a <strong>hola@awla.live</strong>.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <a href="https://www.awla.live" aria-label="AWLA — Inicio">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
+      </a>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
+      <li><a href="/contratacion">Términos de Contratación</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/legal">Todos los documentos</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 AWLA® · awla.live</span>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="ck" role="dialog" aria-label="Preferencias de cookies">
+  <p>Usamos cookies para mejorar tu experiencia. <a href="/cookies">Más información</a>.</p>
+  <div class="ck-actions">
+    <button class="ck-btn ck-btn-primary" onclick="ckAcceptAll()">Aceptar todo</button>
+    <button class="ck-btn ck-btn-secondary" onclick="ckRejectAll()">Rechazar</button>
+    <button class="ck-btn ck-btn-secondary" onclick="ckTogglePrefs()">Personalizar</button>
+  </div>
+  <div class="ck-prefs" id="ck-prefs">
+    <label><input type="checkbox" id="ck-analytics"><span>Analíticas</span></label>
+    <label><input type="checkbox" id="ck-marketing"><span>Marketing</span></label>
+    <div style="display:flex; margin-top:8px;">
+      <button class="ck-btn ck-btn-primary" onclick="ckSavePrefs()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+// CONFIGURACIÓN DE PRECIOS Y LINKS
+// Actualiza los links de MP cuando generes nuevos para
+// las siguientes etapas de precio.
+// ════════════════════════════════════════════════════════
+const PRECIOS = [
+  {
+    hasta: new Date('2026-06-10T23:59:59-06:00'),
+    label: 'Precio de lanzamiento',
+    total: 5800,
+    liquidacion: 4800,
+    links: {
+      apartado:    'https://mpago.li/1k6bR1c',
+      liquidacion: 'https://mpago.li/26fb1Cd',
+      completo:    'https://mpago.li/1rr13Ao'
+    }
+  },
+  {
+    hasta: new Date('2026-06-18T23:59:59-06:00'),
+    label: 'Precio Gen 01',
+    total: 7500,
+    liquidacion: 6500,
+    links: {
+      apartado:    'https://mpago.li/1k6bR1c',
+      liquidacion: 'PENDIENTE', // ← reemplaza con link MP de $6,500 el 10 de junio
+      completo:    'PENDIENTE'  // ← reemplaza con link MP de $7,500 el 10 de junio
+    }
+  },
+  {
+    hasta: null, // sin fecha límite
+    label: 'Precio regular',
+    total: 10800,
+    liquidacion: 9800,
+    links: {
+      apartado:    'https://mpago.li/1k6bR1c',
+      liquidacion: 'PENDIENTE', // ← reemplaza con link MP de $9,800 el 18 de junio
+      completo:    'PENDIENTE'  // ← reemplaza con link MP de $10,800 el 18 de junio
+    }
+  }
+];
+
+// ════════════════════════════════════════════════════════
+// LÓGICA PRINCIPAL
+// ════════════════════════════════════════════════════════
+const ahora = new Date();
+const config = PRECIOS.find(p => !p.hasta || ahora <= p.hasta) || PRECIOS[PRECIOS.length - 1];
+
+// Actualizar UI con precios y label
+document.getElementById('precio-badge').textContent = config.label;
+document.getElementById('monto-liquidacion').innerHTML =
+  '$' + config.liquidacion.toLocaleString('es-MX') + '<span class="mxn">MXN</span>';
+document.getElementById('monto-completo').innerHTML =
+  '$' + config.total.toLocaleString('es-MX') + '<span class="mxn">MXN</span>';
+document.getElementById('desc-liquidacion').innerHTML =
+  'Pago del saldo restante de <strong>$' + config.liquidacion.toLocaleString('es-MX') +
+  ' MXN</strong>, una vez que tu lugar está apartado con $1,000.';
+
+// Pre-seleccionar según parámetro URL
+const params = new URLSearchParams(window.location.search);
+const tipoParam = params.get('tipo');
+if (tipoParam) {
+  const radio = document.querySelector('input[value="' + tipoParam + '"]');
+  if (radio) {
+    radio.checked = true;
+    radio.closest('.opcion').classList.add('activa');
+  }
+}
+
+// Manejar selección de opciones
+document.querySelectorAll('.opcion input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    document.querySelectorAll('.opcion').forEach(o => o.classList.remove('activa'));
+    radio.closest('.opcion').classList.add('activa');
+    actualizarBoton();
+  });
+});
+
+// Manejar checkbox
+document.getElementById('acepto-terminos').addEventListener('change', actualizarBoton);
+
+function actualizarBoton() {
+  const seleccionado = document.querySelector('input[name="tipo"]:checked');
+  const aceptado = document.getElementById('acepto-terminos').checked;
+  const btn = document.getElementById('btn-pagar');
+  btn.disabled = !(seleccionado && aceptado);
+}
+
+// Click en botón
+document.getElementById('btn-pagar').addEventListener('click', () => {
+  const tipo = document.querySelector('input[name="tipo"]:checked')?.value;
+  if (!tipo) return;
+
+  const link = config.links[tipo];
+
+  if (!link || link === 'PENDIENTE') {
+    alert('El link de pago para esta opción aún no está disponible. Escríbenos a hola@awla.live o por Instagram @awla.live.');
+    return;
+  }
+
+  // Guardar consentimiento en localStorage
+  try {
+    const registro = {
+      tipo_pago: tipo,
+      timestamp: new Date().toISOString(),
+      version_docs: '1.0',
+      medio: 'checkbox-pago'
+    };
+    localStorage.setItem('awla_pago_consent', JSON.stringify(registro));
+  } catch(e) {}
+
+  window.location.href = link;
+});
+
+// ════════════════════════════════════════════════════════
+// COOKIES
+// ════════════════════════════════════════════════════════
+const CK_KEY = 'awla_ck_v1';
+const CK_VERSION = '1.0';
+const ckDef = { necessary: true, analytics: false, marketing: false, timestamp: null, version: CK_VERSION };
+
+function ckGetState() {
+  try { return JSON.parse(localStorage.getItem(CK_KEY)); } catch(e) { return null; }
+}
+function ckSave(s) {
+  s.timestamp = new Date().toISOString(); s.version = CK_VERSION;
+  try { localStorage.setItem(CK_KEY, JSON.stringify(s)); } catch(e) {}
+}
+function ckApply(s) {
+  window.gtag && gtag('consent', 'update', {
+    ad_storage: s.marketing ? 'granted' : 'denied',
+    ad_user_data: s.marketing ? 'granted' : 'denied',
+    ad_personalization: s.marketing ? 'granted' : 'denied',
+    analytics_storage: s.analytics ? 'granted' : 'denied',
+    functionality_storage: 'granted', security_storage: 'granted'
+  });
+}
+function ckAcceptAll() {
+  const s = { ...ckDef, analytics: true, marketing: true };
+  ckSave(s); ckApply(s); document.getElementById('ck').style.display = 'none';
+}
+function ckRejectAll() {
+  const s = { ...ckDef }; ckSave(s); ckApply(s);
+  document.getElementById('ck').style.display = 'none';
+}
+function ckTogglePrefs() {
+  const p = document.getElementById('ck-prefs');
+  p.style.display = p.style.display === 'block' ? 'none' : 'block';
+}
+function ckSavePrefs() {
+  const s = { ...ckDef,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  };
+  ckSave(s); ckApply(s); document.getElementById('ck').style.display = 'none';
+}
+window.addEventListener('load', () => {
+  if (!ckGetState()) document.getElementById('ck').style.display = 'block';
+});
+</script>
+
+</body>
+</html>
