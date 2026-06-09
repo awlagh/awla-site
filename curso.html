@@ -1566,6 +1566,23 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink-mid);
   letter-spacing: .04em;
 }
+.temario-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 14px 22px;
+  border: 1.5px solid var(--moss);
+  border-radius: 4px;
+  font: 600 14px var(--font-condensed);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--moss);
+  text-decoration: none;
+  transition: background .18s ease, color .18s ease;
+}
+.temario-download:hover { background: var(--moss); color: var(--paper); }
+.temario-download .arrow { font-family: var(--font-mono); }
 
 @media (max-width: 768px) {
   .s-temario .head-row > p { text-align: left; }
@@ -3604,6 +3621,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     </div>
 
     <p class="temario-meta">Durante las sesiones puedes hacer tus preguntas en el grupo de WhatsApp y recibir feedback directo del tutor. Horarios en zona CDMX (GMT-6). Las sesiones quedan grabadas con acceso de 90 días.</p>
+
+    <a href="/mail" class="temario-download" aria-label="Descargar el temario completo en PDF">
+      <span>Baja el temario completo en PDF</span>
+      <span class="arrow">→</span>
+    </a>
   </div>
 </section>
 
