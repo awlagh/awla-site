@@ -651,6 +651,11 @@ document.getElementById('btn-pagar').addEventListener('click', () => {
     localStorage.setItem('awla_pago_consent', JSON.stringify(registro));
   } catch(e) {}
 
+  // Registro centralizado en D1 (auditable)
+  if (window.awlaRegistrarConsentimiento) {
+    window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: tipo });
+  }
+
   window.location.href = link;
 });
 
@@ -701,5 +706,7 @@ window.addEventListener('load', () => {
 });
 </script>
 
+<!-- Registro de consentimientos (D1) -->
+<script src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consent-tracking.js" defer></script>
 </body>
 </html>
