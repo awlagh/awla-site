@@ -83,7 +83,10 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "ProfessionalService"],
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
       "@id": "https://www.awla.live/#organization",
       "name": "AWLA",
       "alternateName": "AWLA®",
@@ -96,7 +99,9 @@
         "height": 512
       },
       "image": "https://www.awla.live/og-image.jpg",
-      "founder": { "@id": "https://www.awla.live/#founder" },
+      "founder": {
+        "@id": "https://www.awla.live/#founder"
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Santiago de Querétaro",
@@ -104,9 +109,18 @@
         "addressCountry": "MX"
       },
       "areaServed": [
-        { "@type": "Country", "name": "México" },
-        { "@type": "Place", "name": "Latinoamérica" },
-        { "@type": "Place", "name": "Global" }
+        {
+          "@type": "Country",
+          "name": "México"
+        },
+        {
+          "@type": "Place",
+          "name": "Latinoamérica"
+        },
+        {
+          "@type": "Place",
+          "name": "Global"
+        }
       ],
       "email": "hola@awla.live",
       "telephone": "+52-55-3717-5870",
@@ -141,7 +155,9 @@
       "description": "Director audiovisual mexicano, fundador de AWLA. Creative Partner (CPP) de Runway. Ha formado parte del CPP de Leonardo, Luma, Pika, Magnific y Hailuo. Selecciones en FICM (Festival Internacional de Cine de Morelia) y Cannes Short Film Corner.",
       "url": "https://domingopablo.com",
       "image": "https://www.awla.live/og-image.jpg",
-      "worksFor": { "@id": "https://www.awla.live/#organization" },
+      "worksFor": {
+        "@id": "https://www.awla.live/#organization"
+      },
       "knowsAbout": [
         "Dirección creativa",
         "Cinematografía",
@@ -160,7 +176,9 @@
       "url": "https://www.awla.live",
       "name": "AWLA",
       "description": "Dirección creativa con IA: cursos, consultoría y producción",
-      "publisher": { "@id": "https://www.awla.live/#organization" },
+      "publisher": {
+        "@id": "https://www.awla.live/#organization"
+      },
       "inLanguage": "es-MX",
       "potentialAction": {
         "@type": "SearchAction",
@@ -170,68 +188,6 @@
         },
         "query-input": "required name=search_term_string"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.awla.live/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Para quién es AWLA, solo para cineastas?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AWLA es para cualquier creativo visual que quiera dirigir con IA, no solo cineastas. Tenemos estudiantes que son fotógrafos, diseñadores, directores creativos de agencias y artistas independientes. Lo que importa es que tengas criterio visual y quieras desarrollarlo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Necesito pagar plataformas de IA aparte del curso?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Algunas herramientas que enseñamos tienen versiones gratuitas suficientes para empezar (como Leonardo o las versiones gratuitas de Runway). Otras como Midjourney sí requieren suscripción. Te ayudamos a entender qué te conviene según tu nivel y presupuesto."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Se puede aprender IA generativa con herramientas gratuitas?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. Los fundamentos de prompting y dirección visual se aprenden con cualquier herramienta. Para principiantes recomendamos empezar con herramientas gratuitas para enfocarse en el criterio, no en el software."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Puedo tomar el curso a mi propio ritmo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. El curso es on-demand, lo tomas cuando quieras. Los módulos están grabados y los accedes desde cualquier dispositivo, sin fechas límite."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Necesito experiencia previa con IA o programación?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No necesitas saber programar, AWLA no es sobre código. Tampoco necesitas experiencia previa con IA generativa, empezamos desde lo fundamental. Lo que sí ayuda es tener interés en lo visual."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿AWLA trabaja con agencias y marcas?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. Ofrecemos workshops personalizados para equipos creativos, consultoría en dirección creativa con IA y producción de campañas. Trabajamos con marcas que quieren integrar IA generativa sin perder su voz."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Ofrecen workshops para equipos creativos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. Diseñamos workshops a la medida del equipo: desde introducción a IA generativa hasta pipelines avanzados de producción audiovisual. Pueden ser online o presenciales, en México o global."
-          }
-        }
-      ]
     }
   ]
 }
@@ -3351,6 +3307,6 @@ new IntersectionObserver(e=>{
 },{threshold:0.5}).observe(document.getElementById('c8'));
 </script>
 <!-- Registro de consentimientos (D1) -->
-<script src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/consent-tracking.js" defer></script>
+<script src="/consent-tracking.js" defer></script>
 </body>
 </html>
