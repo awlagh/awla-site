@@ -1,6 +1,6 @@
 /**
  * AWLA · Registro centralizado de consentimientos
- * Ruta: /functions/api/consent.js  →  endpoint: https://www.awla.live/api/consent
+ * Ruta: /functions/consent.js  →  endpoint: https://www.awla.live/consent
  *
  * Recibe un POST con el consentimiento del usuario, captura la IP real
  * (vía Cloudflare) y lo guarda en la base de datos D1 vinculada como "DB".
