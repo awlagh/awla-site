@@ -262,6 +262,18 @@ main {
   letter-spacing: .04em;
 }
 
+.pago-abierto {
+  margin-top: 16px; padding: 16px 18px;
+  background: rgba(61,92,62,.06);
+  border: 1px solid rgba(61,92,62,.2); border-radius: 6px;
+}
+.pago-abierto p {
+  font: 400 13px/1.55 var(--font-body); color: var(--ink-mid); margin-bottom: 8px;
+}
+.pago-abierto p:last-child { margin-bottom: 0; }
+.pago-abierto strong { color: var(--ink); font-weight: 600; }
+.pago-abierto a { color: var(--moss); text-decoration: underline; }
+
 /* ── POST-PAGO ───────────────────────────────────────── */
 .postpago {
   margin-top: 48px; padding-top: 36px;
@@ -452,8 +464,13 @@ footer {
 
   <button class="btn-pagar" id="btn-pagar" disabled>
     Continuar al pago
-    <span class="btn-sub">Serás redirigido a Mercado Pago</span>
+    <span class="btn-sub">Se abre Mercado Pago en otra pestaña</span>
   </button>
+
+  <div class="pago-abierto" id="pago-abierto" style="display:none;">
+    <p><strong>Abrimos Mercado Pago en otra pestaña.</strong> Si no aparece, revisa que tu navegador no haya bloqueado la ventana, o <a href="#" id="reabrir-mp">ábrela aquí</a>.</p>
+    <p>Cuando termines tu pago, envíanos el comprobante por WhatsApp con el botón de abajo.</p>
+  </div>
 
   <p class="aviso-mp">Pago seguro · Mercado Pago · awla.live</p>
 
@@ -632,7 +649,24 @@ document.getElementById('btn-pagar').addEventListener('click', () => {
     window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: tipo });
   }
 
-  window.location.href = link;
+  // Abrir Mercado Pago en una pestaña nueva (no perdemos la página de AWLA)
+  const mpVentana = window.open(link, '_blank', 'noopener');
+
+  // Mostrar confirmación en la página actual
+  const aviso = document.getElementById('pago-abierto');
+  if (aviso) {
+    aviso.style.display = 'block';
+    aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Enlace de respaldo por si el navegador bloqueó la ventana emergente
+  const reabrir = document.getElementById('reabrir-mp');
+  if (reabrir) {
+    reabrir.onclick = function(e) {
+      e.preventDefault();
+      window.open(link, '_blank', 'noopener');
+    };
+  }
 });
 
 // ════════════════════════════════════════════════════════
