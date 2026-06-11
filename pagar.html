@@ -395,7 +395,7 @@ footer {
   <h1 class="page-title">Completa tu <em>inscripción.</em></h1>
   <p class="page-intro">Elige la modalidad que corresponde a tu situación. En todos los casos el pago se procesa de forma segura a través de Mercado Pago.</p>
 
-  <div class="precio-badge" id="precio-badge">Precio de lanzamiento</div>
+  <div class="precio-badge" id="precio-badge">Inversión Gen 01</div>
 
   <div class="opciones" id="opciones">
 
@@ -412,7 +412,7 @@ footer {
       <input type="radio" name="tipo" value="liquidacion">
       <div class="opcion-header">
         <span class="opcion-nombre">Liquidación</span>
-        <span class="opcion-monto" id="monto-liquidacion">$4,800<span class="mxn">MXN</span></span>
+        <span class="opcion-monto" id="monto-liquidacion">$6,500<span class="mxn">MXN</span></span>
       </div>
       <p class="opcion-desc" id="desc-liquidacion">Pago del saldo restante, una vez que tu lugar está apartado con $1,000.</p>
     </label>
@@ -421,7 +421,7 @@ footer {
       <input type="radio" name="tipo" value="completo">
       <div class="opcion-header">
         <span class="opcion-nombre">Pago completo</span>
-        <span class="opcion-monto" id="monto-completo">$5,800<span class="mxn">MXN</span></span>
+        <span class="opcion-monto" id="monto-completo">$7,500<span class="mxn">MXN</span></span>
       </div>
       <p class="opcion-desc">Cubre el curso completo en un solo movimiento. Incluye todas las sesiones en vivo, grabaciones (90 días), materiales y grupo de WhatsApp.</p>
     </label>
@@ -479,8 +479,8 @@ footer {
     <div class="politica">
       <span class="n">02</span>
       <div>
-        <h3>Precio respetado según fecha de reserva.</h3>
-        <p>Lanzamiento $5,800 hasta el 10 jun · Gen 01 $7,500 hasta el 18 jun · Regular $10,800 después. El precio se respeta al momento de la reserva.</p>
+        <h3>Inversión clara y completa.</h3>
+        <p>La inversión del curso es de $7,500 MXN. Puedes apartar tu lugar con $1,000 que se descuentan del total y liquidar el saldo de $6,500, o pagar completo en un solo movimiento.</p>
       </div>
     </div>
     <div class="politica">
@@ -546,47 +546,23 @@ footer {
 // Actualiza los links de MP cuando generes nuevos para
 // las siguientes etapas de precio.
 // ════════════════════════════════════════════════════════
-const PRECIOS = [
-  {
-    hasta: new Date('2026-06-10T23:59:59-06:00'),
-    label: 'Precio de lanzamiento',
-    total: 5800,
-    liquidacion: 4800,
-    links: {
-      apartado:    'https://mpago.li/1k6bR1c',
-      liquidacion: 'https://mpago.li/26fb1Cd',
-      completo:    'https://mpago.li/1rr13Ao'
-    }
-  },
-  {
-    hasta: new Date('2026-06-18T23:59:59-06:00'),
-    label: 'Precio Gen 01',
-    total: 7500,
-    liquidacion: 6500,
-    links: {
-      apartado:    'https://mpago.li/1k6bR1c',
-      liquidacion: 'PENDIENTE', // ← reemplaza con link MP de $6,500 el 10 de junio
-      completo:    'PENDIENTE'  // ← reemplaza con link MP de $7,500 el 10 de junio
-    }
-  },
-  {
-    hasta: null, // sin fecha límite
-    label: 'Precio regular',
-    total: 10800,
-    liquidacion: 9800,
-    links: {
-      apartado:    'https://mpago.li/1k6bR1c',
-      liquidacion: 'PENDIENTE', // ← reemplaza con link MP de $9,800 el 18 de junio
-      completo:    'PENDIENTE'  // ← reemplaza con link MP de $10,800 el 18 de junio
-    }
+// ════════════════════════════════════════════════════════
+// CONFIGURACIÓN DE PRECIO ÚNICO · Gen 01
+// ════════════════════════════════════════════════════════
+const config = {
+  label: 'Inversión Gen 01',
+  total: 7500,
+  liquidacion: 6500,
+  links: {
+    apartado:    'https://mpago.li/1k6bR1c',   // $1,000 apartado
+    liquidacion: 'https://mpago.li/2qWVCcB',   // $6,500 saldo tras apartar
+    completo:    'https://mpago.li/1f95DwU'    // $7,500 pago completo
   }
-];
+};
 
 // ════════════════════════════════════════════════════════
 // LÓGICA PRINCIPAL
 // ════════════════════════════════════════════════════════
-const ahora = new Date();
-const config = PRECIOS.find(p => !p.hasta || ahora <= p.hasta) || PRECIOS[PRECIOS.length - 1];
 
 // Actualizar UI con precios y label
 document.getElementById('precio-badge').textContent = config.label;
