@@ -413,6 +413,30 @@ nav {
 nav > * { pointer-events: all; }
 nav.nav-off { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 
+/* ── Barra de anuncio Gen 01 (hija del nav: hereda mostrar/ocultar) ── */
+#gen01-bar {
+  position: absolute; top: 100%; left: 0; right: 0;
+  display: block; text-align: center;
+  padding: 9px 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--moss-bright);
+  background: rgba(28,28,26,0.92);
+  border-bottom: 1px solid rgba(134,172,135,0.25);
+  text-decoration: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: color 0.2s, background 0.2s;
+}
+#gen01-bar:hover { color: var(--screen); background: rgba(36,36,32,0.95); }
+nav.nav-off #gen01-bar { pointer-events: none; }
+#gen01-bar .gen01-arrow { display: inline-block; transition: transform 0.2s; }
+#gen01-bar:hover .gen01-arrow { transform: translateX(3px); }
+@media (max-width: 600px) {
+  #gen01-bar { font-size: 9px; letter-spacing: 1px; padding: 8px 12px; }
+  #gen01-bar .gen01-long { display: none; }
+}
+
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
 .nav-logo img {
   height: 22px; width: auto;
@@ -1575,6 +1599,9 @@ nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.4); }
     </ul>
     <a href="/curso" class="nav-cta">Ver curso</a>
   </div>
+  <a href="/curso" id="gen01-bar" aria-label="Curso en vivo Del texto a la pieza, Generación 01, inicia el 30 de junio. Ver el curso.">
+    <span class="gen01-long">Curso en vivo · </span>Del texto a la pieza · Gen 01 inicia 30 jun <span class="gen01-arrow">→</span>
+  </a>
 </nav>
 
 <!-- DOTS -->
