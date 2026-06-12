@@ -1,53 +1,16 @@
 # AWLA · awla.live
 # robots.txt
+#
+# Crawlers de buscadores e IA (Googlebot, Bingbot, GPTBot, ClaudeBot,
+# PerplexityBot, Applebot, etc.): bienvenidos. La regla general de abajo
+# les da acceso a todo el sitio.
+# Nota: no se usan grupos por bot porque cada bot obedece SOLO su grupo
+# más específico e ignoraría estas reglas.
 
-# ─── Crawlers de buscadores e IA: bienvenidos ───
-User-agent: Googlebot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-# ─── Regla general ───
+# ─── Regla general (aplica a todos los bots) ───
 User-agent: *
 Allow: /
-Disallow: /seed-builder.html
-Disallow: /imagen.html
-Disallow: /functions/
-Disallow: /curso.html
-Disallow: /privacidad.html
-Disallow: /privacidad-integral.html
-Disallow: /terminos.html
-Disallow: /contratacion.html
-Disallow: /devoluciones.html
-Disallow: /cookies.html
+Disallow: /consent
 
 # ─── Bots SEO sin valor (scraping de backlinks) ───
 User-agent: AhrefsBot
