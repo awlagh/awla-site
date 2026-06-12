@@ -218,20 +218,140 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
   color: var(--moss) !important; text-decoration: none !important; letter-spacing: .03em;
 }
 
-/* ── COOKIE BANNER ───────────────────────────────────── */
+/* ── COOKIE BANNER (Consent Mode) ── */
 #ck {
-  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  z-index: 9999; background: var(--term); color: var(--screen);
-  border-radius: 6px; padding: 20px 24px; max-width: 540px;
-  width: calc(100% - 32px); box-shadow: 0 8px 32px rgba(0,0,0,.35);
-  font: 400 13px/1.55 var(--font-body); display: none;
+  position: fixed; bottom: 24px; left: 24px; z-index: 9999;
+  width: calc(100% - 48px); max-width: 420px;
+  background: rgba(26,26,24,0.97);
+  border: 1px solid rgba(61,92,62,0.3);
+  border-radius: 8px;
+  padding: 22px 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateY(calc(100% + 32px)); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+  pointer-events: none;
 }
-#ck p { margin-bottom: 14px; }
-#ck p a { color: var(--moss-bright); }
-.ck-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.ck-btn { font: 500 12px var(--font-mono); letter-spacing: .06em; padding: 8px 16px; border-radius: 3px; cursor: pointer; border: none; }
-.ck-btn-primary { background: var(--moss); color: #fff; }
-.ck-btn-secondary { background: rgba(255,255,255,.08); color: var(--screen); }
+#ck.on { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+#ck .ck-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(134,172,135,1);
+  margin-bottom: 12px;
+}
+#ck p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: rgba(228,224,214,0.7);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+#ck p a {
+  color: var(--screen);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+#ck p a:hover { color: rgba(134,172,135,1); }
+
+.ck-actions {
+  display: flex; gap: 8px; margin-top: 16px;
+  flex-wrap: wrap; align-items: center;
+}
+.ck-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.ck-btn-primary {
+  background: rgba(134,172,135,1); color: var(--term);
+  flex: 1; min-width: 100px;
+}
+.ck-btn-primary:hover { background: rgba(134,172,135,0.85); }
+
+.ck-btn-ghost {
+  background: transparent;
+  color: rgba(228,224,214,0.7);
+  border: 1px solid rgba(228,224,214,0.15);
+  flex: 1; min-width: 90px;
+}
+.ck-btn-ghost:hover { color: var(--screen); border-color: rgba(228,224,214,0.35); }
+
+.ck-btn-link {
+  background: transparent; color: rgba(228,224,214,0.5);
+  padding: 10px 0; text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.ck-btn-link:hover { color: var(--screen); }
+
+.ck-panel { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(228,224,214,0.08); }
+#ck.expanded .ck-panel { display: block; }
+#ck.expanded .ck-actions-initial { display: none; }
+#ck.expanded .ck-actions-save { display: flex; }
+
+.ck-actions-save { display: none; gap: 8px; margin-top: 16px; }
+
+.ck-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 14px; padding: 12px 0;
+  border-bottom: 1px solid rgba(228,224,214,0.05);
+}
+.ck-row:last-child { border-bottom: none; }
+.ck-row-info { flex: 1; min-width: 0; }
+.ck-row-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--screen);
+  margin-bottom: 2px;
+}
+.ck-row-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 400;
+  color: rgba(228,224,214,0.5);
+  line-height: 1.45;
+}
+
+.ck-toggle {
+  position: relative; width: 34px; height: 18px;
+  flex-shrink: 0;
+}
+.ck-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+.ck-toggle-slider {
+  position: absolute; inset: 0; cursor: pointer;
+  background: rgba(228,224,214,0.15);
+  border-radius: 18px;
+  transition: background 0.2s;
+}
+.ck-toggle-slider::before {
+  content: ''; position: absolute; left: 2px; top: 2px;
+  width: 14px; height: 14px;
+  background: rgba(228,224,214,0.8);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.ck-toggle input:checked + .ck-toggle-slider { background: rgba(134,172,135,1); }
+.ck-toggle input:checked + .ck-toggle-slider::before { transform: translateX(16px); }
+.ck-toggle input:disabled + .ck-toggle-slider { opacity: 0.6; cursor: not-allowed; }
+
+@media (max-width: 600px) {
+  #ck {
+    bottom: 12px; left: 12px; right: 12px;
+    width: auto; max-width: none;
+    padding: 18px 18px;
+  }
+  .ck-btn { font-size: 9px; padding: 11px 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -277,7 +397,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
               <!-- Privacy policy -->
               <div class="ml-form-embedPermissions">
                 <div class="ml-form-embedPermissionsContent default privacy-policy">
-                  <p>Al suscribirte aceptas nuestro [<span><a builder-link-id="-1" href="https://www.awla.live/privacidad.html" target="_blank">Aviso de Privacidad</a></span>].</p>
+                  <p>Al suscribirte aceptas nuestro [<span><a builder-link-id="-1" href="https://www.awla.live/privacidad" target="_blank">Aviso de Privacidad</a></span>].</p>
                 </div>
               </div>
 
@@ -285,7 +405,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
                 <label class="checkbox">
                   <input type="checkbox">
                   <div class="label-description">
-                    <p>Acepto recibir comunicaciones de AWLA y haber leído el <span><a builder-link-id="-2" href="https://www.awla.live/privacidad.html" target="_blank">Aviso de Privacidad</a></span>.</p>
+                    <p>Acepto recibir comunicaciones de AWLA y haber leído el <span><a builder-link-id="-2" href="https://www.awla.live/privacidad" target="_blank">Aviso de Privacidad</a></span>.</p>
                   </div>
                 </label>
               </div>
@@ -342,29 +462,161 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
       <li><a href="/curso">Ver el curso</a></li>
       <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
       <li><a href="/legal">Legal</a></li>
+      <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
     </ul>
     <span class="footer-copy">© 2026 AWLA®</span>
   </div>
 </footer>
 
 <!-- Cookie Banner -->
-<div id="ck" role="dialog" aria-label="Preferencias de cookies">
-  <p>Usamos cookies para mejorar tu experiencia. <a href="/cookies">Más información</a>.</p>
-  <div class="ck-actions">
+<div id="ck" role="dialog" aria-label="Preferencias de cookies" aria-live="polite">
+  <p class="ck-head">Cookies</p>
+  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies">Política de cookies</a>.</p>
+
+  <div class="ck-actions ck-actions-initial">
+    <button class="ck-btn ck-btn-link" onclick="ckPersonalize()">Personalizar</button>
+    <button class="ck-btn ck-btn-ghost" onclick="ckReject()">Rechazar</button>
     <button class="ck-btn ck-btn-primary" onclick="ckAcceptAll()">Aceptar todo</button>
-    <button class="ck-btn ck-btn-secondary" onclick="ckRejectAll()">Rechazar</button>
+  </div>
+
+  <div class="ck-panel">
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Esenciales</p>
+        <p class="ck-row-desc">Necesarias para el funcionamiento del sitio.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" checked disabled>
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Analíticas</p>
+        <p class="ck-row-desc">Nos ayudan a entender cómo se usa el sitio.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" id="ck-analytics">
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Marketing</p>
+        <p class="ck-row-desc">Para campañas y publicidad personalizada.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" id="ck-marketing">
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="ck-actions ck-actions-save">
+    <button class="ck-btn ck-btn-primary" onclick="ckSavePrefs()">Guardar mis preferencias</button>
   </div>
 </div>
 
 <script>
-// Cookies
+// ── COOKIES (Consent Mode) ────────────────────────
 const CK_KEY = 'awla_ck_v1';
-function ckGetState(){ try { return JSON.parse(localStorage.getItem(CK_KEY)); } catch(e){ return null; } }
-function ckSave(s){ s.timestamp=new Date().toISOString(); s.version='1.0'; try{ localStorage.setItem(CK_KEY,JSON.stringify(s)); }catch(e){} }
-function ckApply(s){ window.gtag && gtag('consent','update',{ad_storage:s.marketing?'granted':'denied',ad_user_data:s.marketing?'granted':'denied',ad_personalization:s.marketing?'granted':'denied',analytics_storage:s.analytics?'granted':'denied',functionality_storage:'granted',security_storage:'granted'}); }
-function ckAcceptAll(){ const s={necessary:true,analytics:true,marketing:true}; ckSave(s); ckApply(s); document.getElementById('ck').style.display='none'; }
-function ckRejectAll(){ const s={necessary:true,analytics:false,marketing:false}; ckSave(s); ckApply(s); document.getElementById('ck').style.display='none'; }
-window.addEventListener('load', () => { if(!ckGetState()) document.getElementById('ck').style.display='block'; });
+const CK_POLICY_VERSION = '1.0';
+
+const ckDefaults = {
+  necessary: true,
+  analytics: false,
+  marketing: false,
+  timestamp: null,
+  version: CK_POLICY_VERSION
+};
+
+function ckGetState() {
+  try {
+    const raw = localStorage.getItem(CK_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function ckSaveState(state) {
+  state.timestamp = new Date().toISOString();
+  state.version = CK_POLICY_VERSION;
+  try {
+    localStorage.setItem(CK_KEY, JSON.stringify(state));
+  } catch(e) {}
+  ckApplyConsent(state);
+}
+
+function ckApplyConsent(state) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  gtag('consent', 'update', {
+    'ad_storage':            state.marketing ? 'granted' : 'denied',
+    'ad_user_data':          state.marketing ? 'granted' : 'denied',
+    'ad_personalization':    state.marketing ? 'granted' : 'denied',
+    'analytics_storage':     state.analytics ? 'granted' : 'denied',
+    'functionality_storage': 'granted',
+    'security_storage':      'granted'
+  });
+}
+
+// Nota: el consent 'default' (denied) y la aplicacion del consentimiento
+// previo guardado se ejecutan en el <head>, antes de cargar gtag.js.
+
+window.addEventListener('load',()=>{
+  const ck = document.getElementById('ck');
+  if(!ckGetState()) {
+    setTimeout(()=>ck.classList.add('on'),800);
+  }
+});
+
+function ckAcceptAll() {
+  ckSaveState({ necessary: true, analytics: true, marketing: true });
+  ckHide();
+}
+
+function ckReject() {
+  ckSaveState({ necessary: true, analytics: false, marketing: false });
+  ckHide();
+}
+
+function ckPersonalize() {
+  document.getElementById('ck').classList.add('expanded');
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+}
+
+function ckSavePrefs() {
+  ckSaveState({
+    necessary: true,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  });
+  ckHide();
+}
+
+function ckHide() {
+  const ck = document.getElementById('ck');
+  ck.classList.remove('on');
+  setTimeout(()=>ck.classList.remove('expanded'), 600);
+}
+
+window.ckOpenPreferences = function() {
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+  const ck = document.getElementById('ck');
+  ck.classList.add('on');
+  ck.classList.add('expanded');
+};
+
+window.resetCookies = () => {
+  localStorage.removeItem(CK_KEY);
+  document.getElementById('ck').classList.remove('expanded');
+  document.getElementById('ck').classList.add('on');
+};
 </script>
 
 <!-- MailerLite success handler + scripts -->

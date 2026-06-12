@@ -46,6 +46,7 @@
   function enganchar() {
     envolver('ckAcceptAll', 'banner-cookies', 'aceptar-todo');
     envolver('ckRejectAll', 'banner-cookies', 'rechazar');
+    envolver('ckReject',    'banner-cookies', 'rechazar');
     envolver('ckSavePrefs', 'banner-cookies', 'personalizar');
   }
 
