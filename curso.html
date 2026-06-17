@@ -163,7 +163,7 @@
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/LimitedAvailability",
-        "price": "7500",
+        "price": "5800",
         "priceCurrency": "MXN",
         "category": "Curso online en vivo",
         "url": "https://www.awla.live/curso",
@@ -269,7 +269,7 @@
           "name": "¿Cuánto cuesta el curso y cómo puedo pagar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La inversión del curso es de $7,500 MXN. Puedes apartar tu lugar con $1,000 que se descuentan del total, o pagar completo. Consulta los detalles en la sección de Inversión de esta página."
+            "text": "La inversión de Gen 01 es de $5,800 MXN, un precio especial de lanzamiento (precio regular $7,500 MXN). Pago completo en una o varias parcialidades. Consulta los detalles en la sección de Inversión de esta página."
           }
         },
         {
@@ -2162,7 +2162,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
    ════════════════════════════════════════════════ */
 .s-pricing { background: var(--paper2); }
 
-/* ── MASTERCLASS INTERLUDIO (temporal: quitar después del 20 jun 2026) ── */
+/* ── MASTERCLASS INTERLUDIO (temporal: quitar después del 21 jun 2026) ── */
 .s-mc {
   background: var(--term); padding: 64px 0;
   text-align: center;
@@ -2183,6 +2183,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 .s-mc .mc-date {
   font: 400 14px/1.5 var(--font-body); color: rgba(228,224,214,0.6);
+  margin-bottom: 12px;
+}
+.s-mc .mc-perk {
+  font: 500 11px var(--font-mono); letter-spacing: 2px;
+  text-transform: uppercase; color: var(--moss-bright);
   margin-bottom: 24px;
 }
 .s-mc .btn-mc {
@@ -2243,6 +2248,26 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   padding: 4px 10px;
   background: rgba(61,92,62,0.1);
   border-radius: 3px;
+}
+.price-hero-strike {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  margin: 0 0 4px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.price-hero-strike-note {
+  font: 500 9px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-decoration: none;
 }
 .price-hero-val {
   font-family: var(--font-condensed);
@@ -3369,7 +3394,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <div class="sticker-block">
         <span class="sticker-label">Inversión Gen 01</span>
         <!-- Precio único Gen 01 -->
-        <span class="sticker-value">$7,500<span class="sticker-cur">MXN</span></span>
+        <span class="sticker-value">$5,800<span class="sticker-cur">MXN</span></span>
         <span class="sticker-note">Inversión completa</span>
       </div>
       <div class="sticker-sep" aria-hidden="true"></div>
@@ -3992,12 +4017,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </div>
 </section>
 
-<!-- ══ MASTERCLASS INTERLUDIO (temporal: quitar después del 20 jun 2026) ══ -->
+<!-- ══ MASTERCLASS INTERLUDIO (temporal: quitar después del 21 jun 2026) ══ -->
 <section class="s-mc">
   <div class="wrap">
     <p class="mc-lbl">Masterclass gratuita</p>
     <h2 class="mc-h">¿Quieres ver el método <em>antes?</em></h2>
-    <p class="mc-date">Sábado 20 de junio · 10:00 am hora CDMX · 1 hora en vivo por Zoom</p>
+    <p class="mc-date">Sábado 21 de junio · 10:00 am hora CDMX · 1 hora en vivo por Zoom</p>
     <a href="/mail" class="btn-mc">Regístrate gratis →</a>
   </div>
 </section>
@@ -4016,12 +4041,14 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
         <div class="price-card">
           <div class="price-hero">
-            <p class="price-hero-val">$7,500<span class="price-hero-cur">MXN</span></p>
-            <p class="price-hero-meta">Inversión completa del curso · pago en una o varias parcialidades</p>
+            <p class="price-hero-tag">Precio especial Gen 01</p>
+            <p class="price-hero-strike">$7,500 <span class="price-hero-strike-note">precio regular</span></p>
+            <p class="price-hero-val">$5,800<span class="price-hero-cur">MXN</span></p>
+            <p class="price-hero-meta">Inversión completa del curso · pago en una sola exhibición</p>
           </div>
 
           <div class="price-deadline">
-            <em>Apartas con $1,000 MXN</em> que se descuentan del total. Liquidas el restante antes del 27 de junio. <em>Hasta 12 meses sin intereses</em> con tarjeta de crédito, según tu banco · Mercado Pago.
+            <em>Hasta 12 meses sin intereses</em> con tarjeta de crédito, según tu banco · Mercado Pago. Si necesitas otra opción de pago, escríbenos a <a href="mailto:hola@awla.live">hola@awla.live</a>.
           </div>
         </div>
 
@@ -4122,7 +4149,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="faq-item">
         <p class="q">¿Cuánto cuesta el curso y cómo puedo pagar?</p>
-        <p class="a">La inversión del curso es de $7,500 MXN. Puedes apartar tu lugar con $1,000 que se descuentan del total, o pagar completo. Consulta los detalles en la sección de Inversión.</p>
+        <p class="a">La inversión de Gen 01 es de $5,800 MXN, un precio especial de lanzamiento (precio regular $7,500 MXN). Pago completo en una o varias parcialidades. Consulta los detalles en la sección de Inversión.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Puedo pagar en mensualidades sin intereses?</p>

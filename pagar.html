@@ -155,6 +155,48 @@ main {
 }
 
 /* ── OPCIONES DE PAGO ────────────────────────────────── */
+
+.precio-card {
+  background: rgba(61,92,62,0.04);
+  border: 1px solid rgba(61,92,62,0.18);
+  border-radius: 10px;
+  padding: 30px 28px;
+  margin-bottom: 26px;
+  text-align: left;
+}
+.precio-strike {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 400; line-height: 1;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  margin: 0 0 6px;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.precio-strike-note {
+  font: 500 9px 'IBM Plex Mono', monospace;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-faint); text-decoration: none;
+}
+.precio-monto {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: clamp(48px, 7vw, 64px);
+  line-height: 1; color: var(--ink);
+  margin: 0 0 14px;
+  letter-spacing: -.02em;
+}
+.precio-monto .mxn {
+  font-size: 14px; color: var(--ink-mid);
+  margin-left: 8px; font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.precio-desc {
+  font: 400 14px/1.6 'Barlow', sans-serif;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
 .opciones { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
 
 .opcion {
@@ -407,37 +449,12 @@ footer {
   <h1 class="page-title">Completa tu <em>inscripción.</em></h1>
   <p class="page-intro">Elige la modalidad que corresponde a tu situación. En todos los casos el pago se procesa de forma segura a través de Mercado Pago.</p>
 
-  <div class="precio-badge" id="precio-badge">Inversión Gen 01</div>
+  <div class="precio-badge">Precio especial Gen 01</div>
 
-  <div class="opciones" id="opciones">
-
-    <label class="opcion" id="opcion-apartado">
-      <input type="radio" name="tipo" value="apartado">
-      <div class="opcion-header">
-        <span class="opcion-nombre">Apartado</span>
-        <span class="opcion-monto">$1,000<span class="mxn">MXN</span></span>
-      </div>
-      <p class="opcion-desc">Asegura tu lugar en el curso. Este monto se descuenta del total al momento de liquidar. Tienes hasta el <strong>27 de junio</strong> para completar tu pago.</p>
-    </label>
-
-    <label class="opcion" id="opcion-liquidacion">
-      <input type="radio" name="tipo" value="liquidacion">
-      <div class="opcion-header">
-        <span class="opcion-nombre">Liquidación</span>
-        <span class="opcion-monto" id="monto-liquidacion">$6,500<span class="mxn">MXN</span></span>
-      </div>
-      <p class="opcion-desc" id="desc-liquidacion">Pago del saldo restante, una vez que tu lugar está apartado con $1,000.</p>
-    </label>
-
-    <label class="opcion" id="opcion-completo">
-      <input type="radio" name="tipo" value="completo">
-      <div class="opcion-header">
-        <span class="opcion-nombre">Pago completo</span>
-        <span class="opcion-monto" id="monto-completo">$7,500<span class="mxn">MXN</span></span>
-      </div>
-      <p class="opcion-desc">Cubre el curso completo en un solo movimiento. Incluye todas las sesiones en vivo, grabaciones (90 días), materiales y grupo de WhatsApp.</p>
-    </label>
-
+  <div class="precio-card">
+    <p class="precio-strike">$7,500 <span class="precio-strike-note">precio regular</span></p>
+    <p class="precio-monto">$5,800<span class="mxn">MXN</span></p>
+    <p class="precio-desc">Inversión completa del curso. Pago en una sola exhibición. Incluye 10 sesiones en vivo por Zoom, grabaciones (acceso 90 días), materiales y grupo de WhatsApp.</p>
   </div>
 
   <div class="nota-msi">
@@ -489,29 +506,29 @@ footer {
     <div class="politica">
       <span class="n">01</span>
       <div>
-        <h3>La reserva confirma tu lugar.</h3>
-        <p>El monto de $1,000 MXN se descuenta del total del curso.</p>
+        <h3>Precio especial Gen 01.</h3>
+        <p>La inversión es de $5,800 MXN, precio especial de la primera generación. El precio regular del curso es de $7,500 MXN.</p>
       </div>
     </div>
     <div class="politica">
       <span class="n">02</span>
       <div>
-        <h3>Inversión clara y completa.</h3>
-        <p>La inversión del curso es de $7,500 MXN. Puedes apartar tu lugar con $1,000 que se descuentan del total y liquidar el saldo de $6,500, o pagar completo en un solo movimiento.</p>
+        <h3>Pago en una sola exhibición.</h3>
+        <p>Tu lugar queda confirmado al completar el pago. Incluye 10 sesiones en vivo por Zoom, grabaciones con acceso por 90 días, materiales y grupo de WhatsApp.</p>
       </div>
     </div>
     <div class="politica">
       <span class="n">03</span>
       <div>
-        <h3>Liquidación antes del 27 de junio.</h3>
-        <p>Si la liquidación no se completa antes del 27 de junio, el lugar podrá liberarse a la lista de espera.</p>
+        <h3>Inicio del curso: 30 de junio.</h3>
+        <p>Las sesiones en vivo empiezan el 30 de junio de 2026. Cupo limitado a 25 personas. Si necesitas otra opción de pago, escríbenos a <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
       </div>
     </div>
     <div class="politica">
       <span class="n">04</span>
       <div>
-        <h3>Reserva aplicable al total.</h3>
-        <p>La reserva se aplica al total del curso. Cambios, cancelaciones, reprogramaciones o devoluciones se atienden conforme a la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA. La reserva también puede transferirse a otra generación o persona, previa confirmación.</p>
+        <h3>Cambios y devoluciones.</h3>
+        <p>Cambios, cancelaciones, reprogramaciones o devoluciones se atienden conforme a la <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA. El pago también puede transferirse a otra generación o persona, previa confirmación.</p>
       </div>
     </div>
   </div>
@@ -563,76 +580,30 @@ footer {
 // Actualiza los links de MP cuando generes nuevos.
 // ════════════════════════════════════════════════════════
 const config = {
-  label: 'Inversión Gen 01',
-  total: 7500,
-  liquidacion: 6500,
-  links: {
-    apartado:    'https://mpago.li/1k6bR1c',   // $1,000 apartado
-    liquidacion: 'https://mpago.li/2qWVCcB',   // $6,500 saldo tras apartar
-    completo:    'https://mpago.li/1f95DwU'    // $7,500 pago completo
-  }
+  total: 5800,
+  link: 'https://mpago.li/1rr13Ao'   // $5,800 precio especial Gen 01
 };
 
 // ════════════════════════════════════════════════════════
 // LÓGICA PRINCIPAL
 // ════════════════════════════════════════════════════════
 
-// Actualizar UI con precios y label
-document.getElementById('precio-badge').textContent = config.label;
-document.getElementById('monto-liquidacion').innerHTML =
-  '$' + config.liquidacion.toLocaleString('es-MX') + '<span class="mxn">MXN</span>';
-document.getElementById('monto-completo').innerHTML =
-  '$' + config.total.toLocaleString('es-MX') + '<span class="mxn">MXN</span>';
-document.getElementById('desc-liquidacion').innerHTML =
-  'Pago del saldo restante de <strong>$' + config.liquidacion.toLocaleString('es-MX') +
-  ' MXN</strong>, una vez que tu lugar está apartado con $1,000.';
-
-// Pre-seleccionar según parámetro URL
-const params = new URLSearchParams(window.location.search);
-const tipoParam = params.get('tipo');
-if (tipoParam) {
-  const radio = document.querySelector('input[value="' + tipoParam + '"]');
-  if (radio) {
-    radio.checked = true;
-    radio.closest('.opcion').classList.add('activa');
-  }
-}
-
-// Manejar selección de opciones
-document.querySelectorAll('.opcion input[type="radio"]').forEach(radio => {
-  radio.addEventListener('change', () => {
-    document.querySelectorAll('.opcion').forEach(o => o.classList.remove('activa'));
-    radio.closest('.opcion').classList.add('activa');
-    actualizarBoton();
-  });
-});
-
-// Manejar checkbox
+// Manejar checkbox de aceptación
 document.getElementById('acepto-terminos').addEventListener('change', actualizarBoton);
 
 function actualizarBoton() {
-  const seleccionado = document.querySelector('input[name="tipo"]:checked');
   const aceptado = document.getElementById('acepto-terminos').checked;
   const btn = document.getElementById('btn-pagar');
-  btn.disabled = !(seleccionado && aceptado);
+  btn.disabled = !aceptado;
 }
 
 // Click en botón
 document.getElementById('btn-pagar').addEventListener('click', () => {
-  const tipo = document.querySelector('input[name="tipo"]:checked')?.value;
-  if (!tipo) return;
-
-  const link = config.links[tipo];
-
-  if (!link || link === 'PENDIENTE') {
-    alert('El link de pago para esta opción aún no está disponible. Escríbenos a hola@awla.live o por Instagram @awla.live.');
-    return;
-  }
-
   // Guardar consentimiento en localStorage
   try {
     const registro = {
-      tipo_pago: tipo,
+      tipo_pago: 'completo',
+      monto: config.total,
       timestamp: new Date().toISOString(),
       version_docs: '1.0',
       medio: 'checkbox-pago'
@@ -642,11 +613,11 @@ document.getElementById('btn-pagar').addEventListener('click', () => {
 
   // Registro centralizado en D1 (auditable)
   if (window.awlaRegistrarConsentimiento) {
-    window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: tipo });
+    window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: 'completo' });
   }
 
-  // Abrir Mercado Pago en una pestaña nueva (no perdemos la página de AWLA)
-  const mpVentana = window.open(link, '_blank', 'noopener');
+  // Abrir Mercado Pago en nueva pestaña
+  window.open(config.link, '_blank', 'noopener');
 
   // Mostrar confirmación en la página actual
   const aviso = document.getElementById('pago-abierto');
@@ -655,16 +626,15 @@ document.getElementById('btn-pagar').addEventListener('click', () => {
     aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  // Enlace de respaldo por si el navegador bloqueó la ventana emergente
+  // Enlace de respaldo si el navegador bloqueó la ventana emergente
   const reabrir = document.getElementById('reabrir-mp');
   if (reabrir) {
     reabrir.onclick = function(e) {
       e.preventDefault();
-      window.open(link, '_blank', 'noopener');
+      window.open(config.link, '_blank', 'noopener');
     };
   }
 });
-
 // ════════════════════════════════════════════════════════
 // COOKIES
 // ════════════════════════════════════════════════════════
