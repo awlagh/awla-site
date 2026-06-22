@@ -2162,46 +2162,41 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
    ════════════════════════════════════════════════ */
 .s-pricing { background: var(--paper2); }
 
-/* ── MASTERCLASS INTERLUDIO (temporal: quitar después del 21 jun 2026) ── */
-.s-mc {
+/* ── PREVIEW (materiales gratuitos antes de comprar) ────── */
+.s-preview {
   background: var(--term); padding: 64px 0;
-  text-align: center;
 }
-.s-mc .wrap { max-width: 620px; margin: 0 auto; padding: 0 40px; }
-.s-mc .mc-lbl {
+.s-preview .wrap { max-width: 720px; margin: 0 auto; padding: 0 40px; text-align: center; }
+.s-preview .pv-lbl {
   font: 500 9px/1 var(--font-mono); letter-spacing: 3px;
   text-transform: uppercase; color: var(--moss-bright); margin-bottom: 16px;
 }
-.s-mc .mc-h {
+.s-preview .pv-h {
   font-family: var(--font-condensed); font-weight: 600;
   font-size: clamp(24px, 4vw, 36px); line-height: 1.1;
   text-transform: uppercase; color: var(--screen); margin-bottom: 8px;
 }
-.s-mc .mc-h em {
+.s-preview .pv-h em {
   font-family: var(--font-serif); font-style: italic;
   font-weight: 400; text-transform: none; color: var(--moss-bright);
 }
-.s-mc .mc-date {
-  font: 400 14px/1.5 var(--font-body); color: rgba(228,224,214,0.6);
-  margin-bottom: 12px;
+.s-preview .pv-desc {
+  font: 400 15px/1.6 var(--font-body); color: rgba(228,224,214,0.7);
+  margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto;
 }
-.s-mc .mc-perk {
-  font: 500 11px var(--font-mono); letter-spacing: 2px;
-  text-transform: uppercase; color: var(--moss-bright);
-  margin-bottom: 24px;
-}
-.s-mc .btn-mc {
+.s-preview .btn-pv {
   display: inline-block; text-decoration: none;
   font: 500 10px var(--font-mono); letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--term); background: var(--moss-bright);
   padding: 14px 28px; border-radius: 4px;
   transition: background 0.2s;
 }
-.s-mc .btn-mc:hover { background: #9abd9b; }
+.s-preview .btn-pv:hover { background: #9abd9b; }
 @media (max-width: 600px) {
-  .s-mc { padding: 48px 0; }
-  .s-mc .wrap { padding: 0 20px; }
+  .s-preview { padding: 48px 0; }
+  .s-preview .wrap { padding: 0 20px; }
 }
+
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -4017,16 +4012,18 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </div>
 </section>
 
-<!-- ══ MASTERCLASS INTERLUDIO (temporal: quitar después del 21 jun 2026) ══ -->
-<section class="s-mc">
+<!-- ════════════════════════════════════════════════
+     PREVIEW · Materiales gratuitos antes de decidir
+     (Permanente: lead magnet del curso)
+     ════════════════════════════════════════════════ -->
+<section class="s-preview">
   <div class="wrap">
-    <p class="mc-lbl">Masterclass gratuita</p>
-    <h2 class="mc-h">¿Quieres ver el método <em>antes?</em></h2>
-    <p class="mc-date">Sábado 21 de junio · 10:00 am hora CDMX · 1 hora en vivo por Zoom</p>
-    <a href="/mail" class="btn-mc">Regístrate gratis →</a>
+    <p class="pv-lbl">Conoce antes de decidir</p>
+    <h2 class="pv-h">Ve el método <em>en acción.</em></h2>
+    <p class="pv-desc">Recibe la masterclass grabada de una hora más el temario completo en PDF. Es la mejor forma de entender si el curso es para ti.</p>
+    <a href="/mail" class="btn-pv">Recibir materiales gratuitos →</a>
   </div>
 </section>
-<!-- ══ /MASTERCLASS INTERLUDIO ══ -->
 
 <!-- ════════════════════════════════════════════════
      16 · INVERSIÓN

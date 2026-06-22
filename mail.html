@@ -37,12 +37,12 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Recibe el temario completo de Del texto a la pieza · Gen 01 y la invitación a la masterclass gratuita del 20 de junio.">
+<meta name="description" content="Recibe el temario completo en PDF de Del texto a la pieza · Gen 01 y el acceso a la masterclass grabada de una hora sobre dirección creativa con IA.">
 <meta name="robots" content="noindex, follow">
-<title>Temario + Masterclass gratuita · AWLA</title>
+<title>Recibe el temario y la masterclass · AWLA</title>
 <link rel="canonical" href="https://www.awla.live/mail">
-<meta property="og:title" content="Masterclass gratuita · Del texto a la pieza · AWLA">
-<meta property="og:description" content="Sábado 20 de junio · 10 am CDMX · 1 hora en vivo por Zoom. Regístrate y recibe el temario del curso.">
+<meta property="og:title" content="Recibe el temario y la masterclass · AWLA">
+<meta property="og:description" content="Recibe el temario en PDF y la masterclass grabada de una hora sobre dirección creativa con IA.">
 <meta property="og:image" content="https://www.awla.live/og-curso.jpg">
 <meta property="og:url" content="https://www.awla.live/mail">
 <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon.svg">
@@ -129,6 +129,47 @@ main {
   font: 400 15px/1.6 var(--font-body); color: var(--ink-mid);
   max-width: 46ch; margin-bottom: 28px;
 }
+
+/* ── MATERIALES (dos columnas con masterclass + temario) ─── */
+.materiales {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 24px;
+  margin-bottom: 32px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.materiales-k {
+  grid-column: 1 / -1;
+  font: 500 9px/1 var(--font-mono); letter-spacing: 3px;
+  text-transform: uppercase; color: var(--moss);
+  margin-bottom: 4px;
+}
+.material {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.material-tag {
+  font: 500 9px var(--font-mono); letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.material-h {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: 18px; line-height: 1.1;
+  text-transform: uppercase; color: var(--ink);
+  letter-spacing: -.01em;
+}
+.material-h em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; text-transform: none; color: var(--moss);
+}
+.material-desc {
+  font: 400 13px/1.5 var(--font-body); color: var(--ink-mid);
+}
+@media (max-width: 600px) {
+  .materiales { grid-template-columns: 1fr; gap: 16px; padding: 20px; }
+}
 .temario-points {
   list-style: none; margin: 0 0 40px; padding: 20px 0 0; border-top: 1px solid var(--rule);
 }
@@ -138,38 +179,6 @@ main {
 }
 .temario-points li::before {
   content: '→'; position: absolute; left: 0; color: var(--moss); font-family: var(--font-mono);
-}
-
-/* ── MASTERCLASS BANNER (temporal: quitar después del 20 jun 2026) ── */
-.mc-banner {
-  background: var(--term); color: var(--screen); border-radius: 8px;
-  padding: 28px 28px 24px; margin-bottom: 36px;
-  border: 1px solid rgba(61,92,62,0.25);
-}
-.mc-label {
-  font: 500 9px/1 var(--font-mono); letter-spacing: 3px;
-  text-transform: uppercase; color: var(--moss-bright); margin-bottom: 14px;
-}
-.mc-title {
-  font-family: var(--font-condensed); font-weight: 600;
-  font-size: clamp(22px, 4vw, 30px); line-height: 1.08;
-  text-transform: uppercase; color: var(--screen); margin-bottom: 6px;
-}
-.mc-title em {
-  font-family: var(--font-serif); font-style: italic;
-  font-weight: 400; text-transform: none; color: var(--moss-bright);
-}
-.mc-date {
-  font: 400 14px/1.5 var(--font-body); color: rgba(228,224,214,0.7);
-  margin-bottom: 16px;
-}
-.mc-note {
-  font: 400 12px/1.5 var(--font-mono); color: rgba(228,224,214,0.5);
-  letter-spacing: 0.03em; padding-top: 14px;
-  border-top: 1px solid rgba(228,224,214,0.08);
-}
-@media (max-width: 600px) {
-  .mc-banner { padding: 22px 20px 20px; }
 }
 
 /* ── FORM CARD ───────────────────────────────────── */
@@ -208,47 +217,47 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
 /* ════════════════════════════════════════════════════════
    OVERRIDE MAILERLITE → DISEÑO AWLA
    ════════════════════════════════════════════════════════ */
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 100% !important; width: 100% !important; }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper { background-color: transparent !important; }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody { padding: 0 !important; }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent { margin-bottom: 24px !important; }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 100% !important; width: 100% !important; }
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper { background-color: transparent !important; }
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody { padding: 0 !important; }
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent { margin-bottom: 24px !important; }
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
   font-family: var(--font-condensed) !important; font-weight: 600 !important;
   font-size: 26px !important; color: var(--ink) !important; line-height: 1.1 !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
   font-family: var(--font-body) !important; color: var(--ink-mid) !important;
   font-size: 14px !important; line-height: 1.55 !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
   background-color: #fff !important; color: var(--ink) !important;
   border-color: var(--rule) !important; border-radius: 4px !important;
   font-family: var(--font-body) !important; font-size: 15px !important; padding: 14px !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
   background-color: var(--moss) !important; border: none !important; border-radius: 4px !important;
   font-family: var(--font-condensed) !important; font-size: 15px !important; font-weight: 600 !important;
   letter-spacing: .06em !important; text-transform: uppercase !important; padding: 16px !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
   background-color: #4e7350 !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description,
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p,
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description,
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p,
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p {
   font-family: var(--font-body) !important; color: var(--ink-mid) !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a,
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p a,
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a,
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p a,
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
   color: var(--moss) !important;
 }
-#mlb2-42370553.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before {
+#mlb2-42911808.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before {
   border-color: var(--moss) !important; background-color: var(--moss) !important;
 }
-#mlb2-42370553 .ml-form-successContent .back-to-course {
+#mlb2-42911808 .ml-form-successContent .back-to-course {
   display: inline-block; margin-top: 20px;
   font-family: var(--font-mono) !important; font-size: 13px !important;
   color: var(--moss) !important; text-decoration: none !important; letter-spacing: .03em;
@@ -402,16 +411,22 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
 <main>
   <span class="page-label">Del texto a la pieza · Gen 01</span>
   <h1 class="page-title">El temario <em>completo.</em></h1>
-  <p class="page-intro">Las 10 sesiones en detalle, la ruta del curso de la idea a la pieza final, y todo lo que vas a crear. Suscríbete y te enviamos el temario en PDF + la invitación a la masterclass gratuita.</p>
+  <p class="page-intro">Dos materiales gratuitos para que conozcas el método y decidas con todo en la mesa.</p>
 
-  <!-- ══ MASTERCLASS BANNER (temporal: quitar después del 20 jun 2026) ══ -->
-  <div class="mc-banner">
-    <p class="mc-label">Masterclass gratuita</p>
-    <h2 class="mc-title">Del texto a la <em>pieza.</em></h2>
-    <p class="mc-date">Sábado 20 de junio · 10:00 am (hora CDMX) · 1 hora por Zoom</p>
-    <p class="mc-note">Al suscribirte recibes el temario completo en PDF y la invitación con el link de Zoom. Quien asiste en vivo accede al precio especial de $5,200 para Gen 01.</p>
+
+  <div class="materiales">
+    <p class="materiales-k">Lo que recibes</p>
+    <div class="material">
+      <p class="material-tag">01 · Grabación</p>
+      <h3 class="material-h">Masterclass · <em>1 hora.</em></h3>
+      <p class="material-desc">Grabación completa de la sesión en vivo donde verás el método del curso aplicado paso a paso.</p>
+    </div>
+    <div class="material">
+      <p class="material-tag">02 · Documento</p>
+      <h3 class="material-h">Temario · <em>PDF.</em></h3>
+      <p class="material-desc">Las 10 sesiones del curso en detalle, lo que vas a crear y las herramientas que vas a usar.</p>
+    </div>
   </div>
-  <!-- ══ /MASTERCLASS BANNER ══ -->
 
   <ul class="temario-points">
     <li>10 sesiones en vivo · 20 horas de formación</li>
@@ -421,16 +436,16 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
 
   <div class="form-card">
     <!-- ════════ FORMULARIO MAILERLITE ════════ -->
-    <div id="mlb2-42370553" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42370553">
+    <div id="mlb2-42911808" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42911808">
       <div class="ml-form-align-center">
         <div class="ml-form-embedWrapper embedForm">
           <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
             <div class="ml-form-embedContent">
-              <h4>Suscríbete y recibe todo</h4>
-              <p>El temario completo en PDF + la invitación a la masterclass gratuita del 20 de junio</p>
+              <h4>Recibe el temario y la masterclass</h4>
+              <p>El temario completo en PDF y el acceso a la masterclass grabada de una hora sobre dirección creativa con IA</p>
             </div>
 
-            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2304368/forms/189766413139838587/subscribe" data-code="" method="post" target="_blank">
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2304368/forms/190988245720368660/subscribe" data-code="" method="post" target="_blank">
               <div class="ml-form-formContent">
                 <div class="ml-form-fieldRow ml-last-item">
                   <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
@@ -471,7 +486,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
               <input type="hidden" name="ml-submit" value="1">
 
               <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary">Suscribirme</button>
+                <button type="submit" class="primary">Recibir temario y masterclass</button>
                 <button disabled="disabled" style="display: none;" type="button" class="loading">
                   <div class="ml-form-embedSubmitLoad"></div>
                   <span class="sr-only">Loading...</span>
@@ -485,7 +500,7 @@ footer { border-top: 1px solid var(--rule); padding: 32px 40px; background: var(
           <div class="ml-form-successBody row-success" style="display: none">
             <div class="ml-form-successContent">
               <h4>Gracias</h4>
-              <p>Revisa tu correo para confirmar tu suscripción. Recibirás el temario en PDF y la invitación a la masterclass del 20 de junio.<br><br>Baja <span><a builder-link-id="-3" href="https://github.com/awlagh/site-assets/raw/main/AWLA-GEN01-TEMARIO.pdf" target="_blank">aquí</a></span> el temario directo.</p>
+              <p>Revisa tu correo. Te enviamos el temario en PDF y el acceso a la masterclass grabada.<br><br>Baja <span><a builder-link-id="-3" href="https://github.com/awlagh/site-assets/raw/main/AWLA-GEN01-TEMARIO.pdf" target="_blank">aquí</a></span> el temario directo.</p>
               <a href="/curso" class="back-to-course">← Volver a la info del curso</a>
             </div>
           </div>
@@ -666,15 +681,15 @@ window.resetCookies = () => {
 
 <!-- MailerLite success handler + scripts -->
 <script>
-  function ml_webform_success_42370553() {
+  function ml_webform_success_42911808() {
     var $ = ml_jQuery || jQuery;
-    $('.ml-subscribe-form-42370553 .row-success').show();
-    $('.ml-subscribe-form-42370553 .row-form').hide();
+    $('.ml-subscribe-form-42911808 .row-success').show();
+    $('.ml-subscribe-form-42911808 .row-form').hide();
   }
 </script>
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
 <script>
-  fetch("https://assets.mailerlite.com/jsonp/2304368/forms/189766413139838587/takel")
+  fetch("https://assets.mailerlite.com/jsonp/2304368/forms/190988245720368660/takel")
 </script>
 
 <!-- Registro de consentimientos (D1) -->
