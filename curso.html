@@ -96,7 +96,7 @@
       "@type": "Course",
       "@id": "https://www.awla.live/curso#course",
       "name": "Del texto a la pieza · Curso online de creación audiovisual con IA",
-      "description": "Curso online en vivo de AWLA para convertir ideas en piezas visuales y audiovisuales con IA generativa. Aprende prompting creativo, lenguaje visual y pipeline completo, desde la idea inicial hasta una pieza final publicada. 10 sesiones de 2 horas, en vivo por Zoom. Generación 01: inicia el 30 de junio 2026.",
+      "description": "Curso online en vivo de AWLA para convertir ideas en piezas visuales y audiovisuales con IA generativa. Aprende prompting creativo, lenguaje visual y pipeline completo, desde la idea inicial hasta una pieza final publicada. 10 sesiones de 2 horas, en vivo por Zoom. Generación 02: fechas por anunciar.",
       "url": "https://www.awla.live/curso",
       "image": "https://www.awla.live/og-curso.jpg",
       "inLanguage": "es-MX",
@@ -131,26 +131,32 @@
         "audienceType": "Creativos visuales, directores, fotógrafos, diseñadores, cineastas, documentalistas, artistas, productores, publicistas, agencias, marcas, emprendedores, creadores de contenido y equipos creativos"
       },
       "provider": {
-        "@type": ["Organization", "ProfessionalService"],
+        "@type": [
+          "Organization",
+          "ProfessionalService"
+        ],
         "@id": "https://www.awla.live/#organization",
         "name": "AWLA",
         "url": "https://www.awla.live",
-        "sameAs": ["https://www.instagram.com/awla.live"]
+        "sameAs": [
+          "https://www.instagram.com/awla.live"
+        ]
       },
       "instructor": {
         "@type": "Person",
         "name": "Domingo Pablo",
         "jobTitle": "Director audiovisual y fundador de AWLA",
         "url": "https://domingopablo.com",
-        "sameAs": ["https://www.instagram.com/domingoypablo", "https://domingopablo.com"]
+        "sameAs": [
+          "https://www.instagram.com/domingoypablo",
+          "https://domingopablo.com"
+        ]
       },
       "hasCourseInstance": {
         "@type": "CourseInstance",
-        "name": "Generación 01",
+        "name": "Generación 02",
         "courseMode": "online",
         "courseWorkload": "PT20H",
-        "startDate": "2026-06-30",
-        "endDate": "2026-08-01",
         "location": {
           "@type": "VirtualLocation",
           "url": "https://zoom.us"
@@ -159,17 +165,6 @@
           "@type": "Person",
           "name": "Domingo Pablo"
         }
-      },
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/LimitedAvailability",
-        "price": "5800",
-        "priceCurrency": "MXN",
-        "category": "Curso online en vivo",
-        "url": "https://www.awla.live/curso",
-        "validFrom": "2026-06-11",
-        "priceValidUntil": "2026-06-30",
-        "description": "Inversión Generación 01. Reserva con $1,000 MXN que se descuentan del total."
       }
     },
     {
@@ -269,7 +264,7 @@
           "name": "¿Cuánto cuesta el curso y cómo puedo pagar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La inversión de Gen 01 es de $5,800 MXN, un precio especial de lanzamiento (precio regular $7,500 MXN). Pago completo en una o varias parcialidades. Consulta los detalles en la sección de Inversión de esta página."
+            "text": "El precio de la Generación 02 se anunciará próximamente. Quienes estén en la lista de espera recibirán el precio de preventa antes que nadie. Suscríbete en awla.live/mail."
           }
         },
         {
@@ -2162,6 +2157,75 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
    ════════════════════════════════════════════════ */
 .s-pricing { background: var(--paper2); }
 
+/* ── ÁREAS (aplícalo a tu área) ─────────────────────────── */
+.s-areas { background: var(--paper2); padding: 64px 0; }
+.s-areas .areas-h {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(24px, 4vw, 40px); line-height: 1.05;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 8px;
+}
+.s-areas .areas-h em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; text-transform: none; color: var(--moss);
+}
+.s-areas .areas-sub {
+  font: 400 15px/1.6 var(--font-body); color: var(--ink-mid);
+  max-width: 56ch; margin-bottom: 28px;
+}
+.areas-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+.area-tile {
+  margin: 0; border-radius: 6px; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--rule-soft);
+}
+.area-tile img {
+  display: block; width: 100%; aspect-ratio: 1; object-fit: cover;
+  background: var(--paper);
+}
+.area-tile figcaption {
+  padding: 10px 12px;
+  font: 500 10px var(--font-mono); letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--ink-mid);
+  text-align: center;
+}
+.areas-reel {
+  margin-top: 28px; text-align: center;
+}
+.areas-reel a {
+  font: 500 10px var(--font-mono); letter-spacing: 2px;
+  text-transform: uppercase; color: var(--moss); text-decoration: none;
+  border-bottom: 1px solid rgba(61,92,62,0.35); padding-bottom: 3px;
+}
+.areas-reel a:hover { border-color: var(--moss); }
+@media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) {
+  .s-areas { padding: 48px 0; }
+  .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .area-tile figcaption { padding: 8px 8px; font-size: 9px; letter-spacing: 1px; }
+}
+
+/* ── RESULTADOS GEN 01 (próximamente) ───────────────────── */
+.s-gen01 { background: var(--paper); padding: 56px 0; text-align: center; }
+.s-gen01 .g01-lbl {
+  font: 500 9px/1 var(--font-mono); letter-spacing: 3px;
+  text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px;
+}
+.s-gen01 .g01-h {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(22px, 3.5vw, 32px); line-height: 1.1;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 10px;
+}
+.s-gen01 .g01-h em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; text-transform: none; color: var(--moss);
+}
+.s-gen01 .g01-note {
+  font: 400 14px/1.6 var(--font-body); color: var(--ink-mid);
+  max-width: 48ch; margin: 0 auto;
+}
+.s-gen01 .g01-note a { color: var(--moss); }
+
 /* ── PREVIEW (materiales gratuitos antes de comprar) ────── */
 .s-preview {
   background: var(--term); padding: 64px 0;
@@ -3148,7 +3212,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <li><a href="/#c14">Servicios</a></li>
       <li><a href="/#c16">Contacto</a></li>
     </ul>
-    <a href="/pagar?tipo=apartado" class="nav-cta">Aparta tu lugar</a>
+    <a href="/mail" class="nav-cta">Lista de espera</a>
   </div>
 </nav>
 
@@ -3186,29 +3250,29 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </div>
 
   <div class="hero-cta-row">
-    <a href="/pagar?tipo=apartado"
+    <a href="/mail"
        class="btn btn-moss btn-lg btn-flex"
-       aria-label="Aparta tu lugar en Del texto a la pieza Gen 01">
-      <span>Aparta tu lugar</span>
+       aria-label="Únete a la lista de espera de Del texto a la pieza Gen 02">
+      <span>Lista de espera Gen 02</span>
       <span class="arrow">→</span>
     </a>
-    <a href="#manifiesto" class="btn btn-outline-term btn-lg btn-flex">
-      <span>Conoce el curso</span>
-      <span class="arrow">↓</span>
+    <a href="/mail" class="btn btn-outline-term btn-lg btn-flex">
+      <span>Ver masterclass y temario</span>
+      <span class="arrow">→</span>
     </a>
   </div>
-  <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2001" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+  <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2002" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
 
   <p class="hero-schedule">
     <span class="hero-schedule-k">Horario</span>
-    Martes 7 – 9 pm · Sábados 10 am – 12 pm · CDMX
+    Por anunciar · sesiones en vivo por Zoom · CDMX
   </p>
 
   <div class="hero-bottom">
     <p class="hero-desc">
       Curso online en vivo para convertir ideas en piezas visuales y audiovisuales con IA generativa. 20 horas, proyecto final propio.
     </p>
-    <span class="hero-gen">Generación 01 · 30 jun – 1 ago 2026</span>
+    <span class="hero-gen">Generación 02 · fechas por anunciar</span>
   </div>
 </section>
 
@@ -3381,38 +3445,122 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
+     APLÍCALO A TU ÁREA (basado en casos reales Gen 01)
+     ════════════════════════════════════════════════ -->
+<section class="s-areas">
+  <div class="wrap">
+    <h2 class="areas-h">Aplícalo a <em>tu área.</em></h2>
+    <p class="areas-sub">El proyecto del curso se enfoca en tu caso real. Estas son algunas de las áreas donde alumnos y clientes de AWLA ya aplican dirección creativa con IA:</p>
+    <div class="areas-grid">
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-contenido-redes.webp"
+             alt="Contenido para redes sociales creado con IA generativa" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Contenido para redes</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-video-cine.webp"
+             alt="Fotograma cinematográfico creado con dirección de IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Video y cine</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-marketing-campanas.webp"
+             alt="Campaña de marketing visual generada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Marketing y campañas</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-diseno-grafico.webp"
+             alt="Pieza de diseño gráfico creada con IA generativa" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Diseño gráfico</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-arquitectura.webp"
+             alt="Visualización de arquitectura y espacios con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Arquitectura y espacios</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-inmobiliaria.webp"
+             alt="Visualización inmobiliaria creada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Inmobiliaria</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-producto-marca.webp"
+             alt="Fotografía de producto generada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Producto y marca</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-publicidad.webp"
+             alt="Imagen publicitaria creada con dirección de IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Publicidad</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-arte-videoarte.webp"
+             alt="Obra de arte y videoarte generada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Arte y videoarte</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-musica-visuales.webp"
+             alt="Visuales para música creados con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Música y visuales</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-educacion.webp"
+             alt="Material educativo visual creado con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Educación</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-ciberseguridad.webp"
+             alt="Escena corporativa de ciberseguridad generada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Ciberseguridad y corporativo</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-moda-editorial.webp"
+             alt="Imagen editorial de moda creada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Moda y editorial</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-marca-personal.webp"
+             alt="Pieza de portafolio y marca personal con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Marca personal y portafolio</figcaption>
+      </figure>
+    </div>
+    <p class="areas-reel"><a href="https://awla.live/#c4" target="_blank" rel="noopener">Ver el reel y más trabajo de AWLA →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
      06 · STICKER DE PRECIO (highlight breve)
      ════════════════════════════════════════════════ -->
 <section class="s-sticker grain-term" aria-labelledby="sticker-title">
   <div class="sticker-inner">
     <div class="sticker-data">
       <div class="sticker-block">
-        <span class="sticker-label">Inversión Gen 01</span>
-        <!-- Precio único Gen 01 -->
-        <span class="sticker-value">$5,800<span class="sticker-cur">MXN</span></span>
+        <span class="sticker-label">Inversión Gen 02</span>
+        <!-- Precio Gen 02: por anunciar -->
+        <span class="sticker-value">Por<span class="sticker-cur">anunciar</span></span>
         <span class="sticker-note">Inversión completa</span>
       </div>
       <div class="sticker-sep" aria-hidden="true"></div>
       <div class="sticker-block">
         <span class="sticker-label">Fechas</span>
-        <span class="sticker-value">30 jun<span class="sticker-cur">a 1 ago</span></span>
+        <span class="sticker-value">Gen 02<span class="sticker-cur">próximamente</span></span>
         <span class="sticker-note">Mar y sáb · CDMX</span>
       </div>
       <div class="sticker-sep" aria-hidden="true"></div>
       <div class="sticker-block">
         <span class="sticker-label">Cupo</span>
         <span class="sticker-value">25<span class="sticker-cur">lugares</span></span>
-        <span class="sticker-note">Generación 01</span>
+        <span class="sticker-note">Generación 02</span>
       </div>
     </div>
     <div class="sticker-cta-wrap">
-      <a href="/pagar?tipo=apartado"
+      <a href="/mail"
          class="btn btn-moss btn-lg btn-flex"
-         aria-label="Aparta tu lugar en Del texto a la pieza Gen 01">
-        <span>Aparta tu lugar</span>
+         aria-label="Únete a la lista de espera de Del texto a la pieza Gen 02">
+        <span>Lista de espera Gen 02</span>
         <span class="arrow">→</span>
       </a>
-      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2001" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2002" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
     </div>
   </div>
 </section>
@@ -3522,7 +3670,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     09 · TEMARIO (con fechas reales Gen 01)
+     09 · TEMARIO (fechas Gen 02 por anunciar)
      ════════════════════════════════════════════════ -->
 <section class="s-temario">
   <div class="wrap">
@@ -3542,7 +3690,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 01</span>
           <h3>Idea, intención y <em>creación</em> con IA</h3>
-          <p class="date"><strong>Mar 30 jun</strong><br>7:00 – 9:00 pm</p>
+          <p class="date"><strong>Sesión 01</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3555,7 +3703,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 02</span>
           <h3>Del <em>texto</em> a la escena</h3>
-          <p class="date"><strong>Sáb 4 jul</strong><br>10:00 am – 12:00 pm</p>
+          <p class="date"><strong>Sesión 02</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3568,7 +3716,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 03</span>
           <h3>Prompting como <em>dirección</em> visual</h3>
-          <p class="date"><strong>Mar 7 jul</strong><br>7:00 – 9:00 pm</p>
+          <p class="date"><strong>Sesión 03</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3581,7 +3729,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 04</span>
           <h3>Lenguaje visual <em>aplicado</em> a IA</h3>
-          <p class="date"><strong>Sáb 11 jul</strong><br>10:00 am – 12:00 pm</p>
+          <p class="date"><strong>Sesión 04</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3594,7 +3742,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 05</span>
           <h3>Estilo, cámara y <em>estética</em></h3>
-          <p class="date"><strong>Mar 14 jul</strong><br>7:00 – 9:00 pm</p>
+          <p class="date"><strong>Sesión 05</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3607,7 +3755,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 06</span>
           <h3>Personajes, marcas y <em>mundos</em></h3>
-          <p class="date"><strong>Sáb 18 jul</strong><br>10:00 am – 12:00 pm</p>
+          <p class="date"><strong>Sesión 06</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3620,7 +3768,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 07</span>
           <h3>Imagen en <em>movimiento</em></h3>
-          <p class="date"><strong>Mar 21 jul</strong><br>7:00 – 9:00 pm</p>
+          <p class="date"><strong>Sesión 07</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3633,7 +3781,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 08</span>
           <h3>Sonido, atmósfera y <em>montaje</em></h3>
-          <p class="date"><strong>Sáb 25 jul</strong><br>10:00 am – 12:00 pm</p>
+          <p class="date"><strong>Sesión 08</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3646,7 +3794,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 09</span>
           <h3>Ensamble y <em>revisión</em></h3>
-          <p class="date"><strong>Mar 28 jul</strong><br>7:00 – 9:00 pm</p>
+          <p class="date"><strong>Sesión 09</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3659,7 +3807,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 10</span>
           <h3>Presentación <em>final</em></h3>
-          <p class="date"><strong>Sáb 1 ago</strong><br>10:00 am – 12:00 pm</p>
+          <p class="date"><strong>Sesión 10</strong><br>fecha por anunciar</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3922,6 +4070,17 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
+     RESULTADOS GEN 01 (placeholder: llenar al terminar Gen 01, ago 2026)
+     ════════════════════════════════════════════════ -->
+<section class="s-gen01">
+  <div class="wrap">
+    <p class="g01-lbl">Próximamente</p>
+    <h2 class="g01-h">Resultados de la <em>Generación 01.</em></h2>
+    <p class="g01-note">La primera generación está en curso. Al terminar, aquí verás los proyectos y testimonios reales de sus alumnos. <a href="/mail">Únete a la lista</a> y te avisamos cuando estén publicados.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
      15 · TESTIMONIOS (Voces)
      ════════════════════════════════════════════════ -->
 <section class="s-testimonios">
@@ -4034,29 +4193,28 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <div class="pricing-grid">
       <div>
         <span class="lbl lbl-paper">Inversión</span>
-        <h2 class="cond-lg cond-lg-paper">Generación 01 · <em>inversión</em>.</h2>
+        <h2 class="cond-lg cond-lg-paper">Generación 02 · <em>inversión</em>.</h2>
 
         <div class="price-card">
           <div class="price-hero">
-            <p class="price-hero-tag">Precio especial Gen 01</p>
-            <p class="price-hero-strike">$7,500 <span class="price-hero-strike-note">precio regular</span></p>
-            <p class="price-hero-val">$5,800<span class="price-hero-cur">MXN</span></p>
-            <p class="price-hero-meta">Inversión completa del curso · pago en una sola exhibición</p>
+            <p class="price-hero-tag">Generación 02</p>
+            <p class="price-hero-val" style="font-size:clamp(32px,5vw,48px)">Precio por anunciar</p>
+            <p class="price-hero-meta">Quienes estén en la lista de espera recibirán el precio de preventa antes que nadie.</p>
           </div>
 
           <div class="price-deadline">
-            <em>Hasta 12 meses sin intereses</em> con tarjeta de crédito, según tu banco · Mercado Pago. Si necesitas otra opción de pago, escríbenos a <a href="mailto:hola@awla.live">hola@awla.live</a>.
+            <em>Meses sin intereses disponibles</em> con tarjeta de crédito vía Mercado Pago cuando abran las inscripciones. Únete a la <a href="/mail">lista de espera</a> para recibir fecha y precio de preventa.
           </div>
         </div>
 
         <div class="price-cta-block">
-          <a href="/pagar?tipo=apartado" class="btn btn-moss btn-lg btn-flex"
-             aria-label="Apartar tu lugar en Del texto a la pieza Gen 01">
-            <span>Aparta tu lugar →</span>
+          <a href="/mail" class="btn btn-moss btn-lg btn-flex"
+             aria-label="Únete a la lista de espera de Del texto a la pieza Gen 02">
+            <span>Lista de espera Gen 02 →</span>
           </a>
-          <p class="btn-meta">Apartas con $1,000 MXN · Pago seguro vía Mercado Pago</p>
+          <p class="btn-meta">Recibe fecha, precio de preventa, temario y masterclass</p>
 
-          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2001" class="price-cta-wa"
+          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2002" class="price-cta-wa"
              target="_blank" rel="noopener"
              aria-label="Escribir por WhatsApp para resolver dudas del curso">
             ¿Tienes dudas? Escríbeme por WhatsApp →
@@ -4133,8 +4291,12 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <p class="a">Presentas tu proyecto final. Si decides, puede publicarse en la galería pública de alumnos AWLA, previa autorización. La publicación es opcional, no requerida para completar el curso.</p>
       </div>
       <div class="faq-item">
-        <p class="q">¿Las clases quedan grabadas?</p>
+        <p class="q">¿Qué pasa si pierdo una sesión? ¿Las clases quedan grabadas?</p>
         <p class="a">Sí. Todas las sesiones se graban y tienes acceso durante 90 días. Si no puedes asistir en vivo a alguna, la ves después y haces tus preguntas en el grupo de WhatsApp.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Entregan constancia o certificado?</p>
+        <p class="a">Sí, al finalizar se entrega una constancia digital de participación emitida por AWLA. No tiene validez oficial ante SEP ni aval institucional externo; acredita tu participación y la realización de tu proyecto.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Puedo tomar el curso con una Mac?</p>
@@ -4146,7 +4308,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="faq-item">
         <p class="q">¿Cuánto cuesta el curso y cómo puedo pagar?</p>
-        <p class="a">La inversión de Gen 01 es de $5,800 MXN, un precio especial de lanzamiento (precio regular $7,500 MXN). Pago completo en una o varias parcialidades. Consulta los detalles en la sección de Inversión.</p>
+        <p class="a">El precio de la Generación 02 se anunciará próximamente. Quienes estén en la lista de espera recibirán el precio de preventa antes que nadie.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Puedo pagar en mensualidades sin intereses?</p>
@@ -4202,7 +4364,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         </h2>
 
         <div class="close-cta">
-          <a href="/pagar?tipo=apartado" class="primary-link">Aparta tu lugar →</a>
+          <a href="/mail" class="primary-link">Lista de espera Gen 02 →</a>
           <p class="meta">O escríbenos por DM en Instagram · @awla.live</p>
         </div>
 

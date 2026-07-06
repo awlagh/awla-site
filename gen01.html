@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- Consent Mode v2 — defaults DENIED antes de cargar cualquier tag de Google -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  try {
+    var _ck = JSON.parse(localStorage.getItem('awla_ck_v1'));
+    if (_ck) {
+      gtag('consent', 'update', {
+        'ad_storage':         _ck.marketing ? 'granted' : 'denied',
+        'ad_user_data':       _ck.marketing ? 'granted' : 'denied',
+        'ad_personalization': _ck.marketing ? 'granted' : 'denied',
+        'analytics_storage':  _ck.analytics ? 'granted' : 'denied',
+        'functionality_storage': 'granted',
+        'security_storage':   'granted'
+      });
+    }
+  } catch(e) {}
+</script>
+<!-- Google tag (gtag.js) — se carga después del consent default -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18201216622"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'AW-18201216622');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Proyectos y testimonios de la Generación 01 del curso Del texto a la pieza de AWLA: piezas visuales y audiovisuales creadas con dirección creativa e IA.">
+<meta name="robots" content="index, follow">
+<title>Resultados Generación 01 · Del texto a la pieza · AWLA</title>
+<link rel="canonical" href="https://www.awla.live/gen01">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Resultados Generación 01 · AWLA">
+<meta property="og:description" content="Proyectos y testimonios reales de la primera generación del curso de dirección creativa con IA.">
+<meta property="og:url" content="https://www.awla.live/gen01">
+<meta property="og:type" content="website">
+
+<!-- Favicon and icons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:    #f2efe8;
+  --paper2:   #eceae2;
+  --ink:      #1a1a18;
+  --ink-mid:  #3a3a36;
+  --ink-faint:#8a8880;
+  --term:     #1c1c1a;
+  --screen:   #e4e0d6;
+  --moss:     #3d5c3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(26,26,24,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(26,26,24,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 6vw;
+  background: rgba(242,239,232,0.7);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(26,26,24,0.06);
+}
+.nav-logo {
+  display: flex; align-items: center;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 22px; width: auto;
+  display: block;
+}
+.nav-r {
+  display: flex; align-items: center; gap: 22px;
+}
+.nav-r::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(26,26,24,0.15);
+  margin-right: 6px;
+}
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2px;
+  color: rgba(26,26,24,0.45); text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--ink); }
+
+@media (max-width: 600px) {
+  nav { padding: 12px 16px; }
+  .nav-logo img { height: 18px; }
+  .nav-r { gap: 14px; }
+  .nav-r::before { display: none; }
+}
+
+main {
+  position: relative; z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 6vw 80px;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.doc-updated {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(26,26,24,0.1);
+}
+
+/* TOC */
+.toc {
+  margin-bottom: 56px;
+  padding: 28px 32px;
+  background: rgba(26,26,24,0.025);
+  border-left: 2px solid rgba(26,26,24,0.15);
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: section;
+}
+.toc li {
+  counter-increment: section;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.toc li::before {
+  content: counter(section, upper-roman) ". ";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--moss);
+  font-size: 11px;
+  margin-right: 6px;
+}
+.toc a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--moss); }
+
+/* CONTENT */
+.content section {
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+
+.content h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.content h2 .num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--moss);
+  letter-spacing: 2px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.content p {
+  font-size: 15.5px; line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+
+.content strong { color: var(--ink); font-weight: 600; }
+
+.content a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+.content a:hover { opacity: 0.6; }
+
+.content ul {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.content li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+.content li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--moss);
+}
+
+footer {
+  position: relative; z-index: 2;
+  padding: 40px 6vw 32px;
+  border-top: 1px solid rgba(26,26,24,0.08);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+.footer-logo img {
+  height: 16px; width: auto;
+  display: block;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+.footer-logo:hover img { opacity: 0.7; }
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0; margin: 0;
+}
+.footer-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: rgba(26,26,24,0.65);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-links a:hover { color: var(--moss); }
+.footer-links a.current {
+  color: var(--moss);
+  font-weight: 500;
+}
+.footer-copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: rgba(26,26,24,0.5);
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  footer { padding: 32px 24px 24px; }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .footer-links { gap: 14px; }
+}
+
+@media (max-width: 720px) {
+  main { padding: 120px 24px 60px; }
+  .doc-title { font-size: 32px; }
+  .content h2 { font-size: 17px; flex-direction: column; gap: 4px; }
+  .content p, .content li { font-size: 15px; }
+  .toc { padding: 22px 24px; }
+}
+
+/* ── COOKIE BANNER (Consent Mode) ── */
+#ck {
+  position: fixed; bottom: 24px; left: 24px; z-index: 9999;
+  width: calc(100% - 48px); max-width: 420px;
+  background: rgba(26,26,24,0.97);
+  border: 1px solid rgba(61,92,62,0.3);
+  border-radius: 8px;
+  padding: 22px 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateY(calc(100% + 32px)); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+  pointer-events: none;
+}
+#ck.on { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+#ck .ck-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(134,172,135,1);
+  margin-bottom: 12px;
+}
+#ck p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: rgba(228,224,214,0.7);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+#ck p a {
+  color: var(--screen);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+#ck p a:hover { color: rgba(134,172,135,1); }
+
+.ck-actions {
+  display: flex; gap: 8px; margin-top: 16px;
+  flex-wrap: wrap; align-items: center;
+}
+.ck-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.ck-btn-primary {
+  background: rgba(134,172,135,1); color: var(--term);
+  flex: 1; min-width: 100px;
+}
+.ck-btn-primary:hover { background: rgba(134,172,135,0.85); }
+
+.ck-btn-ghost {
+  background: transparent;
+  color: rgba(228,224,214,0.7);
+  border: 1px solid rgba(228,224,214,0.15);
+  flex: 1; min-width: 90px;
+}
+.ck-btn-ghost:hover { color: var(--screen); border-color: rgba(228,224,214,0.35); }
+
+.ck-btn-link {
+  background: transparent; color: rgba(228,224,214,0.5);
+  padding: 10px 0; text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.ck-btn-link:hover { color: var(--screen); }
+
+.ck-panel { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(228,224,214,0.08); }
+#ck.expanded .ck-panel { display: block; }
+#ck.expanded .ck-actions-initial { display: none; }
+#ck.expanded .ck-actions-save { display: flex; }
+
+.ck-actions-save { display: none; gap: 8px; margin-top: 16px; }
+
+.ck-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 14px; padding: 12px 0;
+  border-bottom: 1px solid rgba(228,224,214,0.05);
+}
+.ck-row:last-child { border-bottom: none; }
+.ck-row-info { flex: 1; min-width: 0; }
+.ck-row-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--screen);
+  margin-bottom: 2px;
+}
+.ck-row-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px; font-weight: 400;
+  color: rgba(228,224,214,0.5);
+  line-height: 1.45;
+}
+
+.ck-toggle {
+  position: relative; width: 34px; height: 18px;
+  flex-shrink: 0;
+}
+.ck-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+.ck-toggle-slider {
+  position: absolute; inset: 0; cursor: pointer;
+  background: rgba(228,224,214,0.15);
+  border-radius: 18px;
+  transition: background 0.2s;
+}
+.ck-toggle-slider::before {
+  content: ''; position: absolute; left: 2px; top: 2px;
+  width: 14px; height: 14px;
+  background: rgba(228,224,214,0.8);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.ck-toggle input:checked + .ck-toggle-slider { background: rgba(134,172,135,1); }
+.ck-toggle input:checked + .ck-toggle-slider::before { transform: translateX(16px); }
+.ck-toggle input:disabled + .ck-toggle-slider { opacity: 0.6; cursor: not-allowed; }
+
+@media (max-width: 600px) {
+  #ck {
+    bottom: 12px; left: 12px; right: 12px;
+    width: auto; max-width: none;
+    padding: 18px 18px;
+  }
+  .ck-btn { font-size: 9px; padding: 11px 14px; }
+}
+
+/* ── GALERÍA GEN 01 ── */
+.g01-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+.g01-card { background: #fff; border: 1px solid var(--rule-soft, rgba(26,26,24,0.08)); border-radius: 8px; overflow: hidden; }
+.g01-card .media { aspect-ratio: 1; background: #eceae2; display: flex; align-items: center; justify-content: center; }
+.g01-card .media span { font: 500 10px 'IBM Plex Mono', monospace; letter-spacing: 2px; text-transform: uppercase; color: #8a8880; }
+.g01-card .body { padding: 16px; }
+.g01-card .alumno { font: 600 15px 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .02em; color: #1a1a18; }
+.g01-card .area { font: 500 9px 'IBM Plex Mono', monospace; letter-spacing: 2px; text-transform: uppercase; color: #3d5c3e; margin: 4px 0 10px; }
+.g01-card .quote { font: 400 13px/1.5 'Barlow', sans-serif; color: #3a3a36; font-style: italic; }
+@media (max-width: 900px) { .g01-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .g01-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="AWLA — Inicio">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100">
+  </a>
+  <div class="nav-r">
+    <a href="/" class="nav-back">← Volver al sitio</a>
+  </div>
+</nav>
+
+<main>
+  <p class="doc-meta">Del texto a la pieza · Gen 01</p>
+  <h1 class="doc-title">Resultados de la <em>Generación 01.</em></h1>
+  <p class="doc-updated">Junio – agosto 2026 · 9 alumnos · proyectos con dirección creativa e IA</p>
+
+  <div class="content">
+    <section>
+      <p>La primera generación de <strong>Del texto a la pieza</strong> desarrolló durante 10 sesiones en vivo una pieza visual o audiovisual propia, desde la idea y el prompt hasta la imagen, el video, el sonido y el montaje. Estos son sus proyectos y sus palabras.</p>
+
+      <!-- PLANTILLA: duplicar/editar una tarjeta por alumno.
+           Imagen del proyecto: reemplazar el div.media por
+           <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/gen01-NOMBRE-proyecto.webp"
+                alt="Proyecto de [Nombre], [área], Generación 01 AWLA" loading="lazy" width="700" height="700">
+           Convención SEO de archivos: gen01-nombre-proyecto.webp (700px, <80KB) -->
+      <div class="g01-grid">
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 01</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 02</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 03</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 04</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 05</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 06</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 07</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 08</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      <div class="g01-card">
+        <div class="media"><span>Proyecto 09</span></div>
+        <div class="body">
+          <p class="alumno">[Nombre del alumno]</p>
+          <p class="area">[Área · ej. contenido, video, ciberseguridad]</p>
+          <p class="quote">"[Testimonio corto del alumno sobre su experiencia y su pieza.]"</p>
+        </div>
+      </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+
+<!-- COOKIE BANNER (Consent Mode) -->
+<div id="ck" role="dialog" aria-label="Preferencias de cookies" aria-live="polite">
+  <p class="ck-head">Cookies</p>
+  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies">Política de cookies</a>.</p>
+
+  <div class="ck-actions ck-actions-initial">
+    <button class="ck-btn ck-btn-link" onclick="ckPersonalize()">Personalizar</button>
+    <button class="ck-btn ck-btn-ghost" onclick="ckReject()">Rechazar</button>
+    <button class="ck-btn ck-btn-primary" onclick="ckAcceptAll()">Aceptar todo</button>
+  </div>
+
+  <div class="ck-panel">
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Esenciales</p>
+        <p class="ck-row-desc">Necesarias para el funcionamiento del sitio.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" checked disabled>
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Analíticas</p>
+        <p class="ck-row-desc">Nos ayudan a entender cómo se usa el sitio.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" id="ck-analytics">
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Marketing</p>
+        <p class="ck-row-desc">Para campañas y publicidad personalizada.</p>
+      </div>
+      <label class="ck-toggle">
+        <input type="checkbox" id="ck-marketing">
+        <span class="ck-toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="ck-actions ck-actions-save">
+    <button class="ck-btn ck-btn-primary" onclick="ckSavePrefs()">Guardar mis preferencias</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="https://www.awla.live" aria-label="AWLA — Inicio"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA" width="450" height="100"></a></div>
+    <ul class="footer-links">
+      <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
+      <li><a href="/terminos">Términos de Uso</a></li>
+      <li><a href="/contratacion">Términos de Contratación</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies" class="current">Política de Cookies</a></li>
+      <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 AWLA® · awla.live</span>
+  </div>
+</footer>
+
+
+<script>
+// ── COOKIES (Consent Mode) ────────────────────────
+const CK_KEY = 'awla_ck_v1';
+const CK_POLICY_VERSION = '1.0';
+
+const ckDefaults = {
+  necessary: true,
+  analytics: false,
+  marketing: false,
+  timestamp: null,
+  version: CK_POLICY_VERSION
+};
+
+function ckGetState() {
+  try {
+    const raw = localStorage.getItem(CK_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function ckSaveState(state) {
+  state.timestamp = new Date().toISOString();
+  state.version = CK_POLICY_VERSION;
+  try {
+    localStorage.setItem(CK_KEY, JSON.stringify(state));
+  } catch(e) {}
+  ckApplyConsent(state);
+}
+
+function ckApplyConsent(state) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  gtag('consent', 'update', {
+    'ad_storage':            state.marketing ? 'granted' : 'denied',
+    'ad_user_data':          state.marketing ? 'granted' : 'denied',
+    'ad_personalization':    state.marketing ? 'granted' : 'denied',
+    'analytics_storage':     state.analytics ? 'granted' : 'denied',
+    'functionality_storage': 'granted',
+    'security_storage':      'granted'
+  });
+}
+
+// Nota: el consent 'default' (denied) y la aplicacion del consentimiento
+// previo guardado se ejecutan en el <head>, antes de cargar gtag.js.
+
+window.addEventListener('load',()=>{
+  const ck = document.getElementById('ck');
+  if(!ckGetState()) {
+    setTimeout(()=>ck.classList.add('on'),800);
+  }
+});
+
+function ckAcceptAll() {
+  ckSaveState({ necessary: true, analytics: true, marketing: true });
+  ckHide();
+}
+
+function ckReject() {
+  ckSaveState({ necessary: true, analytics: false, marketing: false });
+  ckHide();
+}
+
+function ckPersonalize() {
+  document.getElementById('ck').classList.add('expanded');
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+}
+
+function ckSavePrefs() {
+  ckSaveState({
+    necessary: true,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  });
+  ckHide();
+}
+
+function ckHide() {
+  const ck = document.getElementById('ck');
+  ck.classList.remove('on');
+  setTimeout(()=>ck.classList.remove('expanded'), 600);
+}
+
+window.ckOpenPreferences = function() {
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+  const ck = document.getElementById('ck');
+  ck.classList.add('on');
+  ck.classList.add('expanded');
+};
+
+window.resetCookies = () => {
+  localStorage.removeItem(CK_KEY);
+  document.getElementById('ck').classList.remove('expanded');
+  document.getElementById('ck').classList.add('on');
+};
+</script>
+
+<!-- Registro de consentimientos (D1) -->
+<script src="/consent-tracking.js" defer></script>
+</body>
+</html>

@@ -39,7 +39,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Completa tu inscripción en Del texto a la pieza · Gen 01. Elige tu modalidad de pago y asegura tu lugar.">
 <meta name="robots" content="noindex, nofollow">
-<title>Completar pago · AWLA</title>
+<title>Inscripciones Gen 02 · AWLA</title>
 <link rel="canonical" href="https://www.awla.live/pagar">
 <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon-32.png">
@@ -449,7 +449,21 @@ footer {
   <h1 class="page-title">Completa tu <em>inscripción.</em></h1>
   <p class="page-intro">Elige la modalidad que corresponde a tu situación. En todos los casos el pago se procesa de forma segura a través de Mercado Pago.</p>
 
-  <div class="precio-badge">Precio especial Gen 01</div>
+  <div class="precio-badge">Generación 02</div>
+
+  <div class="precio-card">
+    <p class="precio-monto" style="font-size:clamp(28px,4.5vw,40px)">Inscripciones próximamente</p>
+    <p class="precio-desc">La Generación 01 está en curso. Las inscripciones para la Generación 02 abrirán pronto, con fecha y precio de preventa anunciados primero a la lista de espera.</p>
+  </div>
+
+  <a href="/mail" class="btn-pagar" style="display:block;text-align:center;text-decoration:none;line-height:1.4">Unirme a la lista de espera →</a>
+
+  <p class="aviso-mp">Recibe también el temario y la masterclass gratuita · awla.live</p>
+
+  <!-- ══ CHECKOUT GEN 02 (DESACTIVADO: reactivar al abrir ventas) ══
+  Para reactivar: 1) borrar el bloque de pausa de arriba, 2) descomentar esto,
+  3) actualizar montos y link de Mercado Pago en el objeto config del script.
+<div class="precio-badge">Precio especial Gen 01</div>
 
   <div class="precio-card">
     <p class="precio-strike">$7,500 <span class="precio-strike-note">precio regular</span></p>
@@ -490,6 +504,7 @@ footer {
   </div>
 
   <p class="aviso-mp">Pago seguro · Mercado Pago · awla.live</p>
+  ══ /CHECKOUT GEN 02 DESACTIVADO ══ -->
 
   <div class="postpago">
     <p class="postpago-label">Después de pagar</p>
@@ -506,22 +521,22 @@ footer {
     <div class="politica">
       <span class="n">01</span>
       <div>
-        <h3>Precio especial Gen 01.</h3>
-        <p>La inversión es de $5,800 MXN, precio especial de la primera generación. El precio regular del curso es de $7,500 MXN.</p>
+        <h3>Generación 02 en preparación.</h3>
+        <p>El precio y las fechas de la Generación 02 se anunciarán próximamente. La lista de espera recibe el precio de preventa antes que nadie.</p>
       </div>
     </div>
     <div class="politica">
       <span class="n">02</span>
       <div>
-        <h3>Pago en una sola exhibición.</h3>
-        <p>Tu lugar queda confirmado al completar el pago. Incluye 10 sesiones en vivo por Zoom, grabaciones con acceso por 90 días, materiales y grupo de WhatsApp.</p>
+        <h3>Qué incluye el curso.</h3>
+        <p>10 sesiones en vivo por Zoom, grabaciones con acceso por 90 días, materiales, acompañamiento y grupo de WhatsApp.</p>
       </div>
     </div>
     <div class="politica">
       <span class="n">03</span>
       <div>
-        <h3>Inicio del curso: 30 de junio.</h3>
-        <p>Las sesiones en vivo empiezan el 30 de junio de 2026. Cupo limitado a 25 personas. Si necesitas otra opción de pago, escríbenos a <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
+        <h3>Fechas por anunciar.</h3>
+        <p>Las fechas de la Generación 02 se anunciarán a la lista de espera y en awla.live/curso. Cupo limitado. Cualquier duda: <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
       </div>
     </div>
     <div class="politica">
@@ -589,7 +604,8 @@ const config = {
 // ════════════════════════════════════════════════════════
 
 // Manejar checkbox de aceptación
-document.getElementById('acepto-terminos').addEventListener('change', actualizarBoton);
+var chk = document.getElementById('acepto-terminos');
+if (chk) chk.addEventListener('change', actualizarBoton);
 
 function actualizarBoton() {
   const aceptado = document.getElementById('acepto-terminos').checked;
@@ -598,7 +614,8 @@ function actualizarBoton() {
 }
 
 // Click en botón
-document.getElementById('btn-pagar').addEventListener('click', () => {
+var btnPagar = document.getElementById('btn-pagar');
+if (btnPagar) btnPagar.addEventListener('click', () => {
   // Guardar consentimiento en localStorage
   try {
     const registro = {
