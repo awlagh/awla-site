@@ -39,7 +39,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Completa tu inscripción en Del texto a la pieza · Gen 01. Elige tu modalidad de pago y asegura tu lugar.">
 <meta name="robots" content="noindex, nofollow">
-<title>Inscripciones Gen 02 · AWLA</title>
+<title>Inscripción Gen02 · Early bird · AWLA</title>
 <link rel="canonical" href="https://www.awla.live/pagar">
 <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon-32.png">
@@ -288,6 +288,14 @@ main {
   transition: background .2s ease, opacity .2s ease;
 }
 .btn-pagar:hover:not(:disabled) { background: #4e7350; }
+.opciones-pago { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.btn-pagar-outline {
+  background: transparent !important;
+  border: 1.5px solid var(--ink) !important;
+  color: var(--ink) !important;
+}
+.btn-pagar-outline:hover:not(:disabled) { background: rgba(26,26,24,0.05) !important; }
+.btn-pagar-outline .btn-sub { color: var(--ink-mid) !important; }
 .btn-pagar:disabled {
   opacity: .35; cursor: not-allowed; background: var(--ink-faint);
 }
@@ -445,41 +453,22 @@ footer {
 </nav>
 
 <main>
-  <span class="page-label">Del texto a la pieza · Gen 01</span>
+  <span class="page-label">Del texto a la pieza · Gen02</span>
   <h1 class="page-title">Completa tu <em>inscripción.</em></h1>
-  <p class="page-intro">Elige la modalidad que corresponde a tu situación. En todos los casos el pago se procesa de forma segura a través de Mercado Pago.</p>
+  <p class="page-intro">Aparta tu lugar o paga completo. En ambos casos el pago se procesa de forma segura a través de Mercado Pago.</p>
 
-  <div class="precio-badge">Generación 02</div>
-
-  <div class="precio-card">
-    <p class="precio-monto" style="font-size:clamp(28px,4.5vw,40px)">Inscripciones próximamente</p>
-    <p class="precio-desc">La Generación 01 está en curso. Las inscripciones para la Generación 02 abrirán pronto, con fecha y precio de preventa anunciados primero a la lista de espera.</p>
-  </div>
-
-  <a href="/mail" class="btn-pagar" style="display:block;text-align:center;text-decoration:none;line-height:1.4">Unirme a la lista de espera →</a>
-
-  <p class="aviso-mp">Recibe también el temario y la masterclass gratuita · awla.live</p>
-
-  <!-- ══ CHECKOUT GEN 02 (DESACTIVADO: reactivar al abrir ventas) ══
-  Para reactivar: 1) borrar el bloque de pausa de arriba, 2) descomentar esto,
-  3) actualizar montos y link de Mercado Pago en el objeto config del script.
-<div class="precio-badge">Precio especial Gen 01</div>
+  <div class="precio-badge">Early bird · hasta el 10 de agosto</div>
 
   <div class="precio-card">
     <p class="precio-strike">$7,500 <span class="precio-strike-note">precio regular</span></p>
     <p class="precio-monto">$5,800<span class="mxn">MXN</span></p>
-    <p class="precio-desc">Inversión completa del curso. Pago en una sola exhibición. Incluye 10 sesiones en vivo por Zoom, grabaciones (acceso 90 días), materiales y grupo de WhatsApp.</p>
+    <p class="precio-desc">Inversión completa del curso. Incluye 10 sesiones en vivo por Zoom, grabaciones (acceso 90 días), materiales y grupo de WhatsApp.</p>
   </div>
 
   <div class="nota-msi">
     <span class="msi-icon">💳</span>
     <p>En Mercado Pago puedes pagar con tarjeta de crédito o débito. Si tu tarjeta lo permite, hasta <strong>12 meses sin intereses</strong>.</p>
   </div>
-
-  <a class="nota-transfer" href="https://wa.me/525537175870?text=Hola%2C%20prefiero%20pagar%20por%20transferencia%20bancaria%20Del%20texto%20a%20la%20pieza%20Gen%2001" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp para pago por transferencia">
-    <span class="transfer-icon">🏦</span>
-    <span>¿Prefieres transferencia bancaria directa? <strong>Contáctanos por WhatsApp →</strong></span>
-  </a>
 
   <hr class="divider">
 
@@ -493,10 +482,22 @@ footer {
     </label>
   </div>
 
-  <button class="btn-pagar" id="btn-pagar" disabled>
-    Continuar al pago
-    <span class="btn-sub">Se abre Mercado Pago en otra pestaña</span>
-  </button>
+  <div class="opciones-pago">
+    <button class="btn-pagar" id="btn-completo" data-tipo="completo" disabled>
+      Pagar completo · $5,800 MXN
+      <span class="btn-sub">Se abre Mercado Pago en otra pestaña</span>
+    </button>
+
+    <button class="btn-pagar btn-pagar-outline" id="btn-apartar" data-tipo="apartado" disabled>
+      Apartar mi lugar · $1,000 MXN
+      <span class="btn-sub">Se descuenta del total · te contacto para liquidar el saldo</span>
+    </button>
+  </div>
+
+  <a class="nota-transfer" href="https://wa.me/525537175870?text=Hola%2C%20prefiero%20pagar%20por%20transferencia%20bancaria%20Del%20texto%20a%20la%20pieza%20Gen02" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp para pago por transferencia">
+    <span class="transfer-icon">🏦</span>
+    <span>¿Prefieres transferencia bancaria directa? <strong>Contáctanos por WhatsApp →</strong></span>
+  </a>
 
   <div class="pago-abierto" id="pago-abierto" style="display:none;">
     <p><strong>Abrimos Mercado Pago en otra pestaña.</strong> Si no aparece, revisa que tu navegador no haya bloqueado la ventana, o <a href="#" id="reabrir-mp">ábrela aquí</a>.</p>
@@ -504,12 +505,11 @@ footer {
   </div>
 
   <p class="aviso-mp">Pago seguro · Mercado Pago · awla.live</p>
-  ══ /CHECKOUT GEN 02 DESACTIVADO ══ -->
 
   <div class="postpago">
     <p class="postpago-label">Después de pagar</p>
     <p>Envíanos por <strong>WhatsApp</strong> tu comprobante, nombre completo y correo para confirmar tu lugar.</p>
-    <a class="btn-wa" href="https://wa.me/525537175870?text=Hola%2C%20env%C3%ADo%20comprobante%20de%20pago%20de%20Del%20texto%20a%20la%20pieza%20Gen%2001.%0A%0ANombre%20completo%3A%20%0ACorreo%3A%20%0AAdjunto%20comprobante." target="_blank" rel="noopener" aria-label="Enviar comprobante por WhatsApp">
+    <a class="btn-wa" href="https://wa.me/525537175870?text=Hola%2C%20env%C3%ADo%20comprobante%20de%20pago%20de%20Del%20texto%20a%20la%20pieza%20Gen02.%0A%0ANombre%20completo%3A%20%0ACorreo%3A%20%0AAdjunto%20comprobante." target="_blank" rel="noopener" aria-label="Enviar comprobante por WhatsApp">
       <span class="wa-check">✓</span>
       <span>Enviar comprobante por WhatsApp</span>
     </a>
@@ -521,8 +521,8 @@ footer {
     <div class="politica">
       <span class="n">01</span>
       <div>
-        <h3>Generación 02 en preparación.</h3>
-        <p>El precio y las fechas de la Generación 02 se anunciarán próximamente. La lista de espera recibe el precio de preventa antes que nadie.</p>
+        <h3>Early bird hasta el 10 de agosto.</h3>
+        <p>El precio early bird de Gen02 es de $5,800 MXN. Después del 10 de agosto sube a $7,500 MXN. Si apartas tu lugar antes del 10 de agosto, conservas el precio early bird aunque liquides el saldo después.</p>
       </div>
     </div>
     <div class="politica">
@@ -535,8 +535,8 @@ footer {
     <div class="politica">
       <span class="n">03</span>
       <div>
-        <h3>Fechas por anunciar.</h3>
-        <p>Las fechas de la Generación 02 se anunciarán a la lista de espera y en awla.live/curso. Cupo limitado. Cualquier duda: <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
+        <h3>Inicio del curso: 25 de agosto.</h3>
+        <p>Las sesiones en vivo van del 25 de agosto al 26 de septiembre de 2026, martes y sábados. Cupo limitado. Cualquier duda: <a href="mailto:hola@awla.live">hola@awla.live</a>.</p>
       </div>
     </div>
     <div class="politica">
@@ -591,12 +591,22 @@ footer {
 
 <script>
 // ════════════════════════════════════════════════════════
-// CONFIGURACIÓN DE PRECIO ÚNICO · Gen 01
+// CONFIGURACIÓN DE PRECIO · Gen02 · Early bird
 // Actualiza los links de MP cuando generes nuevos.
 // ════════════════════════════════════════════════════════
 const config = {
-  total: 5800,
-  link: 'https://mpago.li/1rr13Ao'   // $5,800 precio especial Gen 01
+  completo: {
+    monto: 5800,
+    link: 'https://mpago.li/1rr13Ao'   // Pago completo early bird $5,800
+  },
+  apartado: {
+    monto: 1000,
+    link: 'https://mpago.li/1k6bR1c'   // Reserva de lugar $1,000
+  }
+  // Liquidación early bird ($4,800, mpago.li/26fb1Cd) se envía por WhatsApp
+  // de forma personal cuando cada alumno esté listo para liquidar.
+  // Precio regular ($7,500) pendiente: agregar link cuando esté listo
+  // y activar lógica de fecha (después del 10 de agosto).
 };
 
 // ════════════════════════════════════════════════════════
@@ -605,36 +615,40 @@ const config = {
 
 // Manejar checkbox de aceptación
 var chk = document.getElementById('acepto-terminos');
-if (chk) chk.addEventListener('change', actualizarBoton);
+if (chk) chk.addEventListener('change', actualizarBotones);
 
-function actualizarBoton() {
+function actualizarBotones() {
   const aceptado = document.getElementById('acepto-terminos').checked;
-  const btn = document.getElementById('btn-pagar');
-  btn.disabled = !aceptado;
+  document.querySelectorAll('.btn-pagar[data-tipo]').forEach(btn => {
+    btn.disabled = !aceptado;
+  });
 }
 
-// Click en botón
-var btnPagar = document.getElementById('btn-pagar');
-if (btnPagar) btnPagar.addEventListener('click', () => {
-  // Guardar consentimiento en localStorage
-  try {
-    const registro = {
-      tipo_pago: 'completo',
-      monto: config.total,
-      timestamp: new Date().toISOString(),
-      version_docs: '1.0',
-      medio: 'checkbox-pago'
-    };
-    localStorage.setItem('awla_pago_consent', JSON.stringify(registro));
-  } catch(e) {}
+// Click en cualquiera de los dos botones de pago
+document.querySelectorAll('.btn-pagar[data-tipo]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tipo = btn.getAttribute('data-tipo'); // 'completo' o 'apartado'
+    const datos = config[tipo];
 
-  // Registro centralizado en D1 (auditable)
-  if (window.awlaRegistrarConsentimiento) {
-    window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: 'completo' });
-  }
+    // Guardar consentimiento en localStorage
+    try {
+      const registro = {
+        tipo_pago: tipo,
+        monto: datos.monto,
+        timestamp: new Date().toISOString(),
+        version_docs: '1.0',
+        medio: 'checkbox-pago'
+      };
+      localStorage.setItem('awla_pago_consent', JSON.stringify(registro));
+    } catch(e) {}
 
-  // Abrir Mercado Pago en nueva pestaña
-  window.open(config.link, '_blank', 'noopener');
+    // Registro centralizado en D1 (auditable)
+    if (window.awlaRegistrarConsentimiento) {
+      window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: tipo });
+    }
+
+    // Abrir Mercado Pago en nueva pestaña
+    window.open(datos.link, '_blank', 'noopener');
 
   // Mostrar confirmación en la página actual
   const aviso = document.getElementById('pago-abierto');
@@ -644,13 +658,14 @@ if (btnPagar) btnPagar.addEventListener('click', () => {
   }
 
   // Enlace de respaldo si el navegador bloqueó la ventana emergente
-  const reabrir = document.getElementById('reabrir-mp');
-  if (reabrir) {
-    reabrir.onclick = function(e) {
-      e.preventDefault();
-      window.open(config.link, '_blank', 'noopener');
-    };
-  }
+    const reabrir = document.getElementById('reabrir-mp');
+    if (reabrir) {
+      reabrir.onclick = function(e) {
+        e.preventDefault();
+        window.open(datos.link, '_blank', 'noopener');
+      };
+    }
+  });
 });
 // ════════════════════════════════════════════════════════
 // COOKIES

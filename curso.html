@@ -96,7 +96,7 @@
       "@type": "Course",
       "@id": "https://www.awla.live/curso#course",
       "name": "Del texto a la pieza · Curso online de creación audiovisual con IA",
-      "description": "Curso online en vivo de AWLA para convertir ideas en piezas visuales y audiovisuales con IA generativa. Aprende prompting creativo, lenguaje visual y pipeline completo, desde la idea inicial hasta una pieza final publicada. 10 sesiones de 2 horas, en vivo por Zoom. Generación 02: fechas por anunciar.",
+      "description": "Curso online en vivo de AWLA para convertir ideas en piezas visuales y audiovisuales con IA generativa. Aprende prompting creativo, lenguaje visual y pipeline completo, desde la idea inicial hasta una pieza final publicada. 10 sesiones de 2 horas, en vivo por Zoom. Generación 02: del 25 de agosto al 26 de septiembre de 2026.",
       "url": "https://www.awla.live/curso",
       "image": "https://www.awla.live/og-curso.jpg",
       "inLanguage": "es-MX",
@@ -118,7 +118,6 @@
         "ChatGPT Images",
         "Claude",
         "Runway",
-        "Higgsfield",
         "Luma",
         "Veo",
         "Kling",
@@ -164,8 +163,30 @@
         "instructor": {
           "@type": "Person",
           "name": "Domingo Pablo"
+        },
+        "startDate": "2026-08-25",
+        "endDate": "2026-09-26"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "5800",
+          "priceCurrency": "MXN",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-08-10",
+          "url": "https://www.awla.live/pagar",
+          "description": "Precio early bird Gen02"
+        },
+        {
+          "@type": "Offer",
+          "price": "7500",
+          "priceCurrency": "MXN",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-08-24",
+          "url": "https://www.awla.live/pagar",
+          "description": "Precio regular Gen02"
         }
-      }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -208,7 +229,7 @@
           "name": "¿Qué herramientas usaremos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Trabajaremos con un ecosistema flexible de imagen, video, asistencia, sonido y edición: Midjourney, Gemini / Nano Banana, ChatGPT Images, Runway, Higgsfield, Luma, ChatGPT, Gemini, Claude, Suno y CapCut. Las herramientas pueden cambiar según cada proyecto."
+            "text": "Trabajaremos con un ecosistema flexible de imagen, video, asistencia, sonido y edición: Midjourney, Gemini / Nano Banana, ChatGPT Images, Runway, Luma, ChatGPT, Gemini, Claude, Suno y CapCut. Las herramientas pueden cambiar según cada proyecto."
           }
         },
         {
@@ -264,7 +285,7 @@
           "name": "¿Cuánto cuesta el curso y cómo puedo pagar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El precio de la Generación 02 se anunciará próximamente. Quienes estén en la lista de espera recibirán el precio de preventa antes que nadie. Suscríbete en awla.live/mail."
+            "text": "El precio early bird de Gen02 es de $5,800 MXN hasta el 10 de agosto de 2026. Después de esa fecha el precio sube a $7,500 MXN. Puedes apartar tu lugar con $1,000 MXN; si apartas antes del 10 de agosto conservas el precio early bird aunque liquides el saldo después."
           }
         },
         {
@@ -925,6 +946,32 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   text-transform: uppercase;
   color: rgba(228,224,214,0.55);
   margin: 18px 0 0;
+}
+
+.hero-price {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  margin: 20px 0 0; padding: 10px 16px;
+  background: rgba(139,180,140,0.1);
+  border: 1px solid rgba(139,180,140,0.28);
+  border-radius: 6px;
+}
+.hero-price-strike {
+  font-family: var(--font-condensed); font-weight: 400;
+  font-size: 15px; line-height: 1; color: rgba(228,224,214,0.4);
+  text-decoration: line-through; text-decoration-thickness: 1.5px;
+}
+.hero-price-val {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: 22px; line-height: 1; color: var(--screen);
+}
+.hero-price-val .cur { font-size: 11px; color: rgba(228,224,214,0.6); margin-left: 3px; font-weight: 500; }
+.hero-price-tag {
+  font: 500 9px var(--font-mono); letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--moss-bright);
+}
+@media (max-width: 600px) {
+  .hero-price { flex-wrap: wrap; padding: 9px 14px; }
+  .hero-price-val { font-size: 19px; }
 }
 
 /* Hero CTA row contenedor */
@@ -3212,7 +3259,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <li><a href="/#c14">Servicios</a></li>
       <li><a href="/#c16">Contacto</a></li>
     </ul>
-    <a href="/mail" class="nav-cta">Lista de espera</a>
+    <a href="/pagar" class="nav-cta">Inscribirme</a>
   </div>
 </nav>
 
@@ -3247,32 +3294,37 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     </div>
     <h1 class="hero-title" id="hero-title">Del texto<br>a la <em>pieza</em>.</h1>
     <p class="hero-sub">10 sesiones online en vivo · IA Creativa</p>
+    <p class="hero-price">
+      <span class="hero-price-strike">$7,500</span>
+      <span class="hero-price-val">$5,800<span class="cur">MXN</span></span>
+      <span class="hero-price-tag">Early bird · hasta 10 ago</span>
+    </p>
   </div>
 
   <div class="hero-cta-row">
-    <a href="/mail"
+    <a href="/pagar"
        class="btn btn-moss btn-lg btn-flex"
-       aria-label="Únete a la lista de espera de Del texto a la pieza Gen 02">
-      <span>Lista de espera Gen 02</span>
+       aria-label="Inscribirme a Del texto a la pieza Gen02">
+      <span>Inscribirme a Gen02</span>
       <span class="arrow">→</span>
     </a>
     <a href="/mail" class="btn btn-outline-term btn-lg btn-flex">
-      <span>Ver masterclass y temario</span>
+      <span>Ver temario</span>
       <span class="arrow">→</span>
     </a>
   </div>
-  <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2002" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+  <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen02" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
 
   <p class="hero-schedule">
     <span class="hero-schedule-k">Horario</span>
-    Por anunciar · sesiones en vivo por Zoom · CDMX
+    Martes 7 – 9 pm · Sábados 10 am – 12 pm · CDMX
   </p>
 
   <div class="hero-bottom">
     <p class="hero-desc">
       Curso online en vivo para convertir ideas en piezas visuales y audiovisuales con IA generativa. 20 horas, proyecto final propio.
     </p>
-    <span class="hero-gen">Generación 02 · fechas por anunciar</span>
+    <span class="hero-gen">Gen02 · Inicia 25 de agosto · Termina 26 de septiembre</span>
   </div>
 </section>
 
@@ -3535,32 +3587,32 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   <div class="sticker-inner">
     <div class="sticker-data">
       <div class="sticker-block">
-        <span class="sticker-label">Inversión Gen 02</span>
-        <!-- Precio Gen 02: por anunciar -->
-        <span class="sticker-value">Por<span class="sticker-cur">anunciar</span></span>
+        <span class="sticker-label">Early bird</span>
+        <!-- Precio Gen02: por anunciar -->
+        <span class="sticker-value">$5,800<span class="sticker-cur">MXN</span></span>
         <span class="sticker-note">Inversión completa</span>
       </div>
       <div class="sticker-sep" aria-hidden="true"></div>
       <div class="sticker-block">
         <span class="sticker-label">Fechas</span>
-        <span class="sticker-value">Gen 02<span class="sticker-cur">próximamente</span></span>
+        <span class="sticker-value">25 ago<span class="sticker-cur">a 26 sep</span></span>
         <span class="sticker-note">Mar y sáb · CDMX</span>
       </div>
       <div class="sticker-sep" aria-hidden="true"></div>
       <div class="sticker-block">
         <span class="sticker-label">Cupo</span>
         <span class="sticker-value">25<span class="sticker-cur">lugares</span></span>
-        <span class="sticker-note">Generación 02</span>
+        <span class="sticker-note">Hasta el 10 de agosto</span>
       </div>
     </div>
     <div class="sticker-cta-wrap">
-      <a href="/mail"
+      <a href="/pagar"
          class="btn btn-moss btn-lg btn-flex"
-         aria-label="Únete a la lista de espera de Del texto a la pieza Gen 02">
-        <span>Lista de espera Gen 02</span>
+         aria-label="Inscribirme a Del texto a la pieza Gen02">
+        <span>Inscribirme a Gen02</span>
         <span class="arrow">→</span>
       </a>
-      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2002" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen02" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
     </div>
   </div>
 </section>
@@ -3670,7 +3722,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 </section>
 
 <!-- ════════════════════════════════════════════════
-     09 · TEMARIO (fechas Gen 02 por anunciar)
+     09 · TEMARIO (fechas Gen02 por anunciar)
      ════════════════════════════════════════════════ -->
 <section class="s-temario">
   <div class="wrap">
@@ -3690,7 +3742,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 01</span>
           <h3>Idea, intención y <em>creación</em> con IA</h3>
-          <p class="date"><strong>Sesión 01</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Martes 25 ago</strong><br>7:00 – 9:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3703,7 +3755,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 02</span>
           <h3>Del <em>texto</em> a la escena</h3>
-          <p class="date"><strong>Sesión 02</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Sábado 29 ago</strong><br>10:00 am – 12:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3716,7 +3768,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 03</span>
           <h3>Prompting como <em>dirección</em> visual</h3>
-          <p class="date"><strong>Sesión 03</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Martes 1 sep</strong><br>7:00 – 9:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3729,7 +3781,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 04</span>
           <h3>Lenguaje visual <em>aplicado</em> a IA</h3>
-          <p class="date"><strong>Sesión 04</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Sábado 5 sep</strong><br>10:00 am – 12:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3742,7 +3794,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 05</span>
           <h3>Estilo, cámara y <em>estética</em></h3>
-          <p class="date"><strong>Sesión 05</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Martes 8 sep</strong><br>7:00 – 9:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3755,7 +3807,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 06</span>
           <h3>Personajes, marcas y <em>mundos</em></h3>
-          <p class="date"><strong>Sesión 06</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Sábado 12 sep</strong><br>10:00 am – 12:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3768,7 +3820,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 07</span>
           <h3>Imagen en <em>movimiento</em></h3>
-          <p class="date"><strong>Sesión 07</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Martes 15 sep</strong><br>7:00 – 9:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3781,7 +3833,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 08</span>
           <h3>Sonido, atmósfera y <em>montaje</em></h3>
-          <p class="date"><strong>Sesión 08</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Sábado 19 sep</strong><br>10:00 am – 12:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3794,7 +3846,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 09</span>
           <h3>Ensamble y <em>revisión</em></h3>
-          <p class="date"><strong>Sesión 09</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Martes 22 sep</strong><br>7:00 – 9:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3807,7 +3859,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <summary>
           <span class="num">Sesión 10</span>
           <h3>Presentación <em>final</em></h3>
-          <p class="date"><strong>Sesión 10</strong><br>fecha por anunciar</p>
+          <p class="date"><strong>Sábado 26 sep</strong><br>10:00 am – 12:00 pm</p>
           <span class="chev"></span>
         </summary>
         <div class="session-body">
@@ -3856,7 +3908,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="tool">
         <span class="badge">Video generativo</span>
-        <h3>Runway · Higgsfield · Luma</h3>
+        <h3>Runway · Luma · Veo</h3>
         <p>Exploración de modelos como Runway, Veo, Kling, Seedance y otros.</p>
       </div>
       <div class="tool">
@@ -4019,7 +4071,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         </p>
 
         <p class="tutor-bio tutor-bio-cpp">
-          Actualmente forma parte del <em>Creative Partners Program</em> (CPP) de <em>Runway</em> y ha participado en programas creativos de <em>Leonardo</em>, <em>Luma</em>, <em>Pika</em>, <em>Magnific</em> y <em>Hailuo</em>, entre otros.
+          Actualmente forma parte del <em>Creative Partners Program</em> (CPP) de <em>Runway</em> y <em>CapCut</em>, y ha participado en programas creativos de <em>Leonardo</em>, <em>Luma</em>, <em>Pika</em>, <em>Magnific</em> y <em>Hailuo</em>, entre otros.
         </p>
 
         <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
@@ -4175,14 +4227,16 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
      PREVIEW · Materiales gratuitos antes de decidir
      (Permanente: lead magnet del curso)
      ════════════════════════════════════════════════ -->
+<!-- ══ MASTERCLASS EN VIVO 8 AGO (temporal: quitar/actualizar después del 8 ago 2026) ══ -->
 <section class="s-preview">
   <div class="wrap">
-    <p class="pv-lbl">Conoce antes de decidir</p>
-    <h2 class="pv-h">Ve el método <em>en acción.</em></h2>
-    <p class="pv-desc">Recibe la masterclass grabada de una hora más el temario completo en PDF. Es la mejor forma de entender si el curso es para ti.</p>
-    <a href="/mail" class="btn-pv">Recibir materiales gratuitos →</a>
+    <p class="pv-lbl">Masterclass gratuita en vivo</p>
+    <h2 class="pv-h">Conoce el método <em>antes de decidir.</em></h2>
+    <p class="pv-desc">Sábado 8 de agosto · 10 am CDMX · 1 hora en vivo por Zoom. Verás cómo pasar de una idea a una pieza visual con IA, y recibes el temario completo del curso. Los asistentes en vivo acceden a un precio especial de inscripción.</p>
+    <a href="/mail" class="btn-pv">Registrarme a la masterclass →</a>
   </div>
 </section>
+<!-- ══ /MASTERCLASS EN VIVO 8 AGO ══ -->
 
 <!-- ════════════════════════════════════════════════
      16 · INVERSIÓN
@@ -4197,24 +4251,25 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
         <div class="price-card">
           <div class="price-hero">
-            <p class="price-hero-tag">Generación 02</p>
-            <p class="price-hero-val" style="font-size:clamp(32px,5vw,48px)">Precio por anunciar</p>
-            <p class="price-hero-meta">Quienes estén en la lista de espera recibirán el precio de preventa antes que nadie.</p>
+            <p class="price-hero-tag">Early bird · hasta el 10 de agosto</p>
+            <p class="price-hero-strike">$7,500 <span class="price-hero-strike-note">precio regular</span></p>
+            <p class="price-hero-val">$5,800<span class="price-hero-cur">MXN</span></p>
+            <p class="price-hero-meta">Inversión completa del curso. Después del 10 de agosto el precio sube a $7,500 MXN.</p>
           </div>
 
           <div class="price-deadline">
-            <em>Meses sin intereses disponibles</em> con tarjeta de crédito vía Mercado Pago cuando abran las inscripciones. Únete a la <a href="/mail">lista de espera</a> para recibir fecha y precio de preventa.
+            <em>Apartas con $1,000 MXN</em> que se descuentan del total. Si apartas antes del 10 de agosto, conservas el precio early bird de $5,800 aunque liquides el saldo después. <em>Hasta 12 meses sin intereses</em> con tarjeta de crédito, según tu banco · Mercado Pago.
           </div>
         </div>
 
         <div class="price-cta-block">
-          <a href="/mail" class="btn btn-moss btn-lg btn-flex"
-             aria-label="Únete a la lista de espera de Del texto a la pieza Gen 02">
-            <span>Lista de espera Gen 02 →</span>
+          <a href="/pagar?tipo=apartado" class="btn btn-moss btn-lg btn-flex"
+             aria-label="Apartar tu lugar en Del texto a la pieza Gen02">
+            <span>Aparta tu lugar →</span>
           </a>
-          <p class="btn-meta">Recibe fecha, precio de preventa, temario y masterclass</p>
+          <p class="btn-meta">Apartas con $1,000 MXN · Pago seguro vía Mercado Pago</p>
 
-          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen%2002" class="price-cta-wa"
+          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen02" class="price-cta-wa"
              target="_blank" rel="noopener"
              aria-label="Escribir por WhatsApp para resolver dudas del curso">
             ¿Tienes dudas? Escríbeme por WhatsApp →
@@ -4272,7 +4327,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="faq-item">
         <p class="q">¿Qué herramientas usaremos?</p>
-        <p class="a">Trabajaremos con un ecosistema flexible de imagen, video, asistencia, sonido y edición: Midjourney, Gemini, ChatGPT, Runway, Higgsfield, Luma, Suno y CapCut. Las herramientas pueden cambiar según cada proyecto.</p>
+        <p class="a">Trabajaremos con un ecosistema flexible de imagen, video, asistencia, sonido y edición: Midjourney, Gemini, ChatGPT, Runway, Luma, Suno y CapCut. Las herramientas pueden cambiar según cada proyecto.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Las suscripciones a las herramientas están incluidas?</p>
@@ -4308,7 +4363,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       </div>
       <div class="faq-item">
         <p class="q">¿Cuánto cuesta el curso y cómo puedo pagar?</p>
-        <p class="a">El precio de la Generación 02 se anunciará próximamente. Quienes estén en la lista de espera recibirán el precio de preventa antes que nadie.</p>
+        <p class="a">El precio early bird de Gen02 es de $5,800 MXN hasta el 10 de agosto. Después sube a $7,500 MXN. Puedes apartar tu lugar con $1,000 MXN; si apartas antes del 10 de agosto conservas el precio early bird aunque liquides el saldo después.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Puedo pagar en mensualidades sin intereses?</p>
@@ -4364,7 +4419,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         </h2>
 
         <div class="close-cta">
-          <a href="/mail" class="primary-link">Lista de espera Gen 02 →</a>
+          <a href="/pagar" class="primary-link">Inscribirme a Gen02 →</a>
           <p class="meta">O escríbenos por DM en Instagram · @awla.live</p>
         </div>
 
