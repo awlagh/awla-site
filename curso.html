@@ -523,19 +523,19 @@ a { color: inherit; }
 /* 6.1 Label */
 .lbl {
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.lbl-paper { color: var(--ink-mid); }
-.lbl-paper::before { content: '·'; font-size: 14px; opacity: 0.6; }
-.lbl-term { color: rgba(61,92,62,0.95); }
-.lbl-term::before { content: '›'; font-size: 11px; opacity: 0.9; }
+.lbl-paper { color: var(--moss); }
+.lbl-paper::before { content: '·'; font-size: 16px; opacity: 0.7; }
+.lbl-term { color: var(--moss-bright); }
+.lbl-term::before { content: '›'; font-size: 13px; opacity: 0.9; }
 
 /* 6.2 Metadata */
 .meta {
@@ -894,16 +894,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   background: linear-gradient(to bottom, rgba(26,26,24,.65) 0%, rgba(26,26,24,.45) 40%, rgba(26,26,24,.88) 100%);
   pointer-events: none;
 }
-.hero-meta-top {
-  position: relative; z-index: 2;
-  display: flex; gap: 32px;
-  font: 500 11px var(--font-mono);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--screen2);
-}
-.hero-meta-top .pair { display: flex; gap: 10px; }
-.hero-meta-top .k { color: var(--ink-faint); }
 .hero-body {
   position: relative; z-index: 2;
   margin-top: auto;
@@ -1037,7 +1027,6 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
 @media (max-width: 768px) {
   .hero { padding: 90px 24px 40px; }
-  .hero-meta-top { gap: 18px; font-size: 10px; flex-wrap: wrap; }
   .hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
   .hero-cta-row { width: 100%; gap: 10px; }
   .hero-cta-row .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 9px; min-width: 0; }
@@ -3284,16 +3273,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </picture>
   <div class="hero-bg-overlay" aria-hidden="true"></div>
 
-  <div class="hero-meta-top">
-    <span class="pair"><span class="k">ID</span><span>AWLA 2026</span></span>
-    <span class="pair"><span class="k">REF</span><span>IA Creativa</span></span>
-    <span class="pair"><span class="k">GEN</span><span>01</span></span>
-  </div>
-
   <div class="hero-body">
     <div class="hero-eyebrow-line">
       <span class="bar"></span>
-      <span>Especialidad · Creación audiovisual con IA</span>
+      <span>Curso online en vivo</span>
     </div>
     <h1 class="hero-title" id="hero-title">Del texto<br>a la <em>pieza</em>.</h1>
     <p class="hero-sub">10 sesiones online en vivo · IA Creativa</p>
@@ -3534,9 +3517,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <figcaption>Arquitectura y espacios</figcaption>
       </figure>
       <figure class="area-tile">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-inmobiliaria.webp"
-             alt="Visualización inmobiliaria creada con IA" loading="lazy" decoding="async" width="600" height="600">
-        <figcaption>Inmobiliaria</figcaption>
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-personajes.webp"
+             alt="Diseño de personajes con IA generativa" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Personajes</figcaption>
       </figure>
       <figure class="area-tile">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-producto-marca.webp"
@@ -3564,9 +3547,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <figcaption>Educación</figcaption>
       </figure>
       <figure class="area-tile">
-        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-ciberseguridad.webp"
-             alt="Escena corporativa de ciberseguridad generada con IA" loading="lazy" decoding="async" width="600" height="600">
-        <figcaption>Ciberseguridad y corporativo</figcaption>
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-negocios.webp"
+             alt="Imagen para negocios y empresas creada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Negocios</figcaption>
       </figure>
       <figure class="area-tile">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-moda-editorial.webp"
