@@ -39,7 +39,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Completa tu inscripción en Del texto a la pieza · Gen 01. Elige tu modalidad de pago y asegura tu lugar.">
 <meta name="robots" content="noindex, nofollow">
-<title>Inscripción Gen02 · Early bird · AWLA</title>
+<title>Inscripción Gen02 · AWLA</title>
 <link rel="canonical" href="https://www.awla.live/pagar">
 <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/favicon-32.png">
@@ -457,11 +457,10 @@ footer {
   <h1 class="page-title">Completa tu <em>inscripción.</em></h1>
   <p class="page-intro">Aparta tu lugar o paga completo. En ambos casos el pago se procesa de forma segura a través de Mercado Pago.</p>
 
-  <div class="precio-badge">Early bird · hasta el 10 de agosto</div>
+  <div class="precio-badge">Inscripciones abiertas · Gen02</div>
 
   <div class="precio-card">
-    <p class="precio-strike">$7,500 <span class="precio-strike-note">precio regular</span></p>
-    <p class="precio-monto">$5,800<span class="mxn">MXN</span></p>
+    <p class="precio-monto">$7,500<span class="mxn">MXN</span></p>
     <p class="precio-desc">Inversión completa del curso. Incluye 12 sesiones en vivo por Zoom (10 clases más 2 de revisión de proyectos), grabaciones (acceso 90 días), materiales y grupo de WhatsApp.</p>
   </div>
 
@@ -484,7 +483,7 @@ footer {
 
   <div class="opciones-pago">
     <button class="btn-pagar" id="btn-completo" data-tipo="completo" disabled>
-      Pagar completo · $5,800 MXN
+      Pagar completo · $7,500 MXN
       <span class="btn-sub">Se abre Mercado Pago en otra pestaña</span>
     </button>
 
@@ -521,8 +520,8 @@ footer {
     <div class="politica">
       <span class="n">01</span>
       <div>
-        <h3>Early bird hasta el 10 de agosto.</h3>
-        <p>El precio early bird de Gen02 es de $5,800 MXN. Después del 10 de agosto sube a $7,500 MXN. Si apartas tu lugar antes del 10 de agosto, conservas el precio early bird aunque liquides el saldo después.</p>
+        <h3>Inversión del curso.</h3>
+        <p>El precio de Gen02 es de $7,500 MXN, con opción de hasta 12 meses sin intereses vía Mercado Pago. Puedes apartar tu lugar con $1,000 MXN que se descuentan del total y liquidar el resto antes del inicio del curso.</p>
       </div>
     </div>
     <div class="politica">
@@ -591,22 +590,20 @@ footer {
 
 <script>
 // ════════════════════════════════════════════════════════
-// CONFIGURACIÓN DE PRECIO · Gen02 · Early bird
+// CONFIGURACIÓN DE PRECIO · Gen02 · Precio regular
 // Actualiza los links de MP cuando generes nuevos.
 // ════════════════════════════════════════════════════════
 const config = {
   completo: {
-    monto: 5800,
-    link: 'https://mpago.li/1rr13Ao'   // Pago completo early bird $5,800
+    monto: 7500,
+    link: 'https://mpago.li/2cKApgi'   // Pago completo regular $7,500
   },
   apartado: {
     monto: 1000,
-    link: 'https://mpago.li/1k6bR1c'   // Reserva de lugar $1,000
+    link: 'https://mpago.li/1k6bR1c'   // Reserva de lugar $1,000 (liquida hacia $7,500)
   }
-  // Liquidación early bird ($4,800, mpago.li/26fb1Cd) se envía por WhatsApp
-  // de forma personal cuando cada alumno esté listo para liquidar.
-  // Precio regular ($7,500) pendiente: agregar link cuando esté listo
-  // y activar lógica de fecha (después del 10 de agosto).
+  // Liquidación de apartados hechos con early bird ($4,800, mpago.li/26fb1Cd):
+  // se envía por WhatsApp de forma personal a quienes apartaron antes del 10 ago.
 };
 
 // ════════════════════════════════════════════════════════
