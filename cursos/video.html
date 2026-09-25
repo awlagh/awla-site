@@ -1,0 +1,3915 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- Consent Mode v2 — defaults DENIED antes de cargar cualquier tag de Google -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  try {
+    var _ck = JSON.parse(localStorage.getItem('awla_ck_v1'));
+    if (_ck) {
+      gtag('consent', 'update', {
+        'ad_storage':         _ck.marketing ? 'granted' : 'denied',
+        'ad_user_data':       _ck.marketing ? 'granted' : 'denied',
+        'ad_personalization': _ck.marketing ? 'granted' : 'denied',
+        'analytics_storage':  _ck.analytics ? 'granted' : 'denied',
+        'functionality_storage': 'granted',
+        'security_storage':   'granted'
+      });
+    }
+  } catch(e) {}
+</script>
+<!-- Google tag (gtag.js) — se carga después del consent default -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18201216622"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'AW-18201216622');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a18">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Primary meta tags -->
+<title>Laboratorio de video con IA · Próximamente · AWLA</title>
+<meta name="description" content="Laboratorio online en vivo de AWLA para dirigir video con IA generativa: de una imagen al movimiento. Próxima edición noviembre 2026.">
+<meta name="keywords" content="laboratorio de video con IA, curso Runway, curso Kling, curso IA generativa video, dirección de video con IA, AWLA">
+<meta name="author" content="Domingo Pablo">
+<!-- FASE 1 / STAGING: noindex hasta aprobación. Quitar esta línea (o cambiar a
+     "index, follow, max-image-preview:large" como el resto del sitio) cuando
+     esta página esté aprobada y lista para publicarse. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.awla.live/cursos/video">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AWLA">
+<meta property="og:title" content="Laboratorio de video con IA · AWLA">
+<meta property="og:description" content="De una imagen al movimiento. Laboratorio online en vivo de dirección de video con IA generativa.">
+<meta property="og:url" content="https://www.awla.live/cursos/video">
+<meta property="og:locale" content="es_MX">
+<meta property="og:image" content="https://www.awla.live/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@awla.live">
+<meta name="twitter:title" content="Laboratorio de video con IA · AWLA">
+<meta name="twitter:description" content="De una imagen al movimiento. Laboratorio online en vivo de dirección de video con IA generativa.">
+<meta name="twitter:image" content="https://www.awla.live/og-image.jpg">
+
+<!-- Favicon and icons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+<!-- CSS de la página, inline (mismo patrón que curso.html e index.html: cada
+     página se abre y se ve bien por sí sola, sin depender de un archivo
+     externo). Contenido idéntico al de assets/css/curso-shared.css, que se
+     conserva aparte solo como referencia/documentación. -->
+<style>
+/* ════════════════════════════════════════════════
+   CURSO-SHARED.CSS · sistema visual de páginas de curso AWLA
+   Extraído de curso.html (Del texto a la pieza) el 2026-09-25
+   como parte de la Fase 1 de /cursos.
+
+   Usado por: cursos.html y cursos/*.html (páginas nuevas).
+   curso.html (producción, /curso) sigue con su <style> inline
+   propio por ahora, sin tocar, para no arriesgar la página que
+   ya está en vivo. Es candidato a migrar a este archivo en una
+   pasada aparte una vez aprobada la Fase 1.
+
+   Contiene TODAS las secciones/clases de curso.html (tokens,
+   reset, tipografía, botones, nav, hero, manifiesto, tutor,
+   temario, herramientas, para quién, formato, FAQ, testimonios,
+   inversión/CTA, sticker de precio, bloque de mailing, footer,
+   cookie banner). Una página nueva no usa todas las clases; las
+   que no usa simplemente no se renderizan, no estorban.
+   ════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════
+   FUENTES SELF-HOSTED · servidas desde jsDelivr CDN
+   3 críticas (swap) + 7 secundarias (optional)
+   ════════════════════════════════════════════════ */
+
+/* Críticas (above the fold) → swap */
+@font-face {
+  font-family: 'Barlow Condensed'; font-style: normal; font-weight: 300; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-600.woff2') format('woff2');
+}
+
+/* Fallback con métricas ajustadas para Barlow Condensed · elimina el salto (CLS) cuando carga la fuente real */
+@font-face {
+  font-family: 'Barlow Condensed Fallback';
+  src: local('Arial Narrow'), local('Arial');
+  size-adjust: 88%;
+  ascent-override: 95%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'DM Serif Display'; font-style: italic; font-weight: 400; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/dm-serif-400-italic.woff2') format('woff2');
+}
+
+/* Secundarias (below fold) → optional, salen del critical path */
+@font-face {
+  font-family: 'Barlow Condensed'; font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow'; font-style: normal; font-weight: 300; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow'; font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/barlow-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/dm-serif-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 300; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 500; font-display: optional;
+  src: url('https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/ibm-plex-mono-500.woff2') format('woff2');
+}
+
+/* ════════════════════════════════════════════════
+   TOKENS OFICIALES AWLA · v1
+   ════════════════════════════════════════════════ */
+:root {
+  /* paper world */
+  --paper:     #f2efe8;
+  --paper2:    #eceae2;
+  --ink:       #1a1a18;
+  --ink-mid:   #3a3a36;
+  --ink-faint: #6a685f;
+
+  /* terminal world */
+  --term:      #1c1c1a;
+  --term2:     #242420;
+  --screen:    #e4e0d6;
+  --screen2:   #c8c4ba;
+
+  /* accents */
+  --moss:      #3d5c3e;
+  --slate:     #3a4a6b;
+  --teal:      #2a7a7a;
+  --rust:      #8a4a2a;
+
+  /* aliases internos · derivados, no oficiales del manual */
+  --moss-bright: #86ac87;
+  --rule:        rgba(26,26,24,0.18);
+  --rule-soft:   rgba(26,26,24,0.08);
+  --rule-screen: rgba(228,224,214,0.16);
+
+  /* fuentes */
+  --font-body:      'Barlow', system-ui, -apple-system, sans-serif;
+  --font-condensed: 'Barlow Condensed', 'Barlow Condensed Fallback', 'Arial Narrow', system-ui, sans-serif;
+  --font-serif:     'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-mono:      'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* ════════════════════════════════════════════════
+   RESET Y BASE · manual v1
+   ════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+::selection { background: var(--moss); color: var(--paper); }
+
+.skip-link {
+  position: absolute; top: -40px; left: 8px;
+  background: var(--ink); color: var(--paper);
+  padding: 8px 14px; z-index: 9999;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.skip-link:focus { top: 8px; }
+
+/* ════════════════════════════════════════════════
+   TYPE SYSTEM OFICIAL AWLA · manual v1
+   ════════════════════════════════════════════════ */
+
+/* 6.1 Label */
+.lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lbl-paper { color: var(--moss); }
+.lbl-paper::before { content: '·'; font-size: 16px; opacity: 0.7; }
+.lbl-term { color: var(--moss-bright); }
+.lbl-term::before { content: '›'; font-size: 13px; opacity: 0.9; }
+
+/* 6.2 Metadata */
+.meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  line-height: 1.9;
+}
+.meta-paper { color: var(--ink-mid); }
+.meta-term  { color: rgba(228,224,214,0.5); }
+
+/* 6.3 Títulos condensados */
+.cond-xl {
+  font-family: var(--font-condensed);
+  font-size: clamp(60px, 10vw, 130px);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.cond-xl-paper { color: var(--ink); }
+.cond-xl-term  { color: var(--screen); }
+
+.cond-lg {
+  font-family: var(--font-condensed);
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 600;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cond-lg-paper { color: var(--ink); }
+.cond-lg-term  { color: var(--screen); }
+
+.cond-md {
+  font-family: var(--font-condensed);
+  font-size: clamp(22px, 3.5vw, 44px);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.cond-md-paper { color: var(--ink); }
+.cond-md-term  { color: var(--screen); }
+
+/* 6.4 Serif editorial */
+.serif-lg {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+}
+.serif-lg em { font-style: italic; }
+.serif-lg-paper { color: var(--ink); }
+.serif-lg-term  { color: var(--screen); }
+
+/* 6.5 Body */
+.body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.8;
+}
+.body-paper { color: var(--ink-mid); }
+.body-term  { color: rgba(228,224,214,0.6); }
+
+/* 6.6 Título mixto */
+.mix-title {
+  line-height: 0.92;
+  letter-spacing: -0.5px;
+}
+.mix-title .c {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 0.5px;
+}
+.mix-title .s {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.5px;
+}
+.mix-title .m {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
+/* ════════════════════════════════════════════════
+   BOTONES OFICIALES · manual v1
+   ════════════════════════════════════════════════ */
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-decoration: none;
+  padding: 12px 26px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-moss { background: var(--moss); color: #f2efe8; }
+.btn-moss:hover { background: #4a6e4b; }
+
+.btn-outline-paper {
+  border: 1px solid rgba(26,26,24,0.2);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-outline-paper:hover { border-color: rgba(26,26,24,0.5); }
+
+.btn-outline-term {
+  border: 1px solid rgba(228,224,214,0.18);
+  color: var(--screen);
+  background: transparent;
+}
+.btn-outline-term:hover { border-color: rgba(228,224,214,0.45); }
+
+/* Variante grande del .btn (uso en hero/pago) */
+.btn-lg {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  padding: 18px 26px;
+}
+
+/* Variante flex (botón con texto + arrow alineados) */
+.btn-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.2s;
+}
+.btn-flex:hover { transform: translateY(-2px); }
+.btn-flex .arrow {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 17px;
+  text-transform: none;
+}
+
+/* Width 100% solo cuando está en columna (pago) */
+.pay-cta-block .btn-flex { width: 100%; }
+
+/* ════════════════════════════════════════════════
+   GRANO · manual v1
+   ════════════════════════════════════════════════ */
+.grain-paper { position: relative; }
+.grain-paper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: multiply;
+}
+.grain-term { position: relative; }
+.grain-term::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: overlay;
+}
+
+/* ════════════════════════════════════════════════
+   NAV (heredado de awla.live · patrón index)
+   ════════════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 6vw;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  background: rgba(28,28,26,0.55);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(228,224,214,0.06);
+}
+
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img {
+  height: 22px; width: auto;
+  display: block;
+  transition: opacity 0.3s;
+}
+.nav-logo .logo-light { display: none; }
+.nav-logo .logo-dark { display: block; }
+
+.nav-r { display: flex; align-items: center; gap: 22px; }
+.nav-r::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(228,224,214,0.18);
+  margin-right: 6px;
+  transition: background 0.3s;
+}
+
+.nav-links {
+  display: flex; gap: 22px; list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 9px; font-weight: 400; letter-spacing: 2px;
+  color: rgba(228,224,214,0.72); text-decoration: none;
+  text-transform: uppercase; transition: color 0.2s; cursor: pointer;
+}
+.nav-links a:hover { color: var(--screen); }
+
+.nav-cta {
+  font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 9px;
+  font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  color: #7ba87d; text-decoration: none;
+  border: 1px solid rgba(134,172,135,0.6); padding: 7px 16px;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: rgba(134,172,135,0.12); border-color: var(--moss-bright); color: var(--screen); }
+
+/* Light mode (cuando se hace scroll a secciones en paper) */
+nav.light {
+  background: rgba(242,239,232,0.7);
+  border-bottom-color: rgba(26,26,24,0.06);
+}
+nav.light .nav-logo .logo-dark { display: none; }
+nav.light .nav-logo .logo-light { display: block; }
+nav.light .nav-r::before { background: rgba(26,26,24,0.15); }
+nav.light .nav-links a { color: rgba(26,26,24,0.62); }
+nav.light .nav-links a:hover { color: var(--ink); }
+nav.light .nav-cta { color: var(--moss); border-color: rgba(61,92,62,0.55); }
+nav.light .nav-cta:hover { background: rgba(61,92,62,0.12); border-color: var(--moss); color: var(--moss); }
+
+@media (max-width: 768px) {
+  nav { padding: 12px 20px; }
+  .nav-logo img { height: 18px; }
+  .nav-links { display: none; }
+  .nav-r::before { display: none; }
+  .nav-r { gap: 0; }
+  .nav-cta { padding: 8px 14px; font-size: 9px; letter-spacing: 1.5px; }
+}
+
+/* ════════════════════════════════════════════════
+   LAYOUT
+   ════════════════════════════════════════════════ */
+main { padding-top: 50px; }
+section {
+  padding: 110px 38px;
+  position: relative;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.wrap { max-width: 1240px; margin: 0 auto; position: relative; }
+@media (max-width: 768px) { section { padding: 70px 24px; } }
+@media (max-width: 480px) { section { padding: 56px 20px; } }
+
+.eyebrow {
+  font: 500 12px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  display: inline-block;
+}
+
+.display {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 18px 0 0;
+  font-size: clamp(36px, 4.5vw, 64px);
+}
+.display em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+
+.lede { font-family: var(--font-body); font-weight: 300; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.5; color: var(--ink); margin: 24px 0 0; }
+.body-text { font-family: var(--font-body); font-weight: 300; font-size: clamp(13px, 1.2vw, 15px); line-height: 1.8; color: var(--ink-mid); margin: 0; }
+hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.strike { text-decoration: line-through; text-decoration-thickness: 2px; opacity: .55; }
+
+.stars {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(circle at 8% 12%, var(--ink-mid) 1.2px, transparent 1.6px),
+    radial-gradient(circle at 22% 28%, var(--ink-mid) 1px, transparent 1.4px),
+    radial-gradient(circle at 41% 8%, var(--ink-mid) 1.4px, transparent 1.8px),
+    radial-gradient(circle at 63% 22%, var(--ink-mid) 1px, transparent 1.4px),
+    radial-gradient(circle at 88% 9%, var(--ink-mid) 1.2px, transparent 1.6px),
+    radial-gradient(circle at 92% 38%, var(--ink-mid) 1px, transparent 1.4px),
+    radial-gradient(circle at 5% 52%, var(--ink-mid) 1.1px, transparent 1.5px),
+    radial-gradient(circle at 30% 68%, var(--ink-mid) 1px, transparent 1.4px),
+    radial-gradient(circle at 55% 78%, var(--ink-mid) 1.3px, transparent 1.7px),
+    radial-gradient(circle at 78% 64%, var(--ink-mid) 1px, transparent 1.4px),
+    radial-gradient(circle at 96% 84%, var(--ink-mid) 1.2px, transparent 1.6px);
+  opacity: .22;
+}
+
+.cap {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex; gap: 10px;
+  margin-bottom: 28px;
+}
+.cap span:nth-child(2) { color: var(--rule); }
+
+/* ════════════════════════════════════════════════
+   HERO
+   ════════════════════════════════════════════════ */
+.hero {
+  min-height: calc(100vh - 60px);
+  display: flex; flex-direction: column; justify-content: space-between;
+  background: var(--ink);
+  color: var(--screen);
+  padding: 110px 38px 56px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: var(--term);
+  display: block;
+  overflow: hidden;
+}
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero-bg-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(26,26,24,.65) 0%, rgba(26,26,24,.45) 40%, rgba(26,26,24,.88) 100%);
+  pointer-events: none;
+}
+.hero-body {
+  position: relative; z-index: 2;
+  margin-top: auto;
+  max-width: 1100px;
+}
+.hero-eyebrow-line {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px;
+  font: 500 12px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--screen);
+}
+.hero-eyebrow-line .bar { width: 48px; height: 1px; background: var(--screen); }
+.hero-title {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(40px, 6.5vw, 108px);
+  line-height: .92;
+  letter-spacing: -.02em;
+  margin: 0;
+  color: var(--screen);
+  text-transform: uppercase;
+}
+.hero-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--moss-bright);
+}
+
+/* Subtítulo del hero (descriptor) */
+.hero-sub {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(11px, 1.2vw, 14px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.55);
+  margin: 18px 0 0;
+}
+
+.hero-price {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  margin: 20px 0 0; padding: 10px 16px;
+  background: rgba(139,180,140,0.1);
+  border: 1px solid rgba(139,180,140,0.28);
+  border-radius: 6px;
+}
+.hero-price-strike {
+  font-family: var(--font-condensed); font-weight: 400;
+  font-size: 15px; line-height: 1; color: rgba(228,224,214,0.4);
+  text-decoration: line-through; text-decoration-thickness: 1.5px;
+}
+.hero-price-val {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: 22px; line-height: 1; color: var(--screen);
+}
+.hero-price-val .cur { font-size: 11px; color: rgba(228,224,214,0.6); margin-left: 3px; font-weight: 500; }
+.hero-price-tag {
+  font: 500 9px var(--font-mono); letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--moss-bright);
+}
+@media (max-width: 600px) {
+  .hero-price { flex-wrap: wrap; padding: 9px 14px; }
+  .hero-price-val { font-size: 19px; }
+}
+.hero-msi {
+  font: 400 11px var(--font-mono); letter-spacing: 0.5px;
+  color: rgba(228,224,214,0.5); margin: 8px 0 0;
+}
+
+/* Hero CTA row contenedor */
+.hero-cta-row {
+  position: relative; z-index: 2;
+  display: flex; gap: 12px;
+  margin: 32px 0 0;
+  flex-wrap: wrap;
+}
+/* Los botones del hero son más contenidos que los de pago */
+.hero-cta-row .btn {
+  font-size: 9px;
+  letter-spacing: 2px;
+  padding: 12px 20px;
+  width: auto;
+  min-width: 0;
+}
+.hero-cta-row .btn .arrow {
+  font-size: 14px;
+}
+.hero-cta-row .btn-flex {
+  gap: 10px;
+}
+
+.hero-bottom {
+  position: relative; z-index: 2;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule-screen);
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 40px;
+}
+.hero-desc { max-width: 540px; font: 400 16px var(--font-body); line-height: 1.55; color: var(--screen); margin: 0; }
+.hero-gen {
+  font: 500 12px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss-bright);
+  white-space: nowrap;
+}
+
+/* Línea de horario debajo de CTAs */
+.hero-schedule {
+  position: relative; z-index: 2;
+  margin: 22px 0 0;
+  display: flex; align-items: center; gap: 14px;
+  font: 400 13px var(--font-mono);
+  letter-spacing: .04em;
+  color: rgba(228,224,214,0.75);
+}
+.hero-schedule-k {
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--moss-bright);
+  padding-right: 14px;
+  border-right: 1px solid var(--rule-screen);
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 90px 24px 40px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-cta-row { width: 100%; gap: 10px; }
+  .hero-cta-row .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 9px; min-width: 0; }
+  .hero-schedule { flex-wrap: wrap; gap: 10px; font-size: 12px; line-height: 1.5; }
+  .hero-schedule-k { padding-right: 0; border-right: 0; width: 100%; }
+}
+
+/* ════════════════════════════════════════════════
+   MANIFIESTO
+   ════════════════════════════════════════════════ */
+.s-manifest { padding-top: 130px; padding-bottom: 130px; }
+
+/* Grid de dos columnas: texto + reel */
+.manifest-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 28px;
+}
+.manifest-text-col { min-width: 0; }
+.manifest-reel-col {
+  position: relative;
+  z-index: 1;
+}
+
+.manifest-text {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(40px, 5.5vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  margin: 28px 0;
+  max-width: 22ch;
+}
+.manifest-text em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--moss);
+}
+.manifest-foot { margin-top: 32px; }
+.manifest-foot p { font-size: clamp(15px, 1.5vw, 18px); line-height: 1.6; color: var(--ink-mid); margin: 24px 0 0; max-width: 50ch; }
+
+/* ─── Reel card (3:4) · Vimeo facade ─── */
+.reel-card {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reel-facade {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper2);
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  display: block;
+  box-shadow: 0 12px 32px rgba(26,26,24,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.reel-facade:hover { box-shadow: 0 16px 40px rgba(26,26,24,0.14); }
+.reel-facade:hover .reel-poster { transform: scale(1.03); }
+.reel-facade:hover .reel-play {
+  background: var(--moss);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.reel-facade:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 4px;
+}
+
+.reel-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.reel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(28, 28, 26, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--screen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.reel-play svg {
+  margin-left: 3px; /* compensa el peso visual del triángulo play */
+}
+
+/* Iframe inyectado al click (reemplaza el botón) */
+.reel-iframe {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  border: 0;
+  display: block;
+  box-shadow: 0 12px 32px rgba(26,26,24,0.08);
+  background: var(--term);
+}
+
+.reel-caption {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+}
+.reel-caption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-mid);
+  transition: color 0.2s, gap 0.2s;
+}
+.reel-caption a:hover { color: var(--moss); gap: 12px; }
+.reel-caption-k { color: var(--ink-faint); }
+.reel-caption-v { color: var(--moss); }
+.reel-caption-arrow { font-family: var(--font-body); font-size: 13px; letter-spacing: 0; }
+
+@media (max-width: 880px) {
+  .manifest-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .manifest-reel-col { max-width: 380px; margin: 0 auto; width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .s-manifest { padding-top: 80px; padding-bottom: 80px; }
+  .manifest-text { margin: 24px 0; }
+  .manifest-foot { margin-top: 24px; }
+  .manifest-foot p { max-width: 60ch; }
+}
+
+/* ════════════════════════════════════════════════
+   EL CURSO
+   ════════════════════════════════════════════════ */
+.s-curso .two-col {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.s-curso .display { max-width: 13ch; margin-top: 18px; }
+.s-curso .body-text { margin-top: 28px; max-width: 36ch; }
+.course-img {
+  aspect-ratio: 1/1;
+  background: var(--paper2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.course-img img { width: 100%; height: 100%; object-fit: cover; }
+.course-img .placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 500 11px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 880px) {
+  .s-curso .two-col { grid-template-columns: 1fr; gap: 40px; }
+  .course-img { max-width: 460px; }
+}
+
+/* ════════════════════════════════════════════════
+   TUTOR
+   ════════════════════════════════════════════════ */
+.s-tutor .about-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 80px;
+  margin-top: 40px;
+  align-items: start;
+}
+.tutor-photo {
+  aspect-ratio: 4/5;
+  background: var(--paper2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.tutor-photo img { width: 100%; height: 100%; object-fit: cover; }
+.tutor-photo .placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 500 11px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+}
+.tutor-name-h { max-width: 12ch; }
+.tutor-role {
+  font: 500 12px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin: 18px 0 32px;
+}
+.tutor-bio { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.8; color: var(--ink-mid); margin: 0 0 18px; max-width: 52ch; }
+.tutor-bio em { font-family: var(--font-serif); font-style: italic; color: var(--moss); }
+
+/* Bio CPP: integra reconocimientos profesionales en la bio */
+.tutor-bio-cpp {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(26,26,24,0.08);
+  color: var(--ink-mid);
+  font-size: clamp(12px, 1.1vw, 13px);
+  line-height: 1.7;
+}
+
+/* Link a portafolio del tutor */
+.tutor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 14px 20px;
+  border: 1px solid rgba(26,26,24,0.15);
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  transition: all 0.2s;
+}
+.tutor-link:hover {
+  border-color: var(--moss);
+  background: rgba(61,92,62,0.04);
+}
+.tutor-link-k {
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+.tutor-link-v {
+  color: var(--moss);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+.tutor-link-arrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-left: 4px;
+  color: var(--moss);
+}
+
+@media (max-width: 880px) {
+  .s-tutor .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .tutor-photo { max-width: 360px; }
+}
+
+/* ════════════════════════════════════════════════
+   APRENDIZAJES
+   ════════════════════════════════════════════════ */
+.s-learn .display { max-width: 22ch; }
+.s-learn .lede { max-width: 60ch; }
+.learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 56px; margin-top: 56px; }
+.learn-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: baseline;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule-soft);
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.6;
+}
+.learn-row .n { font: 500 12px var(--font-mono); letter-spacing: .14em; color: var(--moss); }
+.learn-row em { font-family: var(--font-serif); font-style: italic; color: var(--moss); }
+
+@media (max-width: 768px) { .learn-grid { grid-template-columns: 1fr; gap: 0; } }
+
+/* ════════════════════════════════════════════════
+   PROYECTO (qué vas a crear)
+   ════════════════════════════════════════════════ */
+.s-create .create-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.s-create .display { max-width: 14ch; }
+.s-create .body-text { margin-top: 24px; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.chip {
+  font: 500 12px var(--font-mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper2);
+  padding: 8px 14px;
+  border-radius: 2px;
+  border: 1px solid var(--rule-soft);
+}
+.proyecto-img {
+  aspect-ratio: 1/1;
+  background: var(--paper2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.proyecto-img img { width: 100%; height: 100%; object-fit: cover; }
+.proyecto-img .placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 500 11px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+@media (max-width: 880px) {
+  .s-create .create-grid { grid-template-columns: 1fr; gap: 40px; }
+  .proyecto-img { max-width: 460px; }
+}
+
+/* ════════════════════════════════════════════════
+   PROCESO
+   ════════════════════════════════════════════════ */
+.s-process .display { max-width: 22ch; }
+.flow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  margin-top: 56px;
+}
+.flow-step {
+  border-top: 1px solid var(--rule);
+  padding: 20px 0 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.flow-step .n { font: 500 12px var(--font-mono); letter-spacing: .14em; color: var(--moss); }
+.flow-step .lbl {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -.005em;
+  text-transform: lowercase;
+}
+.process-note {
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  max-width: 60ch;
+  margin-top: 50px;
+}
+
+/* Grid de 3 imágenes representativas del proceso */
+.process-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.process-image {
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.process-image img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--paper2);
+  display: block;
+  box-shadow: 0 8px 24px rgba(26,26,24,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.process-image:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(26,26,24,0.10);
+}
+.process-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--paper2);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.process-cap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.process-cap-n {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.process-cap-l {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(15px, 1.4vw, 18px);
+  letter-spacing: 0;
+  color: var(--ink);
+  text-transform: lowercase;
+}
+
+@media (max-width: 880px) {
+  .process-images { grid-template-columns: 1fr; gap: 24px; max-width: 380px; margin: 56px auto 0; }
+}
+
+@media (max-width: 880px) { .flow { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+@media (max-width: 480px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+
+/* ════════════════════════════════════════════════
+   TEMARIO
+   ════════════════════════════════════════════════ */
+.s-temario .head-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.s-temario .head-row > p {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  max-width: 36ch;
+  text-align: right;
+  margin: 0;
+}
+.sessions {
+  margin-top: 56px;
+  border-top: 1px solid var(--rule);
+}
+.session {
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
+}
+.session-rev { background: rgba(61,92,62,0.04); }
+.session-rev .num { font-weight: 700; }
+.session-rev summary { position: relative; }
+.session-rev summary::after {
+  content: 'Sesión extra Gen02';
+  position: absolute; top: 50%; right: 46px; transform: translateY(-50%);
+  font: 500 8px var(--font-mono); letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--moss);
+  background: rgba(61,92,62,0.1); padding: 4px 8px; border-radius: 3px;
+  pointer-events: none;
+}
+@media (max-width: 820px) { .session-rev summary::after { display: none; } }
+.session > summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  transition: opacity .2s ease;
+}
+.session > summary::-webkit-details-marker { display: none; }
+.session > summary:hover { opacity: .68; }
+.session .num {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  color: var(--moss);
+  white-space: nowrap;
+}
+.session h3 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.1;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.session h3 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.session .date {
+  font: 400 12px var(--font-mono);
+  color: var(--ink-mid);
+  line-height: 1.45;
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+.session .date strong { color: var(--ink); font-weight: 500; }
+.session .chev {
+  width: 11px; height: 11px;
+  border-right: 1.5px solid var(--ink-mid);
+  border-bottom: 1.5px solid var(--ink-mid);
+  transform: rotate(45deg);
+  transition: transform .25s ease;
+  margin-right: 4px;
+}
+.session[open] .chev { transform: rotate(-135deg); }
+.session .session-body {
+  padding: 0 0 26px;
+  max-width: 62ch;
+}
+.session .session-body p {
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.62;
+  color: var(--ink-mid);
+  margin: 0 0 14px;
+}
+.session .session-body .result {
+  font: 400 12.5px var(--font-mono);
+  color: var(--moss);
+  line-height: 1.55;
+  letter-spacing: .01em;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule-soft);
+  margin-bottom: 0;
+}
+.session .session-body .result strong { color: var(--ink); font-weight: 500; }
+.temario-route {
+  margin-top: 48px;
+  padding: 28px 32px;
+  background: var(--term);
+  border-radius: 4px;
+}
+.temario-route .route-lbl {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  color: var(--moss-bright);
+  display: block;
+  margin-bottom: 14px;
+}
+.temario-route .route-path {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: clamp(15px, 1.7vw, 20px);
+  line-height: 1.5;
+  color: var(--screen);
+  margin: 0;
+}
+.temario-route .route-path em { font-family: var(--font-serif); font-style: italic; color: var(--moss-bright); }
+.temario-meta {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule-soft);
+  font: 400 13px var(--font-mono);
+  color: var(--ink-mid);
+  letter-spacing: .04em;
+}
+.temario-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 14px 22px;
+  border: 1.5px solid var(--moss);
+  border-radius: 4px;
+  font: 600 14px var(--font-condensed);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--moss);
+  text-decoration: none;
+  transition: background .18s ease, color .18s ease;
+}
+.temario-download:hover { background: var(--moss); color: var(--paper); }
+.temario-download .arrow { font-family: var(--font-mono); }
+
+@media (max-width: 768px) {
+  .s-temario .head-row > p { text-align: left; }
+  .session > summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "num chev" "title title" "date date";
+    gap: 8px 16px;
+    padding: 20px 0;
+  }
+  .session .num { grid-area: num; }
+  .session h3 { grid-area: title; }
+  .session .date { grid-area: date; text-align: left; }
+  .session .chev { grid-area: chev; align-self: start; margin-top: 4px; }
+  .temario-route { padding: 24px 22px; }
+}
+
+/* ════════════════════════════════════════════════
+   HERRAMIENTAS
+   ════════════════════════════════════════════════ */
+.s-tools .head-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.s-tools .head-row > p {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  max-width: 40ch;
+  text-align: right;
+  margin: 0;
+}
+.tools {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.tool {
+  border-top: 1px solid var(--rule);
+  padding: 20px 0 0;
+}
+.tool .badge {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 14px;
+}
+.tool h3 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.tool h3 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.tool p { font-size: clamp(13px, 1.2vw, 14px); line-height: 1.45; color: var(--ink-mid); margin: 0; }
+.tools-foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.tools-foot .left {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  max-width: 38ch;
+  margin: 0;
+}
+.tools-foot .right {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--moss);
+  max-width: 28ch;
+  text-align: right;
+  margin: 0;
+}
+.tools-note { font-size: 14px; line-height: 1.4; color: var(--ink-mid); margin: 16px 0 0; max-width: 70ch; }
+
+@media (max-width: 1100px) { .tools { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  .tools { grid-template-columns: repeat(2, 1fr); }
+  .s-tools .head-row > p { text-align: left; }
+  .tools-foot .right { text-align: left; }
+}
+@media (max-width: 480px) { .tools { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════════════
+   PROYECTO PUBLICADO
+   ════════════════════════════════════════════════ */
+.s-pub { background: var(--paper2); }
+
+/* Microaviso legal (reutilizable en varias secciones) */
+.micro-legal {
+  margin-top: 36px;
+  padding: 14px 18px;
+  border-left: 2px solid rgba(26,26,24,0.15);
+  font: 400 12px var(--font-body);
+  line-height: 1.55;
+  color: var(--ink-mid);
+  max-width: 70ch;
+  background: rgba(26,26,24,0.02);
+  border-radius: 0 3px 3px 0;
+}
+.micro-legal a {
+  color: var(--moss);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+.micro-legal a:hover { color: var(--ink); }
+.pub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.pub-grid h2 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1;
+  letter-spacing: -.015em;
+  margin: 18px 0 28px;
+  max-width: 14ch;
+}
+.pub-grid h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.pub-list { list-style: none; padding: 0; margin: 32px 0 0; }
+.pub-list li { font-size: clamp(13px, 1.2vw, 15px); color: var(--ink); padding: 14px 0; border-top: 1px solid var(--rule-soft); }
+.pub-list li:last-child { border-bottom: 1px solid var(--rule-soft); }
+.pub-card {
+  background: var(--term);
+  color: var(--screen);
+  padding: 36px;
+  border-radius: 4px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.pub-card .url { font: 500 11px var(--font-mono); letter-spacing: .12em; color: var(--moss-bright); }
+.pub-card .name {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1;
+  margin: 0;
+  color: var(--screen);
+}
+.pub-card .name em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss-bright); }
+.pub-card p { font-size: 14px; line-height: 1.5; color: rgba(228,224,214,.7); margin: 0; max-width: 32ch; }
+.pub-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.pub-thumb {
+  aspect-ratio: 1/1;
+  background: var(--term2);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.pub-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pub-thumb .placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 500 9px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 880px) { .pub-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ════════════════════════════════════════════════
+   PARA QUIÉN
+   ════════════════════════════════════════════════ */
+.s-audience .head-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: flex-end;
+}
+.s-audience .display { max-width: 12ch; }
+.s-audience .head-grid > p {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  margin: 0;
+  padding-bottom: 10px;
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: 56px;
+}
+.audience {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 18px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+
+@media (max-width: 880px) {
+  .s-audience .head-grid { grid-template-columns: 1fr; gap: 24px; }
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) { .audience-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════════════
+   COMUNIDAD
+   ════════════════════════════════════════════════ */
+.s-community .head-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.s-community .head-row > p {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  max-width: 40ch;
+  text-align: right;
+  margin: 0;
+}
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+.community-card {
+  padding: 32px;
+  background: var(--paper2);
+  border-radius: 4px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.community-card .badge {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.community-card h3 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.05;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.community-card h3 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.community-card p { font-size: clamp(13px, 1.2vw, 14px); line-height: 1.5; color: var(--ink-mid); margin: 0; }
+.community-card .meta {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule-soft);
+  font: 500 11px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 880px) {
+  .community-grid { grid-template-columns: 1fr; gap: 16px; }
+  .s-community .head-row > p { text-align: left; }
+}
+
+/* ════════════════════════════════════════════════
+   FORMATO
+   ════════════════════════════════════════════════ */
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 56px;
+  margin-top: 56px;
+}
+.format-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 16px;
+}
+.format-row .k {
+  font: 500 12px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.format-row .v {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: -.005em;
+  color: var(--ink);
+  text-align: right;
+}
+.format-row .v em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.format-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 32px 0 0;
+}
+
+@media (max-width: 768px) { .format-grid { grid-template-columns: 1fr; gap: 0; } }
+
+/* ════════════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════════════ */
+.s-faq .head-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.s-faq .head-row > p {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  max-width: 36ch;
+  text-align: right;
+  margin: 0;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 56px;
+  margin-top: 56px;
+}
+.faq-item { padding: 24px 0; border-top: 1px solid var(--rule-soft); }
+.faq-item .q {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.faq-item .a { font-size: clamp(13px, 1.2vw, 14px); line-height: 1.55; color: var(--ink-mid); margin: 0; }
+
+/* CTA "Otras dudas" al final del FAQ */
+.faq-cta {
+  margin-top: 56px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: rgba(61,92,62,0.04);
+  border: 1px solid rgba(61,92,62,0.15);
+  border-radius: 8px;
+}
+.faq-cta-text {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -.01em;
+}
+.faq-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: var(--moss);
+  color: var(--screen);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
+  font-weight: 500;
+}
+.faq-cta-btn:hover {
+  background: #2f4a30;
+  transform: translateY(-1px);
+}
+.faq-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  font-size: 10px;
+  font-weight: 500;
+}
+.faq-cta-btn .arrow {
+  transition: transform 0.2s;
+}
+.faq-cta-btn:hover .arrow { transform: translateX(3px); }
+
+@media (max-width: 540px) {
+  .faq-cta { flex-direction: column; align-items: flex-start; padding: 22px 24px; }
+  .faq-cta-btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 880px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .s-faq .head-row > p { text-align: left; }
+}
+
+/* ════════════════════════════════════════════════
+   TESTIMONIOS (Voces · Cap 13)
+   ════════════════════════════════════════════════ */
+.s-testimonios { background: var(--paper); }
+.testi-head { margin-top: 24px; max-width: 760px; }
+.testi-title {
+  font-size: clamp(36px, 5.5vw, 76px);
+  line-height: 0.95;
+  margin: 18px 0 0;
+}
+.testi-title .c { color: var(--ink); }
+.testi-title .s { color: var(--moss); }
+.testi-source-note {
+  font: 400 13px var(--font-body);
+  font-style: italic;
+  color: var(--ink-mid);
+  margin: 18px 0 0;
+  max-width: 540px;
+}
+
+/* Slider horizontal · scroll-snap (desktop + mobile) */
+.testi-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  margin-top: 56px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  scroll-padding-left: 0;
+}
+.testi-grid::-webkit-scrollbar { display: none; }
+
+/* Cell · tamaño dinámico según viewport */
+.testi-cell {
+  flex: 0 0 calc((100% - 32px) / 3); /* desktop: 3 visibles */
+  position: relative;
+  padding: 36px 28px 28px;
+  border: 1px solid rgba(26,26,24,0.08);
+  background: rgba(26,26,24,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 8px;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+@media (max-width: 959px) {
+  .testi-cell { flex: 0 0 calc((100% - 16px) / 2); } /* tablet: 2 visibles */
+}
+
+@media (max-width: 639px) {
+  .testi-grid {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    scroll-padding-left: 24px;
+  }
+  .testi-cell { flex: 0 0 85%; } /* mobile: 1 visible + peek */
+}
+.testi-cell:hover {
+  background: rgba(26,26,24,0.04);
+  border-color: rgba(61,92,62,0.25);
+  transform: translateY(-2px);
+}
+
+/* Comilla decorativa (acento editorial) */
+.testi-mark {
+  position: absolute;
+  top: 14px;
+  left: 22px;
+  font-family: var(--font-serif);
+  font-size: 56px;
+  line-height: 1;
+  color: var(--moss);
+  opacity: 0.28;
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+}
+
+.testi-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
+  padding-top: 12px;
+}
+.testi-author {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--moss);
+  text-transform: uppercase;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(26,26,24,0.06);
+}
+
+/* Slider nav dots (visible en todos los tamaños cuando hay slider) */
+.testi-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(26,26,24,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.testi-dot.is-active {
+  background: var(--moss);
+  transform: scale(1.35);
+}
+.testi-dot:hover { background: rgba(26,26,24,0.35); }
+
+/* Footer del bloque */
+.testi-foot {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.testi-foot-k { color: var(--ink-mid); }
+.testi-foot-v { color: var(--moss); }
+.testi-foot-sep { opacity: 0.5; }
+
+/* ════════════════════════════════════════════════
+   INVERSIÓN
+   ════════════════════════════════════════════════ */
+.s-pricing { background: var(--paper2); }
+
+/* ── ÁREAS (aplícalo a tu área) ─────────────────────────── */
+.s-areas { background: var(--paper2); padding: 64px 0; }
+.s-areas .areas-h {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(24px, 4vw, 40px); line-height: 1.05;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 8px;
+}
+.s-areas .areas-h em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; text-transform: none; color: var(--moss);
+}
+.s-areas .areas-sub {
+  font: 400 15px/1.6 var(--font-body); color: var(--ink-mid);
+  max-width: 56ch; margin-bottom: 28px;
+}
+.areas-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+.area-tile {
+  margin: 0; border-radius: 6px; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--rule-soft);
+}
+.area-tile img {
+  display: block; width: 100%; aspect-ratio: 1; object-fit: cover;
+  background: var(--paper);
+}
+.area-tile figcaption {
+  padding: 10px 12px;
+  font: 500 10px var(--font-mono); letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--ink-mid);
+  text-align: center;
+}
+.areas-reel {
+  margin-top: 28px; text-align: center;
+}
+.areas-reel a {
+  font: 500 10px var(--font-mono); letter-spacing: 2px;
+  text-transform: uppercase; color: var(--moss); text-decoration: none;
+  border-bottom: 1px solid rgba(61,92,62,0.35); padding-bottom: 3px;
+}
+.areas-reel a:hover { border-color: var(--moss); }
+@media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) {
+  .s-areas { padding: 48px 0; }
+  .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .area-tile figcaption { padding: 8px 8px; font-size: 9px; letter-spacing: 1px; }
+}
+
+/* ── RESULTADOS GEN 01 (próximamente) ───────────────────── */
+.s-gen01 { background: var(--paper); padding: 56px 0; text-align: center; }
+.s-gen01 .g01-lbl {
+  font: 500 9px/1 var(--font-mono); letter-spacing: 3px;
+  text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px;
+}
+.s-gen01 .g01-h {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(22px, 3.5vw, 32px); line-height: 1.1;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 10px;
+}
+.s-gen01 .g01-h em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; text-transform: none; color: var(--moss);
+}
+.s-gen01 .g01-note {
+  font: 400 14px/1.6 var(--font-body); color: var(--ink-mid);
+  max-width: 48ch; margin: 0 auto;
+}
+.s-gen01 .g01-note a { color: var(--moss); }
+
+/* ── PREVIEW (materiales gratuitos antes de comprar) ────── */
+.s-preview {
+  background: var(--term); padding: 64px 0;
+}
+.s-preview .wrap { max-width: 720px; margin: 0 auto; padding: 0 40px; text-align: center; }
+.s-preview .pv-lbl {
+  font: 500 9px/1 var(--font-mono); letter-spacing: 3px;
+  text-transform: uppercase; color: var(--moss-bright); margin-bottom: 16px;
+}
+.s-preview .pv-h {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(24px, 4vw, 36px); line-height: 1.1;
+  text-transform: uppercase; color: var(--screen); margin-bottom: 8px;
+}
+.s-preview .pv-h em {
+  font-family: var(--font-serif); font-style: italic;
+  font-weight: 400; text-transform: none; color: var(--moss-bright);
+}
+.s-preview .pv-desc {
+  font: 400 15px/1.6 var(--font-body); color: rgba(228,224,214,0.7);
+  margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto;
+}
+.s-preview .btn-pv {
+  display: inline-block; text-decoration: none;
+  font: 500 10px var(--font-mono); letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--term); background: var(--moss-bright);
+  padding: 14px 28px; border-radius: 4px;
+  transition: background 0.2s;
+}
+.s-preview .btn-pv:hover { background: #9abd9b; }
+@media (max-width: 600px) {
+  .s-preview { padding: 48px 0; }
+  .s-preview .wrap { padding: 0 20px; }
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.pricing-grid .display { max-width: 11ch; }
+.price-card {
+  background: var(--paper);
+  padding: 36px;
+  border-radius: 4px;
+  margin-top: 40px;
+  border: 1px solid var(--rule-soft);
+}
+.price-tag {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin: 0 0 24px;
+}
+.price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* Versión B · Precio hero prominente */
+.price-hero {
+  padding: 28px 28px 24px;
+  background: rgba(61,92,62,0.06);
+  border: 1px solid rgba(61,92,62,0.2);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+.price-hero-tag {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin: 0 0 12px;
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(61,92,62,0.1);
+  border-radius: 3px;
+}
+.price-hero-strike {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  margin: 0 0 4px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.price-hero-strike-note {
+  font: 500 9px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+.price-hero-val {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(56px, 8vw, 88px);
+  line-height: 1;
+  margin: 8px 0 6px;
+  color: var(--ink);
+  letter-spacing: -.02em;
+}
+.price-hero-cur {
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: var(--ink-mid);
+  margin-left: 8px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.price-hero-meta {
+  font: 400 13px var(--font-body);
+  line-height: 1.5;
+  color: var(--ink-mid);
+  margin: 8px 0 0;
+}
+
+/* Escalera de precios futuros */
+.price-stairs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(26,26,24,0.08);
+  border-radius: 6px;
+  background: rgba(26,26,24,0.02);
+}
+.price-stairs-k {
+  font: 500 9px var(--font-mono);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.price-stairs-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.price-stair {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 120px;
+}
+.price-stair-label {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.price-stair-val {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: var(--ink-mid);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(26,26,24,0.35);
+  line-height: 1.1;
+}
+.price-stair-when {
+  font: 400 11px var(--font-body);
+  color: var(--ink-faint);
+  font-style: italic;
+}
+.price-stair-sep {
+  font-size: 18px;
+  color: var(--ink-faint);
+  opacity: 0.5;
+}
+@media (max-width: 480px) {
+  .price-stair-sep { display: none; }
+  .price-stairs-row { gap: 18px; }
+}
+.price-row-three {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.price-item .price-label {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 10px;
+  display: block;
+}
+.price-item .price-val {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+.price-item.regular .price-val {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+.price-item.gen .price-val { color: var(--ink-mid); }
+.price-item.launch .price-val { color: var(--moss); }
+.price-item.active {
+  position: relative;
+  padding: 14px 16px;
+  background: rgba(61,92,62,0.06);
+  border: 1px solid rgba(61,92,62,0.2);
+  border-radius: 6px;
+  margin: -14px -16px;
+}
+.price-item.active .price-label { color: var(--moss); font-weight: 600; }
+.price-item.active::before {
+  content: "◆";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 10px;
+  color: var(--moss);
+}
+.price-item .price-currency {
+  font-size: clamp(12px, 1.1vw, 14px);
+  color: var(--ink-mid);
+  margin-left: 4px;
+  font-weight: 400;
+}
+.price-item .price-note {
+  font: 400 12px var(--font-mono);
+  color: var(--ink-mid);
+  margin: 8px 0 0;
+}
+.price-deadline {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  color: var(--ink);
+}
+.price-deadline em { font-family: var(--font-serif); font-style: italic; color: var(--moss); }
+.price-cta-block { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.price-cta-block .btn-meta { margin: 0 0 8px; }
+.price-cta-wa {
+  font: 400 14px var(--font-mono);
+  color: var(--moss);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: opacity .18s ease;
+}
+.price-cta-wa:hover { opacity: .65; }
+.cta-ask-term {
+  display: inline-block; margin-top: 16px;
+  font: 400 13px var(--font-mono); color: var(--moss-bright);
+  text-decoration: none; letter-spacing: .03em;
+  transition: opacity .18s ease;
+}
+.cta-ask-term:hover { opacity: .7; }
+.includes-block .eyebrow { margin-bottom: 24px; }
+.includes { list-style: none; padding: 0; margin: 0; }
+.includes li {
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: var(--ink);
+  padding: 14px 0 14px 36px;
+  border-top: 1px solid var(--rule-soft);
+  position: relative;
+}
+.includes li:last-child { border-bottom: 1px solid var(--rule-soft); }
+.includes li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--moss);
+  font-weight: 500;
+}
+
+@media (max-width: 880px) { .pricing-grid { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 480px) {
+  .price-row { grid-template-columns: 1fr; gap: 18px; }
+  .price-row-three { grid-template-columns: 1fr; gap: 14px; }
+  .price-item.active { margin: 0; }
+}
+
+/* ════════════════════════════════════════════════
+   PAGO / POLÍTICAS
+   ════════════════════════════════════════════════ */
+.s-pay { background: var(--term); color: var(--screen); }
+.s-pay .eyebrow { color: var(--moss-bright); }
+.s-pay .cap { color: var(--ink-faint); }
+.s-pay .cap span:nth-child(2) { color: var(--rule-screen); }
+.pay-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.pay-grid h2 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -.015em;
+  margin: 18px 0 32px;
+  color: var(--screen);
+}
+.pay-grid h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss-bright); }
+.pay-intro { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.6; color: rgba(228,224,214,.78); margin: 0 0 24px; max-width: 46ch; }
+.pay-intro em { font-family: var(--font-serif); font-style: italic; color: var(--moss-bright); }
+
+/* Aviso legal compacto antes de los botones de pago */
+.pay-legal {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  color: rgba(228,224,214,0.65);
+  margin: 0 0 28px;
+  max-width: 52ch;
+  padding: 14px 16px;
+  border-left: 2px solid rgba(134,172,135,0.5);
+  background: rgba(228,224,214,0.04);
+  border-radius: 0 2px 2px 0;
+}
+.pay-legal a {
+  color: var(--moss-bright);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.pay-legal a:hover { color: var(--screen); }
+.pay-cta-block { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+
+
+/* Botón mini (comprobante WhatsApp, pago completo, factura) */
+.btn-mini {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  font: 500 11px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--moss-bright);
+  background: transparent;
+  border: 1px solid rgba(134,172,135,0.3);
+  border-radius: 2px;
+  transition: all .2s;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+}
+.btn-mini:hover {
+  background: rgba(134,172,135,0.08);
+  border-color: var(--moss-bright);
+  color: var(--screen);
+  transform: translateY(-1px);
+}
+.btn-mini .arrow {
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+.btn-mini-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  background: rgba(134,172,135,0.16);
+  border-radius: 50%;
+  font-size: 10px;
+  color: var(--moss-bright);
+  margin-right: 4px;
+}
+.btn-mini-alt {
+  color: rgba(228,224,214,0.7);
+  border-color: rgba(228,224,214,0.15);
+}
+.btn-mini-alt:hover {
+  color: var(--moss-bright);
+  border-color: rgba(134,172,135,0.4);
+}
+
+/* Divisor en el bloque de pago */
+.pay-divider {
+  border: 0;
+  border-top: 1px solid rgba(228,224,214,0.08);
+  margin: 8px 0;
+}
+
+/* Frase de seguimiento (post-pago) */
+.pay-followup {
+  font: 400 13px var(--font-body);
+  line-height: 1.5;
+  color: rgba(228,224,214,0.78);
+  margin: 14px 0 8px;
+  padding: 0 4px;
+}
+.pay-followup strong {
+  color: var(--moss-bright);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+
+/* Bloque alternativo (pago completo · texto + link inline) */
+.pay-alt {
+  margin: 4px 0;
+}
+.pay-alt-text {
+  font: 400 13px var(--font-body);
+  line-height: 1.55;
+  color: rgba(228,224,214,0.6);
+  margin: 0;
+  padding: 0 4px;
+}
+.pay-alt-text strong {
+  color: var(--moss-bright);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+.pay-alt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--moss-bright);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 4px;
+  transition: color .2s;
+}
+.pay-alt-link:hover { color: var(--screen); }
+.pay-alt-link .arrow {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+}
+.btn-meta {
+  font: 400 11px var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(228,224,214,.5);
+  margin: 0;
+  padding: 0 4px;
+}
+.btn-meta strong { color: var(--moss-bright); font-weight: 500; }
+.policy-list { margin-top: 32px; }
+.policy {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule-screen);
+  align-items: baseline;
+}
+.policy:last-child { border-bottom: 1px solid var(--rule-screen); }
+.policy .n { font: 500 12px var(--font-mono); letter-spacing: .14em; color: var(--moss-bright); }
+.policy h3 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(17px, 1.8vw, 21px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+  color: var(--screen);
+  letter-spacing: -.005em;
+}
+.policy p { font-size: clamp(13px, 1.2vw, 14px); line-height: 1.5; color: rgba(228,224,214,.7); margin: 0; }
+.contact-row {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule-screen);
+}
+.contact-row .lbl {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 8px;
+}
+.contact-row .val {
+  font: 500 14px var(--font-mono);
+  color: var(--moss-bright);
+  text-decoration: none;
+  letter-spacing: .04em;
+}
+.contact-row .val:hover { color: var(--screen); }
+
+@media (max-width: 880px) { .pay-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ════════════════════════════════════════════════
+   CIERRE
+   ════════════════════════════════════════════════ */
+.s-close {
+  padding: 130px 38px;
+  background: var(--paper);
+  text-align: left;
+}
+.close-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 24px;
+}
+.close-text-col { min-width: 0; }
+.close-image {
+  margin: 0;
+  position: relative;
+}
+.close-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--paper2);
+  display: block;
+  box-shadow: 0 16px 40px rgba(26,26,24,0.10);
+}
+.close-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--paper2);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+}
+.close-text {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(40px, 5.5vw, 84px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin: 22px 0;
+  max-width: 18ch;
+  color: var(--ink);
+}
+.close-text em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); text-transform: none; }
+.close-text .dim { color: var(--ink-faint); }
+.close-cta {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  max-width: 540px;
+}
+.close-cta .primary-link {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--moss);
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.close-cta .primary-link:hover { color: var(--ink); }
+.close-cta .meta {
+  font: 500 12px var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin: 14px 0 0;
+}
+
+/* Link "Conoce más sobre AWLA" */
+.awla-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+  padding: 16px 22px;
+  border: 1px solid rgba(26,26,24,0.15);
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent;
+  transition: all 0.2s;
+}
+.awla-explore:hover {
+  border-color: var(--moss);
+  background: rgba(61,92,62,0.04);
+}
+.awla-explore-k { color: var(--ink-faint); font-weight: 400; }
+.awla-explore-v { color: var(--ink); font-weight: 500; }
+.awla-explore-arrow {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-left: 4px;
+  color: var(--moss);
+  transition: transform 0.2s;
+}
+.awla-explore:hover .awla-explore-arrow { transform: translateX(4px); }
+
+@media (max-width: 880px) {
+  .close-grid { grid-template-columns: 1fr; gap: 40px; }
+  .close-image { max-width: 380px; margin: 0 auto; width: 100%; }
+}
+@media (max-width: 768px) { .s-close { padding: 80px 24px; } }
+
+/* ════════════════════════════════════════════════
+   STICKER DE PRECIO (franja oscura entre secciones)
+   ════════════════════════════════════════════════ */
+.s-sticker {
+  background: var(--term);
+  color: var(--screen);
+  padding: 38px 6vw;
+  position: relative;
+  border-top: 1px solid rgba(228,224,214,0.04);
+  border-bottom: 1px solid rgba(228,224,214,0.04);
+}
+.sticker-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.sticker-data {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.sticker-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.sticker-cta-wrap .cta-ask-term { margin-top: 10px; }
+.sticker-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sticker-label {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.5);
+}
+.sticker-value {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -.01em;
+  color: var(--screen);
+}
+.sticker-cur {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--moss-bright);
+  margin-left: 8px;
+}
+.sticker-note {
+  font: 400 11px var(--font-mono);
+  color: rgba(228,224,214,0.4);
+  letter-spacing: .05em;
+}
+.sticker-sep {
+  width: 1px;
+  height: 48px;
+  background: rgba(228,224,214,0.14);
+}
+
+
+@media (max-width: 880px) {
+  .s-sticker { padding: 32px 24px; }
+  .sticker-inner { gap: 28px; }
+  .sticker-data { gap: 22px; width: 100%; justify-content: space-between; }
+  .sticker-sep { display: none; }
+  .sticker-value { font-size: 28px; }
+  .sticker-cta { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .sticker-data { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .sticker-block { width: 100%; }
+}
+
+/* ════════════════════════════════════════════════
+   MAILING GLOBAL (bloque "Mantente al tanto de AWLA")
+   Renombrado de .s-ondemand/.ondemand-wrap (nombre original
+   en curso.html, donde este bloque se usa para la lista de
+   espera del curso on demand). Aquí es genérico: mismo
+   componente en /cursos y en cada curso, apuntando siempre
+   a /mail (una sola lista, sin fragmentar por curso, ver
+   sección 10.4 del documento de arquitectura). Por eso ya no
+   trae aquí los overrides de un formulario MailerLite
+   embebido con ID propio (#mlb2-xxxx): es un botón-link a
+   /mail, reutiliza .btn/.btn-moss de BOTONES OFICIALES.
+   ════════════════════════════════════════════════ */
+.s-mailing {
+  background: var(--paper2);
+  padding: 80px 38px;
+  border-top: 1px solid var(--rule-soft);
+}
+.mailing-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mailing-wrap .eyebrow { color: var(--moss); margin-bottom: 18px; }
+.mailing-wrap h3 {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+.mailing-wrap h3 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--moss); }
+.mailing-wrap > p { font-size: clamp(13px, 1.2vw, 15px); line-height: 1.6; color: var(--ink-mid); margin: 0 0 36px; }
+
+/* ════════════════════════════════════════════════
+   FOOTER (mismo patrón que awla.live · index)
+   ════════════════════════════════════════════════ */
+.page-footer {
+  background: var(--term);
+  padding: 0 6vw 32px;
+  position: relative;
+  overflow: hidden;
+}
+.footer-inner {
+  border-top: 1px solid rgba(228,224,214,0.07);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  position: relative;
+  z-index: 10;
+  max-width: none;
+  margin: 0;
+}
+.footer-logo { display: flex; align-items: center; }
+.footer-logo img {
+  height: 16px;
+  width: auto;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+.footer-logo:hover img { opacity: 0.7; }
+.footer-links {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 8px;
+  color: rgba(228,224,214,0.65);
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--moss); }
+.footer-links a.current { color: var(--moss); }
+.footer-copy {
+  font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 8px;
+  color: rgba(228,224,214,0.82);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Versionado de documentos legales (LFPDPPP trazabilidad) */
+.footer-legal-version {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(228,224,214,0.78);
+  margin: 4px 0 8px;
+}
+.footer-legal-k { color: rgba(134,172,135,0.95); }
+.footer-legal-sep { opacity: 0.62; }
+
+@media (max-width: 768px) {
+  .page-footer { padding: 0 20px 24px; }
+  .footer-inner { gap: 16px; }
+}
+
+/* ════════════════════════════════════════════════
+   COOKIE BANNER
+   ════════════════════════════════════════════════ */
+#ck {
+  position: fixed; bottom: 18px; left: 18px; right: 18px;
+  max-width: 480px;
+  background: var(--ink); color: var(--screen);
+  padding: 22px 24px;
+  border-radius: 4px;
+  z-index: 9000;
+  font: 400 13px var(--font-body);
+  line-height: 1.55;
+  transform: translateY(140%);
+  opacity: 0;
+  transition: transform .5s ease, opacity .5s ease;
+  box-shadow: 0 20px 50px rgba(0,0,0,.3);
+}
+#ck.on { transform: translateY(0); opacity: 1; }
+.ck-head {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss-bright);
+  margin: 0 0 10px;
+}
+#ck > p { margin: 0 0 18px; color: rgba(228,224,214,.85); }
+#ck a { color: var(--moss-bright); text-decoration: underline; }
+.ck-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.ck-btn {
+  font: 500 11px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-radius: 2px;
+  border: 0;
+  cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
+}
+.ck-btn-primary { background: var(--moss); color: var(--paper); }
+.ck-btn-primary:hover { background: #2d4a2e; }
+.ck-btn-ghost {
+  background: transparent;
+  color: var(--screen);
+  border: 1px solid rgba(228,224,214,.3);
+}
+.ck-btn-ghost:hover { border-color: var(--moss-bright); }
+.ck-btn-link {
+  background: transparent;
+  color: rgba(228,224,214,.7);
+  padding: 10px 4px;
+}
+.ck-btn-link:hover { color: var(--moss-bright); }
+.ck-panel { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(228,224,214,.15); }
+.ck-actions-save { display: none; margin-top: 12px; }
+#ck.expanded .ck-panel { display: block; }
+#ck.expanded .ck-actions-save { display: flex; }
+#ck.expanded .ck-actions-initial { display: none; }
+.ck-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+.ck-row-info { flex: 1; }
+.ck-row-name { font: 500 13px var(--font-body); margin: 0 0 4px; color: var(--screen); }
+.ck-row-desc { font: 400 12px var(--font-body); color: rgba(228,224,214,.6); margin: 0; line-height: 1.4; }
+.ck-toggle { position: relative; display: inline-block; width: 40px; height: 22px; flex-shrink: 0; }
+.ck-toggle input { opacity: 0; width: 0; height: 0; }
+.ck-toggle-slider {
+  position: absolute; cursor: pointer; inset: 0;
+  background: rgba(228,224,214,.2);
+  border-radius: 22px;
+  transition: background .2s;
+}
+.ck-toggle-slider::before {
+  content: '';
+  position: absolute; height: 16px; width: 16px;
+  left: 3px; top: 3px;
+  background: var(--screen);
+  border-radius: 50%;
+  transition: transform .2s;
+}
+.ck-toggle input:checked + .ck-toggle-slider { background: var(--moss); }
+.ck-toggle input:checked + .ck-toggle-slider::before { transform: translateX(18px); }
+.ck-toggle input:disabled + .ck-toggle-slider { opacity: .55; cursor: not-allowed; }
+
+@media (max-width: 540px) {
+  #ck { left: 12px; right: 12px; bottom: 12px; padding: 18px 18px; }
+}
+
+/* ════════════════════════════════════════════════
+   COMPONENTES NUEVOS · Fase 1 /cursos (2026-09-25)
+   No existían en curso.html. Reutilizan los tokens,
+   tipografía y botones de arriba, mismo lenguaje visual.
+   ════════════════════════════════════════════════ */
+
+/* — Grid de tarjetas de curso (catálogo /cursos) — */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+@media (max-width: 980px) { .cursos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .cursos-grid { grid-template-columns: 1fr; } }
+.curso-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: background .2s, border-color .2s;
+}
+.curso-card:hover { background: var(--paper2); border-color: var(--moss); }
+.curso-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.curso-card-type {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--moss);
+}
+.curso-card h3 {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 28px); line-height: 1.05;
+  letter-spacing: -.01em; color: var(--ink); margin: 0;
+}
+.curso-card .tagline { font-size: 14px; line-height: 1.5; color: var(--ink-mid); margin: 0; }
+.curso-card-meta {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+  color: var(--ink-faint); text-transform: uppercase; margin-top: auto;
+}
+.curso-card-date {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+  color: var(--ink-faint); text-transform: uppercase;
+}
+.curso-card-cta {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--moss);
+  margin-top: 8px; display: inline-flex; align-items: center; gap: 8px;
+}
+.curso-card:hover .curso-card-cta { gap: 12px; }
+
+/* — Badge de estado (OPEN / UPCOMING / ON_DEMAND) — */
+.state-badge {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 10px; border: 1px solid; white-space: nowrap;
+}
+.state-open     { color: var(--moss); border-color: var(--moss); background: rgba(61,92,62,.08); }
+.state-upcoming { color: var(--ink-faint); border-color: var(--rule); background: transparent; }
+.state-ondemand { color: var(--teal); border-color: var(--teal); background: rgba(42,122,122,.08); }
+
+/* — Badge de nivel (Todos los niveles / Experiencia previa recomendada) — */
+.level-badge {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.level-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint); flex: none; }
+.level-universal { color: var(--moss); }
+.level-universal::before { background: var(--moss); }
+.level-experiencia { color: var(--rust); }
+.level-experiencia::before { background: var(--rust); }
+
+/* — Etiqueta de subgrupo dentro del grid de cursos — */
+.cursos-group-label { margin: 40px 0 16px; }
+.cursos-group-label:first-of-type { margin-top: 32px; }
+
+/* — Bloque bundle Imagen + Video — */
+/* Usa .s-pay (ya definida arriba, fondo term/oscuro) para que
+   nav-theme.js la detecte como sección oscura automáticamente. */
+.s-bundle { padding: 70px 38px; text-align: center; }
+.bundle-wrap { max-width: 640px; margin: 0 auto; }
+.bundle-wrap .eyebrow { color: var(--moss-bright); margin-bottom: 16px; }
+.bundle-wrap h3 {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: clamp(26px, 3vw, 38px); line-height: 1.1;
+  margin: 0 0 14px; color: var(--screen);
+}
+.bundle-wrap p { font-size: 14px; line-height: 1.6; color: var(--screen2); margin: 0 0 28px; }
+
+/* — Volver a todos los cursos (breadcrumb, dentro del propio .hero) — */
+.back-to-cursos {
+  position: relative; z-index: 2;
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; color: rgba(228,224,214,0.6);
+}
+.back-to-cursos:hover { color: var(--screen); }
+
+/* — Recorrido: pasos numerados (reusa .tools como grid contenedor) — */
+.path-step {
+  padding: 24px 20px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.path-num {
+  display: block;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; color: var(--moss); margin-bottom: 10px;
+}
+.path-step h3 {
+  font-family: var(--font-condensed); font-weight: 600;
+  font-size: 17px; line-height: 1.2; color: var(--ink); margin: 0;
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.awla.live/cursos/video#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://www.awla.live/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cursos",
+          "item": "https://www.awla.live/cursos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Laboratorio de video con IA",
+          "item": "https://www.awla.live/cursos/video"
+        }
+      ]
+    },
+    {
+      "@type": "Course",
+      "@id": "https://www.awla.live/cursos/video#course",
+      "name": "Laboratorio de video con IA · AWLA",
+      "description": "Laboratorio online en vivo de AWLA para dirigir video con IA generativa: de moodboard y storyboard al movimiento, con cámara, ritmo y montaje. 6 sesiones de 2 horas en vivo por Zoom.",
+      "url": "https://www.awla.live/cursos/video",
+      "image": "https://www.awla.live/og-image.jpg",
+      "inLanguage": "es-MX",
+      "educationalLevel": "Principiante a avanzado",
+      "teaches": [
+        "Moodboard y storyboard",
+        "Imagen a video con IA",
+        "Dirección de cámara y movimiento",
+        "Ritmo y montaje",
+        "Runway",
+        "Kling",
+        "Seedance",
+        "CapCut"
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Creativos visuales, directores, editores, marcas y creadores de contenido"
+      },
+      "provider": {
+        "@type": [
+          "Organization",
+          "ProfessionalService"
+        ],
+        "@id": "https://www.awla.live/#organization",
+        "name": "AWLA",
+        "url": "https://www.awla.live",
+        "sameAs": [
+          "https://www.instagram.com/awla.live"
+        ]
+      },
+      "instructor": {
+        "@type": "Person",
+        "name": "Domingo Pablo",
+        "jobTitle": "Director audiovisual y fundador de AWLA",
+        "url": "https://domingopablo.com",
+        "sameAs": [
+          "https://www.instagram.com/domingoypablo",
+          "https://domingopablo.com"
+        ]
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "name": "Próxima edición",
+        "courseMode": "online",
+        "courseWorkload": "PT12H",
+        "location": {
+          "@type": "VirtualLocation",
+          "url": "https://zoom.us"
+        },
+        "instructor": {
+          "@type": "Person",
+          "name": "Domingo Pablo"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.awla.live/cursos/video#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Necesito experiencia previa en IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Puedes empezar desde cero. Si ya usas IA, te ayudamos a ordenar tu proceso y crear con más intención."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si no puedo conectarme en vivo a alguna sesión?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Todas las sesiones se graban y tienes acceso a las grabaciones por tiempo limitado. Puedes verla después y preguntar en el grupo de WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué equipo necesito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una computadora (Mac o Windows) con buena conexión a internet. Las herramientas que usamos corren desde el navegador, no necesitas un equipo especializado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Las herramientas de IA están incluidas en el precio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El costo del curso cubre las sesiones, el acompañamiento y el material de AWLA. Las plataformas de IA se contratan por separado; varias tienen una versión gratuita suficiente para empezar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona el pago?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A través de Mercado Pago: tarjeta de crédito (hasta 12 meses sin intereses según tu banco) o transferencia. También puedes apartar tu lugar con un anticipo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Entregan constancia o certificado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, al finalizar se entrega una constancia digital de participación emitida por AWLA. No tiene validez oficial ante SEP ni aval institucional externo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito experiencia previa en video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, conviene tener conocimientos básicos de video (tipos de toma, algo de edición). No cubrimos esos fundamentos aquí, trabajamos directo en tus videos con herramientas de IA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito llegar con imágenes propias?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No es obligatorio. Puedes generarlas durante el laboratorio; si ya tienes una base del Laboratorio de imagen, la aprovechas directamente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Debo haber tomado el Laboratorio de imagen antes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No es requisito. Ayuda tener una base de imagen, pero cubrimos lo necesario para empezar a generar video directamente."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo" aria-label="AWLA — Inicio">
+    <img class="logo-dark" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA · Inicio" fetchpriority="high" width="450" height="100">
+    <img class="logo-light" src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-n.svg" alt="AWLA · Inicio" fetchpriority="high" width="450" height="100">
+  </a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="/#c4">Trabajo</a></li>
+      <li><a href="/#c14">Servicios</a></li>
+      <li><a href="/#c16">Contacto</a></li>
+    </ul>
+    <a href="/cursos" class="nav-cta">Cursos</a>
+  </div>
+</nav>
+<main id="main">
+<!-- HERO -->
+<section class="hero grain-term" aria-labelledby="hero-title">
+  <picture class="hero-bg">
+    <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/hero-awla-desktop.webp"
+         alt="" fetchpriority="high" decoding="async" width="1600" height="900" class="hero-bg-img">
+  </picture>
+  <div class="hero-bg-overlay" aria-hidden="true"></div>
+  <a href="/cursos" class="back-to-cursos">← Todos los cursos</a>
+
+  <div class="hero-body">
+    <div class="hero-eyebrow-line">
+      <span class="bar"></span>
+      <span>Laboratorio · Online en vivo</span>
+    </div>
+    <h1 class="hero-title" id="hero-title">Laboratorio<br>de <em>video</em>.</h1>
+    <p class="hero-sub">6 sesiones online en vivo · Dirección de video con IA</p>
+    <p class="hero-price">
+      <span class="hero-price-val" style="font-size:22px">Próxima edición</span>
+      <span class="hero-price-tag">Noviembre 2026</span>
+    </p>
+    <p class="hero-msi">Suscríbete y te avisamos la fecha exacta y el precio antes que nadie.</p>
+  </div>
+  <div class="hero-cta-row">
+    <a href="/mail" class="btn btn-moss btn-lg btn-flex" aria-label="Avísame de la fecha">
+      <span>Avísame de la fecha</span>
+      <span class="arrow">→</span>
+    </a>
+    <a href="#programa" class="btn btn-outline-term btn-lg btn-flex">
+      <span>Ver programa</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+  <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20Laboratorio%20de%20video%20con%20IA" class="cta-ask-term" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp para resolver dudas">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+  <p class="hero-schedule">
+    <span class="hero-schedule-k">Modalidad</span>
+    Online en vivo · Zoom · horario CDMX
+  </p>
+  <div class="hero-bottom">
+    <p class="hero-desc">Laboratorio online en vivo para aprender a dirigir video con IA generativa: de una imagen al movimiento, con cámara, ritmo y montaje.</p>
+    <span class="hero-gen">Laboratorio · próxima edición noviembre 2026</span>
+  </div>
+</section>
+<!-- QUÉ ES / PROMESA -->
+<section class="s-curso">
+  <div class="wrap">
+    <p class="cap"><span>Cap 02</span><span>/</span><span>Qué es</span></p>
+    <div class="two-col">
+      <div>
+        <span class="lbl lbl-paper">Qué es</span>
+        <h2 class="cond-lg cond-lg-paper">De la imagen al <em>movimiento</em>.</h2>
+        <p class="body body-paper">Seis sesiones para aprender a dirigir modelos de generación de video con intención: partimos de moodboard e idea, armamos un storyboard propio, y le damos cámara, ritmo y montaje. Pensado para quien ya tiene una base de imagen (propia o del Laboratorio de imagen) y quiere darle movimiento con criterio cinematográfico.</p>
+      </div>
+      <div class="course-img">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-frame-cinematografico.webp" alt="" loading="lazy" decoding="async" width="800" height="800"
+             onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
+        <div class="placeholder" style="display:none">Imagen del curso<br>(pendiente)</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- RECORRIDO / qué vas a hacer -->
+<section class="s-curso" style="border-top:1px solid var(--rule);">
+  <div class="wrap">
+    <p class="cap"><span>Cap 03</span><span>/</span><span>Recorrido</span></p>
+    <span class="lbl lbl-paper">Recorrido</span>
+    <h2 class="cond-lg cond-lg-paper" style="margin-bottom:36px;">El <em>recorrido</em>.</h2>
+    <div class="tools" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+      <div class="path-step">
+        <span class="path-num">01</span>
+        <h3>Moodboard y storyboard</h3>
+      </div>
+      <div class="path-step">
+        <span class="path-num">02</span>
+        <h3>Keyframe</h3>
+      </div>
+      <div class="path-step">
+        <span class="path-num">03</span>
+        <h3>Movimiento</h3>
+      </div>
+      <div class="path-step">
+        <span class="path-num">04</span>
+        <h3>Cámara</h3>
+      </div>
+      <div class="path-step">
+        <span class="path-num">05</span>
+        <h3>Secuencia</h3>
+      </div>
+      <div class="path-step">
+        <span class="path-num">06</span>
+        <h3>Montaje</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROGRAMA (resumen) -->
+<section class="s-temario">
+  <div class="wrap">
+    <p class="cap"><span>Cap 04</span><span>/</span><span>Programa</span></p>
+    <div class="head-row">
+      <div>
+        <span class="lbl lbl-paper">Programa</span>
+        <h2 class="cond-lg cond-lg-paper">Seis sesiones, <em>doce</em> horas.</h2>
+      </div>
+      <p>Resumen de sesiones. El desarrollo completo, objetivos, ejercicios y requisitos estarán en el PDF descargable.</p>
+    </div>
+    <div class="sessions">
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 01</span>
+          <h3>Moodboard y storyboard</h3>
+          <p class="date"><strong>Sesión en vivo</strong></p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Defines el concepto, el estilo y las referencias de tu proyecto (moodboard), y organizas tus imágenes en el orden que vas a llevar a video (storyboard).</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 02</span>
+          <h3>Imagen → movimiento</h3>
+          <p class="date"><strong>Sesión en vivo</strong></p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Qué necesita una imagen para convertirse en video: keyframe, dirección y punto de partida.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 03</span>
+          <h3>Acción y cámara</h3>
+          <p class="date"><strong>Sesión en vivo</strong></p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Cómo dirigir sujeto, entorno y movimiento de cámara con IA.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 04</span>
+          <h3>Ritmo y transición</h3>
+          <p class="date"><strong>Sesión en vivo</strong></p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>De un clip aislado a una secuencia con ritmo propio.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 05</span>
+          <h3>Secuencia completa</h3>
+          <p class="date"><strong>Sesión en vivo</strong></p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Construcción de una secuencia de varios clips con coherencia visual, a partir del storyboard de la sesión 1.</p>
+        </div>
+      </details>
+      <details class="session">
+        <summary>
+          <span class="num">Sesión 06</span>
+          <h3>Montaje y cierre</h3>
+          <p class="date"><strong>Sesión en vivo</strong></p>
+          <span class="chev"></span>
+        </summary>
+        <div class="session-body">
+          <p>Montaje final, sonido y ritmo de entrega.</p>
+        </div>
+      </details>
+    </div>
+    <p style="margin-top:28px;">
+      <a href="/mail" class="btn btn-outline-paper btn-lg btn-flex" style="display:inline-flex;max-width:340px;">
+        <span>Descargar programa completo · PDF</span>
+        <span class="arrow">→</span>
+      </a>
+    </p>
+  </div>
+</section>
+<!-- RESULTADO / GALERÍA -->
+<section class="s-gen01">
+  <div class="wrap">
+    <p class="g01-lbl">Qué vas a crear</p>
+    <h2 class="g01-h">Un video corto <em>propio</em>.</h2>
+    <p class="g01-note">Al final desarrollas una pieza de video corta: mood film, teaser, campaña o exploración audiovisual. El formato se adapta a tu proyecto o necesidad profesional.</p>
+  </div>
+</section>
+<!-- GALERÍA · ejemplos reales de trabajo hecho con el método AWLA -->
+<section class="s-areas">
+  <div class="wrap">
+    <h2 class="areas-h">Ejemplos de lo que puedes <em>crear</em>.</h2>
+    <p class="areas-sub">Piezas de video dirigidas con IA, del tipo que vas a poder producir en el laboratorio:</p>
+    <div class="areas-grid">
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-video-cine.webp" alt="Fotograma cinematográfico creado con dirección de IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Video y cine</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-musica-visuales.webp" alt="Visuales para música creados con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Música y visuales</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-arte-videoarte.webp" alt="Obra de arte y videoarte generada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Arte y videoarte</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-publicidad.webp" alt="Imagen publicitaria creada con dirección de IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Publicidad</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-marketing-campanas.webp" alt="Campaña de marketing visual generada con IA" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Marketing y campañas</figcaption>
+      </figure>
+      <figure class="area-tile">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/curso-ia-contenido-redes.webp" alt="Contenido para redes sociales creado con IA generativa" loading="lazy" decoding="async" width="600" height="600">
+        <figcaption>Contenido para redes</figcaption>
+      </figure>
+    </div>
+    <p class="areas-reel"><a href="https://awla.live/#c4" target="_blank" rel="noopener">Ver el reel y más trabajo de AWLA →</a></p>
+</div>
+</section>
+<!-- FORMATO + HERRAMIENTAS (bloque de información práctica) -->
+<section class="s-format">
+  <div class="wrap">
+    <p class="cap"><span>Cap 06</span><span>/</span><span>Formato</span></p>
+    <span class="lbl lbl-paper">Formato</span>
+    <h2 class="cond-lg cond-lg-paper">Lo <em>esencial</em>.</h2>
+    <div class="format-grid">
+      <div class="format-row"><span class="k">Duración</span><span class="v"><em>12</em> horas</span></div>
+      <div class="format-row" style="border-bottom:none;"><span class="k">Modalidad</span><span class="v">Online en <em>vivo</em></span></div>
+      <div class="format-row"><span class="k">Sesiones</span><span class="v"><em>6</em> · 2 hrs c/u</span></div>
+      <div class="format-row" style="border-bottom:none;"><span class="k">Plataforma</span><span class="v"><em>Zoom</em></span></div>
+      <div class="format-row"><span class="k">Grabaciones</span><span class="v">Acceso por tiempo limitado</span></div>
+      <div class="format-row" style="border-bottom:none;"><span class="k">Zona horaria</span><span class="v"><em>CDMX</em> · GMT-6</span></div>
+    </div>
+    <p class="format-note">El enlace de Zoom (o la ubicación, si aplica) se envía por correo a cada participante registrado.</p>
+  </div>
+</section>
+<section class="s-tools" style="border-top:1px solid var(--rule);">
+  <div class="wrap">
+    <p class="cap"><span>Cap 07</span><span>/</span><span>Herramientas</span></p>
+    <div class="head-row">
+      <div>
+        <span class="lbl lbl-paper">Herramientas</span>
+        <h2 class="cond-lg cond-lg-paper">Un flujo, varias <em>plataformas</em>.</h2>
+      </div>
+      <p>Las herramientas pueden cambiar de acuerdo con la evolución de los modelos y las necesidades de cada proyecto.</p>
+    </div>
+    <div class="tools">
+      <div class="tool">
+        <span class="badge">Video generativo</span>
+        <h3>Runway · Kling · Seedance · <em>CapCut</em> Video Studio</h3>
+        <p>Imagen a video, cámara, secuencia y montaje.</p>
+      </div>
+      <div class="tool">
+        <span class="badge">Sonido</span>
+        <h3>Suno · Runway</h3>
+        <p>Música, atmósferas y exploración sonora para acompañar el video.</p>
+      </div>
+    </div>
+    <div class="tools-foot">
+      <p class="left">No necesitas pagar todas las plataformas para comenzar.</p>
+      <p class="right">Las herramientas pueden cambiar. El método permanece.</p>
+    </div>
+    <p class="tools-note">¿Te gustaría trabajar con alguna otra herramienta de generación? Coméntanos antes de tu inscripción y la consideramos para tu caso específico. Las suscripciones a plataformas externas no están incluidas y se contratan por separado.</p>
+  </div>
+</section>
+<!-- TUTOR · componente global -->
+<section class="s-tutor">
+  <div class="wrap">
+    <p class="cap"><span>Cap 8</span><span>/</span><span>Sobre el tutor</span></p>
+    <span class="lbl lbl-paper">Sobre el tutor</span>
+    <div class="about-grid">
+      <div class="tutor-photo">
+        <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo.webp"
+             srcset="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo-400.webp 400w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo-600.webp 600w,
+                     https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/tutor-domingo-pablo.webp 900w"
+             sizes="(max-width: 880px) 360px, 420px"
+             alt="Retrato de Domingo Pablo, director audiovisual y fundador de AWLA"
+             loading="lazy" decoding="async" width="700" height="900"
+             onerror="this.style.display='none';this.parentElement.querySelector('.placeholder').style.display='flex';">
+        <div class="placeholder" style="display:none">Retrato<br>Domingo Pablo</div>
+      </div>
+      <div>
+        <h2 class="cond-lg cond-lg-paper tutor-name-h">Domingo <em>Pablo</em>.</h2>
+        <p class="tutor-role">Director audiovisual · Artista digital · Educador</p>
+        <p class="tutor-bio">
+          Director de cine con trayectoria en productoras nacionales e internacionales, ha dirigido proyectos para marcas como <em>Vogue México</em>, <em>EA Sports</em>, <em>FIFA</em> y <em>Plaza Sésamo</em>, entre otras. Sus trabajos cinematográficos han participado en el <em>Short Film Corner</em> del Festival de Cannes y en el <em>Festival Internacional de Cine de Morelia</em> (FICM), entre otros. Es fundador de <em>AWLA</em>, un laboratorio de criterio visual con IA generativa enfocado en prompting con intención y lenguaje visual propio.
+        </p>
+        <p class="tutor-bio">
+          Desde 2021 integra inteligencia artificial en sus flujos de trabajo. Actualmente forma parte del <em>Creative Partners Program</em> de <em>Runway</em> y <em>CapCut</em>, dos de las plataformas de IA más importantes del medio, y ha participado en los programas creativos de <em>Hailuo</em>, <em>Pika</em>, <em>Magnific</em>, <em>Luma</em> y otros.
+        </p>
+        <p class="tutor-bio" style="color: var(--ink-faint);">
+          En este curso comparte su método para integrar herramientas generativas al proceso creativo sin perder estilo, mirada ni voz propia.
+        </p>
+        <a href="https://domingopablo.com" target="_blank" rel="noopener" class="tutor-link">
+          <span class="tutor-link-k">Portafolio</span>
+          <span class="tutor-link-v">domingopablo.com</span>
+          <span class="tutor-link-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- TESTIMONIOS (Voces) · componente global, mismo set en todas las páginas -->
+<section class="s-testimonios">
+  <div class="wrap">
+    <p class="cap"><span>Cap 9</span><span>/</span><span>Voces</span></p>
+    <div class="testi-head">
+      <span class="lbl lbl-paper">Opiniones sobre AWLA</span>
+      <h2 class="mix-title testi-title">
+        <span class="c">Lo que dicen<br></span><span class="s">los alumnos de AWLA.</span>
+      </h2>
+      <p class="testi-source-note">Opiniones compartidas por participantes de cursos AWLA previos.</p>
+    </div>
+    <div class="testi-grid" id="testi-grid">
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">El curso me pareció genial para iniciar en el mundo de la IA, es altamente recomendable. Particularmente lo uso para trabajar en creación de imagen. Pablo también fue un gran asesor, siempre resolviendo las dudas en todo momento.</p>
+        <p class="testi-author"><span>@pepzlaroid</span></p>
+      </article>
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">El curso de AWLA fue una excelente introducción al mundo de la Inteligencia Artificial, especialmente para aprender a usar Midjourney y la creación de imágenes con IA. Como creativo, suelo necesitar referencias audiovisuales, y encontrar la imagen adecuada puede ser tardado; este curso me dio una alternativa clave: generar imágenes mediante prompts, logrando mayor precisión al comunicar ideas en pitches.</p>
+        <p class="testi-author"><span>@ledicenelvega</span></p>
+      </article>
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">El curso que tomé en AWLA, además de ser express, me ayudó a integrar la inteligencia artificial como parte de mis herramientas creativas para llegar más lejos en el desarrollo de mis proyectos e ideas.</p>
+        <p class="testi-author"><span>@vlakat</span></p>
+      </article>
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">Excelente el curso. Me resultó muy útil, muy claro y práctico.</p>
+        <p class="testi-author"><span>@karinaminujin</span></p>
+      </article>
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">Tomé este curso y me pareció sensacional la forma de abordar a la IA desde una perspectiva cinematográfica.</p>
+        <p class="testi-author"><span>@aresvid</span></p>
+      </article>
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">Recomiendo ampliamente el curso de IA. El instructor es muy experimentado y despejó todas mis inquietudes de manera muy clara.</p>
+        <p class="testi-author"><span>@maucastrodirector</span></p>
+      </article>
+      <article class="testi-cell">
+        <span class="testi-mark" aria-hidden="true">&quot;</span>
+        <p class="testi-quote">Estoy muy satisfecho, feliz y agradecido de haber recibido tu asesoría, fue tan nutritivo que a partir de él por fin pude crear algo cinematográfico. Mis obstáculos desaparecieron y ahora exploro nuevas herramientas porque me siento seguro. Antes andaba dando palos a ciegas, gracias a ti ya sé qué buscar y cómo encontrar lo que necesito.</p>
+        <p class="testi-author"><span>@pacodel61</span></p>
+      </article>
+    </div>
+    <div class="testi-slider-nav" aria-hidden="true">
+      <button type="button" class="testi-dot is-active" data-i="0" aria-label="Testimonio 1"></button>
+      <button type="button" class="testi-dot" data-i="1" aria-label="Testimonio 2"></button>
+      <button type="button" class="testi-dot" data-i="2" aria-label="Testimonio 3"></button>
+      <button type="button" class="testi-dot" data-i="3" aria-label="Testimonio 4"></button>
+      <button type="button" class="testi-dot" data-i="4" aria-label="Testimonio 5"></button>
+      <button type="button" class="testi-dot" data-i="5" aria-label="Testimonio 6"></button>
+      <button type="button" class="testi-dot" data-i="6" aria-label="Testimonio 7"></button>
+    </div>
+    <p class="testi-foot">
+      <span class="testi-foot-k">Cursos previos AWLA</span>
+      <span class="testi-foot-sep" aria-hidden="true">·</span>
+      <span class="testi-foot-v">7 opiniones</span>
+    </p>
+  </div>
+</section>
+<!-- FAQ · FAQ_GLOBAL + FAQ específica del curso -->
+<section class="s-faq">
+  <div class="wrap">
+    <p class="cap"><span>Cap 10</span><span>/</span><span>FAQ</span></p>
+    <div class="head-row">
+      <div>
+        <span class="lbl lbl-paper">Preguntas frecuentes</span>
+        <h2 class="cond-lg cond-lg-paper">Lo que <em>siempre</em> nos preguntan.</h2>
+      </div>
+      <p>¿Te queda algo en el aire? Estas son las dudas más comunes antes de empezar.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <p class="q">¿Necesito experiencia previa en IA?</p>
+        <p class="a">No. Puedes empezar desde cero. Si ya usas IA, te ayudamos a ordenar tu proceso y crear con más intención.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Qué pasa si no puedo conectarme en vivo a alguna sesión?</p>
+        <p class="a">Todas las sesiones se graban y tienes acceso a las grabaciones por tiempo limitado. Puedes verla después y preguntar en el grupo de WhatsApp.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Qué equipo necesito?</p>
+        <p class="a">Una computadora (Mac o Windows) con buena conexión a internet. Las herramientas que usamos corren desde el navegador, no necesitas un equipo especializado.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Las herramientas de IA están incluidas en el precio?</p>
+        <p class="a">No. El costo del curso cubre las sesiones, el acompañamiento y el material de AWLA. Las plataformas de IA se contratan por separado; varias tienen una versión gratuita suficiente para empezar.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Cómo funciona el pago?</p>
+        <p class="a">A través de Mercado Pago: tarjeta de crédito (hasta 12 meses sin intereses según tu banco) o transferencia. También puedes apartar tu lugar con un anticipo.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Entregan constancia o certificado?</p>
+        <p class="a">Sí, al finalizar se entrega una constancia digital de participación emitida por AWLA. No tiene validez oficial ante SEP ni aval institucional externo.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Necesito experiencia previa en video?</p>
+        <p class="a">Sí, conviene tener conocimientos básicos de video (tipos de toma, algo de edición). No cubrimos esos fundamentos aquí, trabajamos directo en tus videos con herramientas de IA.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Necesito llegar con imágenes propias?</p>
+        <p class="a">No es obligatorio. Puedes generarlas durante el laboratorio; si ya tienes una base del Laboratorio de imagen, la aprovechas directamente.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Debo haber tomado el Laboratorio de imagen antes?</p>
+        <p class="a">No es requisito. Ayuda tener una base de imagen, pero cubrimos lo necesario para empezar a generar video directamente.</p>
+      </div>
+    </div>
+    <div class="faq-cta">
+      <p class="faq-cta-text">¿Tienes otra duda?</p>
+      <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20Laboratorio%20de%20video%20con%20IA"
+         class="faq-cta-btn" target="_blank" rel="noopener"
+         aria-label="Hacer una pregunta por WhatsApp">
+        <span class="faq-cta-icon" aria-hidden="true">✓</span>
+        <span>Pregúntanos por WhatsApp</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- INVERSIÓN / CTA por estado -->
+<section class="s-pricing">
+  <div class="wrap">
+    <p class="cap"><span>Cap 11</span><span>/</span><span>Inversión</span></p>
+    <div class="pricing-grid">
+      <div>
+        <span class="lbl lbl-paper">Inversión</span>
+        <h2 class="cond-lg cond-lg-paper">Laboratorio de video · <em>inversión</em>.</h2>
+        <div class="price-card">
+          <div class="price-hero">
+            <p class="price-hero-tag">Próxima edición</p>
+            <p class="price-hero-val" style="font-size:clamp(28px,4vw,42px)">Muy pronto</p>
+            <p class="price-hero-meta">La fecha y el precio se anunciarán pronto. Suscríbete y sé de los primeros en saberlo.</p>
+          </div>
+          <div class="price-deadline">Déjanos tu correo en la <a href="/mail">lista de espera</a> y te avisamos la fecha, el precio y el temario completo.</div>
+        </div>
+        <div class="price-cta-block">
+          <a href="/mail" class="btn btn-moss btn-lg btn-flex" aria-label="Avísame de la próxima fecha →">
+            <span>Avísame de la próxima fecha →</span>
+          </a>
+          <p class="btn-meta">Recibe fecha, precio y temario completo</p>
+          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20Laboratorio%20de%20video%20con%20IA" class="price-cta-wa" target="_blank" rel="noopener">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+        </div>
+      </div>
+      <div class="includes-block">
+        <span class="lbl lbl-paper">El curso incluye</span>
+        <ul class="includes">
+      <li>12 horas de sesiones en vivo por Zoom (6 sesiones)</li>
+      <li>Acompañamiento directo del tutor sesión a sesión</li>
+      <li>Grupo de WhatsApp activo durante el laboratorio</li>
+      <li>Ejercicios y entregables por sesión</li>
+      <li>Revisión grupal de tu video final</li>
+      <li>Acceso a grabaciones por tiempo limitado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- MAILING GLOBAL · mismo componente y misma lista en todas las páginas -->
+<section class="s-mailing">
+  <div class="mailing-wrap">
+    <span class="lbl lbl-paper">Mantente al tanto de AWLA</span>
+    <h3>Recibe próximas fechas, nuevos cursos <em>y laboratorios</em>.</h3>
+    <p>Masterclasses, temarios y avisos antes que nadie. Una sola lista para todo AWLA.</p>
+    <a href="/mail" class="btn btn-moss btn-lg btn-flex" style="display:inline-flex;max-width:320px;margin:0 auto;">
+      <span>Suscribirme</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+</main>
+<!-- COOKIE BANNER -->
+<div id="ck" role="dialog" aria-label="Preferencias de cookies" aria-live="polite">
+  <p class="ck-head">Cookies</p>
+  <p>Usamos cookies para mejorar tu experiencia. Las esenciales son necesarias para el funcionamiento; las demás requieren tu consentimiento. <a href="/cookies">Política de cookies</a>.</p>
+  <div class="ck-actions ck-actions-initial">
+    <button class="ck-btn ck-btn-link" onclick="ckPersonalize()">Personalizar</button>
+    <button class="ck-btn ck-btn-ghost" onclick="ckReject()">Rechazar</button>
+    <button class="ck-btn ck-btn-primary" onclick="ckAcceptAll()">Aceptar todo</button>
+  </div>
+  <div class="ck-panel">
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Esenciales</p>
+        <p class="ck-row-desc">Necesarias para el funcionamiento del sitio.</p>
+      </div>
+      <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-toggle-slider"></span></label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Analíticas</p>
+        <p class="ck-row-desc">Nos ayudan a entender cómo se usa el sitio.</p>
+      </div>
+      <label class="ck-toggle"><input type="checkbox" id="ck-analytics"><span class="ck-toggle-slider"></span></label>
+    </div>
+    <div class="ck-row">
+      <div class="ck-row-info">
+        <p class="ck-row-name">Marketing</p>
+        <p class="ck-row-desc">Para campañas y publicidad personalizada.</p>
+      </div>
+      <label class="ck-toggle"><input type="checkbox" id="ck-marketing"><span class="ck-toggle-slider"></span></label>
+    </div>
+  </div>
+  <div class="ck-actions ck-actions-save">
+    <button class="ck-btn ck-btn-primary" onclick="ckSavePrefs()">Guardar mis preferencias</button>
+  </div>
+</div>
+<!-- FOOTER (mismo patrón que awla.live) -->
+<div id="footer" class="page-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <a href="https://www.awla.live" aria-label="AWLA — Inicio"><img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/logo-awla-b.svg" alt="AWLA · awla.live" width="450" height="100" loading="lazy"></a>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/cursos">Todos los cursos</a></li>
+      <li><a href="/privacidad-integral">Aviso de Privacidad</a></li>
+      <li><a href="/terminos">Términos de Uso</a></li>
+      <li><a href="/contratacion">Términos de Contratación</a></li>
+      <li><a href="/devoluciones">Cambios y Devoluciones</a></li>
+      <li><a href="/cookies">Política de Cookies</a></li>
+      <li><a href="#cookies-prefs" onclick="ckOpenPreferences();return false;">Preferencias</a></li>
+    </ul>
+    <p class="footer-legal-version">
+      <span class="footer-legal-k">Documentos legales</span>
+      <span class="footer-legal-sep" aria-hidden="true">·</span>
+      <span>Versión 1.0</span>
+      <span class="footer-legal-sep" aria-hidden="true">·</span>
+      <span>Última actualización: mayo 2026</span>
+    </p>
+    <span class="footer-copy">© 2026 AWLA® · awla.live</span>
+  </div>
+</div>
+<script>
+/* cookie-consent.js · AWLA · extraído de curso.html (Fase 1 /cursos, 2026-09-25)
+   Maneja el banner de cookies (#ck) y Consent Mode v2. Requiere que la página
+   incluya el bloque HTML #ck (COOKIE BANNER, ya en curso-shared.css) y que
+   el <head> ya haya seteado el consent 'default' denied antes de gtag.js
+   (ese bloque de consent default sigue yendo inline en cada <head>, no aquí).
+   */
+
+const CK_KEY = 'awla_ck_v1';
+const CK_POLICY_VERSION = '1.0';
+
+const ckDefaults = {
+  necessary: true,
+  analytics: false,
+  marketing: false,
+  timestamp: null,
+  version: CK_POLICY_VERSION
+};
+
+function ckGetState() {
+  try {
+    const raw = localStorage.getItem(CK_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function ckSaveState(state) {
+  state.timestamp = new Date().toISOString();
+  state.version = CK_POLICY_VERSION;
+  try {
+    localStorage.setItem(CK_KEY, JSON.stringify(state));
+  } catch(e) { /* Storage blocked: silently fail */ }
+  ckApplyConsent(state);
+}
+
+function ckApplyConsent(state) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  gtag('consent', 'update', {
+    'ad_storage':            state.marketing ? 'granted' : 'denied',
+    'ad_user_data':          state.marketing ? 'granted' : 'denied',
+    'ad_personalization':    state.marketing ? 'granted' : 'denied',
+    'analytics_storage':     state.analytics ? 'granted' : 'denied',
+    'functionality_storage': 'granted',
+    'security_storage':      'granted'
+  });
+}
+
+// Nota: el consent 'default' (denied) y la aplicación del consentimiento
+// previo guardado se ejecutan en el <head>, antes de cargar gtag.js,
+// para cumplir con Consent Mode v2 y la Política de Cookies de AWLA.
+
+window.addEventListener('load',()=>{
+  const ck = document.getElementById('ck');
+  if(!ckGetState()) {
+    setTimeout(()=>ck.classList.add('on'),800);
+  }
+});
+
+function ckAcceptAll() {
+  ckSaveState({ necessary: true, analytics: true, marketing: true });
+  ckHide();
+}
+
+function ckReject() {
+  ckSaveState({ necessary: true, analytics: false, marketing: false });
+  ckHide();
+}
+
+function ckPersonalize() {
+  document.getElementById('ck').classList.add('expanded');
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+}
+
+function ckSavePrefs() {
+  ckSaveState({
+    necessary: true,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  });
+  ckHide();
+}
+
+function ckHide() {
+  const ck = document.getElementById('ck');
+  ck.classList.remove('on');
+  setTimeout(()=>ck.classList.remove('expanded'), 600);
+}
+
+window.ckOpenPreferences = function() {
+  const state = ckGetState() || ckDefaults;
+  document.getElementById('ck-analytics').checked = !!state.analytics;
+  document.getElementById('ck-marketing').checked = !!state.marketing;
+  const ck = document.getElementById('ck');
+  ck.classList.add('on');
+  ck.classList.add('expanded');
+};
+
+window.resetCookies = () => {
+  localStorage.removeItem(CK_KEY);
+  document.getElementById('ck').classList.remove('expanded');
+  document.getElementById('ck').classList.add('on');
+};
+
+</script>
+<script>
+/* nav-theme.js · AWLA · extraído de curso.html (Fase 1 /cursos, 2026-09-25)
+   Alterna la clase .light en <nav id="nav"> según si el nav está
+   sobre una sección oscura (.hero, .s-sticker, .s-pay) o sobre papel.
+   Reutilizable tal cual en cualquier página de curso que tenga un
+   <nav id="nav"> con esas mismas secciones (las que no existan en
+   una página dada simplemente se ignoran, querySelector regresa null). */
+(function navTheme(){
+  const nav = document.getElementById('nav');
+  const hero = document.querySelector('.hero');
+  const sticker = document.querySelector('.s-sticker');
+  const pay  = document.querySelector('.s-pay');
+  if (!nav || !hero) return;
+
+  let ticking = false;
+  let cachedNavHeight = nav.offsetHeight;
+
+  function isOverDark(el, navHeight) {
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return r.top < navHeight && r.bottom > navHeight;
+  }
+
+  function checkTheme() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const overHero = heroBottom > cachedNavHeight;
+    const overSticker = isOverDark(sticker, cachedNavHeight);
+    const overPay = isOverDark(pay, cachedNavHeight);
+    const inDark = overHero || overSticker || overPay;
+    nav.classList.toggle('light', !inDark);
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(checkTheme);
+      ticking = true;
+    }
+  }
+
+  checkTheme();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    cachedNavHeight = nav.offsetHeight;
+    onScroll();
+  });
+})();
+
+</script>
+<script src="/consent-tracking.js" defer></script>
+</body>
+</html>
