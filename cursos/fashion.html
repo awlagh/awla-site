@@ -41,8 +41,8 @@
 <meta name="format-detection" content="telephone=no">
 
 <!-- Primary meta tags -->
-<title>Fashion Shoot + IA · Próximamente · AWLA</title>
-<meta name="description" content="Experiencia presencial en CDMX + sesiones online de AWLA para dirigir una producción de moda con IA generativa. Próxima edición diciembre 2026.">
+<title>Fashion Shoot + IA · 1 – 8 dic 2026 · AWLA</title>
+<meta name="description" content="Experiencia presencial en CDMX + sesiones online de AWLA para dirigir una producción de moda con IA generativa. Próxima edición: 1 al 8 de diciembre de 2026.">
 <meta name="keywords" content="fashion shoot IA, producción de moda con IA, curso fotografía de moda IA, AWLA CDMX">
 <meta name="author" content="Domingo Pablo">
 <!-- FASE 1 / STAGING: noindex hasta aprobación. Quitar esta línea (o cambiar a
@@ -2201,6 +2201,26 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink);
   letter-spacing: -.01em;
 }
+.price-item-strike {
+  font-family: var(--font-condensed);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  margin: 0 0 4px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.price-item-strike-note {
+  font: 500 8px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
 .price-item.regular .price-val {
   color: var(--ink-faint);
   text-decoration: line-through;
@@ -2235,6 +2255,35 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   font: 400 12px var(--font-mono);
   color: var(--ink-mid);
   margin: 8px 0 0;
+}
+/* ── CHECKBOX TÉRMINOS (obligatorio antes de pagar) ─────── */
+.terminos-wrap {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin: 20px 0 24px; cursor: pointer;
+}
+.terminos-wrap input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+  accent-color: var(--moss); cursor: pointer;
+}
+.terminos-wrap label {
+  font: 400 13px/1.55 var(--font-body); color: var(--ink-mid); cursor: pointer;
+}
+.terminos-wrap a { color: var(--moss); text-decoration: none; }
+.terminos-wrap a:hover { text-decoration: underline; }
+.btn:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.price-fx-line {
+  font: 400 12px var(--font-mono);
+  color: var(--ink-mid);
+  margin: 6px 0 0;
+  letter-spacing: 0.02em;
+}
+.price-fx-note {
+  color: var(--ink-faint);
+  font-size: 10px;
 }
 .price-deadline {
   margin-top: 28px;
@@ -2456,6 +2505,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   padding: 0 4px;
 }
 .btn-meta strong { color: var(--moss-bright); font-weight: 500; }
+/* .btn-meta se definió para fondo oscuro (hero/s-pay), pero también se usa
+   dentro de .price-cta-block sobre el fondo claro de .s-pricing: ahí el
+   texto casi no se veía (crema sobre crema). Se corrige el color solo en
+   ese contexto, sin tocar los demás usos de .btn-meta. */
+.s-pricing .btn-meta { color: var(--ink-faint); }
 .policy-list { margin-top: 32px; }
 .policy {
   display: grid;
@@ -3093,9 +3147,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       },
       "hasCourseInstance": {
         "@type": "CourseInstance",
-        "name": "Próxima edición",
+        "name": "Edición 1 – 8 dic 2026",
         "courseMode": "blended",
         "courseWorkload": "PT16H",
+        "startDate": "2026-12-01",
+        "endDate": "2026-12-08",
         "location": {
           "@type": "VirtualLocation",
           "url": "https://zoom.us"
@@ -3226,13 +3282,13 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
     <p class="hero-sub">Presencial en CDMX + online · Producción de moda con IA</p>
     <p class="hero-price">
       <span class="hero-price-val" style="font-size:22px">Próxima edición</span>
-      <span class="hero-price-tag">Diciembre 2026</span>
+      <span class="hero-price-tag">1 – 8 dic 2026</span>
     </p>
-    <p class="hero-msi">Cupo limitado. Suscríbete y te avisamos la fecha exacta y el precio antes que nadie.</p>
+    <p class="hero-msi">Cupo limitado. Precio especial de lanzamiento por tiempo limitado.</p>
   </div>
   <div class="hero-cta-row">
-    <a href="/mail" class="btn btn-moss btn-lg btn-flex" aria-label="Avísame de la fecha">
-      <span>Avísame de la fecha</span>
+    <a href="#inversion" class="btn btn-moss btn-lg btn-flex" aria-label="Ver precio e inscribirme">
+      <span>Ver precio e inscribirme</span>
       <span class="arrow">→</span>
     </a>
     <a href="#programa" class="btn btn-outline-term btn-lg btn-flex">
@@ -3247,7 +3303,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </p>
   <div class="hero-bottom">
     <p class="hero-desc">Experiencia presencial en CDMX para dirigir una producción de moda apoyada en IA generativa, de la dirección creativa al resultado final.</p>
-    <span class="hero-gen">Experiencia · próxima edición diciembre 2026</span>
+    <span class="hero-gen">Experiencia · 1 – 8 dic 2026</span>
   </div>
 </section>
 <!-- QUÉ ES / PROMESA -->
@@ -3612,7 +3668,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   </div>
 </section>
 <!-- INVERSIÓN / CTA por estado -->
-<section class="s-pricing">
+<section class="s-pricing" id="inversion">
   <div class="wrap">
     <p class="cap"><span>Cap 11</span><span>/</span><span>Inversión</span></p>
     <div class="pricing-grid">
@@ -3621,19 +3677,33 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <h2 class="cond-lg cond-lg-paper">Fashion Shoot + IA · <em>inversión</em>.</h2>
         <div class="price-card">
           <div class="price-hero">
-            <p class="price-hero-tag">Próxima edición</p>
-            <p class="price-hero-val" style="font-size:clamp(28px,4vw,42px)">Muy pronto</p>
-            <p class="price-hero-meta">La fecha, sede y el precio se anunciarán pronto. Cupo limitado.</p>
+            <p class="price-hero-tag">Próxima edición · 1 – 8 dic 2026</p>
+            <p class="price-hero-strike">$4,500<span class="price-hero-strike-note">precio de lista</span></p>
+            <p class="price-hero-val" style="font-size:clamp(28px,4vw,42px)">$3,200<span class="price-hero-cur">MXN</span></p>
+            <p class="price-fx-line" hidden>≈ USD $<span class="fx-val" data-mxn="3200">…</span> al tipo de cambio de hoy <span class="price-fx-note">(el cobro se hace en pesos)</span></p>
+            <p class="price-hero-meta">Precio especial de lanzamiento por tiempo limitado. Sede en CDMX por confirmar. Cupo limitado. Tarjeta hasta 12 meses sin intereses con Mercado Pago, o transferencia.</p>
           </div>
-          <div class="price-deadline">Déjanos tu correo en la <a href="/mail">lista de espera</a> y te avisamos la fecha, el precio y los detalles de la sede.</div>
+        </div>
+        <div class="terminos-wrap">
+          <input type="checkbox" id="acepto-terminos">
+          <label for="acepto-terminos">
+            Al continuar, confirmo que he leído y acepto los
+            <a href="/contratacion" target="_blank" rel="noopener">Términos y Condiciones de Contratación</a>,
+            el <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y la
+            <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
+          </label>
         </div>
         <div class="price-cta-block">
-          <a href="/mail" class="btn btn-moss btn-lg btn-flex" aria-label="Avísame de la próxima fecha →">
-            <span>Avísame de la próxima fecha →</span>
-          </a>
-          <p class="btn-meta">Recibe fecha, sede, precio y detalles</p>
-          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Fashion%20Shoot%20%2B%20IA" class="price-cta-wa" target="_blank" rel="noopener">¿Tienes dudas? Escríbeme por WhatsApp →</a>
+          <button type="button" class="btn btn-moss btn-lg btn-flex"
+                  data-tipo="completo" data-link="/mail" data-monto="3200" disabled>
+            <span>Pagar con Mercado Pago →</span>
+          </button>
+          <button type="button" class="btn btn-outline-paper btn-lg btn-flex"
+                  data-tipo="transferencia" data-link="https://wa.me/525537175870?text=Hola%2C%20quiero%20pagar%20Fashion%20Shoot%20%2B%20IA%20por%20transferencia" disabled>
+            <span>Pagar por transferencia →</span>
+          </button>
         </div>
+        <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Fashion%20Shoot%20%2B%20IA" class="price-cta-wa" target="_blank" rel="noopener" style="margin-top:16px;display:inline-block;">¿Tienes dudas? Escríbeme por WhatsApp →</a>
       </div>
       <div class="includes-block">
         <span class="lbl lbl-paper">El curso incluye</span>
@@ -3880,6 +3950,62 @@ window.resetCookies = () => {
   });
 })();
 
+</script>
+<script>
+(function(){
+  var fxEls = document.querySelectorAll('[data-mxn]');
+  if (!fxEls.length) return;
+  var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+  var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 4000);
+  fetch('https://api.frankfurter.dev/v1/latest?from=MXN&to=USD', ctrl ? {signal: ctrl.signal} : {})
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      clearTimeout(timer);
+      var rate = data && data.rates && data.rates.USD;
+      if (!rate) return;
+      fxEls.forEach(function(el){
+        var mxn = parseFloat(el.getAttribute('data-mxn'));
+        if (!mxn) return;
+        var usd = Math.round(mxn * rate);
+        el.textContent = usd.toLocaleString('en-US');
+        var line = el.closest('.price-fx-line');
+        if (line) line.hidden = false;
+      });
+    })
+    .catch(function(){ /* sin conexión o API caída: la línea se queda oculta */ });
+})();
+</script>
+<script>
+(function(){
+  var chk = document.getElementById('acepto-terminos');
+  var btns = document.querySelectorAll('[data-tipo][data-link]');
+  if (!chk || !btns.length) return;
+  function actualizarBotones(){
+    btns.forEach(function(b){ b.disabled = !chk.checked; });
+  }
+  chk.addEventListener('change', actualizarBotones);
+  actualizarBotones();
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tipo = btn.getAttribute('data-tipo');
+      var link = btn.getAttribute('data-link');
+      var monto = btn.getAttribute('data-monto');
+      try {
+        localStorage.setItem('awla_pago_consent', JSON.stringify({
+          tipo_pago: tipo,
+          monto: monto ? Number(monto) : null,
+          timestamp: new Date().toISOString(),
+          version_docs: '1.0',
+          medio: 'checkbox-pago'
+        }));
+      } catch(e) {}
+      if (window.awlaRegistrarConsentimiento) {
+        window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: tipo });
+      }
+      window.open(link, '_blank', 'noopener');
+    });
+  });
+})();
 </script>
 <script src="/consent-tracking.js" defer></script>
 </body>
