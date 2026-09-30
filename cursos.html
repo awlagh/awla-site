@@ -2929,6 +2929,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   transition: background .2s, border-color .2s;
 }
 .curso-card:hover { background: var(--paper2); border-color: var(--moss); }
+.curso-card-disabled { cursor: default; }
+.curso-card-disabled:hover { background: var(--paper); border-color: var(--rule); }
+.curso-card-cta-disabled { color: var(--ink-faint); }
 .curso-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .curso-card-type {
   font-family: var(--font-mono); font-size: 9px; font-weight: 500;
@@ -3145,7 +3148,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 
     <span class="lbl lbl-paper cursos-group-label">Para todos los niveles</span>
     <div class="cursos-grid">
-      <a href="/curso" class="curso-card">
+      <div class="curso-card curso-card-disabled">
         <div class="curso-card-top">
           <span class="curso-card-type">Programa integral</span>
           <span class="state-badge state-upcoming">Próximamente</span>
@@ -3155,9 +3158,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="level-badge level-universal">Todos los niveles</span>
         <p class="curso-card-meta">12 sesiones · 24 horas · Online en vivo</p>
         <p class="curso-card-date">Próxima generación por anunciar</p>
-        <span class="curso-card-cta">Conocer el programa <span class="arrow">→</span></span>
-      </a>
-      <a href="/cursos/on-demand" class="curso-card">
+        <span class="curso-card-cta curso-card-cta-disabled">Aún no disponible</span>
+      </div>
+      <div class="curso-card curso-card-disabled">
         <div class="curso-card-top">
           <span class="curso-card-type">On Demand</span>
           <span class="state-badge state-upcoming">Próximamente</span>
@@ -3167,8 +3170,8 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="level-badge level-universal">Todos los niveles</span>
         <p class="curso-card-meta">Grabado · a tu ritmo</p>
         <p class="curso-card-date">2027</p>
-        <span class="curso-card-cta">Ver curso <span class="arrow">→</span></span>
-      </a>
+        <span class="curso-card-cta curso-card-cta-disabled">Aún no disponible</span>
+      </div>
     </div>
 
     <span class="lbl lbl-paper cursos-group-label">Con experiencia previa recomendada</span>
@@ -3176,37 +3179,37 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <a href="/cursos/imagen" class="curso-card">
         <div class="curso-card-top">
           <span class="curso-card-type">Laboratorio</span>
-          <span class="state-badge state-upcoming">Próximamente</span>
+          <span class="state-badge state-open">Inscripciones abiertas</span>
         </div>
         <h3>Laboratorio de imagen con IA</h3>
         <p class="tagline">De una idea a un universo visual.</p>
         <span class="level-badge level-experiencia">Experiencia previa en imagen</span>
         <p class="curso-card-meta">6 sesiones · 12 horas · Online en vivo</p>
-        <p class="curso-card-date">Noviembre 2026</p>
+        <p class="curso-card-date">27 oct – 14 nov · martes 7–9 pm · sábado 10 am–12 pm</p>
         <span class="curso-card-cta">Ver curso <span class="arrow">→</span></span>
       </a>
       <a href="/cursos/video" class="curso-card">
         <div class="curso-card-top">
           <span class="curso-card-type">Laboratorio</span>
-          <span class="state-badge state-upcoming">Próximamente</span>
+          <span class="state-badge state-open">Inscripciones abiertas</span>
         </div>
         <h3>Laboratorio de video con IA</h3>
         <p class="tagline">De una imagen al movimiento.</p>
         <span class="level-badge level-experiencia">Experiencia previa en video</span>
         <p class="curso-card-meta">6 sesiones · 12 horas · Online en vivo</p>
-        <p class="curso-card-date">Noviembre 2026</p>
+        <p class="curso-card-date">17 nov – 3 dic · martes 7–9 pm · sábado 10 am–12 pm</p>
         <span class="curso-card-cta">Ver curso <span class="arrow">→</span></span>
       </a>
       <a href="/cursos/fashion" class="curso-card">
         <div class="curso-card-top">
           <span class="curso-card-type">Experiencia</span>
-          <span class="state-badge state-upcoming">Próximamente</span>
+          <span class="state-badge state-open">Inscripciones abiertas</span>
         </div>
         <h3>Fashion Shoot + IA</h3>
         <p class="tagline">Producción de moda dirigida con IA.</p>
         <span class="level-badge level-experiencia">Experiencia previa audiovisual</span>
         <p class="curso-card-meta">Presencial CDMX + online</p>
-        <p class="curso-card-date">Diciembre 2026</p>
+        <p class="curso-card-date">2–10 dic · online 7–9 pm · shoot sáb 8 am–2 pm</p>
         <span class="curso-card-cta">Ver curso <span class="arrow">→</span></span>
       </a>
     </div>
