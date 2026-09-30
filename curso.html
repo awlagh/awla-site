@@ -2504,6 +2504,35 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   color: var(--ink-mid);
   margin: 8px 0 0;
 }
+/* ── CHECKBOX TÉRMINOS (obligatorio antes de pagar) ─────── */
+.terminos-wrap {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin: 20px 0 24px; cursor: pointer;
+}
+.terminos-wrap input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+  accent-color: var(--moss); cursor: pointer;
+}
+.terminos-wrap label {
+  font: 400 13px/1.55 var(--font-body); color: var(--ink-mid); cursor: pointer;
+}
+.terminos-wrap a { color: var(--moss); text-decoration: none; }
+.terminos-wrap a:hover { text-decoration: underline; }
+.btn:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.price-fx-line {
+  font: 400 12px var(--font-mono);
+  color: var(--ink-mid);
+  margin: 6px 0 0;
+  letter-spacing: 0.02em;
+}
+.price-fx-note {
+  color: var(--ink-faint);
+  font-size: 10px;
+}
 .price-deadline {
   margin-top: 28px;
   padding-top: 24px;
@@ -2724,6 +2753,11 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   padding: 0 4px;
 }
 .btn-meta strong { color: var(--moss-bright); font-weight: 500; }
+/* .btn-meta se definió para fondo oscuro (hero/s-pay), pero también se usa
+   dentro de .price-cta-block sobre el fondo claro de .s-pricing: ahí el
+   texto casi no se veía (crema sobre crema). Se corrige el color solo en
+   ese contexto, sin tocar los demás usos de .btn-meta. */
+.s-pricing .btn-meta { color: var(--ink-faint); }
 .policy-list { margin-top: 32px; }
 .policy {
   display: grid;
@@ -3249,7 +3283,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <li><a href="/#c14">Servicios</a></li>
       <li><a href="/#c16">Contacto</a></li>
     </ul>
-    <a href="/mail" class="nav-cta">Suscribirme</a>
+    <a href="/cursos" class="nav-cta">Cursos</a>
   </div>
 </nav>
 
@@ -4261,28 +4295,43 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <div class="price-card">
           <div class="price-hero">
             <p class="price-hero-tag">Próxima generación</p>
-            <p class="price-hero-val" style="font-size:clamp(28px,4vw,42px)">Muy pronto</p>
-            <p class="price-hero-meta">La próxima generación se anunciará pronto. Suscríbete y te avisamos la fecha y el precio antes que nadie.</p>
+            <p class="price-hero-val" style="font-size:clamp(28px,4vw,42px)">$7,500<span class="price-hero-cur">MXN</span></p>
+            <p class="price-fx-line" hidden>≈ USD $<span class="fx-val" data-mxn="7500">…</span> al tipo de cambio de hoy <span class="price-fx-note">(el cobro se hace en pesos)</span></p>
+            <p class="price-hero-meta">Precio de ejemplo, pendiente de confirmar fecha y costo final de la próxima generación. Tarjeta hasta 12 meses sin intereses con Mercado Pago, o transferencia.</p>
           </div>
+        </div>
 
-          <div class="price-deadline">
-            Déjanos tu correo en la <a href="/mail">lista de espera</a> y serás de los primeros en conocer la fecha y el precio de la próxima generación, además de acceder a la masterclass gratuita y el temario.
-          </div>
+        <div class="terminos-wrap">
+          <input type="checkbox" id="acepto-terminos">
+          <label for="acepto-terminos">
+            Al continuar, confirmo que he leído y acepto los
+            <a href="/contratacion" target="_blank" rel="noopener">Términos y Condiciones de Contratación</a>,
+            el <a href="/privacidad-integral" target="_blank" rel="noopener">Aviso de Privacidad</a> y la
+            <a href="/devoluciones" target="_blank" rel="noopener">Política de Cambios y Devoluciones</a> de AWLA.
+          </label>
         </div>
 
         <div class="price-cta-block">
-          <a href="/mail" class="btn btn-moss btn-lg btn-flex"
-             aria-label="Suscribirme para la próxima generación de Del texto a la pieza">
-            <span>Avísame de la próxima fecha →</span>
-          </a>
-          <p class="btn-meta">Recibe fecha, precio, masterclass gratuita y temario</p>
-
-          <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen02" class="price-cta-wa"
-             target="_blank" rel="noopener"
-             aria-label="Escribir por WhatsApp para resolver dudas del curso">
-            ¿Tienes dudas? Escríbeme por WhatsApp →
-          </a>
+          <!-- TODO: reemplazar data-link por el link real de Mercado Pago y
+               data-monto/el precio de arriba por el costo real en cuanto
+               existan. Mientras tanto apunta a /mail (no rompe nada). -->
+          <button type="button" class="btn btn-moss btn-lg btn-flex"
+                  data-tipo="completo" data-link="/mail" data-monto="7500" disabled
+                  aria-label="Pagar con Mercado Pago">
+            <span>Pagar con Mercado Pago →</span>
+          </button>
+          <button type="button" class="btn btn-outline-paper btn-lg btn-flex"
+                  data-tipo="transferencia" data-link="https://wa.me/525537175870?text=Hola%2C%20quiero%20pagar%20Del%20texto%20a%20la%20pieza%20por%20transferencia" disabled
+                  aria-label="Pagar por transferencia">
+            <span>Pagar por transferencia →</span>
+          </button>
         </div>
+
+        <a href="https://wa.me/525537175870?text=Hola%2C%20tengo%20una%20duda%20sobre%20Del%20texto%20a%20la%20pieza%20Gen02" class="price-cta-wa"
+           target="_blank" rel="noopener" style="margin-top:16px;display:inline-block;"
+           aria-label="Escribir por WhatsApp para resolver dudas del curso">
+          ¿Tienes dudas? Escríbeme por WhatsApp →
+        </a>
       </div>
 
       <div class="includes-block">
@@ -4906,6 +4955,66 @@ window.resetCookies = () => {
   window.addEventListener('resize', () => {
     cachedNavHeight = nav.offsetHeight;
     onScroll();
+  });
+})();
+</script>
+
+<!-- Referencia de precio en USD (solo informativa; el cobro siempre es en pesos) -->
+<script>
+(function(){
+  var fxEls = document.querySelectorAll('[data-mxn]');
+  if (!fxEls.length) return;
+  var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+  var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 4000);
+  fetch('https://api.frankfurter.dev/v1/latest?from=MXN&to=USD', ctrl ? {signal: ctrl.signal} : {})
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      clearTimeout(timer);
+      var rate = data && data.rates && data.rates.USD;
+      if (!rate) return;
+      fxEls.forEach(function(el){
+        var mxn = parseFloat(el.getAttribute('data-mxn'));
+        if (!mxn) return;
+        var usd = Math.round(mxn * rate);
+        el.textContent = usd.toLocaleString('en-US');
+        var line = el.closest('.price-fx-line');
+        if (line) line.hidden = false;
+      });
+    })
+    .catch(function(){ /* sin conexión o API caída: la línea se queda oculta */ });
+})();
+</script>
+
+<!-- Checkbox obligatorio de aceptación de términos antes de pagar -->
+<script>
+(function(){
+  var chk = document.getElementById('acepto-terminos');
+  var btns = document.querySelectorAll('[data-tipo][data-link]');
+  if (!chk || !btns.length) return;
+  function actualizarBotones(){
+    btns.forEach(function(b){ b.disabled = !chk.checked; });
+  }
+  chk.addEventListener('change', actualizarBotones);
+  actualizarBotones();
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tipo = btn.getAttribute('data-tipo');
+      var link = btn.getAttribute('data-link');
+      var monto = btn.getAttribute('data-monto');
+      try {
+        localStorage.setItem('awla_pago_consent', JSON.stringify({
+          tipo_pago: tipo,
+          monto: monto ? Number(monto) : null,
+          timestamp: new Date().toISOString(),
+          version_docs: '1.0',
+          medio: 'checkbox-pago'
+        }));
+      } catch(e) {}
+      if (window.awlaRegistrarConsentimiento) {
+        window.awlaRegistrarConsentimiento({ medio: 'checkbox-pago', tipo: tipo });
+      }
+      window.open(link, '_blank', 'noopener');
+    });
   });
 })();
 </script>
