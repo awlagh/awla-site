@@ -3131,6 +3131,30 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 /* ════════════════════════════════════════════════
+   ¿PARA QUIÉN ES? · bloque breve dentro de "Qué es"
+   ════════════════════════════════════════════════ */
+.para-quien {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule-soft);
+}
+.para-quien-k {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 8px;
+}
+.para-quien p {
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0;
+  max-width: 54ch;
+}
+
+/* ════════════════════════════════════════════════
    OVERRIDE MAILERLITE → DISEÑO AWLA
    (mismos selectores que ya usa /mail: es el mismo
    formulario/cuenta de MailerLite, reutilizado aquí)
@@ -3421,6 +3445,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="lbl lbl-paper">Qué es</span>
         <h2 class="cond-lg cond-lg-paper">Un laboratorio corto para dominar la <em>imagen</em>.</h2>
         <p class="body body-paper">Seis sesiones para aprender a dirigir modelos de generación de imagen con intención: de una idea suelta a un universo visual propio, con personajes, mundos, imágenes de referencia y series coherentes. Ideal si quieres enfocarte solo en imagen antes de dar el salto a video.</p>
+        <div class="para-quien">
+          <span class="para-quien-k">Para quién es</span>
+          <p>Para diseñadores, ilustradores, fotógrafos, cineastas, directores, creadores de contenido y equipos que desarrollan imágenes para sus propias marcas o proyectos. También funciona si usas la imagen como herramienta de exploración: moodboards, referencias o conceptos.</p>
+        </div>
       </div>
       <div class="course-img">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/laboratorio-imagen-ia-frame.webp"
@@ -3489,7 +3517,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Punto de partida: qué quieres decir y cómo convertirlo en una dirección visual clara.</p>
+          <p>Antes de generar preguntamos qué queremos construir.</p>
+          <p>Partimos de una intención y la convertimos en decisiones visuales concretas: referencias, atmósfera, lenguaje, elementos recurrentes y criterios que permitan reconocer el proyecto.</p>
+          <p class="result"><strong>Trabajamos:</strong> concepto · intención · referencias · dirección visual</p>
         </div>
       </details>
       <details class="session">
@@ -3500,7 +3530,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Estructura de prompt con jerarquía e intención, no como prueba y error.</p>
+          <p>El prompt deja de ser una lista de palabras y se convierte en una herramienta para tomar decisiones.</p>
+          <p>Aprendemos a estructurar instrucciones con jerarquía e intención, entender qué conviene definir, qué podemos dejar abierto y cómo iterar sin perder el concepto original.</p>
+          <p class="result"><strong>Trabajamos:</strong> estructura · jerarquía · iteración · curaduría</p>
         </div>
       </details>
       <details class="session">
@@ -3511,7 +3543,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Consistencia de personaje, estilo y atmósfera a través de varias imágenes.</p>
+          <p>Una imagen empieza a convertirse en universo cuando sus elementos pueden continuar existiendo.</p>
+          <p>Trabajamos personaje, objeto, estilo y atmósfera para construir variaciones que pertenezcan al mismo mundo, sin sentirse como copias de una sola imagen.</p>
+          <p class="result"><strong>Trabajamos:</strong> personaje · identidad · mundo · atmósfera · consistencia</p>
         </div>
       </details>
       <details class="session">
@@ -3522,7 +3556,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Cómo incorporar tu personaje, tu producto o tu marca usando imágenes de referencia, manteniendo consistencia con el resto de la serie.</p>
+          <p>Integramos información visual que ya existe dentro del proceso generativo.</p>
+          <p>Aprendemos a utilizar fotografías, personajes, productos u objetos de una marca como referencia para dirigir nuevas imágenes, manteniendo los rasgos que realmente importan.</p>
+          <p class="result"><strong>Trabajamos:</strong> referencias · integración · producto · identidad visual</p>
         </div>
       </details>
       <details class="session">
@@ -3533,7 +3569,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>De una imagen suelta a una serie con identidad propia.</p>
+          <p>Pasamos de conseguir una imagen que funciona a construir un conjunto que pertenece al mismo proyecto.</p>
+          <p>Observamos decisiones de luz, composición, escala, color, personaje y estilo para crear variaciones con una identidad común.</p>
+          <p class="result"><strong>Trabajamos:</strong> continuidad · variación · sistema visual · selección</p>
         </div>
       </details>
       <details class="session">
@@ -3544,7 +3582,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Revisión grupal de avances y ajustes finales de la serie.</p>
+          <p>Terminamos desde la curaduría.</p>
+          <p>Revisamos los avances del grupo, seleccionamos las imágenes que realmente sostienen cada concepto, hacemos ajustes y vemos cómo presentar una serie de manera clara y coherente.</p>
+          <p class="result"><strong>Trabajamos:</strong> edición · curaduría · ajustes · serie final</p>
         </div>
       </details>
     </div>
@@ -3644,7 +3684,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   <div class="wrap">
     <p class="g01-lbl">Qué vas a crear</p>
     <h2 class="g01-h">Una serie de imágenes <em>propia</em>.</h2>
-    <p class="g01-note">Al final desarrollas una serie visual propia: personaje, producto, campaña, moodboard o exploración estética. El formato se adapta a tu proyecto o necesidad profesional.</p>
+    <p class="g01-note">Al terminar desarrollas una serie visual propia y coherente a partir de un concepto: puede ser un personaje, producto, moodboard, propuesta de campaña, contenido para redes o proyecto personal. Lo importante no es producir muchas imágenes, sino aprender a tomar decisiones para que cada imagen forme parte de una misma intención.</p>
   </div>
 </section>
 <!-- GALERÍA · ejemplos reales de trabajo hecho con el método AWLA -->

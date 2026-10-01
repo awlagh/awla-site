@@ -3131,6 +3131,30 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 /* ════════════════════════════════════════════════
+   ¿PARA QUIÉN ES? · bloque breve dentro de "Qué es"
+   ════════════════════════════════════════════════ */
+.para-quien {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule-soft);
+}
+.para-quien-k {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 8px;
+}
+.para-quien p {
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0;
+  max-width: 54ch;
+}
+
+/* ════════════════════════════════════════════════
    OVERRIDE MAILERLITE → DISEÑO AWLA
    (mismos selectores que ya usa /mail: es el mismo
    formulario/cuenta de MailerLite, reutilizado aquí)
@@ -3420,6 +3444,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="lbl lbl-paper">Qué es</span>
         <h2 class="cond-lg cond-lg-paper">De la imagen al <em>movimiento</em>.</h2>
         <p class="body body-paper">Seis sesiones para aprender a dirigir modelos de generación de video con intención: partimos de moodboard e idea, armamos un storyboard propio, y le damos cámara, ritmo y montaje. Pensado para quien ya tiene una base de imagen (propia o del Laboratorio de imagen) y quiere darle movimiento con criterio cinematográfico.</p>
+        <div class="para-quien">
+          <span class="para-quien-k">Para quién es</span>
+          <p>Para cineastas, directores, fotógrafos, diseñadores, artistas y creadores de contenido que desarrollan video para marcas o proyectos propios. También para quienes ya producen imágenes y quieren darles movimiento o explorar la producción con IA.</p>
+        </div>
       </div>
       <div class="course-img">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/laboratorio-video-ia-frame.webp"
@@ -3488,7 +3516,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Defines el concepto, el estilo y las referencias de tu proyecto (moodboard), y organizas tus imágenes en el orden que vas a llevar a video (storyboard).</p>
+          <p>Definimos el concepto, el estilo y las referencias visuales de tu proyecto.</p>
+          <p>Organizamos las imágenes que darán forma a la secuencia y construimos un storyboard que sirva como guía para todo el proceso.</p>
+          <p class="result"><strong>Trabajamos:</strong> concepto · referencias · moodboard · storyboard · estructura visual</p>
         </div>
       </details>
       <details class="session">
@@ -3499,7 +3529,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Qué necesita una imagen para convertirse en video: keyframe, dirección y punto de partida.</p>
+          <p>Exploramos cómo un keyframe se convierte en un punto de partida.</p>
+          <p>Aprendemos a decidir qué conservar y cómo dirigir la transformación de la imagen al movimiento, manteniendo una intención clara.</p>
+          <p class="result"><strong>Trabajamos:</strong> keyframe · imagen a video · dirección · intención · iteración</p>
         </div>
       </details>
       <details class="session">
@@ -3510,7 +3542,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Cómo dirigir sujeto, entorno y movimiento de cámara con IA.</p>
+          <p>Diferenciamos la acción del personaje, el movimiento del entorno y el movimiento de la cámara.</p>
+          <p>Analizamos cómo se combinan para construir una escena con sentido y exploramos distintas formas de controlarlos.</p>
+          <p class="result"><strong>Trabajamos:</strong> acción · sujeto · entorno · movimiento de cámara · control</p>
         </div>
       </details>
       <details class="session">
@@ -3521,7 +3555,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>De un clip aislado a una secuencia con ritmo propio.</p>
+          <p>Estudiamos la relación entre planos, la entrada y salida de las acciones.</p>
+          <p>Trabajamos la continuidad visual y el uso de transiciones para mantener la coherencia del relato.</p>
+          <p class="result"><strong>Trabajamos:</strong> ritmo · transición · continuidad · relación entre planos</p>
         </div>
       </details>
       <details class="session">
@@ -3532,7 +3568,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Construcción de una secuencia de varios clips con coherencia visual, a partir del storyboard de la sesión 1.</p>
+          <p>Construimos una secuencia de varios clips a partir del storyboard, integrando movimiento, cámara y ambiente.</p>
+          <p>Nos enfocamos en mantener una consistencia visual en toda la pieza.</p>
+          <p class="result"><strong>Trabajamos:</strong> secuencia · continuidad · consistencia · selección · dirección</p>
         </div>
       </details>
       <details class="session">
@@ -3543,7 +3581,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Montaje final, sonido y ritmo de entrega.</p>
+          <p>Editamos la secuencia, definimos el orden y la duración de cada plano.</p>
+          <p>Trabajamos el ritmo y el sonido, y hacemos los ajustes finales para dar forma a una pieza sólida y coherente.</p>
+          <p class="result"><strong>Trabajamos:</strong> montaje · ritmo · sonido · curaduría · pieza final</p>
         </div>
       </details>
     </div>
@@ -3643,7 +3683,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   <div class="wrap">
     <p class="g01-lbl">Qué vas a crear</p>
     <h2 class="g01-h">Un video corto <em>propio</em>.</h2>
-    <p class="g01-note">Al final desarrollas una pieza de video corta: mood film, teaser, campaña o exploración audiovisual. El formato se adapta a tu proyecto o necesidad profesional.</p>
+    <p class="g01-note">Al terminar desarrollas un video corto propio: puede ser un mood film, teaser, pieza para marca, contenido para redes o una narrativa breve. El objetivo no es acumular clips, sino decidir qué movimiento necesita cada imagen y cómo distintos planos construyen una pieza.</p>
   </div>
 </section>
 <!-- GALERÍA · ejemplos reales de trabajo hecho con el método AWLA -->

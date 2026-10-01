@@ -3131,6 +3131,30 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 }
 
 /* ════════════════════════════════════════════════
+   ¿PARA QUIÉN ES? · bloque breve dentro de "Qué es"
+   ════════════════════════════════════════════════ */
+.para-quien {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule-soft);
+}
+.para-quien-k {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 8px;
+}
+.para-quien p {
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0;
+  max-width: 54ch;
+}
+
+/* ════════════════════════════════════════════════
    OVERRIDE MAILERLITE → DISEÑO AWLA
    (mismos selectores que ya usa /mail: es el mismo
    formulario/cuenta de MailerLite, reutilizado aquí)
@@ -3325,6 +3349,14 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         },
         {
           "@type": "Question",
+          "name": "¿Qué tan grande es la producción del día del shoot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es una producción sencilla: cámara y una modelo por grupo, en un espacio simple, sin maquillaje ni iluminación de estudio. Cada participante dirige una sesión corta (unos 20 minutos) para conseguir una fotografía base clara, que después se transforma y expande con IA en las siguientes sesiones."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "¿Necesito llevar cámara propia?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -3416,6 +3448,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         <span class="lbl lbl-paper">Qué es</span>
         <h2 class="cond-lg cond-lg-paper">Dirección de moda, potenciada con <em>IA</em>.</h2>
         <p class="body body-paper">Una experiencia que combina producción fotográfica real con herramientas de IA generativa: dirección creativa, styling, locación y postproducción asistida por IA. Para fotógrafos, stylists, marcas y creativos que quieren llevar su producción de moda a otro nivel.</p>
+        <div class="para-quien">
+          <span class="para-quien-k">Para quién es</span>
+          <p>Para fotógrafos, stylists, diseñadores, directores creativos, artistas y creadores de contenido vinculados con moda, imagen y comunicación visual. También útil si desarrollas una marca de ropa, accesorios, belleza o producto y quieres integrar IA a tu proceso de producción.</p>
+        </div>
       </div>
       <div class="course-img">
         <img src="https://cdn.jsdelivr.net/gh/awlagh/site-assets@main/fashion-shoot-ia-frame.webp"
@@ -3480,7 +3516,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Definimos concepto, referencias y moodboard visual apoyado en IA generativa.</p>
+          <p>Comenzamos definiendo qué queremos producir.</p>
+          <p>Construimos un concepto visual, reunimos referencias y usamos herramientas generativas para desarrollar un moodboard que nos permita llegar al shoot con decisiones ya tomadas.</p>
+          <p class="result"><strong>Trabajamos:</strong> concepto · referencias · moodboard · dirección visual · planeación</p>
         </div>
       </details>
       <details class="session">
@@ -3491,7 +3529,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Jornada de producción fotográfica en locación, con dirección creativa en vivo.</p>
+          <p>Llevamos el moodboard al espacio físico: una producción sencilla, con cámara y una modelo, sin maquillaje ni iluminación de estudio.</p>
+          <p>Cada participante dirige una propuesta fotográfica breve (unos 20 minutos) con la modelo, para conseguir una fotografía base clara que después se transforma y expande con IA.</p>
+          <p class="result"><strong>Trabajamos:</strong> dirección · modelo · pose · intención · fotografía base</p>
         </div>
       </details>
       <details class="session">
@@ -3502,7 +3542,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Retoque, extensión de escena y exploración de variantes con herramientas de IA.</p>
+          <p>Regresamos al material producido y lo llevamos a un nuevo espacio.</p>
+          <p>Trabajamos selección, retoque, extensión de escena, integración de elementos y exploración de variantes con herramientas generativas.</p>
+          <p class="result"><strong>Trabajamos:</strong> selección · retoque · extensión · integración · variación</p>
         </div>
       </details>
       <details class="session">
@@ -3513,7 +3555,9 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
           <span class="chev"></span>
         </summary>
         <div class="session-body">
-          <p>Selección final y entrega de la serie, en vivo con el grupo.</p>
+          <p>Revisamos las piezas del grupo y seleccionamos las imágenes que mejor sostienen cada propuesta.</p>
+          <p>Hacemos los ajustes finales para construir una serie visual coherente.</p>
+          <p class="result"><strong>Trabajamos:</strong> edición · curaduría · coherencia · presentación · serie final</p>
         </div>
       </details>
     </div>
@@ -3613,7 +3657,7 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   <div class="wrap">
     <p class="g01-lbl">Qué vas a crear</p>
     <h2 class="g01-h">Una serie editorial <em>propia</em>.</h2>
-    <p class="g01-note">Al final tienes una serie de moda propia, producida y dirigida por ti, con apoyo de IA en moodboard y postproducción. Ideal para portafolio, marca personal o campaña.</p>
+    <p class="g01-note">Al terminar desarrollas una serie editorial propia, construida a partir de las fotografías del shoot y trabajadas después con IA: dirección visual, atmósferas, extensiones de imagen y nuevas interpretaciones a partir de una fotografía real. Pensado como ejercicio creativo y pieza para portafolio personal.</p>
   </div>
 </section>
 <!-- GALERÍA · ejemplos reales de trabajo hecho con el método AWLA -->
@@ -3829,6 +3873,10 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
       <div class="faq-item">
         <p class="q">¿Necesito experiencia en moda?</p>
         <p class="a">Sí, ayuda tener experiencia o vocabulario del mundo de la moda (encuadres, dirección de foto). El día se dedica a producir, no a explicar esos conceptos desde cero.</p>
+      </div>
+      <div class="faq-item">
+        <p class="q">¿Qué tan grande es la producción del día del shoot?</p>
+        <p class="a">Es una producción sencilla: cámara y una modelo por grupo, en un espacio simple, sin maquillaje ni iluminación de estudio. Cada participante dirige una sesión corta (unos 20 minutos) para conseguir una fotografía base clara, que después se transforma y expande con IA en las siguientes sesiones.</p>
       </div>
       <div class="faq-item">
         <p class="q">¿Necesito llevar cámara propia?</p>
