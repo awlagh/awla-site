@@ -3105,6 +3105,77 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
   font-size: 17px; line-height: 1.2; color: var(--ink); margin: 0;
 }
 
+/* ════════════════════════════════════════════════
+   TEMARIO · caja de descarga con MailerLite
+   (mismo formulario/cuenta que /mail, insertada
+   dentro de la propia página para no sacar a nadie)
+   ════════════════════════════════════════════════ */
+.temario-box {
+  margin-top: 40px;
+  padding: 32px;
+  background: var(--paper2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 8px;
+  max-width: 480px;
+}
+.temario-box-k {
+  font: 500 10px var(--font-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 14px;
+}
+@media (max-width: 600px) {
+  .temario-box { padding: 24px 20px; max-width: none; }
+}
+
+/* ════════════════════════════════════════════════
+   OVERRIDE MAILERLITE → DISEÑO AWLA
+   (mismos selectores que ya usa /mail: es el mismo
+   formulario/cuenta de MailerLite, reutilizado aquí)
+   ════════════════════════════════════════════════ */
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 100% !important; width: 100% !important; }
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper { background-color: transparent !important; }
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody { padding: 0 !important; }
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent { margin-bottom: 20px !important; }
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+  font-family: var(--font-condensed) !important; font-weight: 600 !important;
+  font-size: 20px !important; color: var(--ink) !important; line-height: 1.1 !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+  font-family: var(--font-body) !important; color: var(--ink-mid) !important;
+  font-size: 13px !important; line-height: 1.55 !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+  background-color: #fff !important; color: var(--ink) !important;
+  border-color: var(--rule) !important; border-radius: 4px !important;
+  font-family: var(--font-body) !important; font-size: 15px !important; padding: 14px !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+  background-color: var(--moss) !important; border: none !important; border-radius: 4px !important;
+  font-family: var(--font-condensed) !important; font-size: 14px !important; font-weight: 600 !important;
+  letter-spacing: .06em !important; text-transform: uppercase !important; padding: 15px !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+  background-color: #4e7350 !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description,
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p,
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p {
+  font-family: var(--font-body) !important; color: var(--ink-mid) !important; font-size: 12px !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a,
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p a,
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
+  color: var(--moss) !important;
+}
+#mlb2-43544143.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before {
+  border-color: var(--moss) !important; background-color: var(--moss) !important;
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -3446,12 +3517,95 @@ hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
         </div>
       </details>
     </div>
-    <p style="margin-top:28px;">
-      <a href="/mail" class="btn btn-outline-paper btn-lg btn-flex" style="display:inline-flex;max-width:340px;">
-        <span>Descargar programa completo · PDF</span>
-        <span class="arrow">→</span>
-      </a>
-    </p>
+    <div class="temario-box">
+      <span class="temario-box-k">Programa completo</span>
+      <div id="mlb2-43544143" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-43544143">
+        <div class="ml-form-align-center">
+          <div class="ml-form-embedWrapper embedForm">
+            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+              <div class="ml-form-embedContent">
+                <h4>Recibe el temario completo</h4>
+                <p>Te mandamos el PDF a tu correo. También lo puedes abrir aquí mismo.</p>
+              </div>
+              <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2304368/forms/192474904664213135/subscribe" data-code="" method="post" target="_blank">
+                <div class="ml-form-formContent">
+                  <div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                      <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Tu correo" autocomplete="email">
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-form-embedPermissions">
+                  <div class="ml-form-embedPermissionsContent default privacy-policy">
+                    <p>Al continuar aceptas nuestro [<span><a href="https://www.awla.live/privacidad" target="_blank">Aviso de Privacidad</a></span>].</p>
+                  </div>
+                </div>
+                <div class="ml-form-checkboxRow ml-validate-required">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    <div class="label-description">
+                      <p>Acepto recibir comunicaciones de AWLA y haber leído el <span><a href="https://www.awla.live/privacidad" target="_blank">Aviso de Privacidad</a></span>.</p>
+                    </div>
+                  </label>
+                </div>
+                <div class="ml-form-recaptcha ml-validate-required" style="float: left;">
+                  <style type="text/css">
+                    .ml-form-recaptcha { margin-bottom: 20px; }
+                    .ml-form-recaptcha.ml-error iframe { border: solid 1px #ff0000; }
+                    @media screen and (max-width: 480px) {
+                      .ml-form-recaptcha { width: 220px!important }
+                      .g-recaptcha { transform: scale(0.78); -webkit-transform: scale(0.78); transform-origin: 0 0; -webkit-transform-origin: 0 0; }
+                    }
+                  </style>
+                  <script src="https://www.google.com/recaptcha/api.js"></script>
+                  <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                </div>
+                <input type="hidden" name="ml-submit" value="1">
+                <div class="ml-form-embedSubmit">
+                  <button type="submit" class="primary">Recibir temario · PDF</button>
+                  <button disabled="disabled" style="display: none;" type="button" class="loading">
+                    <div class="ml-form-embedSubmitLoad"></div>
+                    <span class="sr-only">Loading...</span>
+                  </button>
+                </div>
+                <input type="hidden" name="anticsrf" value="true">
+              </form>
+            </div>
+            <div class="ml-form-successBody row-success" style="display: none">
+              <div class="ml-form-successContent">
+                <h4>Gracias</h4>
+                <p>Revisa tu correo. También puedes descargar el temario directo <span><a href="https://github.com/awlagh/site-assets/raw/main/awla-fashion_pdf.pdf" target="_blank" rel="noopener">aquí</a></span>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var _awlaTemarioEmail = '';
+      document.addEventListener('submit', function(e) {
+        var form = e.target;
+        if (form && form.closest && form.closest('#mlb2-43544143')) {
+          var inp = form.querySelector('input[name="fields[email]"]');
+          if (inp) _awlaTemarioEmail = inp.value;
+        }
+      }, true);
+      function ml_webform_success_43544143() {
+        var $ = ml_jQuery || jQuery;
+        $('.ml-subscribe-form-43544143 .row-success').show();
+        $('.ml-subscribe-form-43544143 .row-form').hide();
+        try {
+          if (window.awlaRegistrarConsentimiento) {
+            window.awlaRegistrarConsentimiento({ email: _awlaTemarioEmail, version: '1.0', medio: 'temario_fashion', tipo: 'temario_pdf' });
+          }
+        } catch(err) {}
+      }
+    </script>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+    <script>
+      fetch("https://assets.mailerlite.com/jsonp/2304368/forms/192474904664213135/takel")
+    </script>
+
   </div>
 </section>
 <!-- RESULTADO / GALERÍA -->
