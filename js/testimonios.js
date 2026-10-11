@@ -13,6 +13,7 @@
   var TESTIMONIOS = [
     // ── Gen01 · Del texto a la pieza (oct 2026) ──
     { q: "Increíble, Pablo es realmente bueno y explica muy bien. Me abrió por completo el panorama de la IA.", a: "@little_floweredthong" },
+    { q: "El curso lo tiene todo: información teórica muy completa, material audiovisual excelente, prácticas muy claras y precisas, el profesor cuenta con bastante dominio del tema. Sin duda, algo que me llevo son las ganas de seguir conociendo y desarrollando con IA.", a: "@___govehg" },
     { q: "Me gustó que fue muy estructurada, puntual, además el profe da demostraciones en el momento, y a mí los resúmenes y las sesiones grabadas me ayudan mucho.", a: "@zepzilia" },
     { q: "Muy interesante y me ayuda ver dónde estoy como estudiante de la IA.", a: "Jairo Barrera" },
     { q: "Que no existe una fórmula mágica, sino experimentación y trabajo constante.", a: "@noemicot" },
